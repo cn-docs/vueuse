@@ -38,9 +38,7 @@ console.log(capsLockState) // true
 
 ## 初始状态
 
-默认情况下，返回的 ref 将是 `Ref
-
-<boolean | null>`，直到收到第一个事件为止。您可以通过以下方式明确地将初始状态传递给它：
+默认情况下，返回的 ref 将是 `Ref<boolean | null>`，直到收到第一个事件为止。您可以通过以下方式明确地将初始状态传递给它：
 
 ```ts
 const capsLockState1 = useKeyModifier('CapsLock') // Ref<boolean | null>
