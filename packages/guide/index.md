@@ -1,4 +1,12 @@
-# 入门指南
+# 声明
+
+中文文档由社区维护，若出现滞后或错误，请以官方文档为准，欢迎提交 PR。
+
+文档地址：https://github.com/cn-docs/vueuse
+
+中文文档以 docs-cn 分支为准
+
+## 入门指南
 
 <CourseLink href="https://vueschool.io/courses/vueuse-for-everyone?friend=vueuse">通过视频学习 VueUse</CourseLink>
 
