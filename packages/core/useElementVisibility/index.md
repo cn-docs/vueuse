@@ -4,9 +4,9 @@ category: Elements
 
 # useElementVisibility
 
-Tracks the visibility of an element within the viewport.
+跟踪元素在视口内的可见性。
 
-## Usage
+## 用法
 
 ```vue
 <script setup>
@@ -24,17 +24,17 @@ const targetIsVisible = useElementVisibility(target)
 </template>
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <UseElementVisibility v-slot="{ isVisible }">
-    Is Visible: {{ isVisible }}
+    是否可见：{{ isVisible }}
   </UseElementVisibility>
 </template>
 ```
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup>
@@ -51,13 +51,13 @@ function onElementVisibility(state) {
 
 <template>
   <div v-element-visibility="onElementVisibility">
-    {{ isVisible ? 'inside' : 'outside' }}
+    {{ isVisible ? '在内部' : '在外部' }}
   </div>
 
-  <!-- with options -->
+  <!-- 使用选项 -->
   <div ref="target">
     <div v-element-visibility="[onElementVisibility, { scrollTarget: target }]">
-      {{ isVisible ? 'inside' : 'outside' }}
+      {{ isVisible ? '在内部' : '在外部' }}
     </div>
   </div>
 </template>

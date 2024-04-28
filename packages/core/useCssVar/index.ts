@@ -10,14 +10,14 @@ import { unrefElement } from '../unrefElement'
 export interface UseCssVarOptions extends ConfigurableWindow {
   initialValue?: string
   /**
-   * Use MutationObserver to monitor variable changes
+   * 使用 MutationObserver 监听变量更改
    * @default false
    */
   observe?: boolean
 }
 
 /**
- * Manipulate CSS variables.
+ * 操作 CSS 变量。
  *
  * @see https://vueuse.org/useCssVar
  * @param prop

@@ -5,15 +5,14 @@ related: reactify
 
 # createUnrefFn
 
-Make a plain function accepting ref and raw values as arguments.
-Returns the same value the unconverted function returns, with proper typing.
+创建一个普通函数，接受 ref 和原始值作为参数。
+返回与未转换函数返回相同的值，具有正确的类型。
 
 ::: tip
-Make sure you're using the right tool for the job. Using `reactify`
-might be more pertinent in some cases where you want to evaluate the function on each changes of it's arguments.
+确保您使用的是正确的工具。在某些情况下，使用 `reactify` 可能更加合适，特别是当您希望在参数发生变化时重新评估函数时。
 :::
 
-## Usage
+## 用法
 
 ```ts
 import { ref } from 'vue'
@@ -27,6 +26,6 @@ function post(url, data) {
 }
 const unrefPost = createUnrefFn(post)
 
-post(url, data) /* ❌ Will throw an error because the arguments are refs */
-unrefPost(url, data) /* ✔️ Will Work because the arguments will be auto unref */
+post(url, data) /* ❌ 将抛出错误，因为参数是 ref */
+unrefPost(url, data) /* ✔️ 将正常工作，因为参数将自动解除引用 */
 ```

@@ -4,19 +4,19 @@ category: Utilities
 
 # useConfirmDialog
 
-Creates event hooks to support modals and confirmation dialog chains.
+创建事件钩子以支持模态框和确认对话框链。
 
-Functions can be used on the template, and hooks are a handy skeleton for the business logic of modals dialog or other actions that require user confirmation.
+函数可以在模板中使用，而钩子是模态对话框或其他需要用户确认的操作的业务逻辑的便捷骨架。
 
-## Functions and hooks
+## 函数和钩子
 
-- `reveal()` - triggers `onReveal` hook and sets `revealed.value` to `true`. Returns promise that resolves by `confirm()` or `cancel()`.
-- `confirm()` - sets `isRevealed.value` to `false` and triggers `onConfirm` hook.
-- `cancel()` - sets `isRevealed.value` to `false` and triggers `onCancel` hook.
+- `reveal()` - 触发 `onReveal` 钩子并将 `revealed.value` 设置为 `true`。返回一个由 `confirm()` 或 `cancel()` 解析的 promise。
+- `confirm()` - 将 `isRevealed.value` 设置为 `false` 并触发 `onConfirm` 钩子。
+- `cancel()` - 将 `isRevealed.value` 设置为 `false` 并触发 `onCancel` 钩子。
 
-## Basic Usage
+## 基本用法
 
-### Using hooks
+### 使用钩子
 
 ```vue
 <script setup>
@@ -28,18 +28,18 @@ const { isRevealed, reveal, confirm, cancel, onReveal, onConfirm, onCancel }
 
 <template>
   <button @click="reveal">
-    Reveal Modal
+    显示模态框
   </button>
 
   <teleport to="body">
     <div v-if="isRevealed" class="modal-bg">
       <div class="modal">
-        <h2>Confirm?</h2>
+        <h2>确认？</h2>
         <button @click="confirm">
-          Yes
+          是
         </button>
         <button @click="cancel">
-          Cancel
+          取消
         </button>
       </div>
     </div>
@@ -49,7 +49,7 @@ const { isRevealed, reveal, confirm, cancel, onReveal, onConfirm, onCancel }
 
 ### Promise
 
-If you prefer working with promises:
+如果你更喜欢使用 promises：
 
 ```vue
 <script setup>
@@ -71,18 +71,18 @@ async function openDialog() {
 
 <template>
   <button @click="openDialog">
-    Show Modal
+    显示模态框
   </button>
 
   <teleport to="body">
     <div v-if="isRevealed" class="modal-layout">
       <div class="modal">
-        <h2>Confirm?</h2>
+        <h2>确认？</h2>
         <button @click="confirm(true)">
-          Yes
+          是
         </button>
         <button @click="confirm(false)">
-          No
+          否
         </button>
       </div>
     </div>

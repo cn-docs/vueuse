@@ -8,7 +8,7 @@ const code = stringify(pixelRatio)
 </script>
 
 <template>
-  <div>Device Pixel Ratio:</div>
+  <div>设备像素比：</div>
   <pre>{{ code }}</pre>
-  <span class="opacity-50">Zoom in and out (or move the window to a screen with a different scaling factor) to see the value changes</span>
+  <span class="opacity-50">放大和缩小（或将窗口移动到具有不同缩放因子的屏幕）以查看值的变化</span>
 </template>

@@ -4,9 +4,9 @@ category: State
 
 # useAsyncState
 
-Reactive async state. Will not block your setup function and will trigger changes once the promise is ready. The state is a `shallowRef` by default.
+响应式异步状态。不会阻塞你的设置函数，并且在 promise 准备就绪后会触发更改。状态默认为 `shallowRef`。
 
-## Usage
+## 用法
 
 ```ts
 import axios from 'axios'

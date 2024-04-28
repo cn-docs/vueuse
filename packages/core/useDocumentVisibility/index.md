@@ -4,9 +4,9 @@ category: Elements
 
 # useDocumentVisibility
 
-Reactively track [`document.visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState)
+响应式跟踪 [`document.visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState)
 
-## Usage
+## 用法
 
 ```js
 import { useDocumentVisibility } from '@vueuse/core'
@@ -14,12 +14,12 @@ import { useDocumentVisibility } from '@vueuse/core'
 const visibility = useDocumentVisibility()
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <UseDocumentVisibility v-slot="{ visibility }">
-    Document Visibility: {{ visibility }}
+    文档可见性：{{ visibility }}
   </UseDocumentVisibility>
 </template>
 ```

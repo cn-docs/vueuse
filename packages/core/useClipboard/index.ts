@@ -12,26 +12,26 @@ import { usePermission } from '../usePermission'
 
 export interface UseClipboardOptions<Source> extends ConfigurableNavigator {
   /**
-   * Enabled reading for clipboard
+   * 启用剪贴板读取
    *
    * @default false
    */
   read?: boolean
 
   /**
-   * Copy source
+   * 复制的数据源
    */
   source?: Source
 
   /**
-   * Milliseconds to reset state of `copied` ref
+   * 重置 `copied` 引用状态的毫秒数
    *
    * @default 1500
    */
   copiedDuring?: number
 
   /**
-   * Whether fallback to document.execCommand('copy') if clipboard is undefined.
+   * 如果剪贴板未定义，是否回退到 document.execCommand('copy')。
    *
    * @default false
    */
@@ -46,7 +46,7 @@ export interface UseClipboardReturn<Optional> {
 }
 
 /**
- * Reactive Clipboard API.
+ * 响应式 Clipboard API.
  *
  * @see https://vueuse.org/useClipboard
  * @param options

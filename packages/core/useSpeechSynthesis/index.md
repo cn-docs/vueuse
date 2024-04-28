@@ -4,11 +4,11 @@ category: Sensors
 
 # useSpeechSynthesis
 
-Reactive [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis).
+响应式 [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)。
 
 > [Can I use?](https://caniuse.com/mdn-api_speechsynthesis)
 
-## Usage
+## 用法
 
 ```ts
 import { useSpeechSynthesis } from '@vueuse/core'
@@ -27,9 +27,9 @@ const {
 } = useSpeechSynthesis()
 ```
 
-### Options
+### 选项
 
-The following shows the default values of the options, they will be directly passed to [SpeechSynthesis API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis).
+以下显示了选项的默认值，它们将直接传递给 [SpeechSynthesis API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)。
 
 ```ts
 useSpeechSynthesis({

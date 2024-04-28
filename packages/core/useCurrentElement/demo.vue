@@ -10,5 +10,5 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div>Open your console.log to see the element</div>
+  <div>打开console.log查看元素</div>
 </template>

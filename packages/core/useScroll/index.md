@@ -4,9 +4,9 @@ category: Sensors
 
 # useScroll
 
-Reactive scroll position and state.
+响应式的滚动位置和状态。
 
-## Usage
+## 用法
 
 ```vue
 <script setup lang="ts">
@@ -21,7 +21,7 @@ const { x, y, isScrolling, arrivedState, directions } = useScroll(el)
 </template>
 ```
 
-### With offsets
+### 带偏移量
 
 ```js
 const { x, y, isScrolling, arrivedState, directions } = useScroll(el, {
@@ -29,9 +29,9 @@ const { x, y, isScrolling, arrivedState, directions } = useScroll(el, {
 })
 ```
 
-### Setting scroll position
+### 设置滚动位置
 
-Set the `x` and `y` values to make the element scroll to that position.
+设置 `x` 和 `y` 的值以使元素滚动到该位置。
 
 ```vue
 <script setup lang="ts">
@@ -44,17 +44,17 @@ const { x, y } = useScroll(el)
 <template>
   <div ref="el" />
   <button @click="x += 10">
-    Scroll right 10px
+    向右滚动 10px
   </button>
   <button @click="y += 10">
-    Scroll down 10px
+    向下滚动 10px
   </button>
 </template>
 ```
 
-### Smooth scrolling
+### 平滑滚动
 
-Set `behavior: smooth` to enable smooth scrolling. The `behavior` option defaults to `auto`, which means no smooth scrolling. See the `behavior` option on [`window.scrollTo()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo) for more information.
+设置 `behavior: smooth` 以启用平滑滚动。`behavior` 选项默认为 `auto`，表示没有平滑滚动。有关更多信息，请参阅 [`window.scrollTo()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo) 上的 `behavior` 选项。
 
 ```ts
 import { useScroll } from '@vueuse/core'
@@ -62,13 +62,13 @@ import { useScroll } from '@vueuse/core'
 const el = ref<HTMLElement | null>(null)
 const { x, y } = useScroll(el, { behavior: 'smooth' })
 
-// Or as a `ref`:
+// 或作为 `ref`：
 const smooth = ref(false)
 const behavior = computed(() => smooth.value ? 'smooth' : 'auto')
 const { x, y } = useScroll(el, { behavior })
 ```
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup lang="ts">
@@ -89,7 +89,7 @@ function onScroll(state: UseScrollReturn) {
     </div>
   </div>
 
-  <!-- with options -->
+  <!-- 带选项 -->
   <div v-scroll="[onScroll, { throttle: 10 }]">
     <div v-for="item in data" :key="item">
       {{ item }}

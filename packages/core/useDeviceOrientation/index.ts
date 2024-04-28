@@ -8,7 +8,7 @@ import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 
 /**
- * Reactive DeviceOrientationEvent.
+ * 响应式 DeviceOrientationEvent.
  *
  * @see https://vueuse.org/useDeviceOrientation
  * @param options

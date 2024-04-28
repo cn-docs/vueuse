@@ -4,9 +4,9 @@ category: Sensors
 
 # usePointer
 
-Reactive [pointer state](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events).
+响应式的 [指针状态](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events)。
 
-## Basic Usage
+## 基本用法
 
 ```js
 import { usePointer } from '@vueuse/core'
@@ -14,9 +14,9 @@ import { usePointer } from '@vueuse/core'
 const { x, y, pressure, pointerType } = usePointer()
 ```
 
-## Component Usage
+## 组件用法
 
-By default, the component will track the pointer on `window`
+默认情况下，该组件将跟踪 `window` 上的指针。
 
 ```vue
 <template>
@@ -27,7 +27,7 @@ By default, the component will track the pointer on `window`
 </template>
 ```
 
-To track local position in the element, set `target="self"`:
+要在元素内跟踪本地位置，请设置 `target="self"`：
 
 ```vue
 <template>

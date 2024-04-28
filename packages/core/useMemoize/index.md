@@ -4,13 +4,13 @@ category: Utilities
 
 # useMemoize
 
-Cache results of functions depending on arguments and keep it reactive. It can also be used for asynchronous functions and will reuse existing promises to avoid fetching the same data at the same time.
+缓存依赖于参数的函数结果，并保持其响应性。它还可以用于异步函数，并将重用现有的 promises 来避免同时获取相同的数据。
 
 ::: tip
-The results are not cleared automatically. Call `clear()` in case you no longer need the results or use own caching mechanism to avoid memory leaks.
+结果不会自动清除。如果您不再需要结果，请调用 `clear()`，或使用自己的缓存机制来避免内存泄漏。
 :::
 
-## Usage
+## 使用方法
 
 ```ts
 import { useMemoize } from '@vueuse/core'
@@ -20,71 +20,71 @@ const getUser = useMemoize(
     axios.get(`users/${userId}`).then(({ data }) => data),
 )
 
-const user1 = await getUser(1) // Request users/1
-const user2 = await getUser(2) // Request users/2
+const user1 = await getUser(1) // 请求 users/1
+const user2 = await getUser(2) // 请求 users/2
 // ...
-const user1 = await getUser(1) // Retrieve from cache
+const user1 = await getUser(1) // 从缓存中获取
 
 // ...
-const user1 = await getUser.load(1) // Request users/1
+const user1 = await getUser.load(1) // 请求 users/1
 
 // ...
-getUser.delete(1) // Delete cache from user 1
-getUser.clear() // Clear full cache
+getUser.delete(1) // 删除用户1的缓存
+getUser.clear() // 清除完整缓存
 ```
 
-Combine with `computed` or `asyncComputed` to achieve reactivity:
+结合 `computed` 或 `asyncComputed` 可以实现响应性：
 
 ```ts
 const user1 = asyncComputed(() => getUser(1))
 // ...
-await getUser.load(1) // Will also update user1
+await getUser.load(1) // 也会更新 user1
 ```
 
-### Resolving cache key
+### 解析缓存键
 
-The key for caching is determined by the arguments given to the function and will be serialized by default with `JSON.stringify`.
-This will allow equal objects to receive the same cache key. In case you want to customize the key you can pass `getKey`
+缓存的键由传递给函数的参数确定，并且默认情况下将使用 `JSON.stringify` 进行序列化。
+这将使相等的对象接收相同的缓存键。如果您想自定义键，可以通过 `getKey` 传递。
 
 ```ts
 const getUser = useMemoize(
   async (userId: number, headers: AxiosRequestHeaders): Promise<UserData> =>
     axios.get(`users/${userId}`, { headers }).then(({ data }) => data),
   {
-    // Use only userId to get/set cache and ignore headers
+    // 仅使用 userId 获取/设置缓存，忽略 headers
     getKey: (userId, headers) => userId,
   },
 )
 ```
 
 ::: warning
-For Vue 2 the key has to be a `string` or `number`
+对于 Vue 2，键必须是 `string` 或 `number`
 :::
 
-### Customize cache mechanism
+### 自定义缓存机制
 
-By default, the results are cached within a `Map` (normal object for Vue 2). You can implement your own mechanism by passing `cache` as options with following structure:
+默认情况下，结果将缓存在 `Map` 中（对于 Vue 2，则是普通对象）。您可以通过在选项中传递 `cache` 来实现自己的机制，具体如下：
 
 ```ts
 export interface MemoizeCache<Key, Value> {
   /**
-   * Get value for key
+   * 获取键的值
    */
   get: (key: Key) => Value | undefined
   /**
-   * Set value for key
+   * 为键设置值
    */
   set: (key: Key, value: Value) => void
   /**
-   * Return flag if key exists
+   * 返回键是否存在的标志
    */
   has: (key: Key) => boolean
   /**
-   * Delete value for key
+   * 删除键的值
    */
   delete: (key: Key) => void
   /**
-   * Clear cache
+   * 清除缓存
    */
   clear: () => void
 }

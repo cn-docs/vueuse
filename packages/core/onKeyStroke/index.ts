@@ -6,12 +6,13 @@ import { defaultWindow } from '../_configurable'
 export type KeyPredicate = (event: KeyboardEvent) => boolean
 export type KeyFilter = true | string | string[] | KeyPredicate
 export type KeyStrokeEventName = 'keydown' | 'keypress' | 'keyup'
+
 export interface OnKeyStrokeOptions {
   eventName?: KeyStrokeEventName
   target?: MaybeRefOrGetter<EventTarget | null | undefined>
   passive?: boolean
   /**
-   * Set to `true` to ignore repeated events when the key is being held down.
+   * 当按键持续按下时，设置为`true`以忽略重复事件。
    *
    * @default false
    */
@@ -32,7 +33,7 @@ function createKeyPredicate(keyFilter: KeyFilter): KeyPredicate {
 }
 
 /**
- * Listen for keyboard keystrokes.
+ * 监听键盘按键事件。
  *
  * @see https://vueuse.org/onKeyStroke
  */
@@ -83,7 +84,7 @@ export function onKeyStroke(...args: any[]) {
 }
 
 /**
- * Listen to the keydown event of the given key.
+ * 监听指定按键的 keydown 事件。
  *
  * @see https://vueuse.org/onKeyStroke
  * @param key
@@ -95,7 +96,7 @@ export function onKeyDown(key: KeyFilter, handler: (event: KeyboardEvent) => voi
 }
 
 /**
- * Listen to the keypress event of the given key.
+ * 监听指定按键的 keypress 事件。
  *
  * @see https://vueuse.org/onKeyStroke
  * @param key
@@ -107,7 +108,7 @@ export function onKeyPressed(key: KeyFilter, handler: (event: KeyboardEvent) => 
 }
 
 /**
- * Listen to the keyup event of the given key.
+ * 监听指定按键的 keyup 事件。
  *
  * @see https://vueuse.org/onKeyStroke
  * @param key

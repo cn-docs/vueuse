@@ -4,33 +4,28 @@ category: Browser
 
 # useVibrate
 
-Reactive [Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API)
+响应式 [振动 API](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API)
 
-Most modern mobile devices include vibration hardware, which lets software
-code provides physical feedback to the user by causing the device to shake.
+大多数现代移动设备都包含振动硬件，使软件能够通过使设备震动来向用户提供物理反馈。
 
-The Vibration API offers Web apps the ability to access this hardware,
-if it exists, and does nothing if the device doesn't support it.
+振动 API 为 Web 应用程序提供了访问此硬件的能力，如果设备支持该功能，则允许使用它，如果设备不支持，则不执行任何操作。
 
-## Usage
+## 用法
 
-Vibration is described as a pattern of on-off pulses, which may be of varying
-lengths.
+振动被描述为一种开关脉冲的模式，可能具有不同的长度。
 
-The pattern may consist of either a single integer describing the
-number of milliseconds to vibrate, or an array of integers describing
-a pattern of vibrations and pauses.
+该模式可以是一个描述以毫秒为单位的振动时间的整数，也可以是一个描述振动和暂停模式的整数数组。
 
 ```ts
 import { useVibrate } from '@vueuse/core'
 
-// This vibrates the device for 300 ms
-// then pauses for 100 ms before vibrating the device again for another 300 ms:
+// 这会让设备振动 300 毫秒
+// 然后在振动设备另外 300 毫秒之前暂停 100 毫秒：
 const { vibrate, stop, isSupported } = useVibrate({ pattern: [300, 100, 300] })
 
-// Start the vibration, it will automatically stop when the pattern is complete:
+// 开始振动，当模式完成时，它将自动停止：
 vibrate()
 
-// But if you want to stop it, you can:
+// 但是如果你想停止它，你可以：
 stop()
 ```

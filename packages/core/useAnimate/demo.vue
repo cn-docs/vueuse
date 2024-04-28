@@ -52,19 +52,19 @@ const text = stringify(reactive({
     </div>
     <div>
       <button v-if="playState === 'running'" @click="pause">
-        pause
+        暂停
       </button>
       <button v-else @click="play">
-        play
+        播放
       </button>
       <button @click="reverse">
-        reverse
+        反向
       </button>
       <button @click="finish">
-        finish
+        完成
       </button>
       <button @click="cancel">
-        cancel
+        取消
       </button>
     </div>
     <pre class="code-block">{{ text }}</pre>

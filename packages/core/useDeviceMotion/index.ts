@@ -11,7 +11,7 @@ import { defaultWindow } from '../_configurable'
 export interface DeviceMotionOptions extends ConfigurableWindow, ConfigurableEventFilter {}
 
 /**
- * Reactive DeviceMotionEvent.
+ * 响应式 DeviceMotionEvent.
  *
  * @see https://vueuse.org/useDeviceMotion
  * @param options

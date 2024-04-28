@@ -4,9 +4,9 @@ category: Elements
 
 # useElementSize
 
-Reactive size of an HTML element. [ResizeObserver MDN](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
+获取 HTML 元素的响应式大小。[ResizeObserver MDN](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
 
-## Usage
+## 用法
 
 ```vue
 <script>
@@ -35,7 +35,7 @@ export default {
 </template>
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
@@ -45,11 +45,12 @@ export default {
 </template>
 ```
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup lang="ts">
 import { vElementSize } from '@vueuse/components'
+
 function onResize({ width, height }: { width: number, height: number }) {
   console.log(width, height)
 }
@@ -57,7 +58,9 @@ function onResize({ width, height }: { width: number, height: number }) {
 
 <template>
   <textarea v-element-size="onResize" />
-  <!-- with options -->
-  <textarea v-element-size="[onResize, { width: 100, height: 100 }, { box: 'content-box' }]" />
+  <!-- 使用选项 -->
+  <textarea
+    v-element-size="[onResize, { width: 100, height: 100 }, { box: 'content-box' }]"
+  />
 </template>
 ```

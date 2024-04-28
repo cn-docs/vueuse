@@ -4,9 +4,9 @@ category: Elements
 
 # useResizeObserver
 
-Reports changes to the dimensions of an Element's content or the border-box
+报告元素内容或边框框的尺寸变化。
 
-## Usage
+## 用法
 
 ```vue
 <script setup>

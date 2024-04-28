@@ -5,9 +5,9 @@ related: useVModel
 
 # useVModels
 
-Shorthand for props v-model binding. Think it like `toRefs(props)` but changes will also trigger emit.
+`props` 的 `v-model` 绑定的简写方式。可以将其视为 `toRefs(props)`，但是对属性的更改也会触发 `emit`。
 
-## Usage
+## 用法
 
 ```js
 import { useVModels } from '@vueuse/core'

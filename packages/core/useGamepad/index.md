@@ -4,11 +4,11 @@ category: Browser
 
 # useGamepad
 
-Provides reactive bindings for the [Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API).
+提供了[Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API)的响应式绑定。
 
-## Usage
+## 使用方法
 
-> Due to how the Gamepad API works, you must interact with the page using the gamepad before it will be detected.
+> 由于Gamepad API的工作方式，您必须使用游戏手柄与页面进行交互，然后才能检测到它。
 
 ```vue
 <script setup>
@@ -26,9 +26,9 @@ const gamepad = computed(() => gamepads.find(g => g.mapping === 'standard'))
 </template>
 ```
 
-### Gamepad Updates
+### 游戏手柄更新
 
-Currently the Gamepad API does not have event support to update the state of the gamepad. To update the gamepad state, `requestAnimationFrame` is used to poll for gamepad changes. You can control this polling by using the `pause` and `resume` functions provided by `useGamepad`
+目前，Gamepad API没有事件支持来更新游戏手柄的状态。为了更新游戏手柄的状态，使用`requestAnimationFrame`来轮询游戏手柄的变化。您可以通过使用`useGamepad`提供的`pause`和`resume`函数来控制此轮询。
 
 ```ts
 import { useGamepad } from '@vueuse/core'
@@ -37,16 +37,16 @@ const { pause, resume, gamepads } = useGamepad()
 
 pause()
 
-// gamepads object will not update
+// 游戏手柄对象不会更新
 
 resume()
 
-// gamepads object will update on user input
+// 游戏手柄对象将在用户输入时更新
 ```
 
-### Gamepad Connect & Disconnect Events
+### 游戏手柄连接和断开事件
 
-The `onConnected` and `onDisconnected` events will trigger when a gamepad is connected or disconnected.
+当游戏手柄连接或断开连接时，`onConnected`和`onDisconnected`事件将触发。
 
 ```ts
 const { gamepads, onConnected, onDisconnected } = useGamepad()
@@ -60,9 +60,9 @@ onDisconnected((index) => {
 })
 ```
 
-### Vibration
+### 振动
 
-> The Gamepad Haptics API is sparse, so check the [compatibility table](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator#browser_compatibility) before using.
+> 游戏手柄触觉 API 的支持不完整，请在使用之前检查[兼容性表](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator#browser_compatibility)。
 
 ```ts
 import { computed } from 'vue'
@@ -81,11 +81,11 @@ function vibrate() {
 }
 ```
 
-### Mappings
+### 映射
 
-To make the Gamepad API easier to use, we provide mappings to map a controller to a controllers button layout.
+为了使Gamepad API更易于使用，我们提供了映射来将控制器映射到控制器的按钮布局。
 
-#### Xbox360 Controller
+#### Xbox360 控制器
 
 ```vue
 <script setup>
@@ -102,4 +102,4 @@ const controller = mapGamepadToXbox360Controller(gamepad)
 </template>
 ```
 
-Currently there are only mappings for the Xbox 360 controller. If you have controller you want to add mappings for, feel free to open a PR for more controller mappings!
+目前只有Xbox 360 控制器的映射。如果您有要添加映射的控制器，请随时为更多控制器映射打开 PR！

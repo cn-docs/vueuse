@@ -5,24 +5,24 @@ import type { MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
 
 export interface UseCycleListOptions<T> {
   /**
-   * The initial value of the state.
-   * A ref can be provided to reuse.
+   * 状态的初始值。
+   * 可以提供一个 ref 来重用。
    */
   initialValue?: MaybeRef<T>
 
   /**
-   * The default index when
+   * 当找不到索引时的默认索引。
    */
   fallbackIndex?: number
 
   /**
-   * Custom function to get the index of the current value.
+   * 获取当前值的索引的自定义函数。
    */
   getIndexOf?: (value: T, list: T[]) => number
 }
 
 /**
- * Cycle through a list of items
+ * 循环浏览列表
  *
  * @see https://vueuse.org/useCycleList
  */

@@ -10,7 +10,7 @@ export type MaybeElement = HTMLElement | SVGElement | VueInstance | undefined | 
 export type UnRefElementReturn<T extends MaybeElement = MaybeElement> = T extends VueInstance ? Exclude<MaybeElement, VueInstance> : T | undefined
 
 /**
- * Get the dom element of a ref of element or Vue component instance
+ * 从 ref 或 Vue 组件实例中检索基础 DOM 元素。
  *
  * @param elRef
  */

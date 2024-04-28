@@ -4,9 +4,9 @@ category: Utilities
 
 # useCached
 
-Cache a ref with a custom comparator.
+使用自定义比较器缓存一个 ref。
 
-## Usage
+## 使用方法
 
 ```ts
 import { useCached } from '@vueuse/core'

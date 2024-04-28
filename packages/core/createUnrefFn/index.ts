@@ -8,8 +8,8 @@ export type UnrefFn<T> = T extends (...args: infer A) => infer R
   : never
 
 /**
- * Make a plain function accepting ref and raw values as arguments.
- * Returns the same value the unconverted function returns, with proper typing.
+ * 创建一个普通函数，接受 ref 和原始值作为参数。
+ * 返回与未转换函数返回相同的值，具有正确的类型。
  */
 export function createUnrefFn<T extends Function>(fn: T): UnrefFn<T> {
   return function (this: any, ...args: any[]) {

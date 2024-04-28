@@ -15,7 +15,7 @@ watchEffect(() => {
   <div class="flex flex-col gap-4 text-center">
     <div>
       <button @click="enabled = !enabled">
-        {{ enabled ? 'Stop' : 'Start' }} sharing my screen
+        {{ enabled ? 'Stop' : 'Start' }} 共享我的屏幕
       </button>
     </div>
 

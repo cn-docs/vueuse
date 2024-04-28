@@ -4,9 +4,9 @@ category: Sensors
 
 # useFocus
 
-Reactive utility to track or set the focus state of a DOM element. State changes to reflect whether the target element is the focused element. Setting reactive value from the outside will trigger `focus` and `blur` events for `true` and `false` values respectively.
+用于跟踪或设置 DOM 元素的焦点状态的响应式工具。状态变化反映了目标元素是否为焦点元素。从外部设置响应式值将触发对应于 `true` 和 `false` 值的 `focus` 和 `blur` 事件。
 
-## Basic Usage
+## 基本用法
 
 ```ts
 import { useFocus } from '@vueuse/core'
@@ -16,14 +16,14 @@ const { focused } = useFocus(target)
 
 watch(focused, (focused) => {
   if (focused)
-    console.log('input element has been focused')
-  else console.log('input element has lost focus')
+    console.log('输入元素已获取焦点')
+  else console.log('输入元素已失去焦点')
 })
 ```
 
-## Setting initial focus
+## 设置初始焦点
 
-To focus the element on its first render one can provide the `initialValue` option as `true`. This will trigger a `focus` event on the target element.
+可以通过将 `initialValue` 选项设置为 `true` 来在首次渲染时让元素获得焦点。这将触发目标元素上的 `focus` 事件。
 
 ```ts
 import { useFocus } from '@vueuse/core'
@@ -32,9 +32,9 @@ const target = ref()
 const { focused } = useFocus(target, { initialValue: true })
 ```
 
-## Change focus state
+## 更改焦点状态
 
-Changes of the `focused` reactive ref will automatically trigger `focus` and `blur` events for `true` and `false` values respectively. You can utilize this behavior to focus the target element as a result of another action (e.g. when a button click as shown below).
+`focused` 响应式引用的更改将自动触发对应于 `true` 和 `false` 值的 `focus` 和 `blur` 事件。您可以利用这种行为来作为其他操作的结果使目标元素获得焦点（例如，当按钮被点击时，如下所示）。
 
 ```vue
 <script>
@@ -50,14 +50,14 @@ export default {
       input,
       focused,
     }
-  }
+  },
 }
 </script>
 
 <template>
   <div>
     <button type="button" @click="focused = true">
-      Click me to focus input below
+      单击我以使下面的输入框获得焦点
     </button>
     <input ref="input" type="text">
   </div>

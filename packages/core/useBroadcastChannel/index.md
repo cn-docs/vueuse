@@ -4,19 +4,15 @@ category: Browser
 
 # useBroadcastChannel
 
-Reactive [BroadcastChannel API](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel).
+响应式 [BroadcastChannel API](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel)。
 
-Closes a broadcast channel automatically component unmounted.
+在组件卸载时自动关闭广播频道。
 
-## Usage
+## 使用方法
 
-The BroadcastChannel interface represents a named channel that any browsing
-context of a given origin can subscribe to. It allows communication between
-different documents (in different windows, tabs, frames, or iframes) of the
-same origin.
+BroadcastChannel 接口表示一个命名的频道，同一来源的任何浏览上下文都可以订阅它。它允许不同文档（在不同窗口、选项卡、框架或 iframe 中）之间进行通信。
 
-Messages are broadcasted via a message event fired at all BroadcastChannel
-objects listening to the channel.
+消息通过在所有监听频道的 BroadcastChannel 对象上触发的消息事件进行广播。
 
 ```js
 import { ref } from 'vue'
@@ -35,9 +31,9 @@ const message = ref('')
 
 message.value = 'Hello, VueUse World!'
 
-// Post the message to the broadcast channel:
+// 将消息发布到广播频道：
 post(message.value)
 
-// Option to close the channel if you wish:
+// 关闭频道：
 close()
 ```

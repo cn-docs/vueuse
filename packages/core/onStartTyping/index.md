@@ -4,9 +4,9 @@ category: Sensors
 
 # onStartTyping
 
-Fires when users start typing on non-editable elements.
+用户在不可编辑的元素上开始输入时触发。
 
-## Usage
+## 用法
 
 ```vue
 <input ref="input" type="text" placeholder="Start typing to focus" />

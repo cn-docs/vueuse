@@ -4,9 +4,9 @@ category: Elements
 
 # useMouseInElement
 
-Reactive mouse position related to an element
+与元素相关的鼠标位置的响应式状态
 
-## Usage
+## 用法
 
 ```vue
 <script setup>
@@ -25,14 +25,14 @@ const { x, y, isOutside } = useMouseInElement(target)
 </template>
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <UseMouseInElement v-slot="{ elementX, elementY, isOutside }">
     x: {{ elementX }}
     y: {{ elementY }}
-    Is Outside: {{ isOutside }}
+    是否在外部: {{ isOutside }}
   </UseMouseInElement>
 </template>
 ```

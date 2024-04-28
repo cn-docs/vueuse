@@ -4,11 +4,11 @@ category: Browser
 
 # useTextareaAutosize
 
-Automatically update the height of a textarea depending on the content.
+根据内容自动更新 textarea 的高度。
 
-## Usage
+## 用法
 
-### Simple example
+### 简单示例
 
 ```vue
 <script setup lang="ts">
@@ -20,14 +20,14 @@ const { textarea, input } = useTextareaAutosize()
     ref="textarea"
     v-model="input"
     class="resize-none"
-    placeholder="What's on your mind?"
+    placeholder="想说点什么？"
   />
 </template>
 ```
 
 ::: info
 
-It's recommended to reset the scrollbar styles for the textarea element to avoid incorrect height values for large amounts of text.
+建议重置 textarea 元素的滚动条样式，以避免大量文本导致的高度值不正确。
 
 ```css
 textarea {
@@ -42,9 +42,9 @@ textarea::-webkit-scrollbar {
 
 :::
 
-### With `rows` attribute
+### 使用 `rows` 属性
 
-If you need support for the rows attribute on a textarea element, then you should set the `styleProp` option to `minHeight`.
+如果您需要在 textarea 元素上支持 `rows` 属性，则应将 `styleProp` 选项设置为 `minHeight`。
 
 ```vue
 <script setup lang="ts">

@@ -4,9 +4,9 @@ category: Browser
 
 # useScreenOrientation
 
-Reactive [Screen Orientation API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Orientation_API). It provides web developers with information about the user's current screen orientation.
+响应式 [屏幕方向 API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Orientation_API)。它为 Web 开发人员提供了关于用户当前屏幕方向的信息。
 
-## Usage
+## 用法
 
 ```ts
 import { useScreenOrientation } from '@vueuse/core'
@@ -20,7 +20,7 @@ const {
 } = useScreenOrientation()
 ```
 
-To lock the orientation, you can pass an [OrientationLockType](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/type) to the lockOrientation function:
+要锁定方向，您可以将 [OrientationLockType](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/type) 传递给 lockOrientation 函数：
 
 ```ts
 import { useScreenOrientation } from '@vueuse/core'
@@ -36,12 +36,12 @@ const {
 lockOrientation('portrait-primary')
 ```
 
-and then unlock again, with the following:
+然后再次解锁，使用以下方式：
 
 ```ts
 unlockOrientation()
 ```
 
-Accepted orientation types are one of `"landscape-primary"`, `"landscape-secondary"`, `"portrait-primary"`, `"portrait-secondary"`, `"any"`, `"landscape"`, `"natural"` and `"portrait"`.
+可接受的方向类型包括 `"landscape-primary"`、`"landscape-secondary"`、`"portrait-primary"`、`"portrait-secondary"`、`"any"`、`"landscape"`、`"natural"` 和 `"portrait"`。
 
 [Screen Orientation API MDN](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Orientation_API)

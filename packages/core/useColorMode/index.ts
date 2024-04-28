@@ -16,76 +16,76 @@ export type BasicColorSchema = BasicColorMode | 'auto'
 
 export interface UseColorModeOptions<T extends string = BasicColorMode> extends UseStorageOptions<T | BasicColorMode> {
   /**
-   * CSS Selector for the target element applying to
+   * 应用目标元素的 CSS 选择器
    *
    * @default 'html'
    */
   selector?: string | MaybeElementRef
 
   /**
-   * HTML attribute applying the target element
+   * 应用于目标元素的 HTML 属性
    *
    * @default 'class'
    */
   attribute?: string
 
   /**
-   * The initial color mode
+   * 初始颜色模式
    *
    * @default 'auto'
    */
   initialValue?: MaybeRefOrGetter<T | BasicColorSchema>
 
   /**
-   * Prefix when adding value to the attribute
+   * 添加到属性时的前缀
    */
   modes?: Partial<Record<T | BasicColorSchema, string>>
 
   /**
-   * A custom handler for handle the updates.
-   * When specified, the default behavior will be overridden.
+   * 用于处理更新的自定义处理程序。
+   * 当指定时，将覆盖默认行为。
    *
    * @default undefined
    */
   onChanged?: (mode: T | BasicColorMode, defaultHandler:((mode: T | BasicColorMode) => void)) => void
 
   /**
-   * Custom storage ref
+   * 自定义存储引用
    *
-   * When provided, `useStorage` will be skipped
+   * 如果提供了，将跳过 `useStorage`
    */
   storageRef?: Ref<T | BasicColorSchema>
 
   /**
-   * Key to persist the data into localStorage/sessionStorage.
+   * 将数据持久化到 localStorage/sessionStorage 的键。
    *
-   * Pass `null` to disable persistence
+   * 将 `null` 传递以禁用持久性
    *
    * @default 'vueuse-color-scheme'
    */
   storageKey?: string | null
 
   /**
-   * Storage object, can be localStorage or sessionStorage
+   * 存储对象，可以是 localStorage 或 sessionStorage
    *
    * @default localStorage
    */
   storage?: StorageLike
 
   /**
-   * Emit `auto` mode from state
+   * 从状态中发出 `auto` 模式
    *
-   * When set to `true`, preferred mode won't be translated into `light` or `dark`.
-   * This is useful when the fact that `auto` mode was selected needs to be known.
+   * 当设置为 `true` 时，首选模式不会被转换为 `light` 或 `dark`。
+   * 当需要知道选择了 `auto` 模式时，这很有用。
    *
    * @default undefined
-   * @deprecated use `store.value` when `auto` mode needs to be known
+   * @deprecated 当需要知道选择了 `auto` 模式时，使用 `store.value`
    * @see https://vueuse.org/core/useColorMode/#advanced-usage
    */
   emitAuto?: boolean
 
   /**
-   * Disable transition on switch
+   * 关闭切换时的过渡效果
    *
    * @see https://paco.me/writing/disable-theme-transitions
    * @default true

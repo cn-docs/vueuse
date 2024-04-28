@@ -21,7 +21,7 @@ export interface UseElementByPointReturn<Multiple extends boolean = false> exten
 }
 
 /**
- * Reactive element by point.
+ * 根据点获取响应式元素。
  *
  * @see https://vueuse.org/useElementByPoint
  * @param options - UseElementByPointOptions

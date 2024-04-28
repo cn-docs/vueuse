@@ -5,9 +5,9 @@ related: useDevicesList, usePermission
 
 # useUserMedia
 
-Reactive [`mediaDevices.getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) streaming.
+响应式 [`mediaDevices.getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) 流。
 
-## Usage
+## 用法
 
 ```js
 import { useUserMedia } from '@vueuse/core'
@@ -21,12 +21,12 @@ start()
 const video = document.getElementById('video')
 
 watchEffect(() => {
-  // preview on a video element
+  // 在 video 元素上预览
   video.srcObject = stream.value
 })
 ```
 
-### Devices
+### 设备
 
 ```js
 import { useDevicesList, useUserMedia } from '@vueuse/core'

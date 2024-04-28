@@ -4,9 +4,9 @@ category: Browser
 
 # useMediaQuery
 
-Reactive [Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Testing_media_queries). Once you've created a MediaQueryList object, you can check the result of the query or receive notifications when the result changes.
+响应式的 [媒体查询](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Testing_media_queries)。一旦您创建了一个 MediaQueryList 对象，您可以检查查询结果或在结果变化时接收通知。
 
-## Usage
+## 使用方法
 
 ```js
 import { useMediaQuery } from '@vueuse/core'

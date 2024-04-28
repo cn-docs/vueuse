@@ -21,7 +21,7 @@ function onFileInput(e: Event) {
   <div space-y-4>
     <div grid md:grid-cols-2 gap-2>
       <div>
-        <span>Text Input</span>
+        <span>文本输入</span>
         <textarea v-model="text" h-40 type="text" placeholder="Type something..." />
       </div>
       <div>
@@ -32,7 +32,7 @@ function onFileInput(e: Event) {
 
     <div grid md:grid-cols-2 gap-2>
       <div>
-        <span>Buffer Input</span>
+        <span>Buffer 输入</span>
         <pre mt-2>new ArrayBuffer(1024)</pre>
       </div>
       <div>
@@ -43,7 +43,7 @@ function onFileInput(e: Event) {
 
     <div grid md:grid-cols-2 gap-2>
       <div>
-        <span>File Input</span>
+        <span>文件选择</span>
         <div>
           <input mt-2 type="file" @input="onFileInput">
         </div>
@@ -56,7 +56,7 @@ function onFileInput(e: Event) {
 
     <div grid md:grid-cols-2 gap-2>
       <div>
-        <span>Image Input</span>
+        <span>图片输入</span>
         <img
           ref="image"
           w-full h-40 object-cover

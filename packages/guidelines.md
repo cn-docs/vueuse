@@ -1,34 +1,34 @@
-# Guidelines
+# 指南
 
-Here are the guidelines for VueUse functions. You could also take them as a reference for authoring your own composable functions or apps.
+以下是 VueUse 函数的使用指南。您也可以将其作为编写自己的可组合函数或应用程序的参考。
 
-You can also find some reasons for those design decisions and also some tips for writing composable functions with [Anthony Fu](https://github.com/antfu)'s talk about VueUse:
+您还可以在 [Anthony Fu](https://github.com/antfu) 关于 VueUse 的演讲中找到这些设计决策的原因以及编写可组合函数的一些提示：
 
-- [Composable Vue](https://antfu.me/posts/composable-vue-vueday-2021) - at VueDay 2021
-- [可组合的 Vue](https://antfu.me/posts/composable-vue-vueconf-china-2021) - at VueConf China 2021 (in Chinese)
+- [Composable Vue](https://antfu.me/posts/composable-vue-vueday-2021) - 于 VueDay 2021
+- [可组合的 Vue](https://antfu.me/posts/composable-vue-vueconf-china-2021) - 于 VueConf 中国 2021（中文）
 
-## General
+## 通用
 
-- Import all Vue APIs from `"vue-demi"`
-- Use `ref` instead of `reactive` whenever possible
-- Use options object as arguments whenever possible to be more flexible for future extensions.
-- Use `shallowRef` instead of `ref` when wrapping large amounts of data.
-- Use `configurableWindow` (etc.) when using global variables like `window` to be flexible when working with multi-windows, testing mocks, and SSR.
-- When involved with Web APIs that are not yet implemented by the browser widely, also outputs `isSupported` flag
-- When using `watch` or `watchEffect` internally, also make the `immediate` and `flush` options configurable whenever possible
-- Use `tryOnUnmounted` to clear the side-effects gracefully
-- Avoid using console logs
-- When the function is asynchronous, return a PromiseLike
+- 从 `"vue-demi"` 导入所有 Vue API
+- 尽可能使用 `ref` 而不是 `reactive`
+- 尽可能使用选项对象作为参数，以便更灵活地进行未来扩展。
+- 当包装大量数据时，使用 `shallowRef` 而不是 `ref`
+- 使用 `configurableWindow`（等）处理全局变量如 `window`，以便在处理多窗口、测试模拟和 SSR 时更加灵活。
+- 当涉及到浏览器尚未广泛实现的 Web API 时，还应输出 `isSupported` 标志
+- 在内部使用 `watch` 或 `watchEffect` 时，尽可能使 `immediate` 和 `flush` 选项可配置
+- 使用 `tryOnUnmounted` 优雅地清除副作用
+- 避免使用控制台日志
+- 当函数是异步的，返回一个 PromiseLike
 
-Read also: [Best Practice](./guide/best-practice.md)
+另见：[最佳实践](./guide/best-practice.md)
 
 ## ShallowRef
 
-Use `shallowRef` instead of `ref` when wrapping large amounts of data.
+在包装大量数据时，请使用 `shallowRef` 而不是 `ref`。
 
 ```ts
 export function useFetch<T>(url: MaybeRefOrGetter<string>) {
-  // use `shallowRef` to prevent deep reactivity
+  // 使用 `shallowRef` 来防止深层响应式
   const data = shallowRef<T | undefined>()
   const error = shallowRef<Error | undefined>()
 
@@ -41,11 +41,11 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>) {
 }
 ```
 
-## Configurable Globals
+## 可配置的全局变量
 
-When using global variables like `window` or `document`, support `configurableWindow` or `configurableDocument` in the options interface to make the function flexible when for scenarios like multi-windows, testing mocks, and SSR.
+在使用像 `window` 或 `document` 这样的全局变量时，支持在选项接口中添加 `configurableWindow` 或 `configurableDocument`，以便在多窗口、测试模拟和服务器端渲染等场景下使函数更具灵活性。
 
-Learn more about the implementation: [`_configurable.ts`](https://github.com/vueuse/vueuse/blob/main/packages/core/_configurable.ts)
+了解更多实现细节：[\_configurable.ts](https://github.com/vueuse/vueuse/blob/main/packages/core/_configurable.ts)
 
 ```ts
 import type { ConfigurableWindow } from '../_configurable'
@@ -61,7 +61,7 @@ export function useActiveElement<T extends HTMLElement>(
 
   let el: T
 
-  // skip when in Node.js environment (SSR)
+  // 在 Node.js 环境下跳过
   if (window) {
     window.addEventListener('blur', () => {
       el = window?.document.activeElement
@@ -72,21 +72,21 @@ export function useActiveElement<T extends HTMLElement>(
 }
 ```
 
-Usage example:
+用法示例：
 
 ```ts
-// in iframe and bind to the parent window
+// 在 iframe 中绑定到父窗口
 useActiveElement({ window: window.parent })
 ```
 
 ## Watch Options
 
-When using `watch` or `watchEffect` internally, also make the `immediate` and `flush` options configurable whenever possible. For example `watchDebounced`:
+在内部使用 `watch` 或 `watchEffect` 时，尽可能使 `immediate` 和 `flush` 选项可配置。例如 `watchDebounced`：
 
 ```ts
 import type { WatchOptions } from 'vue-demi'
 
-// extend the watch options
+// 扩展 WatchOptions
 export interface WatchDebouncedOptions extends WatchOptions {
   debounce?: number
 }
@@ -99,44 +99,44 @@ export function watchDebounced(
   return watch(
     source,
     () => { /* ... */ },
-    options, // pass watch options
+    options, // 传递 watch options
   )
 }
 ```
 
 ## Controls
 
-We use the `controls` option allowing users to use functions with a single return for simple usages, while being able to have more controls and flexibility when needed. Read more: [#362](https://github.com/vueuse/vueuse/pull/362).
+我们使用 `controls` 选项，允许用户在简单使用情况下使用单一返回的函数，同时在需要时具有更多控制和灵活性。阅读更多：[#362](https://github.com/vueuse/vueuse/pull/362)。
 
-#### When to provide a `controls` option
+#### 何时提供 `controls` 选项
 
-- The function is more commonly used with single `ref` or
-- Examples: `useTimestamp`, `useInterval`,
+- 该函数更常用于单一的 `ref` 或
+- 示例：`useTimestamp`、`useInterval`，
 
 ```ts
-// common usage
+// 常见用法
 const timestamp = useTimestamp()
 
-// more controls for flexibility
+// 更多控制以获取灵活性
 const { timestamp, pause, resume } = useTimestamp({ controls: true })
 ```
 
-Refer to `useTimestamp`'s source code for the implementation of proper TypeScript support.
+请参考 `useTimestamp` 的源代码，以获取适当的 TypeScript 支持实现。
 
-#### When **NOT** to provide a `controls` option
+#### 何时 **不要** 提供 `controls` 选项
 
-- The function is more commonly used with multiple returns
-- Examples: `useRafFn`, `useRefHistory`,
+- 该函数更常用于多个返回值
+- 示例：`useRafFn`、`useRefHistory`，
 
 ```ts
 const { pause, resume } = useRafFn(() => {})
 ```
 
-## `isSupported` Flag
+## `isSupported` 标识
 
-When involved with Web APIs that are not yet implemented by the browser widely, also outputs `isSupported` flag.
+当涉及到尚未被浏览器广泛实现的 Web API 时，也会输出 isSupported 标志。
 
-For example `useShare`:
+例如 `useShare`：
 
 ```ts
 export function useShare(
@@ -159,14 +159,13 @@ export function useShare(
 }
 ```
 
-## Asynchronous Composables
+## 异步组合式函数
 
-When a composable is asynchronous, like `useFetch`, it is a good idea to return a PromiseLike object from the composable
-so the user is able to await the function. This is especially useful in the case of Vue's `<Suspense>` api.
+当一个组合式函数是异步的，比如 `useFetch`，最好从该函数返回一个 PromiseLike 对象，以便用户能够等待该函数完成。这对于 Vue 的 `<Suspense>` API 尤其有用。
 
-- Use a `ref` to determine when the function should resolve e.g. `isFinished`
-- Store the return state in a variable as it must be returned twice, once in the return and once in the promise.
-- The return type should be an intersection between the return type and a PromiseLike, e.g. `UseFetchReturn & PromiseLike<UseFetchReturn>`
+- 使用一个 `ref`（如 `isFinished`）来确定函数何时应解析完成。
+- 将返回的状态存储在一个变量中，因为它需要在返回值和 Promise 中各返回一次。
+- 返回类型应该是返回类型与 PromiseLike 的交集，例如 `UseFetchReturn<T> & PromiseLike<UseFetchReturn<T>>`。
 
 ```ts
 export function useFetch<T>(url: MaybeRefOrGetter<string>): UseFetchReturn<T> & PromiseLike<UseFetchReturn<T>> {
@@ -180,7 +179,7 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>): UseFetchReturn<T> & 
     .catch(e => error.value = e)
     .finally(() => isFinished.value = true)
 
-  // Store the return state in a variable
+  // 将返回状态存储在变量中
   const state: UseFetchReturn<T> = {
     data,
     error,
@@ -189,25 +188,25 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>): UseFetchReturn<T> & 
 
   return {
     ...state,
-    // Adding `then` to an object allows it to be awaited.
+    // 添加 `then` 方法使对象符合 Promise A+ 规范
     then(onFulfilled, onRejected) {
       return new Promise<UseFetchReturn<T>>((resolve, reject) => {
         until(isFinished)
           .toBeTruthy()
           .then(() => resolve(state))
-          .then(() => reject(state))
+          .catch(() => reject(state))
       }).then(onFulfilled, onRejected)
     },
   }
 }
 ```
 
-## Renderless Components
+## 无渲染组件
 
-- Use render functions instead of Vue SFC
-- Wrap the props in `reactive` to easily pass them as props to the slot
-- Prefer to use the functions options as prop types instead of recreating them yourself
-- Only wrap the slot in an HTML element if the function needs a target to bind to
+- 使用渲染函数而非 Vue 单文件组件（SFC）。
+- 将 props 包裹在 `reactive` 中，以便轻松地将它们作为属性传递给插槽。
+- 偏好使用功能选项作为 props 类型，而不是自己重新创建它们。
+- 仅当函数需要绑定目标时，才将插槽包裹在 HTML 元素中。
 
 ```ts
 import { defineComponent, reactive } from 'vue-demi'
@@ -228,8 +227,7 @@ export const UseMouse = defineComponent<MouseOptions>({
 })
 ```
 
-Sometimes a function may have multiple parameters, in that case, you maybe need to create a new interface to merge all the interfaces
-into a single interface for the component props.
+有时，一个函数可能有多个参数，在这种情况下，你可能需要创建一个新的接口，将所有接口合并为组件 props 的单一接口。
 
 ```ts
 import type { TimeAgoOptions } from '@vueuse/core'

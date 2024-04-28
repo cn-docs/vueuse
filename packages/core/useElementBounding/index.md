@@ -4,9 +4,9 @@ category: Elements
 
 # useElementBounding
 
-Reactive [bounding box](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) of an HTML element
+获取 HTML 元素的响应式 [边界框](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
 
-## Usage
+## 用法
 
 ```vue
 <script>
@@ -32,7 +32,7 @@ export default {
 </template>
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>

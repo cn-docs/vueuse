@@ -4,9 +4,9 @@ category: Browser
 
 # usePreferredReducedMotion
 
-Reactive [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) media query.
+响应式的[prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)媒体查询。
 
-## Usage
+## 用法
 
 ```js
 import { usePreferredReducedMotion } from '@vueuse/core'
@@ -14,12 +14,12 @@ import { usePreferredReducedMotion } from '@vueuse/core'
 const preferredMotion = usePreferredReducedMotion()
 ```
 
-## Component Usage
+## 组件使用
 
 ```vue
 <template>
   <UsePreferredReducedMotion v-slot="{ motion }">
-    Preferred Reduced Motion: {{ motion }}
+    首选减少动作: {{ motion }}
   </UsePreferredReducedMotion>
 </template>
 ```

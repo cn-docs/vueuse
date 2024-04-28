@@ -4,9 +4,9 @@ category: Utilities
 
 # useAsyncQueue
 
-Executes each asynchronous task sequentially and passes the current task result to the next task
+依次执行每个异步任务，并将当前任务的结果传递给下一个任务
 
-## Usage
+## 用法
 
 ```ts
 import { useAsyncQueue } from '@vueuse/core'
@@ -29,7 +29,7 @@ function p2(result: number) {
 
 const { activeIndex, result } = useAsyncQueue([p1, p2])
 
-console.log(activeIndex.value) // current pending task index
+console.log(activeIndex.value) // 当前待处理任务的索引
 
-console.log(result) // the tasks result
+console.log(result) // 任务结果
 ```

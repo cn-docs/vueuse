@@ -9,19 +9,19 @@ import { defaultNavigator } from '../_configurable'
 
 export interface UseClipboardItemsOptions<Source> extends ConfigurableNavigator {
   /**
-   * Enabled reading for clipboard
+   * 启用剪贴板读取
    *
    * @default false
    */
   read?: boolean
 
   /**
-   * Copy source
+   * 复制的数据源
    */
   source?: Source
 
   /**
-   * Milliseconds to reset state of `copied` ref
+   * 重置 `copied` 引用状态的毫秒数
    *
    * @default 1500
    */
@@ -36,7 +36,7 @@ export interface UseClipboardItemsReturn<Optional> {
 }
 
 /**
- * Reactive Clipboard API.
+ * 响应式 Clipboard API.
  *
  * @see https://vueuse.org/useClipboardItems
  * @param options

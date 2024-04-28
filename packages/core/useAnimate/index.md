@@ -4,13 +4,13 @@ category: Animation
 
 # useAnimate
 
-Reactive [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
+响应式的 [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)。
 
-## Usage
+## 用法
 
-### Basic Usage
+### 基本用法
 
-The `useAnimate` function will return the animate and its control function.
+`useAnimate` 函数将返回动画及其控制函数。
 
 ```vue
 <script setup>
@@ -45,18 +45,18 @@ const {
 </template>
 ```
 
-### Custom Keyframes
+### 自定义关键帧
 
-Either an array of keyframe objects, or a keyframe object, or a `ref`. See [Keyframe Formats](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats) for more details.
+可以是关键帧对象的数组、关键帧对象，或者是一个 `ref`。更多详情请参考[关键帧格式](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats)。
 
 ```ts
 const keyframes = { transform: 'rotate(360deg)' }
-// Or
+// 或者
 const keyframes = [
   { transform: 'rotate(0deg)' },
   { transform: 'rotate(360deg)' },
 ]
-// Or
+// 或者
 const keyframes = ref([
   { clipPath: 'circle(20% at 0% 30%)' },
   { clipPath: 'circle(20% at 50% 80%)' },

@@ -1,6 +1,6 @@
-# Ecosystem
+# 生态系统
 
-While developing VueUse, we extract the tools we are using into separate projects that can be used standalone from time to time.
+在开发 VueUse 的过程中，我们时不时地将正在使用的工具提取为可独立使用的单独项目。
 
 <h2 align="center">
 <a href="https://github.com/vueuse/vue-demi" target="_blank">
@@ -8,7 +8,7 @@ While developing VueUse, we extract the tools we are using into separate project
 </a>
 </h2>
 
-Vue Demi is a tool for library authors to create composable libraries that work for Vue 2 and 3 isomorphically just like VueUse. It has been widely adopted by many popular libraries like [`vuelidate`](https://github.com/vuelidate/vuelidate) and [`vue-promised`](https://github.com/posva/vue-promised).
+Vue Demi 是一个为库作者设计的工具，用于创建与 VueUse 类似的、能够同构适用于 Vue 2 和 Vue 3 的组合式库。它已被许多流行库广泛采用，如 [`vuelidate`](https://github.com/vuelidate/vuelidate) 和 [`vue-promised`](https://github.com/posva/vue-promised)。
 
 <h2 align="center">
 <a href="https://github.com/vueuse/vue-chemistry" target="_blank">
@@ -16,7 +16,7 @@ Vue Demi is a tool for library authors to create composable libraries that work 
 </a>
 </h2>
 
-Vue Chemistry utilizes the `reactify` function and applies it to common JavaScript APIs, which enables a pure reactive programming experience. For example:
+Vue Chemistry 利用了 `reactify` 函数，并将其应用于常见的 JavaScript API，从而实现纯粹的响应式编程体验。例如：
 
 ```js
 import { set } from 'vue-chemistry/core'

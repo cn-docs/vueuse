@@ -4,9 +4,9 @@ category: Network
 
 # useEventSource
 
-An [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource) or [Server-Sent-Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) instance opens a persistent connection to an HTTP server, which sends events in text/event-stream format.
+一个 [EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource) 或 [Server-Sent-Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) 实例打开了与 HTTP 服务器的持久连接，服务器以 text/event-stream 格式发送事件。
 
-## Usage
+## 用法
 
 ```js
 import { useEventSource } from '@vueuse/core'
@@ -14,45 +14,45 @@ import { useEventSource } from '@vueuse/core'
 const { status, data, error, close } = useEventSource('https://event-source-url')
 ```
 
-See the [Type Declarations](#type-declarations) for more options.
+查看 [类型声明](#type-declarations) 以获取更多选项。
 
-### Named Events
+### 命名事件
 
-You can define named events with the second parameter
+你可以使用第二个参数定义命名事件
 
-```js
+```ts
 import { useEventSource } from '@vueuse/core'
 
 const { event, data } = useEventSource('https://event-source-url', ['notice', 'update'] as const)
 ```
 
-### Immediate
+### 立即连接
 
-Auto-connect (enabled by default).
+自动连接（默认启用）。
 
-This will call `open()` automatically for you and you don't need to call it by yourself.
+这将自动为您调用 `open()`，您无需自行调用它。
 
-If url is provided as a ref, this also controls whether a connection is re-established when its value is changed (or whether you need to call open() again for the change to take effect).
+如果 URL 作为一个 ref 提供，这也控制了在其值更改时是否重新建立连接（或者是否需要再次调用 open() 才能生效）。
 
-### Auto-reconnection
+### 自动重连
 
-Reconnect on errors automatically (disabled by default).
+自动在发生错误时重新连接（默认禁用）。
 
-```js
+```ts
 const { status, data, close } = useEventSource('https://event-source-url', [], {
   autoReconnect: true,
 })
 ```
 
-Or with more controls over its behavior:
+或者使用更多对其行为的控制：
 
-```js
+```ts
 const { status, data, close } = useEventSource('https://event-source-url', [], {
   autoReconnect: {
     retries: 3,
     delay: 1000,
     onFailed() {
-      alert('Failed to connect EventSource after 3 retries')
+      alert('重试 3 次后无法连接 EventSource')
     },
   },
 })

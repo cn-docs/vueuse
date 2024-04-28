@@ -18,24 +18,24 @@ const {
 
     <div v-if="isSupported">
       <button @click="requestDevice()">
-        Request Bluetooth Device
+        请求蓝牙设备
       </button>
     </div>
 
     <div v-if="device">
-      <p>Device Name: {{ device.name }}</p>
+      <p>设备名称: {{ device.name }}</p>
     </div>
 
     <div v-if="isConnected" class="bg-green-500 text-white p-3 rounded-md">
-      <p>Connected</p>
+      <p>连接</p>
     </div>
 
     <div v-if="!isConnected" class="bg-orange-800 text-white p-3 rounded-md">
-      <p>Not Connected</p>
+      <p>未连接</p>
     </div>
 
     <div v-if="error">
-      <div>Errors:</div>
+      <div>错误:</div>
       <pre>
       <code class="block p-5 whitespace-pre">{{ error }}</code>
     </pre>

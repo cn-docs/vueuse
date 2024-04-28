@@ -4,11 +4,11 @@ category: Elements
 
 # useParentElement
 
-Get parent element of the given element
+获取给定元素的父元素
 
-## Usage
+## 用法
 
-When no argument is passed, it will return the parent element of the current component.
+当不传入参数时，它将返回当前组件的父元素。
 
 ```js
 import { useParentElement } from '@vueuse/core'
@@ -20,12 +20,12 @@ onMounted(() => {
 })
 ```
 
-It can also accept a `ref` as the first argument.
+它也可以接受一个 `ref` 作为第一个参数。
 
 ```ts
 import { useParentElement } from '@vueuse/core'
 
-// Don't forget to bind the ref to the element
+// 别忘了将 ref 绑定到元素上
 const tooltip = ref<HTMLElement | undefined>()
 
 const tooltipWrapper = useParentElement(tooltip)

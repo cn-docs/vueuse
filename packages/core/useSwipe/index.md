@@ -4,9 +4,9 @@ category: Sensors
 
 # useSwipe
 
-Reactive swipe detection based on [`TouchEvents`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent).
+基于 [`TouchEvents`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent) 的响应式滑动检测。
 
-## Usage
+## 用法
 
 ```vue
 <script setup>
@@ -16,7 +16,7 @@ const { isSwiping, direction } = useSwipe(el)
 
 <template>
   <div ref="el">
-    Swipe here
+    在这里滑动
   </div>
 </template>
 ```

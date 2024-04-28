@@ -2,13 +2,13 @@
 category: Browser
 ---
 
-# useBrowserLocation
+# 使用浏览器位置
 
-Reactive browser location
+响应式浏览器位置
 
-> NOTE: If you're using Vue Router, use [`useRoute`](https://router.vuejs.org/guide/advanced/composition-api.html) provided by Vue Router instead.
+> 注意：如果您正在使用 Vue Router，请改用由 Vue Router 提供的 [`useRoute`](https://router.vuejs.org/guide/advanced/composition-api.html)。
 
-## Usage
+## 使用方法
 
 ```js
 import { useBrowserLocation } from '@vueuse/core'
@@ -16,10 +16,10 @@ import { useBrowserLocation } from '@vueuse/core'
 const location = useBrowserLocation()
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <UseBrowserLocation v-slot="{ location }">
-  Browser Location: {{ location }}
+  浏览器位置: {{ location }}
 </UseBrowserLocation>
 ```

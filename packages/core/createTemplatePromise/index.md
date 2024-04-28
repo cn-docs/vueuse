@@ -5,84 +5,84 @@ outline: deep
 
 # createTemplatePromise
 
-Template as Promise. Useful for constructing custom Dialogs, Modals, Toasts, etc.
+将模板作为 Promise。适用于构建自定义对话框、模态框、提示框等。
 
 ::: warning
-This function only works for Vue 3
+此函数仅适用于 Vue 3。
 :::
 
-## Usage
+## 使用方法
 
 ```vue
 <script setup lang="ts">
 import { createTemplatePromise } from '@vueuse/core'
 
-const TemplatePromise = createTemplatePromise<ReturnType>()
+const TemplatePromise = createTemplatePromise()
 
 async function open() {
   const result = await TemplatePromise.start()
-  // button is clicked, result is 'ok'
+  // 按钮被点击后，result 为 'ok'
 }
 </script>
 
 <template>
   <TemplatePromise v-slot="{ promise, resolve, reject, args }">
-    <!-- your UI -->
+    <!-- 您的 UI -->
     <button @click="resolve('ok')">
-      OK
+      确定
     </button>
   </TemplatePromise>
 </template>
 ```
 
-## Features
+## 特性
 
-- **Programmatic** - call your UI as a promise
-- **Template** - use Vue template to render, not a new DSL
-- **TypeScript** - full type safety via generic type
-- **Renderless** - you take full control of the UI
-- **Transition** - use support Vue transition
+- **编程式调用** - 将您的 UI 作为 Promise 调用
+- **模板** - 使用 Vue 模板进行渲染，而不是新的 DSL
+- **TypeScript** - 通过泛型类型实现完整的类型安全性
+- **无渲染** - 您完全控制 UI
+- **过渡** - 使用支持的 Vue 过渡
 
-This function is migrated from [vue-template-promise](https://github.com/antfu/vue-template-promise)
+此功能是从 [vue-template-promise](https://github.com/antfu/vue-template-promise) 迁移而来。
 
-## Usage
+## 使用方法
 
-`createTemplatePromise` returns a **Vue Component** that you can directly use in your template with `<script setup>`
+`createTemplatePromise` 返回一个**Vue 组件**，您可以直接在模板中使用 `<script setup>`。
 
 ```ts
 import { createTemplatePromise } from '@vueuse/core'
 
 const TemplatePromise = createTemplatePromise()
-const MyPromise = createTemplatePromise<boolean>() // with generic type
+const MyPromise = createTemplatePromise<boolean>() // 使用泛型类型
 ```
 
-In template, use `v-slot` to access the promise and resolve functions.
+在模板中，使用 `v-slot` 来访问 Promise 和 resolve 函数。
 
 ```vue
 <template>
   <TemplatePromise v-slot="{ promise, resolve, reject, args }">
-    <!-- you can have anything -->
+    <!-- 您可以放置任何内容 -->
     <button @click="resolve('ok')">
-      OK
+      确定
     </button>
   </TemplatePromise>
   <MyPromise v-slot="{ promise, resolve, reject, args }">
-    <!-- another one -->
+    <!-- 另一个示例 -->
   </MyPromise>
 </template>
 ```
 
-The slot will not be rendered initially (similar to `v-if="false"`), until you call the `start` method from the component.
+插槽最初不会被渲染（类似于 `v-if="false"`），直到您从组件中调用 `start` 方法。
 
 ```ts
 const result = await TemplatePromise.start()
 ```
 
-Once `resolve` or `reject` is called in the template, the promise will be resolved or rejected, returning the value you passed in. Once resolved, the slot will be removed automatically.
+一旦在模板中调用了 `resolve` 或 `reject`，Promise 将被解决或拒绝，并返回您传递的值。一旦解决，插槽将自动移除。
 
-### Passing Arguments
+### 传递参数
 
-You can pass arguments to the `start` with arguments.
+您可以通过参数将参数传递给 `start`。
 
 ```ts
 import { createTemplatePromise } from '@vueuse/core'
@@ -94,7 +94,7 @@ const TemplatePromise = createTemplatePromise<boolean, [string, number]>()
 const result = await TemplatePromise.start('hello', 123) // Pr
 ```
 
-And in the template slot, you can access the arguments via `args` property.
+在模板插槽中，您可以通过 `args` 属性访问参数。
 
 ```vue
 <template>
@@ -104,15 +104,15 @@ And in the template slot, you can access the arguments via `args` property.
     <div>{{ args[1] }}</div>
     <!-- 123 -->
     <button @click="resolve(true)">
-      OK
+      确定
     </button>
   </TemplatePromise>
 </template>
 ```
 
-### Transition
+### 过渡
 
-You can use transition to animate the slot.
+您可以使用过渡来为插槽添加动画效果。
 
 ```vue
 <script setup lang="ts">
@@ -126,9 +126,9 @@ const TemplatePromise = createTemplatePromise<ReturnType>({
 
 <template>
   <TemplatePromise v-slot="{ resolve }">
-    <!-- your UI -->
+    <!-- 您的 UI -->
     <button @click="resolve('ok')">
-      OK
+      确定
     </button>
   </TemplatePromise>
 </template>
@@ -145,11 +145,11 @@ const TemplatePromise = createTemplatePromise<ReturnType>({
 </style>
 ```
 
-Learn more about [Vue Transition](https://v3.vuejs.org/guide/transitions-overview.html).
+了解更多关于 [Vue 过渡](https://v3.vuejs.org/guide/transitions-overview.html)。
 
-## Motivation
+## 动机
 
-The common approach to call a dialog or a model programmatically would be like this:
+以编程方式调用对话框或模型的常见方法如下：
 
 ```ts
 const dialog = useDialog()
@@ -159,7 +159,7 @@ const result = await dialog.open({
 })
 ```
 
-This would work by sending these information to the top-level component and let it render the dialog. However, it limits the flexibility you could express in the UI. For example, you could want the title to be red, or have extra buttons, etc. You would end up with a lot of options like:
+通过将这些信息发送到顶层组件并让其渲染对话框，这种方法可以工作。然而，它限制了您可以在 UI 中表达的灵活性。例如，您可能希望标题是红色的，或者有额外的按钮等。您可能会得到很多选项，如：
 
 ```ts
 const result = await dialog.open({
@@ -168,14 +168,14 @@ const result = await dialog.open({
   content: 'World',
   contentClass: 'text-blue text-sm',
   buttons: [
-    { text: 'OK', class: 'bg-red', onClick: () => {} },
-    { text: 'Cancel', class: 'bg-blue', onClick: () => {} },
+    { text: '确定', class: 'bg-red', onClick: () => {} },
+    { text: '取消', class: 'bg-blue', onClick: () => {} },
   ],
   // ...
 })
 ```
 
-Even this is not flexible enough. If you want more, you might end up with manual render function.
+即使这样也不够灵活。如果您想要更多，您可能最终会得到手动渲染函数。
 
 ```ts
 const result = await dialog.open({
@@ -184,6 +184,6 @@ const result = await dialog.open({
 })
 ```
 
-This is like reinventing a new DSL in the script to express the UI template.
+这就像在脚本中重新发明一个新的 DSL 来表达 UI 模板。
 
-So this function allows **expressing the UI in templates instead of scripts**, where it is supposed to be, while still being able to be manipulated programmatically.
+因此，这个函数允许**在模板中表达 UI 而不是脚本**，这是它应该在的地方，同时仍然能够以编程方式进行操作。

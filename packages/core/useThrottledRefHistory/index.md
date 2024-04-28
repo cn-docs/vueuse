@@ -5,11 +5,11 @@ related: useDebouncedRefHistory, useRefHistory
 
 # useThrottledRefHistory
 
-Shorthand for `useRefHistory` with throttled filter.
+带有节流过滤器的 `useRefHistory` 的简写。
 
-## Usage
+## 用法
 
-This function takes the first snapshot right after the counter's value was changed and the second with a delay of 1000ms.
+该函数在计数器的值更改后立即获取第一个快照，并在延迟 1000ms 后获取第二个快照。
 
 ```ts
 import { ref } from 'vue'

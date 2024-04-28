@@ -4,45 +4,45 @@ import type { Ref } from 'vue-demi'
 import { computed, isRef, ref, shallowRef, watchEffect } from 'vue-demi'
 
 /**
- * Handle overlapping async evaluations.
+ * 清除计算属性的副作用
  *
- * @param cancelCallback The provided callback is invoked when a re-evaluation of the computed value is triggered before the previous one finished
+ * @param cancelCallback 当触发计算值的重新计算时，调用提供的回调函数
  */
 export type AsyncComputedOnCancel = (cancelCallback: Fn) => void
 
 export interface AsyncComputedOptions {
   /**
-   * Should value be evaluated lazily
+   * 是否应该延迟评估值
    *
    * @default false
    */
   lazy?: boolean
 
   /**
-   * Ref passed to receive the updated of async evaluation
+   * 传递的 Ref 以接收异步评估的更新
    */
   evaluating?: Ref<boolean>
 
   /**
-   * Use shallowRef
+   * 使用 shallowRef
    *
    * @default true
    */
   shallow?: boolean
 
   /**
-   * Callback when error is caught.
+   * 捕获到错误时的回调函数。
    */
   onError?: (e: unknown) => void
 }
 
 /**
- * Create an asynchronous computed dependency.
+ * 创建一个计算属性，其值是通过异步回调函数生成的。
  *
  * @see https://vueuse.org/computedAsync
- * @param evaluationCallback     The promise-returning callback which generates the computed value
- * @param initialState           The initial state, used until the first evaluation finishes
- * @param optionsOrRef           Additional options or a ref passed to receive the updates of the async evaluation
+ * @param evaluationCallback     生成计算值的返回 Promise 的回调函数
+ * @param initialState           初始状态，在第一次执行完成之前使用
+ * @param optionsOrRef           额外选项或传递的 Ref 以接收异步状态的更新
  */
 export function computedAsync<T>(
   evaluationCallback: (onCancel: AsyncComputedOnCancel) => T | Promise<T>,
@@ -79,8 +79,8 @@ export function computedAsync<T>(
     const counterAtBeginning = counter
     let hasFinished = false
 
-    // Defer initial setting of `evaluating` ref
-    // to avoid having it as a dependency
+    // 推迟对 `evaluating` ref 的初始设置
+    // 避免将其作为依赖项
     if (evaluating) {
       Promise.resolve().then(() => {
         evaluating.value = true
@@ -123,5 +123,5 @@ export function computedAsync<T>(
   }
 }
 
-// alias
+// 别名
 export { computedAsync as asyncComputed }

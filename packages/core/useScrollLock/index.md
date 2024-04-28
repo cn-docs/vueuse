@@ -4,9 +4,9 @@ category: Sensors
 
 # useScrollLock
 
-Lock scrolling of the element.
+锁定元素的滚动。
 
-## Usage
+## 用法
 
 ```vue
 <script setup lang="ts">
@@ -15,8 +15,8 @@ import { useScrollLock } from '@vueuse/core'
 const el = ref<HTMLElement | null>(null)
 const isLocked = useScrollLock(el)
 
-isLocked.value = true // lock
-isLocked.value = false // unlock
+isLocked.value = true // 锁定
+isLocked.value = false // 解锁
 </script>
 
 <template>
@@ -24,7 +24,7 @@ isLocked.value = false // unlock
 </template>
 ```
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup lang="ts">
@@ -41,7 +41,7 @@ const toggleLock = useToggle(isLocked)
     </div>
   </div>
   <button @click="toggleLock()">
-    Toggle lock state
+    切换锁定状态
   </button>
 </template>
 ```

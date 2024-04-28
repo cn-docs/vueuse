@@ -17,13 +17,13 @@ const {
     <i i-carbon-headphones />
 
     <div class="title">
-      Camera ({{ cameras.length }})
+      相机 ({{ cameras.length }})
     </div>
     <div class="title">
-      Microphones ({{ microphones.length }})
+      麦克风 ({{ microphones.length }})
     </div>
     <div class="title">
-      Speakers ({{ speakers.length }})
+      扬声器 ({{ speakers.length }})
     </div>
 
     <div>

@@ -5,14 +5,14 @@ import { isRef, ref, watch } from 'vue-demi'
 
 export interface UseClonedOptions<T = any> extends WatchOptions {
   /**
-   * Custom clone function.
+   * 自定义克隆函数。
    *
-   * By default, it use `JSON.parse(JSON.stringify(value))` to clone.
+   * 默认情况下，它使用 `JSON.parse(JSON.stringify(value))` 进行克隆。
    */
   clone?: (source: T) => T
 
   /**
-   * Manually sync the ref
+   * 手动同步引用
    *
    * @default false
    */
@@ -21,11 +21,11 @@ export interface UseClonedOptions<T = any> extends WatchOptions {
 
 export interface UseClonedReturn<T> {
   /**
-   * Cloned ref
+   * 克隆的引用
    */
   cloned: Ref<T>
   /**
-   * Sync cloned data with source manually
+   * 手动将克隆的数据与源同步
    */
   sync: () => void
 }

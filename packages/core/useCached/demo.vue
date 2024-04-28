@@ -42,7 +42,7 @@ function onSyncClick() {
       </div>
       <div>
         <button @click="onSyncClick">
-          Sync
+          同步
         </button>
       </div>
     </div>

@@ -25,11 +25,11 @@ const { x, y, style } = useDraggable(el, {
           :checked="disabled" type="checkbox" name="enabled"
           @input="($event.target as HTMLInputElement)!.checked ? disabled = true : disabled = false "
         >
-        <span>Disabled drag and drop</span>
+        <span>禁用拖动</span>
       </label>
     </div>
     <p class="italic op50 text-center">
-      Check the floating boxes
+      选中浮动框
     </p>
     <div
       ref="el"
@@ -40,9 +40,9 @@ const { x, y, style } = useDraggable(el, {
       style="touch-action:none;"
       :style="style"
     >
-      👋 Drag me!
+      👋 拖动我!
       <div class="text-sm opacity-50">
-        I am at {{ Math.round(x) }}, {{ Math.round(y) }}
+        我在 {{ Math.round(x) }}, {{ Math.round(y) }}
       </div>
     </div>
 
@@ -58,9 +58,9 @@ const { x, y, style } = useDraggable(el, {
       storage-type="session"
       :disabled="disabled"
     >
-      Renderless component
+      无渲染组件
       <div class="text-xs opacity-50">
-        Position persisted in sessionStorage
+        在 sessionStorage 中保存的位置
       </div>
       <div class="text-sm opacity-50">
         {{ Math.round(x) }}, {{ Math.round(y) }}
@@ -79,13 +79,13 @@ const { x, y, style } = useDraggable(el, {
       :disabled="disabled"
     >
       <div ref="handle" class="cursor-move">
-        👋 Drag here!
+        👋 拖到这里!
       </div>
       <div class="text-xs opacity-50">
-        Handle that triggers the drag event
+        触发拖动事件的元素
       </div>
       <div class="text-sm opacity-50">
-        I am at {{ Math.round(x) }}, {{ Math.round(y) }}
+        我在 {{ Math.round(x) }}, {{ Math.round(y) }}
       </div>
     </Draggable>
   </div>

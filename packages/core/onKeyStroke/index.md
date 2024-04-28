@@ -4,9 +4,9 @@ category: Sensors
 
 # onKeyStroke
 
-Listen for keyboard keystrokes.
+监听键盘按键事件。
 
-## Usage
+## 用法
 
 ```js
 import { onKeyStroke } from '@vueuse/core'
@@ -16,9 +16,9 @@ onKeyStroke('ArrowDown', (e) => {
 })
 ```
 
-See [this table](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) for all key codes.
+请参阅[此表格](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)获取所有按键代码。
 
-### Listen To Multiple Keys
+### 监听多个按键
 
 ```js
 import { onKeyStroke } from '@vueuse/core'
@@ -27,7 +27,7 @@ onKeyStroke(['s', 'S', 'ArrowDown'], (e) => {
   e.preventDefault()
 })
 
-// listen to all keys by [true / skip the keyDefine]
+// 通过 [true / 略过键定义] 监听所有键
 onKeyStroke(true, (e) => {
   e.preventDefault()
 })
@@ -36,63 +36,63 @@ onKeyStroke((e) => {
 })
 ```
 
-### Custom Event Target
+### 自定义事件目标
 
 ```js
 onKeyStroke('A', (e) => {
-  console.log('Key A pressed on document')
+  console.log('按键 A 在文档上被按下')
 }, { target: document })
 ```
 
-### Ignore Repeated Events
+### 忽略重复事件
 
-The callback will trigger only once when pressing `A` and **hold down**.
+当按下 `A` 键并保持按下时，回调函数只会触发一次。
 
 ```js
 import { onKeyStroke } from '@vueuse/core'
 
-// use `autoRepeat` option
+// 使用 `autoRepeat` 选项
 onKeyStroke('A', (e) => {
-  console.log('Key A pressed')
+  console.log('按键 A 被按下')
 }, { dedupe: true })
 ```
 
-Reference: [KeyboardEvent.repeat](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/repeat)
+参考：[KeyboardEvent.repeat](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/repeat)
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup lang="ts">
 import { vOnKeyStroke } from '@vueuse/components'
 
-function onUpdate(e: KeyboardEvent) {
-  // impl...
+function onUpdate(e) {
+  // 实现...
 }
 </script>
 
 <template>
   <input v-on-key-stroke:c,v="onUpdate" type="text">
-  <!-- with options -->
+  <!-- 带有选项 -->
   <input v-on-key-stroke:c,v="[onUpdate, { eventName: 'keyup' }]" type="text">
 </template>
 ```
 
-### Custom Keyboard Event
+### 自定义键盘事件
 
 ```js
 onKeyStroke('Shift', (e) => {
-  console.log('Shift key up')
+  console.log('按键 Shift 松开')
 }, { eventName: 'keyup' })
 ```
 
-Or
+或者
 
 ```js
-onKeyUp('Shift', () => console.log('Shift key up'))
+onKeyUp('Shift', () => console.log('按键 Shift 松开'))
 ```
 
-## Shorthands
+## 快捷方式
 
-- `onKeyDown` - alias for `onKeyStroke(key, handler, {eventName: 'keydown'})`
-- `onKeyPressed` - alias for `onKeyStroke(key, handler, {eventName: 'keypress'})`
-- `onKeyUp` - alias for `onKeyStroke(key, handler, {eventName: 'keyup'})`
+- `onKeyDown` - `onKeyStroke(key, handler, {eventName: 'keydown'})` 的别名
+- `onKeyPressed` - `onKeyStroke(key, handler, {eventName: 'keypress'})` 的别名
+- `onKeyUp` - `onKeyStroke(key, handler, {eventName: 'keyup'})` 的别名

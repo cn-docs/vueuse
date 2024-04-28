@@ -7,23 +7,23 @@ import { defaultNavigator } from '../_configurable'
 
 export interface UseDisplayMediaOptions extends ConfigurableNavigator {
   /**
-   * If the stream is enabled
+   * 流是否已启用
    * @default false
    */
   enabled?: MaybeRef<boolean>
 
   /**
-   * If the stream video media constraints
+   * 流的视频媒体约束条件
    */
   video?: boolean | MediaTrackConstraints | undefined
   /**
-   * If the stream audio media constraints
+   * 流的音频媒体约束条件
    */
   audio?: boolean | MediaTrackConstraints | undefined
 }
 
 /**
- * Reactive `mediaDevices.getDisplayMedia` streaming
+ * 响应式 `mediaDevices.getDisplayMedia` 获取屏幕共享流
  *
  * @see https://vueuse.org/useDisplayMedia
  * @param options

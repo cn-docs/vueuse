@@ -4,9 +4,9 @@ category: Elements
 
 # useWindowFocus
 
-Reactively track window focus with `window.onfocus` and `window.onblur` events.
+使用 `window.onfocus` 和 `window.onblur` 事件来动态地跟踪窗口焦点状态。
 
-## Usage
+## 用法
 
 ```js
 import { useWindowFocus } from '@vueuse/core'
@@ -14,7 +14,7 @@ import { useWindowFocus } from '@vueuse/core'
 const focused = useWindowFocus()
 ```
 
-## Component Usage
+## 组件使用
 
 ```vue
 <template>

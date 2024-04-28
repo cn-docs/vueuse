@@ -9,14 +9,13 @@ import { useSupported } from '../useSupported'
 export interface UseBluetoothRequestDeviceOptions {
   /**
    *
-   * An array of BluetoothScanFilters. This filter consists of an array
-   * of BluetoothServiceUUIDs, a name parameter, and a namePrefix parameter.
+   * BluetoothScanFilters 的数组。此过滤器由 BluetoothServiceUUIDs 数组、名称参数和名称前缀参数组成。
    *
    */
   filters?: BluetoothLEScanFilter[] | undefined
   /**
    *
-   * An array of BluetoothServiceUUIDs.
+   * BluetoothServiceUUIDs 的数组。
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/uuid
    *
@@ -27,14 +26,12 @@ export interface UseBluetoothRequestDeviceOptions {
 export interface UseBluetoothOptions extends UseBluetoothRequestDeviceOptions, ConfigurableNavigator {
   /**
    *
-   * A boolean value indicating that the requesting script can accept all Bluetooth
-   * devices. The default is false.
+   * 一个布尔值，指示请求脚本是否可以接受所有蓝牙设备。默认值为 false。
    *
-   * !! This may result in a bunch of unrelated devices being shown
-   * in the chooser and energy being wasted as there are no filters.
+   * !! 这可能导致选择器中显示大量无关的设备，并因为没有过滤器而浪费能量。
    *
    *
-   * Use it with caution.
+   * 使用时要谨慎。
    *
    * @default false
    *

@@ -6,10 +6,9 @@ import type { Position } from '../types'
 
 const DEFAULT_DELAY = 500
 const DEFAULT_THRESHOLD = 10
-
 export interface OnLongPressOptions {
   /**
-   * Time in ms till `longpress` gets called
+   * 长按触发 `longpress` 的时间（毫秒）
    *
    * @default 500
    */
@@ -18,8 +17,8 @@ export interface OnLongPressOptions {
   modifiers?: OnLongPressModifiers
 
   /**
-   * Allowance of moving distance in pixels,
-   * The action will get canceled When moving too far from the pointerdown position.
+   * 允许的移动距离（像素），
+   * 当移动距离超过该值时，动作将被取消。
    * @default 10
    */
   distanceThreshold?: number | false

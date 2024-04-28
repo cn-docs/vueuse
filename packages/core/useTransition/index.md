@@ -4,11 +4,11 @@ category: Animation
 
 # useTransition
 
-Transition between values
+值之间的过渡效果
 
-## Usage
+## 用法
 
-Define a numeric source value to follow, and when changed the output will transition to the new value. If the source changes while a transition is in progress, a new transition will begin from where the previous one was interrupted.
+定义一个数值型的源值，当其改变时，输出值会过渡到新值。如果源值在过渡进行中发生变化，则会从中断处开始新的过渡。
 
 ```js
 import { ref } from 'vue'
@@ -22,7 +22,7 @@ const output = useTransition(source, {
 })
 ```
 
-To synchronize transitions, use an array of numbers. As an example, here is how we could transition between colors.
+为了同步过渡，可以使用数字数组。以下是一个在颜色之间过渡的示例。
 
 ```js
 const source = ref([0, 0, 0])
@@ -35,7 +35,7 @@ const color = computed(() => {
 })
 ```
 
-Transition easing can be customized using cubic bezier curves. Transitions defined this way work the same as [CSS easing functions](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function#easing_functions).
+可以使用三次贝塞尔曲线自定义过渡缓动。以与 [CSS 缓动函数](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function#easing_functions) 相同的方式定义过渡。
 
 ```js
 useTransition(source, {
@@ -43,7 +43,7 @@ useTransition(source, {
 })
 ```
 
-The following transitions are available via the `TransitionPresets` constant.
+通过 `TransitionPresets` 常量可使用以下过渡效果：
 
 - [`linear`](https://cubic-bezier.com/#0,0,1,1)
 - [`easeInSine`](https://cubic-bezier.com/#.12,0,.39,0)
@@ -71,7 +71,7 @@ The following transitions are available via the `TransitionPresets` constant.
 - [`easeOutBack`](https://cubic-bezier.com/#.34,1.56,.64,1)
 - [`easeInOutBack`](https://cubic-bezier.com/#.68,-.6,.32,1.6)
 
-For more complex transitions, a custom function can be provided.
+对于更复杂的过渡效果，可以提供自定义函数。
 
 ```js
 function easeOutElastic(n) {
@@ -87,23 +87,23 @@ useTransition(source, {
 })
 ```
 
-To control when a transition starts, set a `delay` value. To choreograph behavior around a transition, define `onStarted` or `onFinished` callbacks.
+要控制过渡何时开始，设置 `delay` 值。要围绕过渡效果协调行为，请定义 `onStarted` 或 `onFinished` 回调函数。
 
 ```js
 useTransition(source, {
   delay: 1000,
   onStarted() {
-    // called after the transition starts
+    // 过渡开始后调用
   },
   onFinished() {
-    // called after the transition ends
+    // 过渡结束后调用
   },
 })
 ```
 
-To temporarily stop transitioning, define a boolean `disabled` property. Be aware, this is not the same a `duration` of `0`. Disabled transitions track the source value **_synchronously_**. They do not respect a `delay`, and do not fire `onStarted` or `onFinished` callbacks.
+要暂时停止过渡，定义一个布尔型 `disabled` 属性。请注意，这与 `duration` 为 `0` 不同。禁用过渡会**同步**跟踪源值。它们不会遵循 `delay`，也不会触发 `onStarted` 或 `onFinished` 回调函数。
 
-For more control, transitions can be executed manually by using `executeTransition`. This function returns a promise that resolves upon completion. Manual transitions can be cancelled by defining an `abort` function that returns a truthy value.
+要更精确地控制，可以使用 `executeTransition` 手动执行过渡。此函数返回一个在完成后解析的 promise。手动过渡可以通过定义一个返回真值的 `abort` 函数来取消。
 
 ```js
 import { executeTransition } from '@vueuse/core'

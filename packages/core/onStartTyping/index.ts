@@ -50,7 +50,7 @@ function isTypedCharValid({
 }
 
 /**
- * Fires when users start typing on non-editable elements.
+ * 用户在不可编辑的元素上开始输入时触发回调。
  *
  * @see https://vueuse.org/onStartTyping
  * @param callback

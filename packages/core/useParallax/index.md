@@ -4,9 +4,9 @@ category: Sensors
 
 # useParallax
 
-Create parallax effect easily. It uses `useDeviceOrientation` and fallback to `useMouse` if orientation is not supported.
+轻松创建视差效果。它使用 `useDeviceOrientation`，如果不支持方向，则回退到 `useMouse`。
 
-## Usage
+## 使用方法
 
 ```vue
 <script setup>

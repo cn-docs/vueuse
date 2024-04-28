@@ -19,32 +19,32 @@ export interface UseAsyncQueueReturn<T> {
 
 export interface UseAsyncQueueOptions {
   /**
-   * Interrupt tasks when current task fails.
+   * 当当前任务失败时，是否中断任务队列。
    *
    * @default true
    */
   interrupt?: boolean
 
   /**
-   * Trigger it when the tasks fails.
+   * 当任务失败时触发。
    *
    */
   onError?: () => void
 
   /**
-   * Trigger it when the tasks ends.
+   * 当任务结束时触发。
    *
    */
   onFinished?: () => void
 
   /**
-   * A AbortSignal that can be used to abort the task.
+   * 可用于中止任务的 AbortSignal。
    */
   signal?: AbortSignal
 }
 
 /**
- * Asynchronous queue task controller.
+ * 异步任务队列控制器
  *
  * @see https://vueuse.org/useAsyncQueue
  * @param tasks

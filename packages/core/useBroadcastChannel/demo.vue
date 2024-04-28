@@ -20,30 +20,30 @@ watch(data, () => {
 <template>
   <div>
     <p>
-      Supported:
+      支持:
       <b>{{ isSupported }}</b>
     </p>
 
-    <p>Please open this page in at least two tabs</p>
+    <p>请在至少两个Tab中打开此页面</p>
   </div>
 
   <div v-if="isSupported">
     <form @submit.prevent="post(message)">
       <input v-model="message" type="text">
       <button type="submit">
-        Send Message
+        发送消息
       </button>
     </form>
 
     <p v-if="data">
-      received: {{ data }}
+      收到: {{ data }}
     </p>
 
     <p v-if="error">
-      error: {{ error }}
+      错误: {{ error }}
     </p>
   </div>
   <div v-else>
-    Aww, snap! The Broadcast Channel Web API is not supported in your browser.
+    您的浏览器不支持广播频道 Web API。
   </div>
 </template>

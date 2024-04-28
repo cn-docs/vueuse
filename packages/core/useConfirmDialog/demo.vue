@@ -45,41 +45,41 @@ dialog2.onCancel(() => {
     :disabled="revaled1 || revaled2"
     @click="dialog1.reveal"
   >
-    Click to Show Modal Dialog
+    点击显示模态对话框
   </button>
 
-  <!-- First Dialog -->
+  <!-- 第一个对话框 -->
   <div v-if="revaled1">
     <div>
       <div>
-        <p>Show Second Dialog?</p>
+        <p>显示第二个对话框？</p>
       </div>
       <footer>
         <button @click="dialog1.confirm">
-          OK
+          确定
         </button>
         <button @click="dialog1.cancel">
-          Cancel
+          取消
         </button>
       </footer>
     </div>
   </div>
 
-  <!-- Second Dialog -->
+  <!-- 第二个对话框 -->
   <div v-if="revaled2">
     <div>
       <div>
-        <p>Confirm or Reject</p>
+        <p>确认或拒绝</p>
       </div>
       <footer>
         <button @click="dialog2.confirm(true)">
-          Confirm
+          确认
         </button>
         <button @click="dialog2.confirm(false)">
-          Reject
+          拒绝
         </button>
         <button @click="dialog2.cancel">
-          Cancel
+          取消
         </button>
       </footer>
     </div>

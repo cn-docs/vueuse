@@ -20,14 +20,14 @@ onLongPress(htmlRefOptions, onLongPressCallback, { delay: 1000 })
 </script>
 
 <template>
-  <p>Long Pressed: <BooleanDisplay :value="longPressed" /></p>
+  <p>长按状态: <BooleanDisplay :value="longPressed" /></p>
   <button ref="htmlRef" class="ml-2 button small">
-    Press long (500ms)
+    长按（500毫秒）
   </button>
   <button ref="htmlRefOptions" class="ml-2 button small">
-    Press long (1000ms)
+    长按（1000毫秒）
   </button>
   <button class="ml-2 button small" @click="reset">
-    Reset
+    重置
   </button>
 </template>

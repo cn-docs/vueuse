@@ -1,12 +1,12 @@
 ---
-category: Component
+category: 组件
 ---
 
 # useCurrentElement
 
-Get the DOM element of current component as a ref.
+将当前组件的 DOM 元素作为 ref 返回。
 
-## Usage
+## 用法
 
 ```ts
 import { useCurrentElement } from '@vueuse/core'
@@ -14,7 +14,7 @@ import { useCurrentElement } from '@vueuse/core'
 const el = useCurrentElement() // ComputedRef<Element>
 ```
 
-Or pass a specific vue component
+或者传递一个特定的 Vue 组件
 
 ```vue
 <script setup>
@@ -35,17 +35,17 @@ const el = useCurrentElement(componentRef) // ComputedRef<Element>
 ```
 
 ::: info
-Only works for Vue 3 because it uses [computedWithControl](https://vueuse.org/shared/computedWithControl/#manual-triggering) under the hood
+仅适用于 Vue 3，因为它在底层使用了 [computedWithControl](https://vueuse.org/shared/computedWithControl/#manual-triggering)
 :::
 
-## Caveats
+## 注意事项
 
-This functions uses [`$el` under the hood](https://vuejs.org/api/component-instance.html#el).
+此函数在底层使用 [`$el`](https://vuejs.org/api/component-instance.html#el)。
 
-Value of the ref will be `undefined` until the component is mounted.
+在组件挂载之前，ref 的值将为 `undefined`。
 
-- For components with a single root element, it will point to that element.
-- For components with text root, it will point to the text node.
-- For components with multiple root nodes, it will be the placeholder DOM node that Vue uses to keep track of the component's position in the DOM.
+- 对于具有单个根元素的组件，它将指向该元素。
+- 对于具有文本根的组件，它将指向文本节点。
+- 对于具有多个根节点的组件，它将是 Vue 用于跟踪组件在 DOM 中位置的占位符 DOM 节点。
 
-It's recommend to only use this function for components with **a single root element**.
+建议仅对具有 **单个根元素** 的组件使用此函数。

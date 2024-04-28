@@ -26,7 +26,7 @@ watchEffect(() => mode.value = state.value as any)
     <span class="ml-2 capitalize">{{ state }}</span>
   </button>
 
-  <span class="p-4 opacity-50">← Click to change the color mode</span>
+  <span class="p-4 opacity-50">← 点击更改颜色模式</span>
 </template>
 
 <style>

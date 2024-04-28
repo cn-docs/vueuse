@@ -4,13 +4,13 @@ category: Component
 
 # useTemplateRefsList
 
-Shorthand for binding refs to template elements and components inside `v-for`.
+用于将 refs 绑定到 `v-for` 内的模板元素和组件的快捷方式。
 
 ::: warning
-This function only works for Vue 3
+此函数仅适用于 Vue 3
 :::
 
-## Usage
+## 用法
 
 ```vue
 <script setup lang="ts">

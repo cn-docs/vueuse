@@ -4,9 +4,9 @@ category: Utilities
 
 # usePrevious
 
-Holds the previous value of a ref.
+保存 ref 的先前值。
 
-## Usage
+## 用法
 
 ```ts
 import { ref } from 'vue'

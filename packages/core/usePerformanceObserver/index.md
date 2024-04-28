@@ -4,7 +4,7 @@ category: Browser
 
 # usePerformanceObserver
 
-Observe performance metrics.
+观察性能指标。
 
 ## Usage
 

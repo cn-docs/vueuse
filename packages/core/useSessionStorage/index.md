@@ -4,8 +4,8 @@ category: State
 
 # useSessionStorage
 
-Reactive [SessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
+响应式的 [SessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)。
 
-## Usage
+## 用法
 
-Please refer to `useStorage`.
+请参考 `useStorage`。

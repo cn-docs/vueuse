@@ -4,9 +4,9 @@ category: Browser
 
 # useImage
 
-Reactive load an image in the browser, you can wait the result to display it or show a fallback.
+响应式加载浏览器中的图像，您可以等待结果以显示它，或显示一个备用图像。
 
-## Usage
+## 使用方法
 
 ```vue
 <script setup>
@@ -17,22 +17,22 @@ const { isLoading } = useImage({ src: avatarUrl })
 </script>
 
 <template>
-  <span v-if="isLoading">Loading</span>
+  <span v-if="isLoading">加载中</span>
   <img v-else :src="avatarUrl">
 </template>
 ```
 
-## Component Usage
+## 组件使用
 
 ```vue
 <template>
   <UseImage src="https://place.dog/300/200">
     <template #loading>
-      Loading..
+      加载中..
     </template>
 
     <template #error>
-      Failed
+      加载失败
     </template>
   </UseImage>
 </template>

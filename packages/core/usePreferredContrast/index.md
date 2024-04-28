@@ -4,9 +4,9 @@ category: Browser
 
 # usePreferredContrast
 
-Reactive [prefers-contrast](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast) media query.
+响应式的 [prefers-contrast](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast) 媒体查询。
 
-## Usage
+## 用法
 
 ```js
 import { usePreferredContrast } from '@vueuse/core'
@@ -14,12 +14,12 @@ import { usePreferredContrast } from '@vueuse/core'
 const preferredContrast = usePreferredContrast()
 ```
 
-## Component Usage
+## 组件使用
 
 ```vue
 <template>
   <UsePreferredContrast v-slot="{ contrast }">
-    Preferred Contrast: {{ contrast }}
+    首选对比度: {{ contrast }}
   </UsePreferredContrast>
 </template>
 ```

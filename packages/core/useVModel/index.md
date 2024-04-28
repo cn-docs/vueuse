@@ -4,9 +4,9 @@ category: Component
 
 # useVModel
 
-Shorthand for v-model binding, props + emit -> ref
+简化 `v-model` 绑定的简写方式，将 `props` + `emit` 转换为 `ref`
 
-## Usage
+## 用法
 
 ```js
 import { useVModel } from '@vueuse/core'

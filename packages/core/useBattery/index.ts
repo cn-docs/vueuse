@@ -18,7 +18,7 @@ type NavigatorWithBattery = Navigator & {
 }
 
 /**
- * Reactive Battery Status API.
+ * 响应式电池状态
  *
  * @see https://vueuse.org/useBattery
  */

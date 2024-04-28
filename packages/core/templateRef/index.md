@@ -4,9 +4,9 @@ category: Component
 
 # templateRef
 
-Shorthand for binding ref to template element.
+将 ref 绑定到模板元素的简写方式。
 
-## Usage
+## 用法
 
 <!-- eslint-skip -->
 
@@ -18,7 +18,7 @@ export default {
   setup() {
     const target = templateRef('target')
 
-    // no need to return the `target`, it will bind to the ref magically
+    // 无需返回 `target`，它将奇迹般地绑定到 ref 上
   },
 }
 </script>
@@ -28,7 +28,7 @@ export default {
 </template>
 ```
 
-### With JSX/TSX
+### 使用 JSX/TSX
 
 ```tsx
 import { templateRef } from '@vueuse/core'
@@ -45,7 +45,7 @@ export default {
 
 ### `<script setup>`
 
-There is no need for this when using with `<script setup>` since all the variables will be exposed to the template. It will be exactly the same as `ref`.
+当使用 `<script setup>` 时，不需要这样做，因为所有变量都将暴露给模板。它将与 `ref` 完全相同。
 
 ```vue
 <script setup lang="ts">

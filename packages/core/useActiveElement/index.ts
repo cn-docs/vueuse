@@ -5,7 +5,7 @@ import { defaultWindow } from '../_configurable'
 
 export interface UseActiveElementOptions extends ConfigurableWindow, ConfigurableDocumentOrShadowRoot {
   /**
-   * Search active element deeply inside shadow dom
+   * 在 shadow dom 中深度搜索活动元素
    *
    * @default true
    */

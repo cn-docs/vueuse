@@ -28,8 +28,8 @@ onKeyStroke(['d', 'D', 'ArrowRight'], () => {
       <div class="ball" :style="{ transform: `translate(${translateX}px, ${translateY}px)` }" />
     </div>
     <div class="text-center mt-4">
-      <p>Use the arrow keys or w a s d keys to control the movement of the ball.</p>
-      <p>Repeated events are ignored on the key `d` or `->`.</p>
+      <p>使用箭头键或 w a s d 键来控制球的移动。</p>
+      <p>在按下键`d`或`->`时重复的事件将被忽略。</p>
     </div>
   </div>
 </template>

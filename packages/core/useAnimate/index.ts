@@ -12,29 +12,29 @@ import { useRafFn } from '../useRafFn'
 
 export interface UseAnimateOptions extends KeyframeAnimationOptions, ConfigurableWindow {
   /**
-   * Will automatically run play when `useAnimate` is used
+   * 当使用 `useAnimate` 时，是否自动运行播放
    *
    * @default true
    */
   immediate?: boolean
   /**
-   * Whether to commits the end styling state of an animation to the element being animated
+   * 是否将动画的结束样式状态提交给被动画的元素
    *
    * @default false
    */
   commitStyles?: boolean
   /**
-   * Whether to persists the animation
+   * 是否持续动画
    *
    * @default false
    */
   persist?: boolean
   /**
-   * Executed after animation initialization
+   * 在动画初始化后执行
    */
   onReady?: (animate: Animation) => void
   /**
-   * Callback when error is caught.
+   * 捕获到错误时的回调
    */
   onError?: (e: unknown) => void
 }
@@ -64,7 +64,7 @@ type AnimateStoreKeys = Extract<keyof Animation, 'startTime' | 'currentTime' | '
 type AnimateStore = Mutable<Pick<Animation, AnimateStoreKeys>>
 
 /**
- * Reactive Web Animations API
+ * 响应式 Web Animations API
  *
  * @see https://vueuse.org/useAnimate
  * @param target

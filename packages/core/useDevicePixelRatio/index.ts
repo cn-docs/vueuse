@@ -3,7 +3,7 @@ import { tryOnScopeDispose } from '@vueuse/shared'
 import { type ConfigurableWindow, defaultWindow } from '../_configurable'
 
 /**
- * Reactively track `window.devicePixelRatio`.
+ * 响应式跟踪 `window.devicePixelRatio`.
  *
  * @see https://vueuse.org/useDevicePixelRatio
  */

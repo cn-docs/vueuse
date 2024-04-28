@@ -4,9 +4,9 @@ category: Animation
 
 # useRafFn
 
-Call function on every `requestAnimationFrame`. With controls of pausing and resuming.
+在每次 `requestAnimationFrame` 上调用函数。具有暂停和恢复控制。
 
-## Usage
+## 用法
 
 ```js
 import { ref } from 'vue'

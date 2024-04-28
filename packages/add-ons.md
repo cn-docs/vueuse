@@ -1,64 +1,64 @@
-# Add-ons
+# 附加功能
 
-The core package aims to be lightweight and dependence free. While the add-ons are wrapping popular packages into the consistent API style.
+核心包旨在轻量且无依赖。而插件则将流行的包封装成一致的 API 风格。
 
 ## Head - [`@vueuse/head`](https://github.com/vueuse/head) <carbon-link class="external-link"/>
 
-Document head manager for Vue 3. SSR ready. Created and maintained by [@egoist](https://github.com/egoist)
+用于 Vue 3 的文档头管理器。支持 SSR。由 [@egoist](https://github.com/egoist) 创建和维护。
 
 ## Motion - [`@vueuse/motion`](https://github.com/vueuse/motion) <carbon-link class="external-link"/>
 
-**Vue Composables** putting your **components** in **motion**.
+**Vue 组合式工具库** 将您的 **组件** 进行 **动效** 化。
 
-- 🏎 **Smooth animations** based on [**Popmotion**](https://popmotion.io/)
-- 🎮 **Declarative** API
-- 🚀 **Plug** & **play** with **10+ presets**
-- ✅ Supports **Vue 2 & 3** using [**vue-demi**](https://github.com/antfu/vue-demi)
-- 🚚 Supports **Nuxt** using [**nuxt-use-motion**](https://github.com/Tahul/nuxt-use-motion)
-- ✨ Written in **TypeScript**
-- 🏋️‍♀️ Lightweight with **<20kb** bundle size
+- 🏎 基于 [**Popmotion**](https://popmotion.io/) 的 **平滑动画**
+- 🎮 **声明式** API
+- 🚀 **即插即用**，支持 **10+ 预设动画**
+- ✅ 使用 [**vue-demi**](https://github.com/antfu/vue-demi) 支持 **Vue 2 & 3**
+- 🚚 使用 [**nuxt-use-motion**](https://github.com/Tahul/nuxt-use-motion) 支持 **Nuxt**
+- ✨ 使用 **TypeScript** 编写
+- 🏋️‍♀️ 轻量级，仅 **20kb**
 
-> Created and maintained by [@Tahul](https://github.com/Tahul)
+> 由 [@Tahul](https://github.com/Tahul) 创建和维护
 
 ## Gesture - [`@vueuse/gesture`](https://github.com/vueuse/gesture) <carbon-link class="external-link"/>
 
-**Vue Composables** making your app **interactive**
+**Vue 组合式工具库** 使您的应用程序具有 **交互性**
 
-- 🚀 **Plug** & **play**
-- 🕹 **Mouse** & **Touch** support
-- 🎮 **Directives** support (**v-drag**, **v-pinch**, **v-move**...)
-- ✨ Written in **TypeScript**
-- ✅ Supports **Vue 2 & 3** using [**vue-demi**](https://github.com/antfu/vue-demi)
-- 🤹 Plays well with [**vueuse/motion**](https://github.com/vueuse/motion) or **any other** animation solution
+- 🚀 **即插即用**
+- 🕹 **鼠标** 和 **触摸** 支持
+- 🎮 **指令** 支持（**v-drag**、**v-pinch**、**v-move** 等）
+- ✨ 使用 **TypeScript** 编写
+- ✅ 使用 [**vue-demi**](https://github.com/antfu/vue-demi) 支持 **Vue 2 & 3**
+- 🤹 与 [**vueuse/motion**](https://github.com/vueuse/motion) 或 **任何其他** 动画解决方案兼容
 
-> Created and maintained by [@Tahul](https://github.com/Tahul)
+> 由 [@Tahul](https://github.com/Tahul) 创建和维护
 
 ## Sound - [`@vueuse/sound`](https://github.com/vueuse/sound) <carbon-link class="external-link"/>
 
-Vue composables for playing sound effects.
+用于播放声音效果的 Vue 组合式工具库。
 
-- 👂 Lets your website **communicate** using 2 **human senses** instead of 1
-- 🔥 Built with **Vue** Composition API
-- ✅ Supports **Vue 2 & 3** using [**vue-demi**](https://github.com/antfu/vue-demi)
-- 🚚 Supports **Nuxt 2 & 3** using [**@vueuse/sound/nuxt**](https://github.com/vueuse/sound#nuxt)
-- ⚡️ **<1kb** bytes (gzip) in your **bundle**! **~10kb** loaded **async**.
-- ✨ Built with **TypeScript**
-- 🗣 Uses a powerful, battle-tested audio utility: [**Howler.js**](https://howlerjs.com/)
+- 👂 让您的网站使用 **2 种人类感官** 进行 **交流**
+- 🔥 使用 **Vue** 组合式 API 构建
+- ✅ 使用 [**vue-demi**](https://github.com/antfu/vue-demi) 支持 **Vue 2 & 3**
+- 🚚 使用 [**@vueuse/sound/nuxt**](https://github.com/vueuse/sound#nuxt) 支持 **Nuxt 2 & 3**
+- ⚡️ 在您的 **捆绑包** 中仅有 **<1kb**（gzip 压缩）！**~10kb** 异步加载。
+- ✨ 使用 **TypeScript** 编写
+- 🗣 使用经过充分测试的强大音频实用程序：[**Howler.js**](https://howlerjs.com/)
 
-> Created and maintained by [@Tahul](https://github.com/Tahul)
+> 由 [@Tahul](https://github.com/Tahul) 创建和维护
 
 ## SchemaOrg - [`@vueuse/schema-org`](https://github.com/vueuse/schema-org) <carbon-link class="external-link"/>
 
-Schema.org for Vue. Supports typed and automated Google Rich Results
+用于 Vue 的 Schema.org。支持类型化和自动化的 Google 丰富结果
 
-- 😊 No Schema knowledge required, get up and running in minutes with minimal configuration
-- ✨ 20+ Typed Schemas for best practice ([Google](https://developers.google.com/search/docs/advanced/structured-data/search-gallery), [Yoast](https://developer.yoast.com/features/schema/overview)) Rich Results
-- 🧙 Automated Schema: `@id`, URL / date resolving, route meta and more
-- 🤝 Integrations for [VitePress](https://vitepress.vue.com), [Nuxt](https://nuxtjs.org/), [Vitesse](https://nuxtjs.org/) and [Vite](https://vitejs.dev/) with auto-imports
-- 🍞 Choose your preferred API: Composables or Components
-- 🌳 SSR, tree-shaking and Schema inheritance ready
+- 😊 无需 Schema 知识，只需进行最少的配置即可在几分钟内上手
+- ✨ 20+ 类型化模式，实现最佳实践（[Google](https://developers.google.com/search/docs/advanced/structured-data/search-gallery)，[Yoast](https://developer.yoast.com/features/schema/overview)）丰富结果
+- 🧙 自动化 Schema：`@id`，URL / 日期解析，路由元数据等
+- 🤝 集成为 [VitePress](https://vitepress.vue.com)，[Nuxt](https://nuxtjs.org/)，[Vitesse](https://nuxtjs.org/) 和 [Vite](https://vitejs.dev/) 提供自动导入
+- 🍞 选择您喜欢的 API：组合式或组件
+- 🌳 支持 SSR、树摇和模式继承
 
-> Created and maintained by [@harlan-zw](https://github.com/harlan-zw)
+> 由 [@harlan-zw](https://github.com/harlan-zw) 创建和维护
 
 <!--GENERATED LIST, DO NOT MODIFY MANUALLY-->
 <!--ADDONS_LIST_STARTS-->

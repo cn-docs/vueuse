@@ -11,6 +11,6 @@ const { cloned, sync } = useCloned(template)
   <input v-model="cloned.drink" type="text">
 
   <button @click="sync()">
-    reset
+    同步
   </button>
 </template>

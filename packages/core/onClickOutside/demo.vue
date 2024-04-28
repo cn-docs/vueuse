@@ -24,18 +24,18 @@ const dropdownHandler: OnClickOutsideHandler = (event) => {
 
 <template>
   <button @click="modal = true">
-    Open Modal
+    打开模态框
   </button>
   <div class="ml-2 relative inline-block">
     <button @click.stop="dropdown = !dropdown">
-      Toggle Dropdown
+      切换下拉列表
     </button>
     <div
       v-if="dropdown"
       v-on-click-outside.bubble="dropdownHandler"
       class="dropdown-inner"
     >
-      Click outside of the dropdown to close it.
+      单击下拉列表外部将其关闭
     </div>
   </div>
   <div v-if="modal" ref="modalRef" class="modal">
@@ -46,7 +46,7 @@ const dropdownHandler: OnClickOutsideHandler = (event) => {
       <p class="heading">
         Demo Modal
       </p>
-      <p>Click outside of the modal to close it.</p>
+      <p>单击模态框外部将其关闭</p>
     </div>
   </div>
 </template>

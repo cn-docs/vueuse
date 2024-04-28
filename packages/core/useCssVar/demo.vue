@@ -25,15 +25,15 @@ function changeVar() {
 
 <template>
   <div ref="el" style="--color: #7fa998; color: var(--color)">
-    Sample text, {{ color }}
+    示例文字，{{ color }}
   </div>
   <button @click="switchColor">
-    Change Color
+    更改颜色
   </button>
   <div ref="elv" style="--color: #7fa998; --color-one: #df8543;" :style="{ color: colorVal }">
-    Sample text, {{ key }}: {{ colorVal }}
+    示例文字，{{ key }}：{{ colorVal }}
   </div>
   <button style="margin-left: 0;" @click="changeVar">
-    Change Color Variable
+    更改颜色变量
   </button>
 </template>

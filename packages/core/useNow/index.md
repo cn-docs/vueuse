@@ -4,9 +4,9 @@ category: Animation
 
 # useNow
 
-Reactive current Date instance.
+响应式的当前日期实例。
 
-## Usage
+## 使用方法
 
 ```js
 import { useNow } from '@vueuse/core'
@@ -18,17 +18,17 @@ const now = useNow()
 const { now, pause, resume } = useNow({ controls: true })
 ```
 
-## Component Usage
+## 组件使用
 
 ```vue
 <template>
   <UseNow v-slot="{ now, pause, resume }">
-    Now: {{ now }}
+    当前时间：{{ now }}
     <button @click="pause()">
-      Pause
+      暂停
     </button>
     <button @click="resume()">
-      Resume
+      恢复
     </button>
   </UseNow>
 </template>

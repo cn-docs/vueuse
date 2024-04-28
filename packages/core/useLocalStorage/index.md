@@ -4,8 +4,8 @@ category: State
 
 # useLocalStorage
 
-Reactive [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
+响应式的[LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)。
 
-## Usage
+## 使用方法
 
-Please refer to `useStorage`.
+请参考 `useStorage`。

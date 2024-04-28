@@ -4,9 +4,9 @@ category: Elements
 
 # useActiveElement
 
-Reactive `document.activeElement`
+响应式地获取 `document.activeElement`
 
-## Usage
+## 用法
 
 ```js
 import { useActiveElement } from '@vueuse/core'
@@ -14,16 +14,16 @@ import { useActiveElement } from '@vueuse/core'
 const activeElement = useActiveElement()
 
 watch(activeElement, (el) => {
-  console.log('focus changed to', el)
+  console.log('当前活动元素是', el)
 })
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <UseActiveElement v-slot="{ element }">
-    Active element is {{ element.dataset.id }}
+    当前活动元素是 {{ element.dataset.id }}
   </UseActiveElement>
 </template>
 ```

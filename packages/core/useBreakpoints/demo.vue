@@ -22,8 +22,8 @@ const xxl = breakpoints['2xl']
 
 <template>
   <div class="font-mono">
-    <div> Current breakpoints: {{ current }} </div>
-    <div> Active breakpoint: {{ active }} </div>
+    <div> 当前断点: {{ current }} </div>
+    <div> 活动断点: {{ active }} </div>
     <div> xs(&lt;{{ smWidth }}px): <BooleanDisplay :value="xs" /></div>
     <div> xs(&lt;={{ smWidth }}px): <BooleanDisplay :value="xse" /></div>
     <div> sm: <BooleanDisplay :value="sm" /></div>
@@ -31,6 +31,6 @@ const xxl = breakpoints['2xl']
     <div> lg: <BooleanDisplay :value="lg" /></div>
     <div> xl: <BooleanDisplay :value="xl" /></div>
     <div>2xl: <BooleanDisplay :value="xxl" /></div>
-    <div>greaterThanBreakPoint: <BooleanDisplay :value="isGreaterThanBreakpoint" /></div>
+    <div>大于断点: <BooleanDisplay :value="isGreaterThanBreakpoint" /></div>
   </div>
 </template>

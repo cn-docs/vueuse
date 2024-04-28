@@ -4,9 +4,9 @@ category: Browser
 
 # useUrlSearchParams
 
-Reactive [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
+响应式 [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
 
-## Usage
+## 用法
 
 ```js
 import { useUrlSearchParams } from '@vueuse/core'
@@ -17,12 +17,12 @@ console.log(params.foo) // 'bar'
 
 params.foo = 'bar'
 params.vueuse = 'awesome'
-// url updated to `?foo=bar&vueuse=awesome`
+// URL 更新为 `?foo=bar&vueuse=awesome`
 ```
 
-### Hash Mode
+### 哈希模式
 
-When using with hash mode route, specify the `mode` to `hash`
+当在哈希模式路由中使用时，将 `mode` 设置为 `hash`
 
 ```js
 import { useUrlSearchParams } from '@vueuse/core'
@@ -31,12 +31,12 @@ const params = useUrlSearchParams('hash')
 
 params.foo = 'bar'
 params.vueuse = 'awesome'
-// url updated to `#/your/route?foo=bar&vueuse=awesome`
+// URL 更新为 `#/your/route?foo=bar&vueuse=awesome`
 ```
 
-### Hash Params
+### 哈希参数
 
-When using with history mode route, but want to use hash as params, specify the `mode` to `hash-params`
+当在历史模式路由中使用，但想要使用哈希作为参数时，将 `mode` 设置为 `hash-params`
 
 ```js
 import { useUrlSearchParams } from '@vueuse/core'
@@ -45,5 +45,5 @@ const params = useUrlSearchParams('hash-params')
 
 params.foo = 'bar'
 params.vueuse = 'awesome'
-// url updated to `/your/route#foo=bar&vueuse=awesome`
+// URL 更新为 `/your/route#foo=bar&vueuse=awesome`
 ```

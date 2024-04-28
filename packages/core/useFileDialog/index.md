@@ -4,20 +4,20 @@ category: Browser
 
 # useFileDialog
 
-Open file dialog with ease.
+轻松打开文件对话框。
 
-## Usage
+## 使用方法
 
 ```ts
 import { useFileDialog } from '@vueuse/core'
 
 const { files, open, reset, onChange } = useFileDialog({
-  accept: 'image/*', // Set to accept only image files
-  directory: true, // Select directories instead of files if set true
+  accept: 'image/*', // 设置仅接受图像文件
+  directory: true, // 如果设置为 true，则选择目录而不是文件
 })
 
 onChange((files) => {
-  /** do something with files */
+  /** 处理文件 */
 })
 ```
 

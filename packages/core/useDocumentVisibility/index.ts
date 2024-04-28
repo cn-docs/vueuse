@@ -5,7 +5,7 @@ import type { ConfigurableDocument } from '../_configurable'
 import { defaultDocument } from '../_configurable'
 
 /**
- * Reactively track `document.visibilityState`.
+ * 响应式 `document.visibilityState`.
  *
  * @see https://vueuse.org/useDocumentVisibility
  */

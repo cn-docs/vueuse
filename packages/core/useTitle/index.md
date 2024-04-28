@@ -4,30 +4,30 @@ category: Browser
 
 # useTitle
 
-Reactive document title.
+响应式的文档标题。
 
 ::: tip
-When using with Nuxt 3, this function will **NOT** be auto imported in favor of Nuxt's built-in `useTitle()`.
-Use explicit import if you want to use the function from VueUse.
+在 Nuxt 3 中使用时，此函数将**不会**自动导入，而是使用 Nuxt 内置的 `useTitle()`。
+如果要从 VueUse 使用该函数，请显式导入。
 :::
 
-## Usage
+## 用法
 
 ```js
 import { useTitle } from '@vueuse/core'
 
 const title = useTitle()
-console.log(title.value) // print current title
-title.value = 'Hello' // change current title
+console.log(title.value) // 打印当前标题
+title.value = 'Hello' // 更改当前标题
 ```
 
-Set initial title immediately:
+立即设置初始标题：
 
 ```js
 const title = useTitle('New Title')
 ```
 
-Pass a `ref` and the title will be updated when the source ref changes:
+传递一个 `ref`，当源 ref 发生变化时，标题将被更新：
 
 ```js
 import { useTitle } from '@vueuse/core'
@@ -38,15 +38,15 @@ const title = computed(() => {
   return !messages.value ? 'No message' : `${messages.value} new messages`
 })
 
-useTitle(title) // document title will match with the ref "title"
+useTitle(title) // 文档标题将与 ref "title" 匹配
 ```
 
-Pass an optional template tag [Vue Meta Title Template](https://vue-meta.nuxtjs.org/guide/metainfo.html) to update the title to be injected into this template:
+传递一个可选的模板标记 [Vue Meta Title Template](https://vue-meta.nuxtjs.org/guide/metainfo.html) 来更新要注入到该模板中的标题：
 
 ```js
 const title = useTitle('New Title', { titleTemplate: '%s | My Awesome Website' })
 ```
 
 ::: warning
-`observe` is incompatible with `titleTemplate`.
+`observe` 与 `titleTemplate` 不兼容。
 :::

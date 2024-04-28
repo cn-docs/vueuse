@@ -4,9 +4,9 @@ category: Browser
 
 # useTextDirection
 
-Reactive [dir](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir) of the element's text.
+元素文本的响应式 [dir](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)。
 
-## Usage
+## 用法
 
 ```ts
 import { useTextDirection } from '@vueuse/core'
@@ -14,7 +14,7 @@ import { useTextDirection } from '@vueuse/core'
 const dir = useTextDirection() // Ref<'ltr' | 'rtl' | 'auto'>
 ```
 
-By default, it returns `rtl` direction when dir `rtl` is applied to the `html` tag, for example:
+默认情况下，当将 dir `rtl` 应用于 `html` 标签时，它返回 `rtl` 方向，例如：
 
 ```html
 <!--ltr-->
@@ -28,7 +28,7 @@ By default, it returns `rtl` direction when dir `rtl` is applied to the `html` t
 </html>
 ```
 
-## Options
+## 选项
 
 ```ts
 import { useTextDirection } from '@vueuse/core'

@@ -4,12 +4,12 @@ category: Sensors
 
 # useNavigatorLanguage
 
-Reactive [navigator.language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language).
+响应式地获取 [navigator.language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)。
 
-## Usage
+## 使用方法
 
 ```ts
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import { useNavigatorLanguage } from '@vueuse/core'
 
 export default defineComponent({
@@ -17,7 +17,7 @@ export default defineComponent({
     const { language } = useNavigatorLanguage()
 
     watch(language, () => {
-      // Listen to the value changing
+      // 监听值的变化
     })
 
     return {

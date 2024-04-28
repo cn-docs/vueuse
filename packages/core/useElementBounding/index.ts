@@ -8,27 +8,27 @@ import { useMutationObserver } from '../useMutationObserver'
 
 export interface UseElementBoundingOptions {
   /**
-   * Reset values to 0 on component unmounted
+   * 在组件卸载时将值重置为 0
    *
    * @default true
    */
   reset?: boolean
 
   /**
-   * Listen to window resize event
+   * 监听窗口大小调整事件
    *
    * @default true
    */
   windowResize?: boolean
   /**
-   * Listen to window scroll event
+   * 监听窗口滚动事件
    *
    * @default true
    */
   windowScroll?: boolean
 
   /**
-   * Immediately call update on component mounted
+   * 组件挂载时立即调用更新
    *
    * @default true
    */
@@ -36,7 +36,7 @@ export interface UseElementBoundingOptions {
 }
 
 /**
- * Reactive bounding box of an HTML element.
+ * HTML 元素的响应式边界框。
  *
  * @see https://vueuse.org/useElementBounding
  * @param target

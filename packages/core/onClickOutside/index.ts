@@ -8,16 +8,16 @@ import { defaultWindow } from '../_configurable'
 
 export interface OnClickOutsideOptions extends ConfigurableWindow {
   /**
-   * List of elements that should not trigger the event.
+   * 不应触发事件的元素列表。
    */
   ignore?: (MaybeElementRef | string)[]
   /**
-   * Use capturing phase for internal event listener.
+   * 对内部事件侦听器使用捕获阶段。
    * @default true
    */
   capture?: boolean
   /**
-   * Run handler function if focus moves to an iframe.
+   * 如果焦点移动到iframe，运行处理函数。
    * @default false
    */
   detectIframe?: boolean
@@ -28,12 +28,12 @@ export type OnClickOutsideHandler<T extends { detectIframe: OnClickOutsideOption
 let _iOSWorkaround = false
 
 /**
- * Listen for clicks outside of an element.
+ * 监听元素外部的点击事件。
  *
  * @see https://vueuse.org/onClickOutside
- * @param target
- * @param handler
- * @param options
+ * @param target 目标元素
+ * @param handler 事件处理器
+ * @param options 配置选项
  */
 export function onClickOutside<T extends OnClickOutsideOptions>(
   target: MaybeElementRef,

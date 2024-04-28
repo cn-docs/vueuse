@@ -11,14 +11,13 @@ import { defaultNavigator } from '../_configurable'
 export interface UseDevicesListOptions extends ConfigurableNavigator {
   onUpdated?: (devices: MediaDeviceInfo[]) => void
   /**
-   * Request for permissions immediately if it's not granted,
-   * otherwise label and deviceIds could be empty
+   * 如果权限未授予，则立即请求权限，否则标签和设备 ID 可能为空
    *
    * @default false
    */
   requestPermissions?: boolean
   /**
-   * Request for types of media permissions
+   * 请求媒体权限类型
    *
    * @default { audio: true, video: true }
    */
@@ -27,7 +26,7 @@ export interface UseDevicesListOptions extends ConfigurableNavigator {
 
 export interface UseDevicesListReturn {
   /**
-   * All devices
+   * 所有设备
    */
   devices: Ref<MediaDeviceInfo[]>
   videoInputs: ComputedRef<MediaDeviceInfo[]>
@@ -39,7 +38,7 @@ export interface UseDevicesListReturn {
 }
 
 /**
- * Reactive `enumerateDevices` listing available input/output devices
+ * 响应式 `enumerateDevices` 列出可用的输入/输出设备
  *
  * @see https://vueuse.org/useDevicesList
  * @param options

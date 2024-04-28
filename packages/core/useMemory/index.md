@@ -4,9 +4,9 @@ category: Browser
 
 # useMemory
 
-Reactive Memory Info.
+响应式内存信息。
 
-## Usage
+## 使用方法
 
 ```ts
 import { useMemory } from '@vueuse/core'

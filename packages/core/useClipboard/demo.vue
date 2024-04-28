@@ -12,18 +12,17 @@ const permissionWrite = usePermission('clipboard-write')
 <template>
   <div v-if="isSupported">
     <note>
-      Clipboard Permission: read <b>{{ permissionRead }}</b> | write
-      <b>{{ permissionWrite }}</b>
+      剪贴板权限：读取 <b>{{ permissionRead }}</b> | 写入 <b>{{ permissionWrite }}</b>
     </note>
     <p>
-      Current copied: <code>{{ text || 'none' }}</code>
+      当前复制的内容：<code>{{ text || '无' }}</code>
     </p>
     <input v-model="input" type="text">
     <button @click="copy(input)">
-      Copy
+      复制
     </button>
   </div>
   <p v-else>
-    Your browser does not support Clipboard API
+    您的浏览器不支持剪贴板 API
   </p>
 </template>

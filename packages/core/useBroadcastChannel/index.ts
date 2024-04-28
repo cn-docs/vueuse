@@ -7,13 +7,13 @@ import { useSupported } from '../useSupported'
 
 export interface UseBroadcastChannelOptions extends ConfigurableWindow {
   /**
-   * The name of the channel.
+   * 频道的名称。
    */
   name: string
 }
 
 /**
- * Reactive BroadcastChannel
+ * 响应式频道广播
  *
  * @see https://vueuse.org/useBroadcastChannel
  * @see https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel

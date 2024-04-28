@@ -12,10 +12,10 @@ export type Breakpoints<K extends string = string> = Record<K, MaybeRefOrGetter<
 
 export interface UseBreakpointsOptions extends ConfigurableWindow {
   /**
-   * The query strategy to use for the generated shortcut methods like `.lg`
+   * 用于生成快捷方法（例如 `.lg`）的查询策略
    *
-   * 'min-width' - .lg will be true when the viewport is greater than or equal to the lg breakpoint (mobile-first)
-   * 'max-width' - .lg will be true when the viewport is smaller than the xl breakpoint (desktop-first)
+   * 'min-width' - 当视口大于或等于 lg 断点时，.lg 将为 true（移动优先）
+   * 'max-width' - 当视口小于 xl 断点时，.lg 将为 true（桌面优先）
    *
    * @default "min-width"
    */
@@ -23,7 +23,7 @@ export interface UseBreakpointsOptions extends ConfigurableWindow {
 }
 
 /**
- * Reactively viewport breakpoints
+ * 响应式视口断点
  *
  * @see https://vueuse.org/useBreakpoints
  */

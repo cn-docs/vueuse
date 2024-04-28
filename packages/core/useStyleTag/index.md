@@ -4,13 +4,13 @@ category: Browser
 
 # useStyleTag
 
-Inject reactive `style` element in head.
+在 `<head>` 中注入响应式的 `style` 元素。
 
-## Usage
+## 用法
 
-### Basic usage
+### 基本用法
 
-Provide a CSS string, then `useStyleTag` will automatically generate an id and inject it in `<head>`.
+提供一个 CSS 字符串，然后 `useStyleTag` 将自动生成一个 id 并将其注入到 `<head>` 中。
 
 ```js
 import { useStyleTag } from '@vueuse/core'
@@ -23,11 +23,11 @@ const {
   isLoaded,
 } = useStyleTag('.foo { margin-top: 32px; }')
 
-// Later you can modify styles
+// 以后可以修改样式
 css.value = '.foo { margin-top: 64px; }'
 ```
 
-This code will be injected to `<head>`:
+这段代码将被注入到 `<head>` 中：
 
 ```html
 <style id="vueuse_styletag_1">
@@ -37,9 +37,9 @@ This code will be injected to `<head>`:
 </style>
 ```
 
-### Custom ID
+### 自定义 ID
 
-If you need to define your own id, you can pass `id` as first argument.
+如果需要定义自己的 id，可以将 `id` 作为第一个参数传递。
 
 ```js
 import { useStyleTag } from '@vueuse/core'
@@ -48,7 +48,7 @@ useStyleTag('.foo { margin-top: 32px; }', { id: 'custom-id' })
 ```
 
 ```html
-<!-- injected to <head> -->
+<!-- 注入到 <head> 中 -->
 <style id="custom-id">
   .foo {
     margin-top: 32px;
@@ -56,16 +56,16 @@ useStyleTag('.foo { margin-top: 32px; }', { id: 'custom-id' })
 </style>
 ```
 
-### Media query
+### 媒体查询
 
-You can pass media attributes as last argument within object.
+你可以在对象中的最后一个参数中传递媒体属性。
 
 ```js
 useStyleTag('.foo { margin-top: 32px; }', { media: 'print' })
 ```
 
 ```html
-<!-- injected to <head> -->
+<!-- 注入到 <head> 中 -->
 <style id="vueuse_styletag_1" media="print">
   .foo {
     margin-top: 32px;

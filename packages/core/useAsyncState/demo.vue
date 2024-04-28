@@ -22,7 +22,7 @@ const { isLoading, state, isReady, execute } = useAsyncState(
     <note>Loading: {{ isLoading.toString() }}</note>
     <pre lang="json" class="ml-2">{{ YAML.dump(state) }}</pre>
     <button @click="execute(2000, { id: 2 })">
-      Execute
+      执行
     </button>
   </div>
 </template>

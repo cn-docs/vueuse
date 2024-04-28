@@ -4,21 +4,21 @@ category: Component
 
 # unrefElement
 
-Retrieves the underlying DOM element from a Vue ref or component instance
+从 ref 或 Vue 组件实例中检索基础 DOM 元素。
 
-## Usage
+## 用法
 
 ```vue
 <script setup>
 import { onMounted, ref } from 'vue'
 import { unrefElement } from '@vueuse/core'
 
-const div = ref() // will be bound to the <div> element
-const hello = ref() // will be bound to the HelloWorld Component
+const div = ref() // 将绑定到 <div> 元素
+const hello = ref() // 将绑定到 HelloWorld 组件
 
 onMounted(() => {
-  console.log(unrefElement(div)) // the <div> element
-  console.log(unrefElement(hello)) // the root element of the HelloWorld Component
+  console.log(unrefElement(div)) // <div> 元素
+  console.log(unrefElement(hello)) // HelloWorld 组件的根元素
 })
 </script>
 

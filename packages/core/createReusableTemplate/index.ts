@@ -35,7 +35,7 @@ export type ReusableTemplatePair<
 
 export interface CreateReusableTemplateOptions {
   /**
-   * Inherit attrs from reuse component.
+   * 从重用组件中继承属性。
    *
    * @default true
    */
@@ -43,8 +43,8 @@ export interface CreateReusableTemplateOptions {
 }
 
 /**
- * This function creates `define` and `reuse` components in pair,
- * It also allow to pass a generic to bind with type.
+ * 此函数创建一对 `define` 和 `reuse` 组件，
+ * 它还允许传递一个泛型来绑定类型。
  *
  * @see https://vueuse.org/createReusableTemplate
  */

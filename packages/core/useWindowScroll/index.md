@@ -4,14 +4,14 @@ category: Elements
 
 # useWindowScroll
 
-Reactive window scroll
+响应式窗口滚动
 
-## Usage
+## 用法
 
 ```js
 import { useWindowScroll } from '@vueuse/core'
 
 const { x, y } = useWindowScroll()
-console.log(x.value) // read current x scroll value
-y.value = 100 // scroll y to 100
+console.log(x.value) // 读取当前的 x 滚动值
+y.value = 100 // 将 y 滚动到 100
 ```

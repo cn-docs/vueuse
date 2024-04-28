@@ -4,9 +4,9 @@ category: Component
 
 # useMounted
 
-Mounted state in ref.
+在 ref 中表示组件是否已挂载。
 
-## Usage
+## 使用方法
 
 ```js
 import { useMounted } from '@vueuse/core'
@@ -14,7 +14,7 @@ import { useMounted } from '@vueuse/core'
 const isMounted = useMounted()
 ```
 
-Which is essentially a shorthand of:
+这本质上相当于：
 
 ```ts
 const isMounted = ref(false)

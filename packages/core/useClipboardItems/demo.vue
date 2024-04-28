@@ -30,11 +30,10 @@ function createClipboardItems(text: string) {
 <template>
   <div v-if="isSupported">
     <note>
-      Clipboard Permission: read <b>{{ permissionRead }}</b> | write
-      <b>{{ permissionWrite }}</b>
+      剪贴板权限：读取 <b>{{ permissionRead }}</b> | 写入 <b>{{ permissionWrite }}</b>
     </note>
     <p>
-      Current copied: <code>{{ (computedText && `${computedText} (mime: text/html)`) || "none" }}</code>
+      当前已复制的内容：<code>{{ (computedText && `${computedText}（mime: text/html）`) || "无" }}</code>
     </p>
     <input v-model="input" type="text">
     <button
@@ -42,10 +41,10 @@ function createClipboardItems(text: string) {
         copy([createClipboardItems(input)])
       "
     >
-      Copy
+      复制
     </button>
   </div>
   <p v-else>
-    Your browser does not support Clipboard API
+    您的浏览器不支持剪贴板 API
   </p>
 </template>

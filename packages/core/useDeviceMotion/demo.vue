@@ -8,7 +8,7 @@ const text = computed(() => JSON.stringify(motion, null, 2))
 
 <template>
   <note class="mb-2">
-    Device Motion:
+    设备运动:
   </note>
   <pre lang="json">{{ text }}</pre>
 </template>

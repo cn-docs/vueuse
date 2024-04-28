@@ -41,7 +41,7 @@ function asyncFn() {
     <div class="fixed inset-0 bg-black/10 flex items-center z-30">
       <dialog open class="border-gray/10 shadow rounded ma">
         <div>Dialog {{ args[0] }}</div>
-        <p>Open console to see logs</p>
+        <p>打开控制台查看日志</p>
         <div class="flex gap-2 justify-end">
           <button class="w-35" @click="resolve('cancel')">
             Cancel

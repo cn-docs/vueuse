@@ -4,9 +4,9 @@ category: Network
 
 # useWebSocket
 
-Reactive [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket) client.
+响应式 [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket) 客户端。
 
-## Usage
+## 用法
 
 ```js
 import { useWebSocket } from '@vueuse/core'
@@ -14,25 +14,25 @@ import { useWebSocket } from '@vueuse/core'
 const { status, data, send, open, close } = useWebSocket('ws://websocketurl')
 ```
 
-See the [Type Declarations](#type-declarations) for more options.
+有关更多选项，请参阅[类型声明](#type-declarations)。
 
-### Immediate
+### 立即连接
 
-Auto-connect (enabled by default).
+自动连接（默认启用）。
 
-This will call `open()` automatically for you and you don't need to call it by yourself.
+这将自动为您调用 `open()`，您不需要自己调用它。
 
-If url is provided as a ref, this also controls whether a connection is re-established when its value is changed (or whether you need to call open() again for the change to take effect).
+如果 URL 作为 ref 提供，则它还控制在其值更改时是否重新建立连接（或者您需要再次调用 open() 以使更改生效）。
 
-### Auto-close
+### 自动关闭连接
 
-Auto-close-connection (enabled by default).
+自动关闭连接（默认启用）。
 
-This will call `close()` automatically when the `beforeunload` event is triggered or the associated effect scope is stopped.
+当触发 `beforeunload` 事件或关联的 effect 范围停止时，这将自动调用 `close()`。
 
-### Auto-reconnection
+### 自动重连
 
-Reconnect on errors automatically (disabled by default).
+在错误发生时自动重连（默认禁用）。
 
 ```js
 const { status, data, close } = useWebSocket('ws://websocketurl', {
@@ -40,7 +40,7 @@ const { status, data, close } = useWebSocket('ws://websocketurl', {
 })
 ```
 
-Or with more controls over its behavior:
+或者具有更多控制其行为的选项：
 
 ```js
 const { status, data, close } = useWebSocket('ws://websocketurl', {
@@ -48,17 +48,17 @@ const { status, data, close } = useWebSocket('ws://websocketurl', {
     retries: 3,
     delay: 1000,
     onFailed() {
-      alert('Failed to connect WebSocket after 3 retries')
+      alert('重试 3 次后无法连接 WebSocket')
     },
   },
 })
 ```
 
-Explicitly calling `close()` won't trigger the auto reconnection.
+显式调用 `close()` 不会触发自动重新连接。
 
-### Heartbeat
+### 心跳
 
-It's common practice to send a small message (heartbeat) for every given time passed to keep the connection active. In this function we provide a convenient helper to do it:
+通常会在每隔一段时间发送一个小消息（心跳）以保持连接活动状态。在此函数中，我们提供了一个便利的辅助工具来执行此操作：
 
 ```js
 const { status, data, close } = useWebSocket('ws://websocketurl', {
@@ -66,7 +66,7 @@ const { status, data, close } = useWebSocket('ws://websocketurl', {
 })
 ```
 
-Or with more controls:
+或者具有更多控制：
 
 ```js
 const { status, data, close } = useWebSocket('ws://websocketurl', {
@@ -78,9 +78,9 @@ const { status, data, close } = useWebSocket('ws://websocketurl', {
 })
 ```
 
-### Sub-protocols
+### 子协议
 
-List of one or more subprotocols to use, in this case soap and wamp.
+要使用的一个或多个子协议列表，在这种情况下是 soap 和 wamp。
 
 ```js
 import { useWebSocket } from '@vueuse/core'

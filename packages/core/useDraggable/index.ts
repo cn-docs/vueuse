@@ -7,92 +7,92 @@ import { defaultWindow } from '../_configurable'
 
 export interface UseDraggableOptions {
   /**
-   * Only start the dragging when click on the element directly
+   * 只有在直接点击元素时才开始拖动
    *
    * @default false
    */
   exact?: MaybeRefOrGetter<boolean>
 
   /**
-   * Prevent events defaults
+   * 阻止事件的默认行为
    *
    * @default false
    */
   preventDefault?: MaybeRefOrGetter<boolean>
 
   /**
-   * Prevent events propagation
+   * 阻止事件的传播
    *
    * @default false
    */
   stopPropagation?: MaybeRefOrGetter<boolean>
 
   /**
-   * Whether dispatch events in capturing phase
+   * 是否在捕获阶段分发事件
    *
    * @default true
    */
   capture?: boolean
 
   /**
-   * Element to attach `pointermove` and `pointerup` events to.
+   * 要附加 `pointermove` 和 `pointerup` 事件的元素。
    *
    * @default window
    */
   draggingElement?: MaybeRefOrGetter<HTMLElement | SVGElement | Window | Document | null | undefined>
 
   /**
-   * Element for calculating bounds (If not set, it will use the event's target).
+   * 用于计算边界的元素（如果未设置，将使用事件的目标）。
    *
    * @default undefined
    */
   containerElement?: MaybeRefOrGetter<HTMLElement | SVGElement | null | undefined>
 
   /**
-   * Handle that triggers the drag event
+   * 触发拖动事件的句柄
    *
    * @default target
    */
   handle?: MaybeRefOrGetter<HTMLElement | SVGElement | null | undefined>
 
   /**
-   * Pointer types that listen to.
+   * 监听的指针类型。
    *
    * @default ['mouse', 'touch', 'pen']
    */
   pointerTypes?: PointerType[]
 
   /**
-   * Initial position of the element.
+   * 元素的初始位置。
    *
    * @default { x: 0, y: 0 }
    */
   initialValue?: MaybeRefOrGetter<Position>
 
   /**
-   * Callback when the dragging starts. Return `false` to prevent dragging.
+   * 拖动开始时的回调函数。返回 `false` 可以防止拖动。
    */
   onStart?: (position: Position, event: PointerEvent) => void | false
 
   /**
-   * Callback during dragging.
+   * 拖动过程中的回调函数。
    */
   onMove?: (position: Position, event: PointerEvent) => void
 
   /**
-   * Callback when dragging end.
+   * 拖动结束时的回调函数。
    */
   onEnd?: (position: Position, event: PointerEvent) => void
 
   /**
-   * Axis to drag on.
+   * 要在其上拖动的轴。
    *
    * @default 'both'
    */
   axis?: 'x' | 'y' | 'both'
 
   /**
-   * Disabled drag and drop.
+   * 禁用拖放。
    *
    * @default false
    */
@@ -100,7 +100,7 @@ export interface UseDraggableOptions {
 }
 
 /**
- * Make elements draggable.
+ * 使元素可拖动。
  *
  * @see https://vueuse.org/useDraggable
  * @param target

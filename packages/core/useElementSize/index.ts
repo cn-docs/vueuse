@@ -12,7 +12,7 @@ export interface ElementSize {
 }
 
 /**
- * Reactive size of an HTML element.
+ * HTML 元素的响应式尺寸。
  *
  * @see https://vueuse.org/useElementSize
  */

@@ -4,9 +4,9 @@ category: Elements
 
 # useDraggable
 
-Make elements draggable.
+使元素可拖动。
 
-## Usage
+## 用法
 
 ```vue
 <script setup lang="ts">
@@ -15,7 +15,7 @@ import { useDraggable } from '@vueuse/core'
 
 const el = ref<HTMLElement | null>(null)
 
-// `style` will be a helper computed for `left: ?px; top: ?px;`
+// `style` 将作为 `left: ?px; top: ?px;` 的辅助计算属性
 const { x, y, style } = useDraggable(el, {
   initialValue: { x: 40, y: 40 },
 })
@@ -23,27 +23,27 @@ const { x, y, style } = useDraggable(el, {
 
 <template>
   <div ref="el" :style="style" style="position: fixed">
-    Drag me! I am at {{ x }}, {{ y }}
+    拖动我！我在 {{ x }}，{{ y }} 的位置
   </div>
 </template>
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <UseDraggable v-slot="{ x, y }" :initial-value="{ x: 10, y: 10 }">
-    Drag me! I am at {{ x }}, {{ y }}
+    拖动我！我在 {{ x }}，{{ y }} 的位置
   </UseDraggable>
 </template>
 ```
 
-For component usage, additional props `storageKey` and `storageType` can be passed to the component and enable the persistence of the element position.
+对于组件的用法，还可以将附加属性 `storageKey` 和 `storageType` 传递给组件，并启用元素位置的持久化。
 
 ```vue
 <template>
   <UseDraggable storage-key="vueuse-draggable" storage-type="session">
-    Refresh the page and I am still in the same position!
+    刷新页面后，我仍然在相同的位置！
   </UseDraggable>
 </template>
 ```

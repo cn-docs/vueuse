@@ -4,9 +4,9 @@ category: Browser
 
 # usePreferredDark
 
-Reactive dark theme preference.
+响应式的深色主题偏好。
 
-## Usage
+## 用法
 
 ```js
 import { usePreferredDark } from '@vueuse/core'
@@ -14,12 +14,12 @@ import { usePreferredDark } from '@vueuse/core'
 const isDark = usePreferredDark()
 ```
 
-## Component Usage
+## 组件使用
 
 ```vue
 <template>
   <UsePreferredDark v-slot="{ prefersDark }">
-    Prefers Dark: {{ prefersDark }}
+    首选深色主题: {{ prefersDark }}
   </UsePreferredDark>
 </template>
 ```

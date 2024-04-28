@@ -20,24 +20,24 @@ const { history, undo, redo, canUndo, canRedo } = useDebouncedRefHistory(
 <template>
   <div>Count: {{ count }}</div>
   <button @click="inc()">
-    Increment
+    增加
   </button>
   <button @click="dec()">
-    Decrement
+    减少
   </button>
   <span class="ml-2">/</span>
   <button :disabled="!canUndo" @click="undo()">
-    Undo
+    撤消
   </button>
   <button :disabled="!canRedo" @click="redo()">
-    Redo
+    重做
   </button>
   <br>
-  <span>Delay (in ms):</span>
+  <span>延迟（毫秒）:</span>
   <input v-model="delay" type="number">
   <br>
   <br>
-  <note>History (limited to 10 records for demo)</note>
+  <note>历史记录（仅限演示，最多保存10条记录）</note>
   <div class="code-block mt-4">
     <div v-for="i in history" :key="i.timestamp">
       <span class="opacity-50 mr-2 font-mono">{{ format(i.timestamp) }}</span>

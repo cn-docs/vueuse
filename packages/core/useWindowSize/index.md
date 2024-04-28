@@ -4,9 +4,9 @@ category: Elements
 
 # useWindowSize
 
-Reactive window size
+响应式窗口大小
 
-## Usage
+## 用法
 
 ```js
 import { useWindowSize } from '@vueuse/core'
@@ -14,7 +14,7 @@ import { useWindowSize } from '@vueuse/core'
 const { width, height } = useWindowSize()
 ```
 
-## Component Usage
+## 组件使用
 
 ```vue
 <template>

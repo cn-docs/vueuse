@@ -4,9 +4,9 @@ category: Sensors
 
 # onLongPress
 
-Listen for a long press on an element.
+监听元素上的长按事件。
 
-Function provides modifiers in options
+函数在选项中提供了修饰符
 
 - stop
 - once
@@ -14,7 +14,7 @@ Function provides modifiers in options
 - capture
 - self
 
-## Usage
+## 用法
 
 ```vue
 <script setup lang="ts">
@@ -43,19 +43,19 @@ onLongPress(
 </script>
 
 <template>
-  <p>Long Pressed: {{ longPressedHook }}</p>
+  <p>长按状态：{{ longPressedHook }}</p>
 
   <button ref="htmlRefHook" class="ml-2 button small">
-    Press long
+    长按
   </button>
 
   <button class="ml-2 button small" @click="resetHook">
-    Reset
+    重置
   </button>
 </template>
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <script setup lang="ts">
@@ -73,23 +73,23 @@ function resetComponent() {
 </script>
 
 <template>
-  <p>Long Pressed: {{ longPressedComponent }}</p>
+  <p>长按状态：{{ longPressedComponent }}</p>
 
   <OnLongPress
     as="button"
     class="ml-2 button small"
     @trigger="onLongPressCallbackComponent"
   >
-    Press long
+    长按
   </OnLongPress>
 
   <button class="ml-2 button small" @click="resetComponent">
-    Reset
+    重置
   </button>
 </template>
 ```
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup lang="ts">
@@ -107,24 +107,24 @@ function resetDirective() {
 </script>
 
 <template>
-  <p>Long Pressed: {{ longPressedDirective }}</p>
+  <p>长按状态：{{ longPressedDirective }}</p>
 
   <button
     v-on-long-press.prevent="onLongPressCallbackDirective"
     class="ml-2 button small"
   >
-    Press long
+    长按
   </button>
 
   <button
     v-on-long-press="[onLongPressCallbackDirective, { delay: 1000, modifiers: { stop: true } }]"
-    class="ml-2button small"
+    class="ml-2 button small"
   >
-    Press long (with options)
+    长按（带选项）
   </button>
 
   <button class="ml-2 button small" @click="resetDirective">
-    Reset
+    重置
   </button>
 </template>
 ```

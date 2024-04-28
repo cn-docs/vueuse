@@ -4,9 +4,9 @@ category: Utilities
 
 # useEventBus
 
-A basic event bus.
+一个基本的事件总线。
 
-## Usage
+## 用法
 
 ```ts
 import { useEventBus } from '@vueuse/core'
@@ -17,26 +17,26 @@ function listener(event: string) {
   console.log(`news: ${event}`)
 }
 
-// listen to an event
+// 监听事件
 const unsubscribe = bus.on(listener)
 
-// fire an event
-bus.emit('The Tokyo Olympics has begun')
+// 触发事件
+bus.emit('东京奥运会已经开始了')
 
-// unregister the listener
+// 注销监听器
 unsubscribe()
-// or
+// 或者
 bus.off(listener)
 
-// clearing all listeners
+// 清除所有监听器
 bus.reset()
 ```
 
-Listeners registered inside of components `setup` will be unregistered automatically when the component gets unmounted.
+在组件的 `setup` 内注册的监听器会在组件卸载时自动注销。
 
 ## TypeScript
 
-Using `EventBusKey` is the key to bind the event type to the key, similar to Vue's [`InjectionKey`](https://antfu.me/posts/typed-provide-and-inject-in-vue) util.
+使用 `EventBusKey` 将事件类型绑定到键上，类似于 Vue 的 [`InjectionKey`](https://antfu.me/posts/typed-provide-and-inject-in-vue) 工具。
 
 ```ts
 // fooKey.ts
@@ -53,6 +53,6 @@ import { fooKey } from './fooKey'
 const bus = useEventBus(fooKey)
 
 bus.on((e) => {
-  // `e` will be `{ name: foo }`
+  // `e` 是 `{ name: foo }`
 })
 ```

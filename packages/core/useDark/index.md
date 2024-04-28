@@ -8,11 +8,11 @@ related:
 
 # useDark
 
-Reactive dark mode with auto data persistence.
+响应式暗模式，自动数据持久化。
 
-<CourseLink href="https://vueschool.io/lessons/theming-with-vueuse-usedark-and-usecolormode?friend=vueuse">Learn useDark with this FREE video lesson from Vue School!</CourseLink>
+<CourseLink href="https://vueschool.io/lessons/theming-with-vueuse-usedark-and-usecolormode?friend=vueuse">通过 Vue School 的这个免费视频课程学习如何使用 useDark！</CourseLink>
 
-## Basic Usage
+## 基本用法
 
 ```js
 import { useDark, useToggle } from '@vueuse/core'
@@ -21,15 +21,15 @@ const isDark = useDark()
 const toggleDark = useToggle(isDark)
 ```
 
-## Behavior
+## 行为
 
-`useDark` combines with `usePreferredDark` and `useStorage`. On start up, it reads the value from localStorage/sessionStorage (the key is configurable) to see if there is a user configured color scheme, if not, it will use users' system preferences. When you change the `isDark` ref, it will update the corresponding element's attribute and then store the preference to storage (default key: `vueuse-color-scheme`) for persistence.
+`useDark` 结合了 `usePreferredDark` 和 `useStorage`。在启动时，它会从 localStorage/sessionStorage 中读取值（键是可配置的），以查看是否有用户配置的颜色方案，如果没有，它将使用用户的系统偏好。当您更改 `isDark` 引用时，它将更新相应元素的属性，然后将偏好存储到存储（默认键：`vueuse-color-scheme`）以进行持久化。
 
-> Please note `useDark` only handles the DOM attribute changes for you to apply proper selector in your CSS. It does NOT handle the actual style, theme or CSS for you.
+> 请注意 `useDark` 仅为您处理 DOM 属性更改，以便在 CSS 中应用正确的选择器。它不处理实际样式、主题或 CSS。
 
-## Configuration
+## 配置
 
-By default, it uses [Tailwind CSS favored dark mode](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually), which enables dark mode when class `dark` is applied to the `html` tag, for example:
+默认情况下，它使用 [Tailwind CSS 推荐的暗模式](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually)，当将类 `dark` 应用于 `html` 标签时启用暗模式，例如：
 
 ```html
 <!--light-->
@@ -43,9 +43,9 @@ By default, it uses [Tailwind CSS favored dark mode](https://tailwindcss.com/doc
 </html>
 ```
 
-Still, you can also customize it to make it work with most CSS frameworks.
+但是，您也可以自定义它以使其与大多数 CSS 框架一起工作。
 
-For example:
+例如：
 
 ```ts
 const isDark = useDark({
@@ -56,7 +56,7 @@ const isDark = useDark({
 })
 ```
 
-will work like
+将会工作如下
 
 ```html
 <!--light-->
@@ -74,17 +74,17 @@ will work like
 </html>
 ```
 
-If the configuration above still does not fit your needs, you can use the`onChanged` option to take full control over how you handle updates.
+如果上述配置仍然不符合您的需求，您可以使用`onChanged`选项来完全控制您如何处理更新。
 
 ```ts
 const isDark = useDark({
   onChanged(dark: boolean) {
-    // update the dom, call the API or something
+    // 更新 dom，调用 API 或其他操作
   },
 })
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>

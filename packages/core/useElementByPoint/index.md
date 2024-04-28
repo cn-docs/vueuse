@@ -4,9 +4,9 @@ category: Sensors
 
 # useElementByPoint
 
-Reactive element by point.
+根据点获取响应式元素。
 
-## Usage
+## 用法
 
 ```ts
 import { useElementByPoint, useMouse } from '@vueuse/core'

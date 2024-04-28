@@ -11,7 +11,7 @@ onStartTyping(() => {
 </script>
 
 <template>
-  <note>Type anything</note>
+  <note>输入任何内容</note>
   <input ref="input" type="text" placeholder="Start typing to focus">
   <input type="text" placeholder="Start typing has no effect here">
 </template>

@@ -4,29 +4,29 @@ category: Browser
 
 # useScriptTag
 
-Creates a script tag, with support for automatically unloading (deleting) the script tag on unmount.
+创建一个脚本标签，支持在组件卸载时自动卸载（删除）脚本标签。
 
-If a script tag already exists for the given URL, `useScriptTag()` will not create another script tag, but keep in mind that depending on how you use it, `useScriptTag()` might have already loaded then unloaded that particular JS file from a previous call of `useScriptTag()`.
+如果给定 URL 的脚本标签已经存在，`useScriptTag()` 将不会创建另一个脚本标签，但请注意，根据您的使用方式，`useScriptTag()` 可能已经从之前的 `useScriptTag()` 调用中加载并卸载了该特定的 JS 文件。
 
-## Usage
+## 用法
 
 ```ts
 import { useScriptTag } from '@vueuse/core'
 
 useScriptTag(
   'https://player.twitch.tv/js/embed/v1.js',
-  // on script tag loaded.
+  // 当脚本标签加载完成时的回调。
   (el: HTMLScriptElement) => {
-    // do something
+    // 做一些事情
   },
 )
 ```
 
-The script will be automatically loaded when the component is mounted and removed when the component is unmounted.
+该脚本将在组件挂载时自动加载，并在组件卸载时删除。
 
-## Configuration
+## 配置
 
-Set `manual: true` to have manual control over the timing to load the script.
+设置 `manual: true` 以手动控制加载脚本的时机。
 
 ```ts
 import { useScriptTag } from '@vueuse/core'
@@ -34,12 +34,12 @@ import { useScriptTag } from '@vueuse/core'
 const { scriptTag, load, unload } = useScriptTag(
   'https://player.twitch.tv/js/embed/v1.js',
   () => {
-    // do something
+    // 做一些事情
   },
   { manual: true },
 )
 
-// manual controls
+// 手动控制
 await load()
 await unload()
 ```

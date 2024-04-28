@@ -4,9 +4,9 @@ category: Utilities
 
 # useOffsetPagination
 
-Reactive offset pagination.
+响应式的偏移分页。
 
-## Usage
+## 使用方法
 
 ```ts
 import { useOffsetPagination } from '@vueuse/core'
@@ -34,7 +34,7 @@ const {
 })
 ```
 
-## Component Usage
+## 组件使用
 
 ```vue
 <template>
@@ -54,45 +54,45 @@ const {
   >
     <div class="gap-x-4 gap-y-2 grid-cols-2 inline-grid items-center">
       <div opacity="50">
-        total:
+        总数：
       </div>
       <div>{{ database.length }}</div>
       <div opacity="50">
-        pageCount:
+        页数：
       </div>
       <div>{{ pageCount }}</div>
       <div opacity="50">
-        currentPageSize:
+        每页大小：
       </div>
       <div>{{ currentPageSize }}</div>
       <div opacity="50">
-        currentPage:
+        当前页码：
       </div>
       <div>{{ currentPage }}</div>
       <div opacity="50">
-        isFirstPage:
+        是否第一页：
       </div>
       <div>{{ isFirstPage }}</div>
       <div opacity="50">
-        isLastPage:
+        是否最后一页：
       </div>
       <div>{{ isLastPage }}</div>
     </div>
     <div>
       <button :disabled="isFirstPage" @click="prev">
-        prev
+        上一页
       </button>
       <button :disabled="isLastPage" @click="next">
-        next
+        下一页
       </button>
     </div>
   </UseOffsetPagination>
 </template>
 ```
 
-Component event supported props event callback and event listener.
+组件事件支持回调和事件监听器。
 
-event listener:
+事件监听器：
 
 ```vue
 <template>
@@ -111,12 +111,12 @@ event listener:
     @page-size-change="fetchData"
     @page-count-change="onPageCountChange"
   >
-    <!-- your code -->
+    <!-- 你的代码 -->
   </UseOffsetPagination>
 </template>
 ```
 
-or props event callback:
+或者使用 props 回调：
 
 ```vue
 <template>
@@ -135,7 +135,7 @@ or props event callback:
     :on-page-size-change="fetchData"
     :on-page-count-change="onPageCountChange"
   >
-    <!-- your code -->
+    <!-- 你的代码 -->
   </UseOffsetPagination>
 </template>
 ```

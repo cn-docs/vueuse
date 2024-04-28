@@ -4,9 +4,9 @@ category: Sensors
 
 # useInfiniteScroll
 
-Infinite scrolling of the element.
+实现元素的无限滚动。
 
-## Usage
+## 使用方法
 
 ```vue
 <script setup lang="ts">
@@ -19,7 +19,7 @@ const data = ref([1, 2, 3, 4, 5, 6])
 useInfiniteScroll(
   el,
   () => {
-    // load more
+    // 加载更多
     data.value.push(...moreData)
   },
   { distance: 10 }
@@ -35,7 +35,7 @@ useInfiniteScroll(
 </template>
 ```
 
-## Directive Usage
+## 指令使用
 
 ```vue
 <script setup lang="ts">
@@ -57,7 +57,7 @@ function onLoadMore() {
     </div>
   </div>
 
-  <!-- with options -->
+  <!-- 使用选项 -->
   <div v-infinite-scroll="[onLoadMore, { distance: 10 }]">
     <div v-for="item in data" :key="item">
       {{ item }}

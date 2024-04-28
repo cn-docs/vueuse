@@ -10,7 +10,7 @@ export interface ToDataURLOptions {
    */
   type?: string | undefined
   /**
-   * Image quality of jpeg or webp
+   * jpeg 或 webp 的图像质量
    */
   quality?: any
 }

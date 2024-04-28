@@ -5,7 +5,7 @@ import type { UseRefHistoryOptions, UseRefHistoryReturn } from '../useRefHistory
 import { useRefHistory } from '../useRefHistory'
 
 /**
- * Shorthand for [useRefHistory](https://vueuse.org/useRefHistory) with debounce filter.
+ * [useRefHistory](https://vueuse.org/useRefHistory) 的防抖实现
  *
  * @see https://vueuse.org/useDebouncedRefHistory
  * @param source

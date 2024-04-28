@@ -4,9 +4,9 @@ category: Utilities
 
 # useCloned
 
-Reactive clone of a ref. By default, it use `JSON.parse(JSON.stringify())` to do the clone.
+对 ref 进行响应式克隆。默认情况下，它使用 `JSON.parse(JSON.stringify())` 进行克隆。
 
-## Usage
+## 使用方法
 
 ```ts
 import { useCloned } from '@vueuse/core'
@@ -20,7 +20,7 @@ original.value.key = 'some new value'
 console.log(cloned.value.key) // 'value'
 ```
 
-## Manual cloning
+## 手动克隆
 
 ```ts
 import { useCloned } from '@vueuse/core'
@@ -38,9 +38,9 @@ sync()
 console.log(cloned.value.key)// 'manual'
 ```
 
-## Custom Clone Function
+## 自定义克隆函数
 
-Using [`klona`](https://www.npmjs.com/package/klona) for example:
+例如使用 [`klona`](https://www.npmjs.com/package/klona)：
 
 ```ts
 import { useCloned } from '@vueuse/core'
