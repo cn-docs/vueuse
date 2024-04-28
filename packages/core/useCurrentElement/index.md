@@ -1,5 +1,5 @@
 ---
-category: 组件
+category: Component
 ---
 
 # useCurrentElement
