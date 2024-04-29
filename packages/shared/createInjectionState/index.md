@@ -4,9 +4,9 @@ category: State
 
 # createInjectionState
 
-Create global state that can be injected into components.
+创建可注入到组件中的全局状态。
 
-## Usage
+## 用法
 
 ```ts
 // useCounterStore.ts
@@ -29,7 +29,7 @@ const [useProvideCounterStore, useCounterStore] = createInjectionState((initialV
 })
 
 export { useProvideCounterStore }
-// If you want to hide `useCounterStore` and wrap it in default value logic or throw error logic, please don't export `useCounterStore`
+// 如果你想隐藏 `useCounterStore` 并将其包装在默认值逻辑或错误逻辑中，请不要导出 `useCounterStore`。
 export { useCounterStore }
 
 export function useCounterStoreWithDefaultValue() {
@@ -68,13 +68,13 @@ useProvideCounterStore(0)
 <script setup lang="ts">
 import { useCounterStore } from './useCounterStore'
 
-// use non-null assertion operator to ignore the case that store is not provided.
+// 使用非空断言操作符来忽略未提供存储的情况。
 const { count, double } = useCounterStore()!
-// if you want to allow component to working without providing store, you can use follow code instead:
+// 如果你想让组件在没有提供存储的情况下也能正常工作，你可以使用以下代码:
 // const { count, double } = useCounterStore() ?? { count: ref(0), double: ref(0) }
-// also, you can use another hook to provide default value
+// 此外，你还可以使用另一个钩子来提供默认值。
 // const { count, double } = useCounterStoreWithDefaultValue()
-// or throw error
+// 或者抛出错误。
 // const { count, double } = useCounterStoreOrThrow()
 </script>
 
@@ -95,7 +95,7 @@ const { count, double } = useCounterStore()!
 <script setup lang="ts">
 import { useCounterStore } from './useCounterStore'
 
-// use non-null assertion operator to ignore the case that store is not provided.
+// 使用非空断言操作符来忽略未提供存储的情况。
 const { increment } = useCounterStore()!
 </script>
 
@@ -106,14 +106,14 @@ const { increment } = useCounterStore()!
 </template>
 ```
 
-## Provide a custom InjectionKey
+## 提供一个自定义的 InjectionKey
 
 ```ts
 // useCounterStore.ts
 import { computed, ref } from 'vue'
 import { createInjectionState } from '@vueuse/core'
 
-// custom injectionKey
+// 自定义的 InjectionKey
 const CounterStoreKey = 'counter-store'
 
 const [useProvideCounterStore, useCounterStore] = createInjectionState((initialValue: number) => {

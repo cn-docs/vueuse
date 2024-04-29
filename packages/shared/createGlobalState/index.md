@@ -5,11 +5,11 @@ related: createSharedComposable
 
 # createGlobalState
 
-Keep states in the global scope to be reusable across Vue instances.
+将状态保存在全局作用域中，以便在 Vue 实例之间重复使用。
 
-## Usage
+## 用法
 
-### Without Persistence (Store in Memory)
+### 不持久化 (存储在内存中)
 
 ```js
 // store.js
@@ -24,7 +24,7 @@ export const useGlobalState = createGlobalState(
 )
 ```
 
-A bigger example:
+一个更详细的示例:
 
 ```js
 // store.js
@@ -49,9 +49,9 @@ export const useGlobalState = createGlobalState(
 )
 ```
 
-### With Persistence
+### 使用持久化
 
-Store in `localStorage` with `useStorage`:
+使用 `useStorage` 存储在 `localStorage` 中:
 
 ```js
 // store.js
