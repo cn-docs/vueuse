@@ -8,9 +8,9 @@ on:
 
   pull_request:
     branches:
-#      - main
+      - main
 #      - next
-      - docs
+#      - docs
 
   merge_group: {}
 
