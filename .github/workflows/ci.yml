@@ -1,16 +1,9 @@
 name: CI
 
 on:
-  push:
-#    branches:
-#      - main
-#      - next
-
   pull_request:
     branches:
       - main
-#      - next
-#      - docs
 
   merge_group: {}
 
