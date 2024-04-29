@@ -1,3 +1,5 @@
+<p align="center">注：在本人翻译完之前，不接受任何 PR</p>
+
 <p align="center">
 <a href="https://github.com/vueuse/vueuse#gh-light-mode-only">
   <img src="https://raw.githubusercontent.com/vueuse/vueuse/main/packages/public/logo-vertical.png#gh-light-mode-only" alt="VueUse - Collection of essential Vue Composition Utilities" width="300">
