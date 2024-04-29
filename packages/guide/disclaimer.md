@@ -5,5 +5,3 @@
 如果翻译过程中出现错误，欢迎提交 PR 或 issue。
 
 仓库地址：https://github.com/cn-docs/vueuse
-
-中文文档以 docs-cn 分支为准
