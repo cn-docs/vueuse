@@ -6,42 +6,42 @@ import { cloneFnJSON } from '../useCloned'
 
 export interface UseVModelOptions<T, Passive extends boolean = false> {
   /**
-   * When passive is set to `true`, it will use `watch` to sync with props and ref.
-   * Instead of relying on the `v-model` or `.sync` to work.
+   * 当 passive 设置为 `true` 时，它将使用 `watch` 来与 props 和 ref 同步。
+   * 而不是依赖于 `v-model` 或 `.sync`。
    *
    * @default false
    */
   passive?: Passive
   /**
-   * When eventName is set, it's value will be used to overwrite the emit event name.
+   * 当设置了 eventName 时，它的值将用于覆盖 emit 事件的名称。
    *
    * @default undefined
    */
   eventName?: string
   /**
-   * Attempting to check for changes of properties in a deeply nested object or array.
-   * Apply only when `passive` option is set to `true`
+   * 尝试检查嵌套对象或数组中属性的更改。
+   * 仅在将 `passive` 选项设置为 `true` 时应用
    *
    * @default false
    */
   deep?: boolean
   /**
-   * Defining default value for return ref when no value is passed.
+   * 在未传递值时定义返回 ref 的默认值。
    *
    * @default undefined
    */
   defaultValue?: T
   /**
-   * Clone the props.
-   * Accepts a custom clone function.
-   * When setting to `true`, it will use `JSON.parse(JSON.stringify(value))` to clone.
+   * 克隆 props。
+   * 接受一个自定义克隆函数。
+   * 当设置为 `true` 时，它将使用 `JSON.parse(JSON.stringify(value))` 进行克隆。
    *
    * @default false
    */
   clone?: boolean | CloneFn<T>
   /**
-   * The hook before triggering the emit event can be used for form validation.
-   * if false is returned, the emit event will not be triggered.
+   * 在触发 emit 事件之前的钩子，可用于表单验证。
+   * 如果返回 false，则不会触发 emit 事件。
    *
    * @default undefined
    */
@@ -63,11 +63,11 @@ export function useVModel<P extends object, K extends keyof P, Name extends stri
 ): Ref<UnwrapRef<P[K]>>
 
 /**
- * Shorthand for v-model binding, props + emit -> ref
+ * v-model 绑定的简写，props + emit -> ref
  *
  * @see https://vueuse.org/useVModel
  * @param props
- * @param key (default 'value' in Vue 2 and 'modelValue' in Vue 3)
+ * @param key （Vue 2 中默认为 'value'，Vue 3 中为 'modelValue'）
  * @param emit
  */
 export function useVModel<P extends object, K extends keyof P, Name extends string, Passive extends boolean>(

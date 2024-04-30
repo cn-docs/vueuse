@@ -17,7 +17,7 @@ export interface EyeDropper {
 
 export interface UseEyeDropperOptions {
   /**
-   * Initial sRGBHex.
+   * 初始 sRGBHex.
    *
    * @default ''
    */
@@ -25,7 +25,7 @@ export interface UseEyeDropperOptions {
 }
 
 /**
- * Reactive [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API)
+ * 响应式 [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API)
  *
  * @see https://vueuse.org/useEyeDropper
  */

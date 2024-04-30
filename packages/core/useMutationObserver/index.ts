@@ -10,7 +10,7 @@ import { defaultWindow } from '../_configurable'
 export interface UseMutationObserverOptions extends MutationObserverInit, ConfigurableWindow {}
 
 /**
- * Watch for changes being made to the DOM tree.
+ * 监视对 DOM 树的变更
  *
  * @see https://vueuse.org/useMutationObserver
  * @see https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver MutationObserver MDN

@@ -10,24 +10,24 @@ import { useSupported } from '../useSupported'
 
 export interface UseIntersectionObserverOptions extends ConfigurableWindow {
   /**
-   * Start the IntersectionObserver immediately on creation
+   * 在创建时立即启动 IntersectionObserver
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * The Element or Document whose bounds are used as the bounding box when testing for intersection.
+   * 用作边界框的元素或文档，用于测试相交时使用的边界框。
    */
   root?: MaybeComputedElementRef
 
   /**
-   * A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections.
+   * 一个字符串，指定计算相交时要添加到根边界框的偏移量集。
    */
   rootMargin?: string
 
   /**
-   * Either a single number or an array of numbers between 0.0 and 1.
+   * 单个数字或介于 0.0 和 1 之间的数字数组。
    */
   threshold?: number | number[]
 }
@@ -38,7 +38,7 @@ export interface UseIntersectionObserverReturn extends Pausable {
 }
 
 /**
- * Detects that a target element's visibility.
+ * 检测目标元素的可见性。
  *
  * @see https://vueuse.org/useIntersectionObserver
  * @param target

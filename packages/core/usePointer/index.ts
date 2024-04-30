@@ -20,14 +20,14 @@ export interface UsePointerState extends Position {
 
 export interface UsePointerOptions extends ConfigurableWindow {
   /**
-   * Pointer types that listen to.
+   * 监听的指针类型。
    *
    * @default ['mouse', 'touch', 'pen']
    */
   pointerTypes?: PointerType[]
 
   /**
-   * Initial values
+   * 初始值
    */
   initialValue?: MaybeRef<Partial<UsePointerState>>
 
@@ -52,7 +52,7 @@ const defaultState: UsePointerState = /* #__PURE__ */ {
 const keys = /* #__PURE__ */ Object.keys(defaultState) as (keyof UsePointerState)[]
 
 /**
- * Reactive pointer state.
+ * 响应式指针状态
  *
  * @see https://vueuse.org/usePointer
  * @param options

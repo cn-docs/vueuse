@@ -3,7 +3,7 @@ import type { UseVModelOptions } from '../useVModel'
 import { useVModel } from '../useVModel'
 
 /**
- * Shorthand for props v-model binding. Think like `toRefs(props)` but changes will also emit out.
+ * 用于 props 的 v-model 绑定的简写。类似于 `toRefs(props)`，但更改也会触发 emit。
  *
  * @see https://vueuse.org/useVModels
  * @param props

@@ -5,7 +5,7 @@ import { defaultWindow } from '../_configurable'
 
 export type UsePerformanceObserverOptions = PerformanceObserverInit & ConfigurableWindow & {
   /**
-   * Start the observer immediate.
+   * 立即启动观察者
    *
    * @default true
    */
@@ -13,6 +13,7 @@ export type UsePerformanceObserverOptions = PerformanceObserverInit & Configurab
 }
 
 /**
+ * 观察性能指标
  * Observe performance metrics.
  *
  * @see https://vueuse.org/usePerformanceObserver

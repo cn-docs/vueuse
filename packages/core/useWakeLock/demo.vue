@@ -11,10 +11,10 @@ function onClick() {
 
 <template>
   <div>
-    Is Supported: <BooleanDisplay :value="wakeLock.isSupported" />
+    是否支持: <BooleanDisplay :value="wakeLock.isSupported" />
   </div>
   <div>
-    Is Active: <BooleanDisplay :value="wakeLock.isActive" />
+    激活状态: <BooleanDisplay :value="wakeLock.isActive" />
   </div>
   <button @click="onClick">
     {{ text }}

@@ -15,7 +15,7 @@ useFavicon(favicon, {
 
 <template>
   <div>
-    Change favicon to
+    更改 favicon
   </div>
   <button @click="type = 'vue'">
     Vue

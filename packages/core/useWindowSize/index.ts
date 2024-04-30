@@ -9,21 +9,21 @@ export interface UseWindowSizeOptions extends ConfigurableWindow {
   initialWidth?: number
   initialHeight?: number
   /**
-   * Listen to window `orientationchange` event
+   * 监听窗口 `orientationchange` 事件
    *
    * @default true
    */
   listenOrientation?: boolean
 
   /**
-   * Whether the scrollbar should be included in the width and height
+   * 是否应将滚动条包含在宽度和高度中
    * @default true
    */
   includeScrollbar?: boolean
 }
 
 /**
- * Reactive window size.
+ * 响应式窗口大小。
  *
  * @see https://vueuse.org/useWindowSize
  * @param options

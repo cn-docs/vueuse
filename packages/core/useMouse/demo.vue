@@ -21,8 +21,8 @@ const textWithExtractor = stringify(mouseWithExtractor)
 </script>
 
 <template>
-  <p>Basic Usage</p>
+  <p>基本用法</p>
   <pre lang="yaml">{{ textDefault }}</pre>
-  <p>Extractor Usage</p>
+  <p>reactive的使用</p>
   <pre lang="yaml">{{ textWithExtractor }}</pre>
 </template>

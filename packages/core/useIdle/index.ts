@@ -12,19 +12,19 @@ const oneMinute = 60_000
 
 export interface UseIdleOptions extends ConfigurableWindow, ConfigurableEventFilter {
   /**
-   * Event names that listen to for detected user activity
+   * 用于监听检测到的用户活动的事件名称
    *
    * @default ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']
    */
   events?: WindowEventName[]
   /**
-   * Listen for document visibility change
+   * 监听文档可见性变化
    *
    * @default true
    */
   listenForVisibilityChange?: boolean
   /**
-   * Initial state of the ref idle
+   * ref idle 的初始状态
    *
    * @default false
    */
@@ -38,7 +38,7 @@ export interface UseIdleReturn {
 }
 
 /**
- * Tracks whether the user is being inactive.
+ * 跟踪用户是否处于非活动状态。
  *
  * @see https://vueuse.org/useIdle
  * @param timeout default to 1 minute

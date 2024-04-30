@@ -23,7 +23,7 @@ export interface UseUrlSearchParamsOptions<T> extends ConfigurableWindow {
   initialValue?: T
 
   /**
-   * Write back to `window.history` automatically
+   * 自动写回到 `window.history`
    *
    * @default true
    */
@@ -31,7 +31,7 @@ export interface UseUrlSearchParamsOptions<T> extends ConfigurableWindow {
 }
 
 /**
- * Reactive URLSearchParams
+ * 响应式 URLSearchParams
  *
  * @see https://vueuse.org/useUrlSearchParams
  * @param mode

@@ -5,5 +5,5 @@ const now = useNow()
 </script>
 
 <template>
-  <div>Now: {{ now }}</div>
+  <div>当前: {{ now }}</div>
 </template>

@@ -14,17 +14,17 @@ export interface UseFileDialogOptions extends ConfigurableDocument {
    */
   accept?: string
   /**
-   * Select the input source for the capture file.
+   * 选择捕获文件的输入源。
    * @see [HTMLInputElement Capture](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/capture)
    */
   capture?: string
   /**
-   * Reset when open file dialog.
+   * 打开文件对话框时重置。
    * @default false
    */
   reset?: boolean
   /**
-   * Select directories instead of files.
+   * 选择目录而不是文件。
    * @see [HTMLInputElement webkitdirectory](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitdirectory)
    * @default false
    */
@@ -46,7 +46,7 @@ export interface UseFileDialogReturn {
 }
 
 /**
- * Open file dialog with ease.
+ * 轻松打开文件对话框。
  *
  * @see https://vueuse.org/useFileDialog
  * @param options

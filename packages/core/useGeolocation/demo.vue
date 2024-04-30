@@ -26,10 +26,10 @@ const { coords, locatedAt, error, resume, pause } = useGeolocation()
     )
   }}</pre>
     <button @click="pause">
-      Pause watch
+      暂停观测
     </button>
     <button @click="resume">
-      Start watch
+      开始观测
     </button>
   </div>
 </template>

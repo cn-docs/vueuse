@@ -59,10 +59,10 @@ function allStepsBeforeAreValid(index: number): boolean {
       <div class="flex flex-col justify-center gap-2 mt-2">
         <div>
           <div v-if="stepper.isCurrent('user-information')">
-            <span>First name:</span>
-            <input v-model="form.firstName" class="!mt-0.5" type="text">
-            <span>Last name:</span>
+            <span>姓氏：</span>
             <input v-model="form.lastName" class="!mt-0.5" type="text">
+            <span>名字：</span>
+            <input v-model="form.firstName" class="!mt-0.5" type="text">
           </div>
 
           <div v-if="stepper.isCurrent('billing-address')">
@@ -72,18 +72,18 @@ function allStepsBeforeAreValid(index: number): boolean {
           <div v-if="stepper.isCurrent('terms')">
             <div>
               <input id="carbon-offsetting" v-model="form.carbonOffsetting" type="checkbox" class="mr-2">
-              <label for="carbon-offsetting">I accept to deposit a carbon offsetting fee</label>
+              <label for="carbon-offsetting">我同意支付碳抵消费用</label>
             </div>
             <div>
               <input id="contract" v-model="form.contractAccepted" type="checkbox" class="mr-2">
-              <label for="contract">I accept the terms of the contract</label>
+              <label for="contract">我接受合同条款</label>
             </div>
           </div>
 
           <div v-if="stepper.isCurrent('payment')">
             <div>
               <input id="credit-card" v-model="form.payment" type="radio" class="mr-2" value="credit-card">
-              <label for="credit-card">Credit card</label>
+              <label for="credit-card">信用卡</label>
             </div>
             <div>
               <input id="paypal" v-model="form.payment" type="radio" class="mr-2" value="paypal">
@@ -94,10 +94,10 @@ function allStepsBeforeAreValid(index: number): boolean {
 
         <div>
           <button v-if="!stepper.isLast.value" :disabled="!stepper.current.value.isValid()">
-            Next
+            下一步
           </button>
           <button v-if="stepper.isLast.value" :disabled="!stepper.current.value.isValid()">
-            Submit
+            提交
           </button>
         </div>
       </div>
@@ -105,12 +105,12 @@ function allStepsBeforeAreValid(index: number): boolean {
 
     <div class="flex flex-col gap-4 mt-12">
       <div class="w-full px-4 py-2 rounded border border-main space-y-2 overflow-auto h-full">
-        <span class="font-bold">Form</span>
+        <span class="font-bold">表单</span>
         <pre v-text="form" />
       </div>
 
       <div class="w-full px-4 py-2 rounded border border-main space-y-2 overflow-auto h-full">
-        <span class="font-bold">Wizard</span>
+        <span class="font-bold">向导</span>
         <pre v-text="stepper" />
       </div>
     </div>

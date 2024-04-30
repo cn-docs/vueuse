@@ -7,79 +7,79 @@ import { useManualRefHistory } from '../useManualRefHistory'
 
 export interface UseRefHistoryOptions<Raw, Serialized = Raw> extends ConfigurableEventFilter {
   /**
-   * Watch for deep changes, default to false
+   * 监听深层变化，默认为 false
    *
-   * When set to true, it will also create clones for values store in the history
+   * 当设置为 true 时，它还将为存储在历史记录中的值创建克隆
    *
    * @default false
    */
   deep?: boolean
 
   /**
-   * The flush option allows for greater control over the timing of a history point, default to 'pre'
+   * flush 选项允许更大的控制历史点的时间，默认为 'pre'
    *
-   * Possible values: 'pre', 'post', 'sync'
-   * It works in the same way as the flush option in watch and watch effect in vue reactivity
+   * 可能的值：'pre', 'post', 'sync'
+   * 它的工作方式与 vue 响应性中 watch 和 watch effect 中的 flush 选项相同
    *
    * @default 'pre'
    */
   flush?: 'pre' | 'post' | 'sync'
 
   /**
-   * Maximum number of history to be kept. Default to unlimited.
+   * 要保留的历史记录的最大数量。默认为无限。
    */
   capacity?: number
 
   /**
-   * Clone when taking a snapshot, shortcut for dump: JSON.parse(JSON.stringify(value)).
-   * Default to false
+   * 在获取快照时进行克隆，快捷方式为 dump: JSON.parse(JSON.stringify(value))。
+   * 默认为 false
    *
    * @default false
    */
   clone?: boolean | CloneFn<Raw>
   /**
-   * Serialize data into the history
+   * 将数据序列化到历史记录中
    */
   dump?: (v: Raw) => Serialized
   /**
-   * Deserialize data from the history
+   * 从历史记录中反序列化数据
    */
   parse?: (v: Serialized) => Raw
 }
 
 export interface UseRefHistoryReturn<Raw, Serialized> extends UseManualRefHistoryReturn<Raw, Serialized> {
   /**
-   * A ref representing if the tracking is enabled
+   * 表示是否启用跟踪的 ref
    */
   isTracking: Ref<boolean>
 
   /**
-   * Pause change tracking
+   * 暂停更改跟踪
    */
   pause: () => void
 
   /**
-   * Resume change tracking
+   * 恢复更改跟踪
    *
-   * @param [commit] if true, a history record will be create after resuming
+   * @param [commit] 如果为 true，在恢复后将创建一个历史记录
    */
   resume: (commit?: boolean) => void
 
   /**
-   * A sugar for auto pause and auto resuming within a function scope
+   * 在函数范围内提供自动暂停和自动恢复的语法糖
    *
    * @param fn
    */
   batch: (fn: (cancel: Fn) => void) => void
 
   /**
-   * Clear the data and stop the watch
+   * 清除数据并停止观察
    */
   dispose: () => void
 }
 
 /**
- * Track the change history of a ref, also provides undo and redo functionality.
+ * 跟踪 ref 的变更历史记录，并提供撤销和重做功能。
  *
  * @see https://vueuse.org/useRefHistory
  * @param source

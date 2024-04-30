@@ -18,15 +18,15 @@ function change() {
     Loading...
   </div>
   <div v-else-if="error" class="text-red">
-    Failed
+    失败
   </div>
   <img v-else :src="imageOptions.src" class="w-[300px] h-[200px]">
 
   <button @click="change">
-    Change
+    更改
   </button>
 
   <button @click="imageOptions.src = ''">
-    Create Error
+    创建错误
   </button>
 </template>

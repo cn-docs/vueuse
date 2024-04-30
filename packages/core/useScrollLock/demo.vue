@@ -14,31 +14,31 @@ const toggleLock = useToggle(isLocked)
     <div ref="el" class="w-300px h-300px m-auto overflow-scroll bg-gray-500/5 rounded">
       <div class="w-500px h-400px relative">
         <div position="absolute left-0 top-0" bg="gray-500/5" p="x-2 y-1">
-          TopLeft
+          左上角
         </div>
         <div position="absolute left-0 bottom-0" bg="gray-500/5" p="x-2 y-1">
-          BottomLeft
+          左下角
         </div>
         <div position="absolute right-0 top-0" bg="gray-500/5" p="x-2 y-1">
-          TopRight
+          右上角
         </div>
         <div position="absolute right-0 bottom-0" bg="gray-500/5" p="x-2 y-1">
-          BottomRight
+          右下角
         </div>
         <div position="absolute left-1/3 top-1/3" bg="gray-500/5" p="x-2 y-1">
-          Scroll Me
+          滚动
         </div>
       </div>
     </div>
     <div class="m-auto px-6 py-4 rounded flex flex-col w-60 gap-2 bg-gray-500/5">
       <div>
         <span opacity="75">
-          isLocked
+          是否锁定
         </span>
         <BooleanDisplay :value="isLocked" />
       </div>
       <button opacity="75" @click="toggleLock()">
-        {{ isLocked ? 'Unlock' : 'Lock' }}
+        {{ isLocked ? '解锁' : '锁定' }}
       </button>
     </div>
   </div>

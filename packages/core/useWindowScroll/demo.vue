@@ -7,22 +7,22 @@ const { x, y } = useWindowScroll({ behavior: 'smooth' })
 <template>
   <div>
     <div>
-      See scroll values in the lower right corner of the screen.
+      查看屏幕右下角的滚动值。
     </div>
     <div class="scroller" />
     <div class="float">
       <note class="mb-2">
-        Scroll value
+        滚动值
       </note>
       x: {{ x }}<br>
       y: {{ y }}
     </div>
   </div>
   <button @click="x += 200">
-    scroll X
+    滚动 X
   </button>
   <button @click="y += 200">
-    scroll Y
+    滚动 Y
   </button>
 </template>
 

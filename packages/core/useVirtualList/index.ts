@@ -8,7 +8,7 @@ type UseVirtualListItemSize = number | ((index: number) => number)
 export interface UseHorizontalVirtualListOptions extends UseVirtualListOptionsBase {
 
   /**
-   * item width, accept a pixel value or a function that returns the width
+   * 每个项目的宽度，可以是像素值，也可以是返回宽度的函数
    *
    * @default 0
    */
@@ -18,7 +18,7 @@ export interface UseHorizontalVirtualListOptions extends UseVirtualListOptionsBa
 
 export interface UseVerticalVirtualListOptions extends UseVirtualListOptionsBase {
   /**
-   * item height, accept a pixel value or a function that returns the height
+   * 每个项目的高度，可以是像素值，也可以是返回高度的函数
    *
    * @default 0
    */
@@ -27,7 +27,7 @@ export interface UseVerticalVirtualListOptions extends UseVirtualListOptionsBase
 
 export interface UseVirtualListOptionsBase {
   /**
-   * the extra buffer items outside of the view area
+   * 视图区域外的额外缓冲项目数量
    *
    * @default 5
    */
@@ -65,7 +65,7 @@ export interface UseVirtualListReturn<T> {
 }
 
 /**
- * Please consider using [`vue-virtual-scroller`](https://github.com/Akryum/vue-virtual-scroller) if you are looking for more features.
+ * 如果您需要更多功能，请考虑使用 [`vue-virtual-scroller`](https://github.com/Akryum/vue-virtual-scroller)。
  */
 export function useVirtualList<T = any>(list: MaybeRef<T[]>, options: UseVirtualListOptions): UseVirtualListReturn<T> {
   const { containerStyle, wrapperProps, scrollTo, calculateRange, currentList, containerRef } = 'itemHeight' in options

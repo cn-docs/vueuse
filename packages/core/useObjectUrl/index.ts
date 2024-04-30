@@ -3,7 +3,7 @@ import { toValue, tryOnScopeDispose } from '@vueuse/shared'
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 
 /**
- * Reactive URL representing an object.
+ * 响应式 Object URL
  *
  * @see https://vueuse.org/useObjectUrl
  * @param object

@@ -29,7 +29,7 @@ export type GeneralPermissionDescriptor =
 
 export interface UsePermissionOptions<Controls extends boolean> extends ConfigurableNavigator {
   /**
-   * Expose more controls
+   * return 更多属性
    *
    * @default false
    */

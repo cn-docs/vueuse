@@ -17,7 +17,8 @@ interface NavigatorWithShare {
 }
 
 /**
- * Reactive Web Share API.
+ * 响应式 Web Share API.
+ * 浏览器提供了可以分享文本或文件内容的功能。
  *
  * @see https://vueuse.org/useShare
  * @param shareOptions

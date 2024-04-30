@@ -2,7 +2,7 @@ import { useNetwork } from '../useNetwork'
 import type { ConfigurableWindow } from '../_configurable'
 
 /**
- * Reactive online state.
+ * 响应式在线状态。
  *
  * @see https://vueuse.org/useOnline
  * @param options

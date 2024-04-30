@@ -26,7 +26,7 @@ watchEffect(() => {
   <div class="flex flex-col gap-4 text-center">
     <div>
       <button @click="enabled = !enabled">
-        {{ enabled ? 'Stop' : 'Start' }}
+        {{ enabled ? '停止' : '启动' }}
       </button>
     </div>
 

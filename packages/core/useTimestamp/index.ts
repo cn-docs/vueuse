@@ -6,40 +6,40 @@ import { useRafFn } from '../useRafFn'
 
 export interface UseTimestampOptions<Controls extends boolean> {
   /**
-   * Expose more controls
+   * 暴露更多控制选项
    *
    * @default false
    */
   controls?: Controls
 
   /**
-   * Offset value adding to the value
+   * 添加到值的偏移量
    *
    * @default 0
    */
   offset?: number
 
   /**
-   * Update the timestamp immediately
+   * 立即更新时间戳
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * Update interval, or use requestAnimationFrame
+   * 更新间隔，或使用 requestAnimationFrame
    *
    * @default requestAnimationFrame
    */
   interval?: 'requestAnimationFrame' | number
   /**
-   * Callback on each update
+   * 每次更新时的回调函数
    */
   callback?: (timestamp: number) => void
 }
 
 /**
- * Reactive current timestamp.
+ * 响应式的当前时间戳。
  *
  * @see https://vueuse.org/useTimestamp
  * @param options

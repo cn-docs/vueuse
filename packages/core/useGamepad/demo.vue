@@ -10,15 +10,15 @@ const { isSupported, gamepads } = useGamepad()
     <div v-if="!isSupported" flex="~ row" place="items-center content-center" items="center" space="x-4">
       <i i-carbon-error text="5xl" opacity="50" />
       <div flex="~ col">
-        <span text="2xl">Gamepad is not supported on this device.</span>
-        <span opacity="70">It seems your device does not support the Gamepad API. Check <a href="https://caniuse.com/gamepad">here</a> for a list supported devices.</span>
+        <span text="2xl">此设备不支持游戏手柄。</span>
+        <span opacity="70">似乎您的设备不支持游戏手柄 API。查看<a href="https://caniuse.com/gamepad">这里</a>以查看支持游戏手柄的设备列表。</span>
       </div>
     </div>
     <div v-else-if="gamepads.length === 0" flex="~ row" place="items-center content-center" items="center" space="x-4">
       <i i-carbon-game-console text="5xl" opacity="50" />
       <div flex="~ col">
-        <span text="2xl">No Gamepad Detected</span>
-        <span opacity="50">Ensure your gamepad is connected and press a button to wake it up.</span>
+        <span text="2xl">未检测到游戏手柄</span>
+        <span opacity="50">确保您的游戏手柄已连接，并按下按钮唤醒它。</span>
       </div>
     </div>
     <div v-else space="y-4">

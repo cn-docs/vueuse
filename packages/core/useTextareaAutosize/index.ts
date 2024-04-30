@@ -5,17 +5,17 @@ import { nextTick, ref, watch } from 'vue-demi'
 import { useResizeObserver } from '../useResizeObserver'
 
 export interface UseTextareaAutosizeOptions {
-  /** Textarea element to autosize. */
+  /** 自动调整大小的文本区域元素。 */
   element?: MaybeRef<HTMLTextAreaElement | undefined>
-  /** Textarea content. */
+  /** 文本区域的内容。 */
   input?: MaybeRef<string | undefined>
-  /** Watch sources that should trigger a textarea resize. */
+  /** 监听应触发文本区域大小调整的源。 */
   watch?: WatchSource | Array<WatchSource>
-  /** Function called when the textarea size changes. */
+  /** 当文本区域大小发生变化时调用的函数。 */
   onResize?: () => void
-  /** Specify style target to apply the height based on textarea content. If not provided it will use textarea it self.  */
+  /** 指定样式目标以根据文本区域内容应用高度。如果未提供，将使用文本区域本身。 */
   styleTarget?: MaybeRef<HTMLElement>
-  /** Specify the style property that will be used to manipulate height. Can be `height | minHeight`. Default value is `height`. */
+  /** 指定用于调整高度的样式属性。可以是 `height | minHeight`。默认值为 `height`。 */
   styleProp?: 'height' | 'minHeight'
 }
 

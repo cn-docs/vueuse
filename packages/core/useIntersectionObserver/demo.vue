@@ -22,26 +22,26 @@ const { isActive, pause, resume } = useIntersectionObserver(
         :checked="isActive" type="checkbox" name="enabled"
         @input="($event.target as HTMLInputElement)!.checked ? resume() : pause() "
       >
-      <span>Enable</span>
+      <span>启用</span>
     </label>
   </div>
   <div ref="root" class="root">
     <p class="notice">
-      Scroll me down!
+      向下滚动我！
     </p>
     <div ref="target" class="target">
       <p>Hello world!</p>
     </div>
   </div>
   <div class="text-center">
-    Element
+    元素
     <BooleanDisplay
       :value="isVisible"
-      true="inside"
-      false="outside"
+      true="内部"
+      false="外部"
       class="font-bold"
     />
-    the viewport
+    视口
   </div>
 </template>
 

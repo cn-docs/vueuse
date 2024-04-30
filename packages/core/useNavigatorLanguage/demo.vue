@@ -15,6 +15,6 @@ const { isSupported, language } = useNavigatorLanguage()
     <code class="mr-2">{{ language }}</code>
   </div>
   <div v-else>
-    The Navigator.language API is not supported in your browser.
+    您的浏览器不支持 Navigator.language API。
   </div>
 </template>

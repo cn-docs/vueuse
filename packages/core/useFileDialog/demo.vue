@@ -3,19 +3,19 @@ import { useFileDialog } from '.'
 
 const { files, open, reset, onChange } = useFileDialog()
 onChange((files) => {
-  /** do something with files */
+  /** 对文件做操作 */
 })
 </script>
 
 <template>
   <button type="button" @click="open()">
-    Choose files
+    选择文件
   </button>
   <button type="button" :disabled="!files" @click="reset()">
-    Reset
+    重置
   </button>
   <template v-if="files">
-    <p>You have selected: <b>{{ `${files.length} ${files.length === 1 ? 'file' : 'files'}` }}</b></p>
+    <p>你已选择：<b>{{ `${files.length} 个文件` }}</b></p>
     <li v-for="file of files" :key="file.name">
       {{ file.name }}
     </li>

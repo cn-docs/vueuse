@@ -10,19 +10,19 @@ export type UseTextDirectionValue = 'ltr' | 'rtl' | 'auto'
 
 export interface UseTextDirectionOptions extends ConfigurableDocument {
   /**
-   * CSS Selector for the target element applying to
+   * 适用于的目标元素的 CSS 选择器
    *
    * @default 'html'
    */
   selector?: string
   /**
-   * Observe `document.querySelector(selector)` changes using MutationObserve
+   * 使用 MutationObserver 观察 `document.querySelector(selector)` 的变化
    *
    * @default false
    */
   observe?: boolean
   /**
-   * Initial value
+   * 初始值
    *
    * @default 'ltr'
    */
@@ -30,7 +30,7 @@ export interface UseTextDirectionOptions extends ConfigurableDocument {
 }
 
 /**
- * Reactive dir of the element's text.
+ * 元素文本的响应式方向。
  *
  * @see https://vueuse.org/useTextDirection
  */

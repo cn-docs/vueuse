@@ -18,7 +18,7 @@ const { toggle } = useFullscreen(el)
       />
     </div>
     <button @click="toggle">
-      Go Fullscreen
+      全屏显示
     </button>
   </div>
 </template>

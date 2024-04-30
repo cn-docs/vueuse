@@ -10,7 +10,7 @@ export function useSessionStorage<T>(key: string, initialValue: MaybeRefOrGetter
 export function useSessionStorage<T = unknown>(key: string, initialValue: MaybeRefOrGetter<null>, options?: UseStorageOptions<T>): RemovableRef<T>
 
 /**
- * Reactive SessionStorage.
+ * 响应式 SessionStorage.
  *
  * @see https://vueuse.org/useSessionStorage
  * @param key

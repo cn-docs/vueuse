@@ -7,13 +7,13 @@ import type { ConfigurableWindow } from '../_configurable'
 
 export interface UseFocusWithinReturn {
   /**
-   * True if the element or any of its descendants are focused
+   * 如果该元素或其任何子元素获得焦点，则为 true
    */
   focused: ComputedRef<boolean>
 }
 
 /**
- * Track if focus is contained within the target element
+ * 跟踪焦点是否包含在目标元素内
  *
  * @see https://vueuse.org/useFocusWithin
  * @param target The target element to track

@@ -10,17 +10,17 @@ const selectedStyle = computed(() => text.value ? 'text-primary' : 'text-gray-40
 <template>
   <div ref="demo">
     <p class="font-600 text-blue-600">
-      You can select any text on the page.
+      您可以在页面上选择任何文本。
     </p>
     <p>
-      <strong>Selected Text:</strong>
+      <strong>所选文本：</strong>
       <em
         :class="selectedStyle"
         class="whitespace-pre h-44 overflow-y-auto block"
-      >{{ text || 'No selected' }}</em>
+      >{{ text || '未选择任何内容' }}</em>
     </p>
     <p>
-      <strong>Selected rects:</strong>
+      <strong>所选矩形区域：</strong>
       <pre class="h-72" lang="json">{{ rects }}</pre>
     </p>
   </div>

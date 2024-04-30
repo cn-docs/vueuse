@@ -33,21 +33,21 @@ async function workerSort() {
 </script>
 
 <template>
-  <p>Current Time: <b>{{ computedTime }}</b></p>
+  <p>当前时间：<b>{{ computedTime }}</b></p>
   <note class="mb-2">
-    This is a demo showing sort for large array (5 million numbers) with or w/o WebWorker.<br>Clock stops when UI blocking happens.
+    这是一个演示，对包含 500 万个数字的大数组进行排序，使用 WebWorker 或不使用 WebWorker。<br>当发生 UI 阻塞时，时间停止。
   </note>
   <button @click="baseSort">
-    Sort in Main Thread
+    在主线程中排序
   </button>
   <button v-if="!running" @click="workerSort">
-    Sort in Worker
+    在 Worker 线程中排序
   </button>
   <button v-else class="orange" @click="workerTerminate('PENDING')">
-    Terminate Worker
+    终止 Worker 线程
   </button>
   <p v-if="data">
-    Thread: <strong>{{ runner }}</strong><br>
-    Result: <strong>{{ data }}</strong>
+    线程：<strong>{{ runner }}</strong><br>
+    结果：<strong>{{ data }}</strong>
   </p>
 </template>

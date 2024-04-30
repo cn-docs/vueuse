@@ -11,30 +11,29 @@ type InfiniteScrollElement = HTMLElement | SVGElement | Window | Document | null
 
 export interface UseInfiniteScrollOptions<T extends InfiniteScrollElement = InfiniteScrollElement> extends UseScrollOptions {
   /**
-   * The minimum distance between the bottom of the element and the bottom of the viewport
+   * 元素底部与视口底部的最小距离
    *
    * @default 0
    */
   distance?: number
 
   /**
-   * The direction in which to listen the scroll.
+   * 监听滚动的方向。
    *
    * @default 'bottom'
    */
   direction?: 'top' | 'bottom' | 'left' | 'right'
 
   /**
-   * The interval time between two load more (to avoid too many invokes).
+   * 两次加载更多之间的时间间隔（用于避免过多的调用）。
    *
    * @default 100
    */
   interval?: number
 
   /**
-   * A function that determines whether more content can be loaded for a specific element.
-   * Should return `true` if loading more content is allowed for the given element,
-   * and `false` otherwise.
+   * 用于确定特定元素是否可以加载更多内容的函数。
+   * 如果对于给定的元素允许加载更多内容，则应返回 `true`，否则返回 `false`。
    */
   canLoadMore?: (el: T) => boolean
 }

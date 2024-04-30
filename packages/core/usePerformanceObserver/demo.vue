@@ -15,7 +15,7 @@ function refresh() {
 
 <template>
   <button @click="refresh">
-    refresh
+    刷新
   </button>
 
   <pre lang="json">{{ entrys }}</pre>

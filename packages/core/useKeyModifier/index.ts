@@ -11,14 +11,14 @@ const defaultEvents: WindowEventName[] = ['mousedown', 'mouseup', 'keydown', 'ke
 
 export interface UseModifierOptions<Initial> extends ConfigurableDocument {
   /**
-   * Event names that will prompt update to modifier states
+   * 触发修改器状态更新的事件名称
    *
    * @default ['mousedown', 'mouseup', 'keydown', 'keyup']
    */
   events?: WindowEventName[]
 
   /**
-   * Initial value of the returned ref
+   * 返回的 ref 的初始值
    *
    * @default null
    */

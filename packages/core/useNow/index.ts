@@ -6,14 +6,14 @@ import { useRafFn } from '../useRafFn'
 
 export interface UseNowOptions<Controls extends boolean> {
   /**
-   * Expose more controls
+   * 暴露更多控制选项
    *
    * @default false
    */
   controls?: Controls
 
   /**
-   * Update interval in milliseconds, or use requestAnimationFrame
+   * 更新间隔，单位为毫秒，或使用 requestAnimationFrame
    *
    * @default requestAnimationFrame
    */
@@ -21,7 +21,7 @@ export interface UseNowOptions<Controls extends boolean> {
 }
 
 /**
- * Reactive current Date instance.
+ * 反应性当前 Date 实例
  *
  * @see https://vueuse.org/useNow
  * @param options

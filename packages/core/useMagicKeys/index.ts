@@ -8,48 +8,48 @@ import { DefaultMagicKeysAliasMap } from './aliasMap'
 
 export interface UseMagicKeysOptions<Reactive extends boolean> {
   /**
-   * Returns a reactive object instead of an object of refs
+   * 返回一个响应式对象而不是 ref 对象
    *
    * @default false
    */
   reactive?: Reactive
 
   /**
-   * Target for listening events
+   * 监听事件的目标
    *
    * @default window
    */
   target?: MaybeRefOrGetter<EventTarget>
 
   /**
-   * Alias map for keys, all the keys should be lowercase
+   * 键的别名映射，所有键都应为小写
    * { target: keycode }
    *
    * @example { ctrl: "control" }
-   * @default <predefined-map>
+   * @default <预定义映射>
    */
   aliasMap?: Record<string, string>
 
   /**
-   * Register passive listener
+   * 注册被动监听器
    *
    * @default true
    */
   passive?: boolean
 
   /**
-   * Custom event handler for keydown/keyup event.
-   * Useful when you want to apply custom logic.
+   * 自定义键盘按下/释放事件的处理程序。
+   * 当您想应用自定义逻辑时很有用。
    *
-   * When using `e.preventDefault()`, you will need to pass `passive: false` to useMagicKeys().
+   * 当使用 `e.preventDefault()` 时，您需要传递 `passive: false` 给 `useMagicKeys()`。
    */
   onEventFired?: (e: KeyboardEvent) => void | boolean
 }
 
 export interface MagicKeysInternal {
   /**
-   * A Set of currently pressed keys,
-   * Stores raw keyCodes.
+   * 当前按下的键的集合，
+   * 存储原始的键码。
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
    */
@@ -65,7 +65,7 @@ export type UseMagicKeysReturn<Reactive extends boolean> =
   >
 
 /**
- * Reactive keys pressed state, with magical keys combination support.
+ * 响应式按键按下状态，具有神奇按键组合支持。
  *
  * @see https://vueuse.org/useMagicKeys
  */
