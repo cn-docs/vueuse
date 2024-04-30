@@ -23,8 +23,7 @@ export type ResizeObserverCallback = (entries: ReadonlyArray<ResizeObserverEntry
 
 export interface UseResizeObserverOptions extends ConfigurableWindow {
   /**
-   * Sets which box model the observer will observe changes to. Possible values
-   * are `content-box` (the default), `border-box` and `device-pixel-content-box`.
+   * 设置观察器将观察哪种盒模型的变化。可能的值有 `content-box`（默认值）、`border-box` 和 `device-pixel-content-box`。
    *
    * @default 'content-box'
    */
@@ -39,7 +38,7 @@ declare class ResizeObserver {
 }
 
 /**
- * Reports changes to the dimensions of an Element's content or the border-box
+ * 监听元素内容或边框盒尺寸的变化
  *
  * @see https://vueuse.org/useResizeObserver
  * @param target

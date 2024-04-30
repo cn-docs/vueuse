@@ -9,15 +9,15 @@ export type UseSortedFn<T = any> = (arr: T[], compareFn: UseSortedCompareFn<T>) 
 
 export interface UseSortedOptions<T = any> {
   /**
-   * sort algorithm
+   * 排序算法
    */
   sortFn?: UseSortedFn<T>
   /**
-   * compare function
+   * 比较函数
    */
   compareFn?: UseSortedCompareFn<T>
   /**
-   * change the value of the source array
+   * 更改源数组的值
    * @default false
    */
   dirty?: boolean

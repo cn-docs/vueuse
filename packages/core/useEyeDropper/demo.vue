@@ -5,17 +5,17 @@ const { isSupported, open, sRGBHex } = useEyeDropper()
 </script>
 
 <template>
-  <template v-if="isSupported">
-    <div>isSupported: {{ isSupported }}</div>
-    <div>sRGBHex: <span :style="{ color: sRGBHex }">{{ sRGBHex }}</span></div>
+  <div v-if="isSupported">
+    <div>是否支持: {{ isSupported }}</div>
+    <div>sRGB十六进制: <span :style="{ color: sRGBHex }">{{ sRGBHex }}</span></div>
     <button
       :disabled="!isSupported"
       @click="() => open()"
     >
-      Open Eye Dropper
+      打开取色器
     </button>
-  </template>
+  </div>
   <div v-else>
-    <span>Not Supported by Your Browser</span>
+    <span>你的浏览器不支持此功能</span>
   </div>
 </template>

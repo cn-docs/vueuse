@@ -25,7 +25,7 @@ function handleOnClick() {
     <button @click="handleOnClick">
       <span class="ml-2">{{ dir.toUpperCase() }}</span>
     </button>
-    <span class="p-4 opacity-50">Click to change the direction</span>
+    <span class="p-4 opacity-50">单击以更改方向</span>
   </div>
 </template>
 

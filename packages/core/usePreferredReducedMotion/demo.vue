@@ -6,7 +6,7 @@ const motion = usePreferredReducedMotion()
 
 <template>
   <note class="mb-2">
-    Preferred Motion:
+    首选动作:
   </note>
   <code>{{ motion }}</code>
 </template>

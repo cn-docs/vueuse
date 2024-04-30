@@ -9,7 +9,7 @@ export type UseThrottledRefHistoryOptions<Raw, Serialized = Raw> = Omit<UseRefHi
 export type UseThrottledRefHistoryReturn<Raw, Serialized = Raw> = UseRefHistoryReturn<Raw, Serialized>
 
 /**
- * Shorthand for [useRefHistory](https://vueuse.org/useRefHistory) with throttled filter.
+ * 带节流功能的 useRefHistory 的简写。
  *
  * @see https://vueuse.org/useThrottledRefHistory
  * @param source

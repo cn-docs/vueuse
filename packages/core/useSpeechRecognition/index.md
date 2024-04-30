@@ -29,7 +29,7 @@ const {
 
 ```ts
 useSpeechRecognition({
-  lang: 'en-US',
+  lang: 'zh-CN',
   interimResults: true,
   continuous: true,
 })

@@ -5,5 +5,5 @@ const timestamp = useTimestamp()
 </script>
 
 <template>
-  <div>Timestamp: {{ timestamp }}</div>
+  <div>时间戳: {{ timestamp }}</div>
 </template>

@@ -4,54 +4,54 @@ import type { ComputedRef, Ref } from 'vue-demi'
 import type { MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
 
 /**
- * Cubic bezier points
+ * 贝塞尔曲线点
  */
 export type CubicBezierPoints = [number, number, number, number]
 
 /**
- * Easing function
+ * 缓动函数
  */
 export type EasingFunction = (n: number) => number
 
 /**
- * Transition options
+ * 过渡选项
  */
 export interface TransitionOptions {
 
   /**
-   * Manually abort a transition
+   * 手动中止过渡
    */
   abort?: () => any
 
   /**
-   * Transition duration in milliseconds
+   * 过渡持续时间（毫秒）
    */
   duration?: MaybeRef<number>
 
   /**
-   * Easing function or cubic bezier points for calculating transition values
+   * 缓动函数或用于计算过渡值的贝塞尔曲线点
    */
   transition?: MaybeRef<EasingFunction | CubicBezierPoints>
 }
 
 export interface UseTransitionOptions extends TransitionOptions {
   /**
-   * Milliseconds to wait before starting transition
+   * 开始过渡前等待的毫秒数
    */
   delay?: MaybeRef<number>
 
   /**
-   * Disables the transition
+   * 禁用过渡
    */
   disabled?: MaybeRef<boolean>
 
   /**
-   * Callback to execute after transition finishes
+   * 过渡结束后执行的回调函数
    */
   onFinished?: () => void
 
   /**
-   * Callback to execute after transition starts
+   * 过渡开始后执行的回调函数
    */
   onStarted?: () => void
 }
@@ -128,7 +128,7 @@ function toVec(t: number | number[] | undefined) {
 }
 
 /**
- * Transition from one value to another.
+ * 从一个值过渡到另一个值。
  *
  * @param source
  * @param from

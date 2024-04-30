@@ -18,17 +18,17 @@ on(_message => message.value = news[Math.floor(Math.random() * news.length)])
   <div style="display: flex; gap: 100px;">
     <div>
       <div class="whitespace-nowrap">
-        News channel:
+        新闻频道：
       </div>
-      <button class="whitespace-nowrap" @click="emit('The Tokyo Olympics has begun')">
-        Broadcast
+      <button class="whitespace-nowrap" @click="emit('东京奥运会已开始')">
+        广播
       </button>
     </div>
     <div>
       <div style="margin-bottom: 13px;">
-        Television:
+        电视：
       </div>
-      <div>{{ message || '--- no signal ---' }}</div>
+      <div>{{ message || '--- 无信号 ---' }}</div>
     </div>
   </div>
 </template>

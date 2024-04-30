@@ -14,7 +14,7 @@ useResizeObserver(el, (entries) => {
 
 <template>
   <note class="mb-2">
-    Resize the box to see changes
+    调整大小以查看更改
   </note>
   <textarea ref="el" class="resizer" disabled v-text="text" />
 </template>

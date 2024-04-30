@@ -7,22 +7,17 @@ import { defaultNavigator } from '../_configurable'
 export interface UseVibrateOptions extends ConfigurableNavigator {
   /**
    *
-   * Vibration Pattern
-   *
-   * An array of values describes alternating periods in which the
-   * device is vibrating and not vibrating. Each value in the array
-   * is converted to an integer, then interpreted alternately as
-   * the number of milliseconds the device should vibrate and the
-   * number of milliseconds it should not be vibrating
+   * 一个值数组描述了设备震动和不震动的交替周期。
+   * 数组中的每个值都被转换为整数，然后交替解释为设备应该震动的毫秒数和不应该震动的毫秒数。
    *
    * @default []
    *
    */
   pattern?: MaybeRefOrGetter<number[] | number>
   /**
-   * Interval to run a persistent vibration, in ms
+   * 持续震动的间隔，以毫秒为单位
    *
-   * Pass `0` to disable
+   * 设置为 `0` 表示禁用
    *
    * @default 0
    *
@@ -31,7 +26,7 @@ export interface UseVibrateOptions extends ConfigurableNavigator {
 }
 
 /**
- * Reactive vibrate
+ * 响应式震动
  *
  * @see https://vueuse.org/useVibrate
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API

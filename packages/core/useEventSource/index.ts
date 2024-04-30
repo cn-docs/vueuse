@@ -8,35 +8,35 @@ export type EventSourceStatus = 'CONNECTING' | 'OPEN' | 'CLOSED'
 
 export interface UseEventSourceOptions extends EventSourceInit {
   /**
-   * Enabled auto reconnect
+   * 启用自动重连
    *
    * @default false
    */
   autoReconnect?: boolean | {
     /**
-     * Maximum retry times.
+     * 最大重试次数。
      *
-     * Or you can pass a predicate function (which returns true if you want to retry).
+     * 或者你可以传递一个断言函数（如果要重试，则返回true）。
      *
      * @default -1
      */
     retries?: number | (() => boolean)
 
     /**
-     * Delay for reconnect, in milliseconds
+     * 重连延迟，单位为毫秒
      *
      * @default 1000
      */
     delay?: number
 
     /**
-     * On maximum retry times reached.
+     * 在达到最大重试次数时触发。
      */
     onFailed?: Fn
   }
 
   /**
-   * Automatically open a connection
+   * 自动打开连接
    *
    * @default true
    */
@@ -45,40 +45,40 @@ export interface UseEventSourceOptions extends EventSourceInit {
 
 export interface UseEventSourceReturn<Events extends string[]> {
   /**
-   * Reference to the latest data received via the EventSource,
-   * can be watched to respond to incoming messages
+   * 对通过 EventSource 接收到的最新数据的引用，
+   * 可以被监视以响应传入的消息
    */
   data: Ref<string | null>
 
   /**
-   * The current state of the connection, can be only one of:
-   * 'CONNECTING', 'OPEN' 'CLOSED'
+   * 连接的当前状态，只能是以下之一：
+   * 'CONNECTING', 'OPEN', 'CLOSED'
    */
   status: Ref<EventSourceStatus>
 
   /**
-   * The latest named event
+   * 最新的命名事件
    */
   event: Ref<Events[number] | null>
 
   /**
-   * The current error
+   * 当前错误
    */
   error: Ref<Event | null>
 
   /**
-   * Closes the EventSource connection gracefully.
+   * 优雅地关闭 EventSource 连接。
    */
   close: EventSource['close']
 
   /**
-   * Reopen the EventSource connection.
-   * If there the current one is active, will close it before opening a new one.
+   * 重新打开 EventSource 连接。
+   * 如果当前连接处于活动状态，则会在打开新连接之前关闭当前连接。
    */
   open: Fn
 
   /**
-   * Reference to the current EventSource instance.
+   * 对当前 EventSource 实例的引用。
    */
   eventSource: Ref<EventSource | null>
 }
@@ -90,7 +90,7 @@ function resolveNestedOptions<T>(options: T | true): T {
 }
 
 /**
- * Reactive wrapper for EventSource.
+ * EventSource 的响应式包装器。
  *
  * @see https://vueuse.org/useEventSource
  * @see https://developer.mozilla.org/en-US/docs/Web/API/EventSource/EventSource EventSource

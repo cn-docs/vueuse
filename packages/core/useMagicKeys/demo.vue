@@ -17,7 +17,7 @@ const keys = computed(() => Array.from(current))
 
     <div>
       <note class="text-center mt-0 mb-5">
-        Press the following keys to test out
+        按以下键测试
       </note>
       <div class="flex gap-3 justify-center">
         <Key :value="v">
@@ -54,7 +54,7 @@ const keys = computed(() => Array.from(current))
       </div>
 
       <div class="text-center mt-4">
-        <Note>Keys Pressed</Note>
+        <Note>已按下的键</Note>
         <div class="flex mt-2 justify-center space-x-1 min-h-1.5em">
           <code
             v-for="key in keys"

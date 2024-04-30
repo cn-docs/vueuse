@@ -6,34 +6,34 @@ import { useClamp } from '../../math/useClamp'
 
 export interface UseOffsetPaginationOptions {
   /**
-   * Total number of items.
+   * 总项目数。
    */
   total?: MaybeRefOrGetter<number>
 
   /**
-   * The number of items to display per page.
+   * 每页显示的项目数。
    * @default 10
    */
   pageSize?: MaybeRefOrGetter<number>
 
   /**
-   * The current page number.
+   * 当前页码。
    * @default 1
    */
   page?: MaybeRef<number>
 
   /**
-   * Callback when the `page` change.
+   * 当 `page` 改变时的回调函数。
    */
   onPageChange?: (returnValue: UnwrapNestedRefs<UseOffsetPaginationReturn>) => unknown
 
   /**
-   * Callback when the `pageSize` change.
+   * 当 `pageSize` 改变时的回调函数。
    */
   onPageSizeChange?: (returnValue: UnwrapNestedRefs<UseOffsetPaginationReturn>) => unknown
 
   /**
-   * Callback when the `pageCount` change.
+   * 当 `pageCount` 改变时的回调函数。
    */
   onPageCountChange?: (returnValue: UnwrapNestedRefs<UseOffsetPaginationReturn>) => unknown
 }

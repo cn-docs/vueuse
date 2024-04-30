@@ -2,8 +2,9 @@
 import { ref, watch } from 'vue'
 import { useSpeechRecognition } from '@vueuse/core'
 
-const lang = ref('en-US')
+const lang = ref('zh-CN')
 
+// 随机从数组中选取指定数量的元素
 function sample<T>(arr: T[], size: number) {
   const shuffled = arr.slice(0)
   let i = arr.length
@@ -18,9 +19,13 @@ function sample<T>(arr: T[], size: number) {
   return shuffled.slice(0, size)
 }
 
+// 颜色数组
 const colors = ['aqua', 'azure', 'beige', 'bisque', 'black', 'blue', 'brown', 'chocolate', 'coral', 'crimson', 'cyan', 'fuchsia', 'ghostwhite', 'gold', 'goldenrod', 'gray', 'green', 'indigo', 'ivory', 'khaki', 'lavender', 'lime', 'linen', 'magenta', 'maroon', 'moccasin', 'navy', 'olive', 'orange', 'orchid', 'peru', 'pink', 'plum', 'purple', 'red', 'salmon', 'sienna', 'silver', 'snow', 'tan', 'teal', 'thistle', 'tomato', 'turquoise', 'violet', 'white', 'yellow', 'transparent']
+
+// 颜色语法
 const grammar = `#JSGF V1.0; grammar colors; public <color> = ${colors.join(' | ')} ;`
 
+// 使用语音识别
 const speech = useSpeechRecognition({
   lang,
   continuous: true,
@@ -29,12 +34,13 @@ const speech = useSpeechRecognition({
 const color = ref('transparent')
 
 if (speech.isSupported.value) {
-  // @ts-expect-error missing types
+  // @ts-expect-error 缺少类型
   const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList
   const speechRecognitionList = new SpeechGrammarList()
   speechRecognitionList.addFromString(grammar, 1)
   speech.recognition!.grammars = speechRecognitionList
 
+  // 监听语音识别结果
   watch(speech.result, () => {
     for (const i of speech.result.value.toLowerCase().split(' ').reverse()) {
       if (colors.includes(i)) {
@@ -45,8 +51,10 @@ if (speech.isSupported.value) {
   })
 }
 
+// 随机选取的颜色数组
 const sampled = ref<string[]>([])
 
+// 开始语音识别
 function start() {
   color.value = 'transparent'
   speech.result.value = ''
@@ -64,49 +72,49 @@ watch(isListening, isListening => isListening ? null : selectedLanguage.value = 
 <template>
   <div>
     <div v-if="!isSupported">
-      Your browser does not support SpeechRecognition API,
+      您的浏览器不支持语音识别 API，
       <a
         href="https://caniuse.com/mdn-api_speechrecognition"
         target="_blank"
-      >more details</a>
+      >查看更多详情</a>
     </div>
     <div v-else>
       <div space-x-4>
         <label class="radio">
+          <input v-model="lang" type="radio" value="zh-CN">
+          <span>普通话</span>
+        </label>
+        <label class="radio">
           <input v-model="lang" value="en-US" type="radio">
-          <span>English (US)</span>
+          <span>英语（美国）</span>
         </label>
         <label class="radio">
           <input v-model="lang" value="fr" type="radio">
-          <span>French</span>
-        </label>
-        <label class="radio">
-          <input v-model="lang" value="es" type="radio">
-          <span>Spanish</span>
+          <span>法语</span>
         </label>
       </div>
       <button v-if="!isListening" @click="start">
-        Press and talk
+        按住并讲话
       </button>
       <button v-if="isListening" class="orange" @click="stop">
-        Stop
+        停止
       </button>
       <div v-if="isListening" class="mt-4">
-        <template v-if="selectedLanguage === 'en-US'">
+        <template v-if="selectedLanguage === 'zh-CN'">
           <note class="mb-2">
-            <b>Please say a color</b>
+            <b>请说一个颜色</b>
           </note>
           <note class="mb-2">
-            try: {{ sampled.join(', ') }}
+            尝试：{{ sampled.join(', ') }}
           </note>
         </template>
 
-        <p v-else-if="selectedLanguage === 'es'">
-          Speak some Spanish!
+        <p v-else-if="selectedLanguage === 'en-US'">
+          说一些英语！
         </p>
 
         <p v-else-if="selectedLanguage === 'fr'">
-          Speak some French!
+          说一些法语！
         </p>
 
         <p

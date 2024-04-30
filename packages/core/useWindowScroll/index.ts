@@ -8,7 +8,7 @@ export interface UseWindowScrollOptions extends ConfigurableWindow {
 }
 
 /**
- * Reactive window scroll.
+ * 响应式窗口滚动。
  *
  * @see https://vueuse.org/useWindowScroll
  * @param options

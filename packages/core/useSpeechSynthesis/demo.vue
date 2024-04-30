@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue'
 import { useSpeechSynthesis } from '@vueuse/core'
 
 const voice = ref<SpeechSynthesisVoice>(undefined as unknown as SpeechSynthesisVoice)
-const text = ref('Hello, everyone! Good morning!')
+const text = ref('您好，欢迎使用 VueUse！')
 const pitch = ref(1)
 const rate = ref(1)
 
@@ -11,6 +11,7 @@ const speech = useSpeechSynthesis(text, {
   voice,
   pitch,
   rate,
+  lang: 'zh-CN',
 })
 
 let synth: SpeechSynthesis
@@ -50,23 +51,23 @@ function stop() {
 <template>
   <div>
     <div v-if="!speech.isSupported">
-      Your browser does not support SpeechSynthesis API,
+      您的浏览器不支持语音合成 API，
       <a
         href="https://caniuse.com/mdn-api_speechsynthesis"
         target="_blank"
-      >more details</a>
+      >查看更多详情</a>
     </div>
     <div v-else>
-      <label class="font-bold mr-2">Spoken Text</label>
+      <label class="font-bold mr-2">朗读文本</label>
       <input v-model="text" class="!inline-block" type="text">
 
       <br>
-      <label class="font-bold mr-2">Language</label>
+      <label class="font-bold mr-2">语言</label>
       <div bg="$vp-c-bg" border="$vp-c-divider 1" inline-flex items-center relative rounded>
         <i i-carbon-language absolute left-2 opacity-80 pointer-events-none />
         <select v-model="voice" px-8 border-0 bg-transparent h-9 rounded appearance-none>
           <option bg="$vp-c-bg" disabled>
-            Select Language
+            选择语言
           </option>
           <option
             v-for="(voice, i) in voices"
@@ -82,7 +83,7 @@ function stop() {
 
       <br>
       <div inline-flex items-center>
-        <label class="font-bold mr-2">Pitch</label>
+        <label class="font-bold mr-2">音调</label>
         <div class="mt-1" inline-flex>
           <input v-model="pitch" type="range" min="0.5" max="2" step="0.1">
         </div>
@@ -90,7 +91,7 @@ function stop() {
 
       <br>
       <div inline-flex items-center>
-        <label class="font-bold mr-3">Rate</label>
+        <label class="font-bold mr-3">语速</label>
         <div class="mt-1" inline-flex>
           <input v-model="rate" type="range" min="0.5" max="2" step="0.1">
         </div>
@@ -101,13 +102,13 @@ function stop() {
           :disabled="speech.isPlaying.value"
           @click="play"
         >
-          {{ speech.status.value === 'pause' ? 'Resume' : 'Speak' }}
+          {{ speech.status.value === 'pause' ? '恢复' : '朗读' }}
         </button>
         <button :disabled="!speech.isPlaying.value" class="orange" @click="pause">
-          Pause
+          暂停
         </button>
         <button :disabled="!speech.isPlaying.value" class="red" @click="stop">
-          Stop
+          停止
         </button>
       </div>
     </div>

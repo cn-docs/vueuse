@@ -9,33 +9,34 @@ import type { UseSwipeDirection } from '../useSwipe'
 export interface UsePointerSwipeOptions {
   /**
    * @default 50
+   * 阈值
    */
   threshold?: number
 
   /**
-   * Callback on swipe start.
+   * 滑动开始时的回调。
    */
   onSwipeStart?: (e: PointerEvent) => void
 
   /**
-   * Callback on swipe move.
+   * 滑动移动时的回调。
    */
   onSwipe?: (e: PointerEvent) => void
 
   /**
-   * Callback on swipe end.
+   * 滑动结束时的回调。
    */
   onSwipeEnd?: (e: PointerEvent, direction: UseSwipeDirection) => void
 
   /**
-   * Pointer types to listen to.
+   * 要监听的指针类型。
    *
    * @default ['mouse', 'touch', 'pen']
    */
   pointerTypes?: PointerType[]
 
   /**
-   * Disable text selection on swipe.
+   * 在滑动时禁用文本选择。
    *
    * @default false
    */
@@ -53,7 +54,7 @@ export interface UsePointerSwipeReturn {
 }
 
 /**
- * Reactive swipe detection based on PointerEvents.
+ * 基于 PointerEvents 的响应式滑动检测。
  *
  * @see https://vueuse.org/usePointerSwipe
  * @param target

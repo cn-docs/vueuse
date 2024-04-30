@@ -6,28 +6,28 @@ import { defaultDocument } from '../_configurable'
 
 export interface UseScriptTagOptions extends ConfigurableDocument {
   /**
-   * Load the script immediately
+   * 立即加载脚本
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * Add `async` attribute to the script tag
+   * 在脚本标签中添加 `async` 属性
    *
    * @default true
    */
   async?: boolean
 
   /**
-   * Script type
+   * 脚本类型
    *
    * @default 'text/javascript'
    */
   type?: string
 
   /**
-   * Manual controls the timing of loading and unloading
+   * 手动控制加载和卸载的时机
    *
    * @default false
    */
@@ -40,14 +40,14 @@ export interface UseScriptTagOptions extends ConfigurableDocument {
   defer?: boolean
 
   /**
-   * Add custom attribute to the script tag
+   * 在脚本标签中添加自定义属性
    *
    */
   attrs?: Record<string, string>
 }
 
 /**
- * Async script tag loading.
+ * 异步加载脚本标签。
  *
  * @see https://vueuse.org/useScriptTag
  * @param src

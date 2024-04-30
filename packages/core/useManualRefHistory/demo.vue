@@ -13,24 +13,24 @@ const { canUndo, canRedo, history, commit, undo, redo } = useManualRefHistory(co
 <template>
   <div>Count: {{ count }}</div>
   <button @click="inc()">
-    Increment
+    增加
   </button>
   <button @click="dec()">
-    Decrement
+    减少
   </button>
   <span class="ml-2">/</span>
   <button @click="commit()">
-    Commit
+    提交
   </button>
   <button :disabled="!canUndo" @click="undo()">
-    Undo
+    撤销
   </button>
   <button :disabled="!canRedo" @click="redo()">
-    Redo
+    重做
   </button>
   <br>
   <br>
-  <note>History (limited to 10 records for demo)</note>
+  <note>历史记录（演示限制为 10 条记录）</note>
   <div class="code-block mt-4">
     <div v-for="i in history" :key="i.timestamp">
       <span class="opacity-50 mr-2 font-mono">{{ format(i.timestamp) }}</span>

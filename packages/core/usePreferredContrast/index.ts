@@ -5,7 +5,7 @@ import type { ConfigurableWindow } from '../_configurable'
 export type ContrastType = 'more' | 'less' | 'custom' | 'no-preference'
 
 /**
- * Reactive prefers-contrast media query.
+ * 响应式更喜欢的对比度媒体查询。
  *
  * @see https://vueuse.org/usePreferredContrast
  * @param [options]

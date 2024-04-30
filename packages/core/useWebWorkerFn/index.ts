@@ -15,19 +15,19 @@ export type WebWorkerStatus =
 
 export interface UseWebWorkerOptions extends ConfigurableWindow {
   /**
-   * Number of milliseconds before killing the worker
+   * 在终止工作线程之前的毫秒数
    *
    * @default undefined
    */
   timeout?: number
   /**
-   * An array that contains the external dependencies needed to run the worker
+   * 包含运行工作线程所需的外部依赖项的数组
    */
   dependencies?: string[]
 }
 
 /**
- * Run expensive function without blocking the UI, using a simple syntax that makes use of Promise.
+ * 使用简单的语法运行耗时函数，而不会阻塞用户界面，使用 Promise 来实现。
  *
  * @see https://vueuse.org/useWebWorkerFn
  * @param fn

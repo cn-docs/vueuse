@@ -21,52 +21,52 @@ export type UseTimeAgoMessages<UnitNames extends string = UseTimeAgoUnitNamesDef
 
 export interface FormatTimeAgoOptions<UnitNames extends string = UseTimeAgoUnitNamesDefault> {
   /**
-   * Maximum unit (of diff in milliseconds) to display the full date instead of relative
+   * 最大单位（以毫秒为单位）在显示完整日期而不是相对时间之前显示
    *
    * @default undefined
    */
   max?: UnitNames | number
 
   /**
-   * Formatter for full date
+   * 完整日期的格式化程序
    */
   fullDateFormatter?: (date: Date) => string
 
   /**
-   * Messages for formatting the string
+   * 格式化字符串的消息
    */
   messages?: UseTimeAgoMessages<UnitNames>
 
   /**
-   * Minimum display time unit (default is minute)
+   * 最小显示时间单位（默认为分钟）
    *
    * @default false
    */
   showSecond?: boolean
 
   /**
-   * Rounding method to apply.
+   * 应用的舍入方法。
    *
    * @default 'round'
    */
   rounding?: 'round' | 'ceil' | 'floor' | number
 
   /**
-   * Custom units
+   * 自定义单位
    */
   units?: UseTimeAgoUnit<UnitNames>[]
 }
 
 export interface UseTimeAgoOptions<Controls extends boolean, UnitNames extends string = UseTimeAgoUnitNamesDefault> extends FormatTimeAgoOptions<UnitNames> {
   /**
-   * Expose more controls
+   * 公开更多控件
    *
    * @default false
    */
   controls?: Controls
 
   /**
-   * Intervals to update, set 0 to disable auto update
+   * 更新间隔，设置为 0 以禁用自动更新
    *
    * @default 30_000
    */
@@ -126,7 +126,7 @@ function DEFAULT_FORMATTER(date: Date) {
 export type UseTimeAgoReturn<Controls extends boolean = false> = Controls extends true ? { timeAgo: ComputedRef<string> } & Pausable : ComputedRef<string>
 
 /**
- * Reactive time ago formatter.
+ * 响应式的时间过去格式化工具。
  *
  * @see https://vueuse.org/useTimeAgo
  */

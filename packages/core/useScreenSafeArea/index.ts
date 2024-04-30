@@ -9,7 +9,7 @@ const bottomVarName = '--vueuse-safe-area-bottom'
 const leftVarName = '--vueuse-safe-area-left'
 
 /**
- * Reactive `env(safe-area-inset-*)`
+ * 响应式 `env(safe-area-inset-*)`
  *
  * @see https://vueuse.org/useScreenSafeArea
  */

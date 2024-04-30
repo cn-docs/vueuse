@@ -12,7 +12,7 @@ export interface UseGamepadOptions extends ConfigurableWindow, ConfigurableNavig
 }
 
 /**
- * Maps a standard standard gamepad to an Xbox 360 Controller.
+ * 将标准游戏手柄映射到 Xbox 360 控制器。
  */
 export function mapGamepadToXbox360Controller(gamepad: Ref<Gamepad | undefined>) {
   return computed(() => {

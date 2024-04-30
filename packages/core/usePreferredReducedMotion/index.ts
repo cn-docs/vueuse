@@ -5,7 +5,7 @@ import type { ConfigurableWindow } from '../_configurable'
 export type ReducedMotionType = 'reduce' | 'no-preference'
 
 /**
- * Reactive prefers-reduced-motion media query.
+ *  响应式动画偏好媒体查询
  *
  * @see https://vueuse.org/usePreferredReducedMotion
  * @param [options]

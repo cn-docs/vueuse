@@ -12,11 +12,10 @@ const idledFor = computed(() =>
 
 <template>
   <note class="mb-2">
-    For demonstration purpose, the idle timeout is set to <b>5s</b> in this
-    demo (default 1min).
+    为了演示目的，在此演示中将空闲超时设置为 <b>5秒</b>（默认为1分钟）。
   </note>
   <div class="mb-2">
-    Idle: <BooleanDisplay :value="idle" />
+    空闲状态: <BooleanDisplay :value="idle" />
   </div>
-  <div>Inactive: <b class="text-primary">{{ idledFor }}s</b></div>
+  <div>非活动时间: <b class="text-primary">{{ idledFor }}秒</b></div>
 </template>

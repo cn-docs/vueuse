@@ -9,19 +9,19 @@ import { defaultNavigator } from '../_configurable'
 
 export interface UseUserMediaOptions extends ConfigurableNavigator {
   /**
-   * If the stream is enabled
+   * 流是否已启用
    * @default false
    */
   enabled?: MaybeRef<boolean>
   /**
-   * Recreate stream when deviceIds or constraints changed
+   * 当设备 ID 或约束条件发生变化时重新创建流
    *
    * @default true
    */
   autoSwitch?: MaybeRef<boolean>
   /**
-   * MediaStreamConstraints to be applied to the requested MediaStream
-   * If provided, the constraints will override videoDeviceId and audioDeviceId
+   * 应用于请求的 MediaStream 的 MediaStreamConstraints
+   * 如果提供了约束条件，则会覆盖 videoDeviceId 和 audioDeviceId
    *
    * @default {}
    */
@@ -29,7 +29,7 @@ export interface UseUserMediaOptions extends ConfigurableNavigator {
 }
 
 /**
- * Reactive `mediaDevices.getUserMedia` streaming
+ * 响应式 `mediaDevices.getUserMedia` 流处理
  *
  * @see https://vueuse.org/useUserMedia
  * @param options

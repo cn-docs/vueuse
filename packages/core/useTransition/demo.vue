@@ -41,11 +41,11 @@ function toggle() {
 <template>
   <div>
     <button @click="toggle">
-      Transition
+      过渡
     </button>
 
     <p class="mt-2">
-      Cubic bezier curve: <b>{{ cubicBezierNumber.toFixed(2) }}</b>
+      贝塞尔曲线： <b>{{ cubicBezierNumber.toFixed(2) }}</b>
     </p>
 
     <div class="track number">
@@ -55,7 +55,7 @@ function toggle() {
     </div>
 
     <p class="mt-2">
-      Custom function: <b>{{ customFnNumber.toFixed(2) }}</b>
+      自定义函数： <b>{{ customFnNumber.toFixed(2) }}</b>
     </p>
 
     <div class="track number">
@@ -65,7 +65,7 @@ function toggle() {
     </div>
 
     <p class="mt-2">
-      Vector: <b>[{{ vector[0].toFixed(2) }}, {{ vector[1].toFixed(2) }}]</b>
+      向量： <b>[{{ vector[0].toFixed(2) }}, {{ vector[1].toFixed(2) }}]</b>
     </p>
 
     <div class="track vector">

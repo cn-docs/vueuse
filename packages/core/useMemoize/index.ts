@@ -4,27 +4,27 @@ import { del, isVue2, set, shallowReactive } from 'vue-demi'
 type CacheKey = any
 
 /**
- * Custom memoize cache handler
+ * 自定义记忆缓存处理程序
  */
 export interface UseMemoizeCache<Key, Value> {
   /**
-   * Get value for key
+   * 获取键的值
    */
   get: (key: Key) => Value | undefined
   /**
-   * Set value for key
+   * 设置键的值
    */
   set: (key: Key, value: Value) => void
   /**
-   * Return flag if key exists
+   * 返回键是否存在的标志
    */
   has: (key: Key) => boolean
   /**
-   * Delete value for key
+   * 删除键的值
    */
   delete: (key: Key) => void
   /**
-   * Clear cache
+   * 清除缓存
    */
   clear: () => void
 }
@@ -48,31 +48,31 @@ function getMapVue2Compat<Value>(): UseMemoizeCache<CacheKey, Value> {
 }
 
 /**
- * Memoized function
+ * 记忆化函数
  */
 export interface UseMemoizeReturn<Result, Args extends unknown[]> {
   /**
-   * Get result from cache or call memoized function
+   * 从缓存中获取结果或调用记忆化函数
    */
   (...args: Args): Result
   /**
-   * Call memoized function and update cache
+   * 调用记忆化函数并更新缓存
    */
   load: (...args: Args) => Result
   /**
-   * Delete cache of given arguments
+   * 删除给定参数的缓存
    */
   delete: (...args: Args) => void
   /**
-   * Clear cache
+   * 清除缓存
    */
   clear: () => void
   /**
-   * Generate cache key for given arguments
+   * 为给定参数生成缓存键
    */
   generateKey: (...args: Args) => CacheKey
   /**
-   * Cache container
+   * 缓存容器
    */
   cache: UseMemoizeCache<CacheKey, Result>
 }
@@ -83,7 +83,7 @@ export interface UseMemoizeOptions<Result, Args extends unknown[]> {
 }
 
 /**
- * Reactive function result cache based on arguments
+ * 基于参数的响应式函数结果缓存
  */
 export function useMemoize<Result, Args extends unknown[]>(
   resolver: (...args: Args) => Result,

@@ -4,7 +4,7 @@ category: Browser
 
 # usePreferredLanguages
 
-响应式的[导航器语言](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLanguage/languages)。它为Web开发人员提供了有关用户首选语言的信息。例如，这可能有助于根据用户的首选语言调整用户界面的语言，以提供更好的体验。
+响应式的[首选语言](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLanguage/languages)。它为Web开发人员提供了有关用户首选语言的信息。例如，这可能有助于根据用户的首选语言调整用户界面的语言，以提供更好的体验。
 
 ## 用法
 

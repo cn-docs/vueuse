@@ -12,29 +12,30 @@ export type EventBusIdentifier<T = unknown> = EventBusKey<T> | string | number
 
 export interface UseEventBusReturn<T, P> {
   /**
-   * Subscribe to an event. When calling emit, the listeners will execute.
-   * @param listener watch listener.
-   * @returns a stop function to remove the current callback.
+   * 订阅事件。调用 emit 时，监听器将执行。
+   * @param listener 监听器函数。
+   * @returns 用于移除当前回调的停止函数。
    */
   on: (listener: EventBusListener<T, P>) => Fn
   /**
-   * Similar to `on`, but only fires once
-   * @param listener watch listener.
-   * @returns a stop function to remove the current callback.
+   * 类似于 `on`，但仅触发一次。
+   * @param listener 监听器函数。
+   * @returns 用于移除当前回调的停止函数。
    */
   once: (listener: EventBusListener<T, P>) => Fn
   /**
-   * Emit an event, the corresponding event listeners will execute.
-   * @param event data sent.
+   * 发射事件，相应的事件监听器将执行。
+   * @param event 发送的数据。
+   * @param payload 附带的负载数据。
    */
   emit: (event?: T, payload?: P) => void
   /**
-   * Remove the corresponding listener.
-   * @param listener watch listener.
+   * 移除相应的监听器。
+   * @param listener 监听器函数。
    */
   off: (listener: EventBusListener<T>) => void
   /**
-   * Clear all events
+   * 清除所有事件。
    */
   reset: () => void
 }

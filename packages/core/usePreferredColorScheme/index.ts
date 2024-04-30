@@ -5,7 +5,7 @@ import type { ConfigurableWindow } from '../_configurable'
 export type ColorSchemeType = 'dark' | 'light' | 'no-preference'
 
 /**
- * Reactive prefers-color-scheme media query.
+ * 响应式首选颜色方案媒体查询。
  *
  * @see https://vueuse.org/usePreferredColorScheme
  * @param [options]
