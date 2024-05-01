@@ -10,29 +10,29 @@ export type UseSpeechSynthesisStatus = 'init' | 'play' | 'pause' | 'end'
 
 export interface UseSpeechSynthesisOptions extends ConfigurableWindow {
   /**
-   * Language for SpeechSynthesis
+   * 语音合成的语言
    *
    * @default 'en-US'
    */
   lang?: MaybeRefOrGetter<string>
   /**
-   * Gets and sets the pitch at which the utterance will be spoken at.
+   * 获取和设置朗读时的音调。
    *
    * @default 1
    */
   pitch?: MaybeRefOrGetter<SpeechSynthesisUtterance['pitch']>
   /**
-   * Gets and sets the speed at which the utterance will be spoken at.
+   * 获取和设置朗读时的速度。
    *
    * @default 1
    */
   rate?: MaybeRefOrGetter<SpeechSynthesisUtterance['rate']>
   /**
-   * Gets and sets the voice that will be used to speak the utterance.
+   * 获取和设置用于朗读的声音。
    */
   voice?: MaybeRef<SpeechSynthesisVoice>
   /**
-   * Gets and sets the volume that the utterance will be spoken at.
+   * 获取和设置朗读的音量。
    *
    * @default 1
    */
@@ -40,7 +40,7 @@ export interface UseSpeechSynthesisOptions extends ConfigurableWindow {
 }
 
 /**
- * Reactive SpeechSynthesis.
+ * 响应式语音合成。
  *
  * @see https://vueuse.org/useSpeechSynthesis
  * @see https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis SpeechSynthesis

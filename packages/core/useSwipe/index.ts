@@ -11,7 +11,7 @@ export type UseSwipeDirection = 'up' | 'down' | 'left' | 'right' | 'none'
 
 export interface UseSwipeOptions extends ConfigurableWindow {
   /**
-   * Register events as passive
+   * 将事件注册为被动事件
    *
    * @default true
    */
@@ -23,17 +23,17 @@ export interface UseSwipeOptions extends ConfigurableWindow {
   threshold?: number
 
   /**
-   * Callback on swipe start
+   * 滑动开始时的回调函数
    */
   onSwipeStart?: (e: TouchEvent) => void
 
   /**
-   * Callback on swipe moves
+   * 滑动过程中的回调函数
    */
   onSwipe?: (e: TouchEvent) => void
 
   /**
-   * Callback on swipe ends
+   * 滑动结束时的回调函数
    */
   onSwipeEnd?: (e: TouchEvent, direction: UseSwipeDirection) => void
 }
@@ -50,7 +50,7 @@ export interface UseSwipeReturn {
 }
 
 /**
- * Reactive swipe detection.
+ * 响应式滑动检测。
  *
  * @see https://vueuse.org/useSwipe
  * @param target

@@ -6,68 +6,68 @@ import { defaultWindow } from '../_configurable'
 
 export interface UseFetchReturn<T> {
   /**
-   * Indicates if the fetch request has finished
+   * 表示 fetch 请求是否已完成
    */
   isFinished: Readonly<Ref<boolean>>
 
   /**
-   * The statusCode of the HTTP fetch response
+   * HTTP fetch 响应的 statusCode
    */
   statusCode: Ref<number | null>
 
   /**
-   * The raw response of the fetch response
+   * fetch 响应的原始数据
    */
   response: Ref<Response | null>
 
   /**
-   * Any fetch errors that may have occurred
+   * 可能发生的任何 fetch 错误
    */
   error: Ref<any>
 
   /**
-   * The fetch response body on success, may either be JSON or text
+   * 成功时的 fetch 响应体，可能是 JSON 或文本
    */
   data: Ref<T | null>
 
   /**
-   * Indicates if the request is currently being fetched.
+   * 表示当前是否正在进行 fetch 请求
    */
   isFetching: Readonly<Ref<boolean>>
 
   /**
-   * Indicates if the fetch request is able to be aborted
+   * 表示 fetch 请求是否可以中止
    */
   canAbort: ComputedRef<boolean>
 
   /**
-   * Indicates if the fetch request was aborted
+   * 表示 fetch 请求是否已中止
    */
   aborted: Ref<boolean>
 
   /**
-   * Abort the fetch request
+   * 中止 fetch 请求
    */
   abort: Fn
 
   /**
-   * Manually call the fetch
-   * (default not throwing error)
+   * 手动调用 fetch
+   * （默认不抛出错误）
    */
   execute: (throwOnFailed?: boolean) => Promise<any>
 
   /**
-   * Fires after the fetch request has finished
+   * 在 fetch 请求完成后触发
    */
   onFetchResponse: EventHookOn<Response>
 
   /**
-   * Fires after a fetch request error
+   * 在 fetch 请求错误后触发
    */
   onFetchError: EventHookOn
 
   /**
-   * Fires after a fetch has completed
+   * 在 fetch 完成后触发
    */
   onFetchFinally: EventHookOn
 
@@ -99,17 +99,17 @@ const payloadMapping: Record<string, string> = {
 
 export interface BeforeFetchContext {
   /**
-   * The computed url of the current request
+   * 当前请求的计算后的 URL
    */
   url: string
 
   /**
-   * The request options of the current request
+   * 当前请求的请求选项
    */
   options: RequestInit
 
   /**
-   * Cancels the current request
+   * 取消当前请求
    */
   cancel: Fn
 }
@@ -128,85 +128,85 @@ export interface OnFetchErrorContext<T = any, E = any> {
 
 export interface UseFetchOptions {
   /**
-   * Fetch function
+   * Fetch 函数
    */
   fetch?: typeof window.fetch
 
   /**
-   * Will automatically run fetch when `useFetch` is used
+   * 当 `useFetch` 被使用时是否自动运行 fetch
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * Will automatically refetch when:
-   * - the URL is changed if the URL is a ref
-   * - the payload is changed if the payload is a ref
+   * 当以下情况发生时是否自动重新获取：
+   * - 如果 URL 是一个引用，则 URL 被更改
+   * - 如果 payload 是一个引用，则 payload 被更改
    *
    * @default false
    */
   refetch?: MaybeRefOrGetter<boolean>
 
   /**
-   * Initial data before the request finished
+   * 请求完成之前的初始数据
    *
    * @default null
    */
   initialData?: any
 
   /**
-   * Timeout for abort request after number of millisecond
-   * `0` means use browser default
+   * 在多少毫秒后中止请求
+   * `0` 表示使用浏览器默认值
    *
    * @default 0
    */
   timeout?: number
 
   /**
-   * Allow update the `data` ref when fetch error whenever provided, or mutated in the `onFetchError` callback
+   * 允许在发生 fetch 错误时更新 `data` 引用，无论是在提供的回调函数中还是在 `onFetchError` 回调中改变
    *
    * @default false
    */
   updateDataOnError?: boolean
 
   /**
-   * Will run immediately before the fetch request is dispatched
+   * 在 fetch 请求被分派之前立即运行
    */
   beforeFetch?: (ctx: BeforeFetchContext) => Promise<Partial<BeforeFetchContext> | void> | Partial<BeforeFetchContext> | void
 
   /**
-   * Will run immediately after the fetch request is returned.
-   * Runs after any 2xx response
+   * 在 fetch 请求返回后立即运行。
+   * 在任何 2xx 响应之后运行
    */
   afterFetch?: (ctx: AfterFetchContext) => Promise<Partial<AfterFetchContext>> | Partial<AfterFetchContext>
 
   /**
-   * Will run immediately after the fetch request is returned.
-   * Runs after any 4xx and 5xx response
+   * 在 fetch 请求返回后立即运行。
+   * 在任何 4xx 和 5xx 响应之后运行
    */
   onFetchError?: (ctx: { data: any, response: Response | null, error: any }) => Promise<Partial<OnFetchErrorContext>> | Partial<OnFetchErrorContext>
 }
 
 export interface CreateFetchOptions {
   /**
-   * The base URL that will be prefixed to all urls unless urls are absolute
+   * 除非 URL 是绝对的，否则将添加到所有 URL 前面的基础 URL
    */
   baseUrl?: MaybeRefOrGetter<string>
 
   /**
-   * Determine the inherit behavior for beforeFetch, afterFetch, onFetchError
+   * 确定 beforeFetch、afterFetch、onFetchError 的继承行为
    * @default 'chain'
    */
   combination?: Combination
 
   /**
-   * Default Options for the useFetch function
+   * useFetch 函数的默认选项
    */
   options?: UseFetchOptions
 
   /**
-   * Options for the fetch request
+   * fetch 请求的选项
    */
   fetchOptions?: RequestInit
 }

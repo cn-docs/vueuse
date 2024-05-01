@@ -20,10 +20,10 @@ watch(refs, async () => {
   </span>
   <br>
   <button @click="count += 1">
-    Inc
+    增加
   </button>
   <button :disabled="count <= 0" @click="count -= 1">
-    Dec
+    减少
   </button>
-  <note>Open the console to see the output</note>
+  <note>打开控制台查看输出</note>
 </template>

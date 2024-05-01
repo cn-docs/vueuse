@@ -16,15 +16,15 @@ export interface UseParallaxOptions extends ConfigurableWindow {
 
 export interface UseParallaxReturn {
   /**
-   * Roll value. Scaled to `-0.5 ~ 0.5`
+   * 滚动值。缩放至 `-0.5 ~ 0.5`
    */
   roll: ComputedRef<number>
   /**
-   * Tilt value. Scaled to `-0.5 ~ 0.5`
+   * 倾斜值。缩放至 `-0.5 ~ 0.5`
    */
   tilt: ComputedRef<number>
   /**
-   * Sensor source, can be `mouse` or `deviceOrientation`
+   * 传感器来源，可以是 `mouse` 或 `deviceOrientation`
    */
   source: ComputedRef<'deviceOrientation' | 'mouse'>
 }

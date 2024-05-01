@@ -6,7 +6,7 @@ const contrast = usePreferredContrast()
 
 <template>
   <note class="mb-2">
-    Preferred contrast:
+    首选对比度:
   </note>
   <code>{{ contrast }}</code>
 </template>

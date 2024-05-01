@@ -19,16 +19,16 @@ const {
 <template>
   <div>
     <p>
-      Supported: <BooleanDisplay :value="isSupported" />
+      支持情况: <BooleanDisplay :value="isSupported" />
     </p>
   </div>
 
   <div v-if="isSupported">
     <button @click="show()">
-      Show Notification
+      显示通知
     </button>
   </div>
   <div v-else>
-    The Notification Web API is not supported in your browser.
+    你的浏览器不支持通知 Web API。
   </div>
 </template>

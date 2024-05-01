@@ -14,45 +14,45 @@ export type NetworkEffectiveType = 'slow-2g' | '2g' | '3g' | '4g' | undefined
 export interface NetworkState {
   isSupported: Ref<boolean>
   /**
-   * If the user is currently connected.
+   * 用户当前是否连接到网络。
    */
   isOnline: Ref<boolean>
   /**
-   * The time since the user was last connected.
+   * 用户上次连接到网络的时间。
    */
   offlineAt: Ref<number | undefined>
   /**
-   * At this time, if the user is offline and reconnects
+   * 在此时间点，如果用户处于离线状态并重新连接。
    */
   onlineAt: Ref<number | undefined>
   /**
-   * The download speed in Mbps.
+   * 下载速度，以 Mbps 为单位。
    */
   downlink: Ref<number | undefined>
   /**
-   * The max reachable download speed in Mbps.
+   * 可达到的最大下载速度，以 Mbps 为单位。
    */
   downlinkMax: Ref<number | undefined>
   /**
-   * The detected effective speed type.
+   * 检测到的有效速度类型。
    */
   effectiveType: Ref<NetworkEffectiveType | undefined>
   /**
-   * The estimated effective round-trip time of the current connection.
+   * 当前连接的预估往返时间。
    */
   rtt: Ref<number | undefined>
   /**
-   * If the user activated data saver mode.
+   * 用户是否启用了数据节省模式。
    */
   saveData: Ref<boolean | undefined>
   /**
-   * The detected connection/network type.
+   * 检测到的 connection/network 类型。
    */
   type: Ref<NetworkType>
 }
 
 /**
- * Reactive Network status.
+ * 响应式网络状态。
  *
  * @see https://vueuse.org/useNetwork
  * @param options

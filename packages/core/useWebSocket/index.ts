@@ -15,27 +15,27 @@ export interface UseWebSocketOptions {
   onMessage?: (ws: WebSocket, event: MessageEvent) => void
 
   /**
-   * Send heartbeat for every x milliseconds passed
+   * 每过 x 毫秒发送一次心跳。
    *
    * @default false
    */
   heartbeat?: boolean | {
     /**
-     * Message for the heartbeat
+     * 心跳消息
      *
      * @default 'ping'
      */
     message?: string | ArrayBuffer | Blob
 
     /**
-     * Interval, in milliseconds
+     * 间隔时间，毫秒为单位
      *
      * @default 1000
      */
     interval?: number
 
     /**
-     * Heartbeat response timeout, in milliseconds
+     * 心跳响应超时时间，毫秒为单位
      *
      * @default 1000
      */
@@ -43,49 +43,49 @@ export interface UseWebSocketOptions {
   }
 
   /**
-   * Enabled auto reconnect
+   * 启用自动重新连接
    *
    * @default false
    */
   autoReconnect?: boolean | {
     /**
-     * Maximum retry times.
+     * 最大重试次数。
      *
-     * Or you can pass a predicate function (which returns true if you want to retry).
+     * 或者您可以传递一个谓词函数（如果要重试，则返回 true）。
      *
      * @default -1
      */
     retries?: number | (() => boolean)
 
     /**
-     * Delay for reconnect, in milliseconds
+     * 重新连接延迟，毫秒为单位
      *
      * @default 1000
      */
     delay?: number
 
     /**
-     * On maximum retry times reached.
+     * 当达到最大重试次数时。
      */
     onFailed?: Fn
   }
 
   /**
-   * Automatically open a connection
+   * 自动打开连接
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * Automatically close a connection
+   * 自动关闭连接
    *
    * @default true
    */
   autoClose?: boolean
 
   /**
-   * List of one or more sub-protocol strings
+   * 一个或多个子协议字符串的列表
    *
    * @default []
    */
@@ -94,38 +94,37 @@ export interface UseWebSocketOptions {
 
 export interface UseWebSocketReturn<T> {
   /**
-   * Reference to the latest data received via the websocket,
-   * can be watched to respond to incoming messages
+   * WebSocket 最新接收到的数据的引用，可以监听以响应传入的消息
    */
   data: Ref<T | null>
 
   /**
-   * The current websocket status, can be only one of:
-   * 'OPEN', 'CONNECTING', 'CLOSED'
+   * 当前 WebSocket 的状态，只能是以下之一：
+   * 'OPEN'，'CONNECTING'，'CLOSED'
    */
   status: Ref<WebSocketStatus>
 
   /**
-   * Closes the websocket connection gracefully.
+   * 优雅地关闭 WebSocket 连接。
    */
   close: WebSocket['close']
 
   /**
-   * Reopen the websocket connection.
-   * If there the current one is active, will close it before opening a new one.
+   * 重新打开 WebSocket 连接。
+   * 如果当前连接处于活动状态，将在打开新连接之前关闭它。
    */
   open: Fn
 
   /**
-   * Sends data through the websocket connection.
+   * 通过 WebSocket 连接发送数据。
    *
    * @param data
-   * @param useBuffer when the socket is not yet open, store the data into the buffer and sent them one connected. Default to true.
+   * @param useBuffer 当套接字尚未打开时，将数据存储到缓冲区并在连接时发送。默认为 true。
    */
   send: (data: string | ArrayBuffer | Blob, useBuffer?: boolean) => boolean
 
   /**
-   * Reference to the WebSocket instance.
+   * WebSocket 实例的引用。
    */
   ws: Ref<WebSocket | undefined>
 }
@@ -137,7 +136,7 @@ function resolveNestedOptions<T>(options: T | true): T {
 }
 
 /**
- * Reactive WebSocket client.
+ * 响应式 WebSocket 客户端。
  *
  * @see https://vueuse.org/useWebSocket
  * @param url

@@ -5,21 +5,21 @@ import type { UseAsyncStateOptions } from '../useAsyncState'
 import { useAsyncState } from '../useAsyncState'
 
 export interface UseImageOptions {
-  /** Address of the resource */
+  /** 资源的地址 */
   src: string
-  /** Images to use in different situations, e.g., high-resolution displays, small monitors, etc. */
+  /** 不同情况下使用的图片，例如高分辨率显示器、小型监视器等 */
   srcset?: string
-  /** Image sizes for different page layouts */
+  /** 不同页面布局的图片尺寸 */
   sizes?: string
-  /** Image alternative information */
+  /** 图片的替代信息 */
   alt?: string
-  /** Image classes */
+  /** 图片的类名 */
   class?: string
-  /** Image loading */
+  /** 图片的加载方式 */
   loading?: HTMLImageElement['loading']
-  /** Image CORS settings */
+  /** 图片的跨域设置 */
   crossorigin?: string
-  /** Referrer policy for fetch https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy */
+  /** 获取者策略用于获取资源 */
   referrerPolicy?: HTMLImageElement['referrerPolicy']
 }
 

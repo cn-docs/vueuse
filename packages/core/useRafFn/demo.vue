@@ -13,18 +13,18 @@ const { pause, resume } = useRafFn(({ delta }) => {
 
 <template>
   <div font-mono>
-    Frames: {{ count }}
+    帧数：{{ count }}
   </div>
   <div font-mono>
-    Delta: {{ deltaMs.toFixed(0) }}ms
+    间隔时间：{{ deltaMs.toFixed(0) }}毫秒
   </div>
   <div font-mono>
-    FPS Limit: {{ fpsLimit }}
+    FPS 限制：{{ fpsLimit }}
   </div>
   <button @click="pause">
-    pause
+    暂停
   </button>
   <button @click="resume">
-    resume
+    恢复
   </button>
 </template>

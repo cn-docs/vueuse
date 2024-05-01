@@ -8,7 +8,7 @@ import { defaultWindow } from '../_configurable'
 import { useSupported } from '../useSupported'
 
 /**
- * Reactive Media Query.
+ * 响应式媒体查询。
  *
  * @see https://vueuse.org/useMediaQuery
  * @param query

@@ -9,7 +9,7 @@ import { useSupported } from '../useSupported'
 
 export interface UseFullscreenOptions extends ConfigurableDocument {
   /**
-   * Automatically exit fullscreen when component is unmounted
+   * 卸载组件时自动退出全屏
    *
    * @default false
    */
@@ -25,7 +25,7 @@ const eventHandlers = [
 ] as any as 'fullscreenchange'[]
 
 /**
- * Reactive Fullscreen API.
+ * 响应式 Fullscreen API.
  *
  * @see https://vueuse.org/useFullscreen
  * @param target

@@ -19,7 +19,7 @@ type NavigatorWithWakeLock = Navigator & {
 export type UseWakeLockOptions = ConfigurableNavigator & ConfigurableDocument
 
 /**
- * Reactive Screen Wake Lock API.
+ * 响应式屏幕唤醒锁定 API。
  *
  * @see https://vueuse.org/useWakeLock
  * @param options

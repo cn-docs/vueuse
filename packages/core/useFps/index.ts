@@ -4,7 +4,7 @@ import { useRafFn } from '../useRafFn'
 
 export interface UseFpsOptions {
   /**
-   * Calculate the FPS on every x frames.
+   * 计算每 x 帧的 FPS。
    * @default 10
    */
   every?: number

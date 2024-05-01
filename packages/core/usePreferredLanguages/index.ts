@@ -5,7 +5,7 @@ import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 
 /**
- * Reactive Navigator Languages.
+ * 响应式首选语言
  *
  * @see https://vueuse.org/usePreferredLanguages
  * @param options

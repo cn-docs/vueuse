@@ -47,7 +47,7 @@ function preventDefault(rawEvent: TouchEvent): boolean {
 const elInitialOverflow = new WeakMap<HTMLElement, CSSStyleDeclaration['overflow']>()
 
 /**
- * Lock scrolling of the element.
+ * 锁定元素的滚动。
  *
  * @see https://vueuse.org/useScrollLock
  * @param element

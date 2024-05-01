@@ -6,106 +6,95 @@ import type { ConfigurableDocument } from '../_configurable'
 import { defaultDocument } from '../_configurable'
 
 /**
- * Many of the jsdoc definitions here are modified version of the
- * documentation from MDN(https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
+ * 这里的许多 jsdoc 定义都是修改自 MDN 的文档（https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement）的版本
  */
 
 export interface UseMediaSource {
   /**
-   * The source url for the media
+   * 媒体的源 URL
    */
   src: string
 
   /**
-   * The media codec type
+   * 媒体的编解码器类型
    */
   type?: string
 }
 
 export interface UseMediaTextTrackSource {
   /**
-   * Indicates that the track should be enabled unless the user's preferences indicate
-   * that another track is more appropriate
+   * 指示除非用户的偏好指示其他轨道更合适，否则轨道应启用
    */
   default?: boolean
 
   /**
-   * How the text track is meant to be used. If omitted the default kind is subtitles.
+   * 文本轨道的使用方式。如果省略，则默认类型是字幕。
    */
   kind: TextTrackKind
 
   /**
-   * A user-readable title of the text track which is used by the browser
-   * when listing available text tracks.
+   * 文本轨道的用户可读标题，在列出可用文本轨道时浏览器使用
    */
   label: string
 
   /**
-   * Address of the track (.vtt file). Must be a valid URL. This attribute
-   * must be specified and its URL value must have the same origin as the document
+   * 轨道的地址（.vtt 文件）。必须是有效的 URL。必须指定此属性，其 URL 值必须与文档具有相同的来源。
    */
   src: string
 
   /**
-   * Language of the track text data. It must be a valid BCP 47 language tag.
-   * If the kind attribute is set to subtitles, then srclang must be defined.
+   * 轨道文本数据的语言。它必须是有效的 BCP 47 语言标签。
+   * 如果 kind 属性设置为 subtitles，则必须定义 srclang。
    */
   srcLang: string
 }
 
 interface UseMediaControlsOptions extends ConfigurableDocument {
   /**
-   * The source for the media, may either be a string, a `UseMediaSource` object, or a list
-   * of `UseMediaSource` objects.
+   * 媒体的源，可以是字符串、`UseMediaSource` 对象或 `UseMediaSource` 对象的列表
    */
   src?: MaybeRefOrGetter<string | UseMediaSource | UseMediaSource[]>
 
   /**
-   * A list of text tracks for the media
+   * 媒体的文本轨道列表
    */
   tracks?: MaybeRefOrGetter<UseMediaTextTrackSource[]>
 }
 
 export interface UseMediaTextTrack {
   /**
-   * The index of the text track
+   * 文本轨道的索引
    */
   id: number
 
   /**
-   * The text track label
+   * 文本轨道的标签
    */
   label: string
 
   /**
-   * Language of the track text data. It must be a valid BCP 47 language tag.
-   * If the kind attribute is set to subtitles, then srclang must be defined.
+   * 轨道文本数据的语言。它必须是有效的 BCP 47 语言标签。
+   * 如果 kind 属性设置为 subtitles，则必须定义 srclang。
    */
   language: string
 
   /**
-   * Specifies the display mode of the text track, either `disabled`,
-   * `hidden`, or `showing`
+   * 指定文本轨道的显示模式，可以是 `disabled`、`hidden` 或 `showing`
    */
   mode: TextTrackMode
 
   /**
-   * How the text track is meant to be used. If omitted the default kind is subtitles.
-   */
-  kind: TextTrackKind
-
-  /**
-   * Indicates the track's in-band metadata track dispatch type.
+   * 文本轨道的带内元数据轨道调度类型
    */
   inBandMetadataTrackDispatchType: string
 
   /**
-   * A list of text track cues
+   * 文本轨道的提示列表
    */
   cues: TextTrackCueList | null
 
   /**
-   * A list of active text track cues
+   * 活动文本轨道提示的列表
    */
   activeCues: TextTrackCueList | null
 }

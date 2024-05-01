@@ -125,7 +125,7 @@ const cardStyle = computed(() => ({
         </div>
       </div>
       <div class="note opacity-1">
-        Credit of images to
+        图片来源：
         <a
           href="https://codepen.io/jaromvogel"
           target="__blank"

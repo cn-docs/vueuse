@@ -11,17 +11,17 @@ const { id, css, load, unload, isLoaded } = useStyleTag(customCSS)
 
 <template>
   <div>
-    Edit CSS:
+    编辑 CSS：
     <textarea v-model="css" type="text" rows="2" class="w-full" />
   </div>
   <button :disabled="isLoaded" @click="load">
-    Load
+    加载
   </button>
   <button class="orange" :disabled="!isLoaded" @click="unload">
-    Unload
+    卸载
   </button>
   <div class="usestyle-demo">
-    <p>ID: <code>{{ id }}</code></p>
-    <p>Loaded: <code>{{ isLoaded }}</code></p>
+    <p>ID：<code>{{ id }}</code></p>
+    <p>已加载：<code>{{ isLoaded }}</code></p>
   </div>
 </template>

@@ -11,42 +11,42 @@ export type UseMouseEventExtractor = (event: MouseEvent | Touch) => [x: number, 
 
 export interface UseMouseOptions extends ConfigurableWindow, ConfigurableEventFilter {
   /**
-   * Mouse position based by page, client, screen, or relative to previous position
+   * 基于页面、客户端、屏幕或相对于上一个位置的鼠标位置
    *
    * @default 'page'
    */
   type?: UseMouseCoordType | UseMouseEventExtractor
 
   /**
-   * Listen events on `target` element
+   * 在`target`元素上监听事件
    *
    * @default 'Window'
    */
   target?: MaybeRefOrGetter<Window | EventTarget | null | undefined>
 
   /**
-   * Listen to `touchmove` events
+   * 监听 `touchmove` 事件
    *
    * @default true
    */
   touch?: boolean
 
   /**
-   * Listen to `scroll` events on window, only effective on type `page`
+   * 在窗口上监听 `scroll` 事件，仅在 `type` 为 `page` 时有效
    *
    * @default true
    */
   scroll?: boolean
 
   /**
-   * Reset to initial value when `touchend` event fired
+   * 当触发 `touchend` 事件时重置为初始值
    *
    * @default false
    */
   resetOnTouchEnds?: boolean
 
   /**
-   * Initial values
+   * 初始值
    */
   initialValue?: Position
 }
@@ -62,7 +62,7 @@ const UseMouseBuiltinExtractors: Record<UseMouseCoordType, UseMouseEventExtracto
 } as const
 
 /**
- * Reactive mouse position.
+ * 响应式鼠标位置。
  *
  * @see https://vueuse.org/useMouse
  * @param options

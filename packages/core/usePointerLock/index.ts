@@ -20,7 +20,7 @@ export interface UsePointerLockOptions extends ConfigurableDocument {
 }
 
 /**
- * Reactive pointer lock.
+ * 响应式指针锁
  *
  * @see https://vueuse.org/usePointerLock
  * @param target

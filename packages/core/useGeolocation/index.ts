@@ -12,7 +12,7 @@ export interface UseGeolocationOptions extends Partial<PositionOptions>, Configu
 }
 
 /**
- * Reactive Geolocation API.
+ * 响应式 Geolocation API.
  *
  * @see https://vueuse.org/useGeolocation
  * @param options

@@ -58,33 +58,33 @@ const {
 <template>
   <div class="gap-x-4 gap-y-2 grid-cols-2 inline-grid items-center">
     <div opacity="50">
-      total:
+      总数：
     </div>
     <div>{{ database.length }}</div>
     <div opacity="50">
-      pageCount:
+      页数：
     </div>
     <div>{{ pageCount }}</div>
     <div opacity="50">
-      currentPageSize:
+      当前页大小：
     </div>
     <div>{{ currentPageSize }}</div>
     <div opacity="50">
-      currentPage:
+      当前页码：
     </div>
     <div>{{ currentPage }}</div>
     <div opacity="50">
-      isFirstPage:
+      是否第一页：
     </div>
     <div>{{ isFirstPage }}</div>
     <div opacity="50">
-      isLastPage:
+      是否最后一页：
     </div>
     <div>{{ isLastPage }}</div>
   </div>
   <div class="my-4">
     <button :disabled="isFirstPage" @click="prev">
-      prev
+      上一页
     </button>
     <button
       v-for="item in pageCount"
@@ -95,15 +95,15 @@ const {
       {{ item }}
     </button>
     <button :disabled="isLastPage" @click="next">
-      next
+      下一页
     </button>
   </div>
 
   <table>
     <thead>
       <tr>
-        <td>id</td>
-        <td>name</td>
+        <td>编号</td>
+        <td>姓名</td>
       </tr>
     </thead>
     <tr v-for="d in data" :key="d.id">

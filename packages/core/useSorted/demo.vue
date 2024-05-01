@@ -35,23 +35,23 @@ randomArr()
 <template>
   <div>
     <div class="flex items-center">
-      input:
+      输入：
       <input v-model="arrText" type="text">
     </div>
     <div>
       <button @click="randomArr">
-        random
+        随机
       </button>
     </div>
-    output: {{ inputOut }}
+    输出：{{ inputOut }}
   </div>
 
   <div class="mt-10">
-    <div>object property sort:</div>
-    <div>input:</div>
+    <div>对象属性排序：</div>
+    <div>输入：</div>
     <div>{{ objArr }}</div>
     <div class="mt-5">
-      output:
+      输出：
     </div>
     <div>{{ result2 }}</div>
   </div>

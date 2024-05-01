@@ -19,10 +19,10 @@ const { isActive, pause, resume } = useTimeoutPoll(fetchData, 1000)
     <div>isActive: {{ isActive }}</div>
     <div>
       <button @click="pause">
-        pause
+        暂停
       </button>
       <button @click="resume">
-        resume
+        恢复
       </button>
     </div>
   </div>

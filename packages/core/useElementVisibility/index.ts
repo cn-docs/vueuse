@@ -11,7 +11,7 @@ export interface UseElementVisibilityOptions extends ConfigurableWindow, Pick<Us
 }
 
 /**
- * Tracks the visibility of an element within the viewport.
+ * 跟踪元素在视口中的可见性
  *
  * @see https://vueuse.org/useElementVisibility
  */

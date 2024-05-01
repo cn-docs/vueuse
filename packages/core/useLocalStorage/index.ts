@@ -10,7 +10,7 @@ export function useLocalStorage<T>(key: string, initialValue: MaybeRefOrGetter<T
 export function useLocalStorage<T = unknown>(key: string, initialValue: MaybeRefOrGetter<null>, options?: UseStorageOptions<T>): RemovableRef<T>
 
 /**
- * Reactive LocalStorage.
+ * 响应式 LocalStorage.
  *
  * @see https://vueuse.org/useLocalStorage
  * @param key

@@ -3,43 +3,43 @@ import type { ComputedRef, Ref } from 'vue-demi'
 import { computed, ref } from 'vue-demi'
 
 export interface UseStepperReturn<StepName, Steps, Step> {
-  /** List of steps. */
+  /** 步骤列表。 */
   steps: Readonly<Ref<Steps>>
-  /** List of step names. */
+  /** 步骤名称列表。 */
   stepNames: Readonly<Ref<StepName[]>>
-  /** Index of the current step. */
+  /** 当前步骤的索引。 */
   index: Ref<number>
-  /** Current step. */
+  /** 当前步骤。 */
   current: ComputedRef<Step>
-  /** Next step, or undefined if the current step is the last one. */
+  /** 下一个步骤，如果当前步骤是最后一个则为 undefined。 */
   next: ComputedRef<StepName | undefined>
-  /** Previous step, or undefined if the current step is the first one. */
+  /** 上一个步骤，如果当前步骤是第一个则为 undefined。 */
   previous: ComputedRef<StepName | undefined>
-  /** Whether the current step is the first one. */
+  /** 当前步骤是否为第一个。 */
   isFirst: ComputedRef<boolean>
-  /** Whether the current step is the last one. */
+  /** 当前步骤是否为最后一个。 */
   isLast: ComputedRef<boolean>
-  /** Get the step at the specified index. */
+  /** 获取指定索引处的步骤。 */
   at: (index: number) => Step | undefined
-  /** Get a step by the specified name. */
+  /** 根据指定名称获取步骤。 */
   get: (step: StepName) => Step | undefined
-  /** Go to the specified step. */
+  /** 跳转至指定步骤。 */
   goTo: (step: StepName) => void
-  /** Go to the next step. Does nothing if the current step is the last one. */
+  /** 跳转至下一个步骤。如果当前步骤是最后一个，则不执行任何操作。 */
   goToNext: () => void
-  /** Go to the previous step. Does nothing if the current step is the previous one. */
+  /** 跳转至上一个步骤。如果当前步骤是第一个，则不执行任何操作。 */
   goToPrevious: () => void
-  /** Go back to the given step, only if the current step is after. */
+  /** 回到给定步骤，仅当当前步骤在之后时执行。 */
   goBackTo: (step: StepName) => void
-  /** Checks whether the given step is the next step. */
+  /** 检查给定步骤是否为下一个步骤。 */
   isNext: (step: StepName) => boolean
-  /** Checks whether the given step is the previous step. */
+  /** 检查给定步骤是否为上一个步骤。 */
   isPrevious: (step: StepName) => boolean
-  /** Checks whether the given step is the current step. */
+  /** 检查给定步骤是否为当前步骤。 */
   isCurrent: (step: StepName) => boolean
-  /** Checks if the current step is before the given step. */
+  /** 检查当前步骤是否在给定步骤之前。 */
   isBefore: (step: StepName) => boolean
-  /** Checks if the current step is after the given step. */
+  /** 检查当前步骤是否在给定步骤之后。 */
   isAfter: (step: StepName) => boolean
 }
 

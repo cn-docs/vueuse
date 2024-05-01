@@ -6,7 +6,7 @@ const prefersDark = usePreferredDark()
 
 <template>
   <note class="mb-2">
-    Prefers Dark:
+    喜欢深色:
   </note>
   <BooleanDisplay :value="prefersDark" />
 </template>

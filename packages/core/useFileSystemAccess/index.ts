@@ -7,7 +7,7 @@ import { defaultWindow } from '../_configurable'
 import { useSupported } from '../useSupported'
 
 /**
- * window.showOpenFilePicker parameters
+ * window.showOpenFilePicker 参数
  * @see https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker#parameters
  */
 export interface FileSystemAccessShowOpenFileOptions {
@@ -20,7 +20,7 @@ export interface FileSystemAccessShowOpenFileOptions {
 }
 
 /**
- * window.showSaveFilePicker parameters
+ * window.showSaveFilePicker 参数
  * @see https://developer.mozilla.org/en-US/docs/Web/API/window/showSaveFilePicker#parameters
  */
 export interface FileSystemAccessShowSaveFileOptions {
@@ -84,13 +84,13 @@ export type UseFileSystemAccessShowSaveFileOptions = Pick<FileSystemAccessShowSa
 
 export type UseFileSystemAccessOptions = ConfigurableWindow & UseFileSystemAccessCommonOptions & {
   /**
-   * file data type
+   * 文件数据类型
    */
   dataType?: MaybeRefOrGetter<'Text' | 'ArrayBuffer' | 'Blob'>
 }
 
 /**
- * Create and read and write local files.
+ * 创建并读写本地文件。
  * @see https://vueuse.org/useFileSystemAccess
  */
 export function useFileSystemAccess(): UseFileSystemAccessReturn<string | ArrayBuffer | Blob>

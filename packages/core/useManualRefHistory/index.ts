@@ -11,89 +11,89 @@ export interface UseRefHistoryRecord<T> {
 
 export interface UseManualRefHistoryOptions<Raw, Serialized = Raw> {
   /**
-   * Maximum number of history to be kept. Default to unlimited.
+   * 保留的历史记录的最大数量。默认为无限制。
    */
   capacity?: number
   /**
-   * Clone when taking a snapshot, shortcut for dump: JSON.parse(JSON.stringify(value)).
-   * Default to false
+   * 在获取快照时进行克隆，快捷方式为 dump: JSON.parse(JSON.stringify(value))。
+   * 默认为 false
    *
    * @default false
    */
   clone?: boolean | CloneFn<Raw>
   /**
-   * Serialize data into the history
+   * 将数据序列化到历史记录中
    */
   dump?: (v: Raw) => Serialized
   /**
-   * Deserialize data from the history
+   * 从历史记录中反序列化数据
    */
   parse?: (v: Serialized) => Raw
 
   /**
-   * set data source
+   * 设置数据源
    */
   setSource?: (source: Ref<Raw>, v: Raw) => void
 }
 
 export interface UseManualRefHistoryReturn<Raw, Serialized> {
   /**
-   * Bypassed tracking ref from the argument
+   * 绕过跟踪的原始引用
    */
   source: Ref<Raw>
 
   /**
-   * An array of history records for undo, newest comes to first
+   * 用于撤销的历史记录数组，最新的记录在最前面
    */
   history: Ref<UseRefHistoryRecord<Serialized>[]>
 
   /**
-   * Last history point, source can be different if paused
+   * 最后的历史记录点，如果暂停，则源可能不同
    */
   last: Ref<UseRefHistoryRecord<Serialized>>
 
   /**
-   * Same as {@link UseManualRefHistoryReturn.history | history}
+   * 与 {@link UseManualRefHistoryReturn.history | history} 相同
    */
   undoStack: Ref<UseRefHistoryRecord<Serialized>[]>
 
   /**
-   * Records array for redo
+   * 用于重做的记录数组
    */
   redoStack: Ref<UseRefHistoryRecord<Serialized>[]>
 
   /**
-   * A ref representing if undo is possible (non empty undoStack)
+   * 表示是否可以撤销的引用（undoStack 不为空）
    */
   canUndo: Ref<boolean>
 
   /**
-   * A ref representing if redo is possible (non empty redoStack)
+   * 表示是否可以重做的引用（redoStack 不为空）
    */
   canRedo: Ref<boolean>
 
   /**
-   * Undo changes
+   * 撤销更改
    */
   undo: () => void
 
   /**
-   * Redo changes
+   * 重做更改
    */
   redo: () => void
 
   /**
-   * Clear all the history
+   * 清除所有历史记录
    */
   clear: () => void
 
   /**
-   * Create a new history record
+   * 创建新的历史记录
    */
   commit: () => void
 
   /**
-   * Reset ref's value with latest history
+   * 使用最新历史记录重置引用的值
    */
   reset: () => void
 }

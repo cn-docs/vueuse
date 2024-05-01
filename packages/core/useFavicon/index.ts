@@ -11,7 +11,7 @@ export interface UseFaviconOptions extends ConfigurableDocument {
 }
 
 /**
- * Reactive favicon.
+ * 响应式 favicon.
  *
  * @see https://vueuse.org/useFavicon
  * @param newIcon

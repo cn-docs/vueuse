@@ -15,7 +15,7 @@ function onFileChange(e: Event) {
 <template>
   <div>
     <note class="mb-1">
-      Select file:
+      选择文件:
     </note>
     <input type="file" @change="onFileChange">
 

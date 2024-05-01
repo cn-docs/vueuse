@@ -17,7 +17,7 @@ const text = stringify(mouse)
   <div ref="el" class="select-none">
     <pre lang="yaml">{{ text }}</pre>
     <div>
-      Tracking on
+      开启追踪
       <button class="ml-2 button small" @click="toggle()">
         {{ withTarget ? 'Demo section' : 'Entire page' }}
       </button>

@@ -7,14 +7,14 @@ import { useEventListener } from '../useEventListener'
 
 export interface UseFocusOptions extends ConfigurableWindow {
   /**
-   * Initial value. If set true, then focus will be set on the target
+   * 初始值。如果设置为 true，则焦点将设置在目标上
    *
    * @default false
    */
   initialValue?: boolean
 
   /**
-   * Replicate the :focus-visible behavior of CSS
+   * 复制 CSS 的 :focus-visible 行为
    *
    * @default false
    */
@@ -23,14 +23,14 @@ export interface UseFocusOptions extends ConfigurableWindow {
 
 export interface UseFocusReturn {
   /**
-   * If read as true, then the element has focus. If read as false, then the element does not have focus
-   * If set to true, then the element will be focused. If set to false, the element will be blurred.
+   * 如果为 true，则表示元素具有焦点。如果为 false，则表示元素没有焦点
+   * 如果设置为 true，则元素将获得焦点。如果设置为 false，则元素将失去焦点。
    */
   focused: Ref<boolean>
 }
 
 /**
- * Track or set the focus state of a DOM element.
+ * 跟踪或设置 DOM 元素的焦点状态。
  *
  * @see https://vueuse.org/useFocus
  * @param target The target element for the focus and blur events.

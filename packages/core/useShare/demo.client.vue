@@ -22,10 +22,10 @@ function startShare() {
       v-if="isSupported"
       v-model="options.text"
       type="text"
-      placeholder="Note"
+      placeholder="备注"
     >
     <button :disabled="!isSupported" @click="startShare">
-      {{ isSupported ? 'Share' : 'Web share is not supported in your browser' }}
+      {{ isSupported ? '分享' : '您的浏览器不支持 Web 分享' }}
     </button>
   </div>
 </template>

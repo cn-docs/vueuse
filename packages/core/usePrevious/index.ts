@@ -6,7 +6,7 @@ import type { MaybeRefOrGetter } from '@vueuse/shared'
 import { toRef } from '@vueuse/shared'
 
 /**
- * Holds the previous value of a ref.
+ * 保存 ref 的前一个值。
  *
  * @see   {@link https://vueuse.org/usePrevious}
  */

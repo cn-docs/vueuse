@@ -32,17 +32,17 @@ function handleScrollTo() {
   <div>
     <div>
       <div class="inline-block mr-4">
-        Jump to index
-        <input v-model="index" placeholder="Index" type="number">
+        跳转到索引
+        <input v-model="index" placeholder="索引" type="number">
       </div>
       <button type="button" @click="handleScrollTo">
-        Go
+        前往
       </button>
     </div>
     <div>
       <div class="inline-block mr-4">
-        Filter list by size
-        <input v-model="search" placeholder="e.g. small, medium, large" type="search">
+        按尺寸筛选列表
+        <input v-model="search" placeholder="例如小号，中号，大号" type="search">
       </div>
     </div>
     <div v-bind="containerProps" class="h-300px overflow-auto p-2 bg-gray-500/5 rounded">
@@ -58,7 +58,7 @@ function handleScrollTo() {
             alignItems: 'center',
           }"
         >
-          Row {{ index }} <span opacity="70" m="l-1">({{ data.size }})</span>
+          第 {{ index }} 行 <span opacity="70" m="l-1">（{{ data.size }}）</span>
         </div>
       </div>
     </div>

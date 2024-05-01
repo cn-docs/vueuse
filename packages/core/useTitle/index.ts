@@ -8,31 +8,31 @@ import { defaultDocument } from '../_configurable'
 
 export type UseTitleOptionsBase = {
   /**
-   * Restore the original title when unmounted
-   * @param originTitle original title
-   * @returns restored title
+   * 在组件卸载时恢复原始标题
+   * @param originTitle 原始标题
+   * @returns 恢复的标题
    */
   restoreOnUnmount?: false | ((originalTitle: string, currentTitle: string) => string | null | undefined)
 } & (
   {
     /**
-     * Observe `document.title` changes using MutationObserve
-     * Cannot be used together with `titleTemplate` option.
+     * 使用 MutationObserve 观察 `document.title` 的变化
+     * 不能与 `titleTemplate` 选项一起使用。
      *
      * @default false
      */
     observe?: boolean
   }
   | {
-    /**
-     * The template string to parse the title (e.g., '%s | My Website')
-     * Cannot be used together with `observe` option.
-     *
-     * @default '%s'
-     */
+  /**
+   * 用于解析标题的模板字符串（例如，'%s | My Website'）
+   * 不能与 `observe` 选项一起使用。
+   *
+   * @default '%s'
+   */
     titleTemplate?: MaybeRef<string> | ((title: string) => string)
   }
-)
+  )
 
 export type UseTitleOptions = ConfigurableDocument & UseTitleOptionsBase
 
@@ -47,7 +47,7 @@ export function useTitle(
 ): Ref<string | null | undefined>
 
 /**
- * Reactive document title.
+ * 响应式 document title.
  *
  * @see https://vueuse.org/useTitle
  * @param newTitle

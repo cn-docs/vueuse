@@ -121,7 +121,7 @@ function formatDuration(seconds: number) {
               @keydown.stop.prevent.enter.space="disableTrack()"
               @click="() => { disableTrack(); close() }"
             >
-              <span class="flex-1">Off</span>
+              <span class="flex-1">关闭</span>
               <i i-carbon-checkmark inline-block align-middle :class="{ 'opacity-0': selectedTrack !== -1 }" />
             </MenuItem>
             <MenuItem
@@ -149,11 +149,11 @@ function formatDuration(seconds: number) {
               @click="() => { togglePictureInPicture(); close(); }"
             >
               <i i-carbon-popup />
-              <span>{{ isPictureInPicture ? 'Exit' : 'Enter' }} Picture in Picture</span>
+              <span>{{ isPictureInPicture ? '退出' : '进入' }}画中画</span>
             </MenuItem>
             <MenuItem @click="() => { loop = !loop; close(); }">
               <i i-carbon-repeat />
-              <span class="flex-1">Loop</span>
+              <span class="flex-1">循环</span>
               <i v-if="loop" i-carbon-checkmark />
             </MenuItem>
           </div>

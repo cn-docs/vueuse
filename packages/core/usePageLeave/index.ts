@@ -4,7 +4,7 @@ import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 
 /**
- * Reactive state to show whether mouse leaves the page.
+ * 响应式状态，用于显示鼠标是否离开页面。
  *
  * @see https://vueuse.org/usePageLeave
  * @param options

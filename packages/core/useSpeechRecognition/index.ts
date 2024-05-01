@@ -12,19 +12,20 @@ import type { SpeechRecognition, SpeechRecognitionErrorEvent } from './types'
 
 export interface UseSpeechRecognitionOptions extends ConfigurableWindow {
   /**
-   * Controls whether continuous results are returned for each recognition, or only a single result.
+   * 控制是否对每次识别返回连续的结果，还是仅返回单个结果。
    *
    * @default true
    */
   continuous?: boolean
   /**
-   * Controls whether interim results should be returned (true) or not (false.) Interim results are results that are not yet final
+   * 控制是否返回临时结果（true）或不返回临时结果（false）。
+   * 临时结果是尚未最终确定的结果。
    *
    * @default true
    */
   interimResults?: boolean
   /**
-   * Language for SpeechRecognition
+   * 语音识别的语言
    *
    * @default 'en-US'
    */
@@ -32,7 +33,7 @@ export interface UseSpeechRecognitionOptions extends ConfigurableWindow {
 }
 
 /**
- * Reactive SpeechRecognition.
+ * 响应式语音识别。
  *
  * @see https://vueuse.org/useSpeechRecognition
  * @see https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition SpeechRecognition

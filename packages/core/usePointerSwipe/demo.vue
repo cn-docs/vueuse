@@ -47,7 +47,7 @@ const { distanceX, isSwiping } = usePointerSwipe(target, {
 <template>
   <div ref="container" class="bg-gray-200 rounded relative w-full h-[80px] m-auto flex items-center justify-center overflow-hidden">
     <button @click="reset">
-      Reset
+      重置
     </button>
     <div
       ref="target"
@@ -56,7 +56,7 @@ const { distanceX, isSwiping } = usePointerSwipe(target, {
       :style="{ left, opacity }"
     >
       <p class="flex text-white items-center">
-        Swipe <mdi-arrow-right />
+        滑动 <mdi-arrow-right />
       </p>
     </div>
   </div>

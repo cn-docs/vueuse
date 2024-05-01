@@ -5,7 +5,7 @@ import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 
 /**
- * Reactively track window focus with `window.onfocus` and `window.onblur`.
+ * 使用 `window.onfocus` 和 `window.onblur` 响应式跟踪窗口焦点。
  *
  * @see https://vueuse.org/useWindowFocus
  */

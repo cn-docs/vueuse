@@ -10,15 +10,15 @@ import { useSupported } from '../useSupported'
  */
 export interface MemoryInfo {
   /**
-   * The maximum size of the heap, in bytes, that is available to the context.
+   * 上下文可用的堆的最大大小（以字节为单位）。
    */
   readonly jsHeapSizeLimit: number
   /**
-   *  The total allocated heap size, in bytes.
+   * 分配的堆的总大小（以字节为单位）。
    */
   readonly totalJSHeapSize: number
   /**
-   * The currently active segment of JS heap, in bytes.
+   * 当前活动的 JS 堆段大小（以字节为单位）。
    */
   readonly usedJSHeapSize: number
 
@@ -34,7 +34,7 @@ type PerformanceMemory = Performance & {
 }
 
 /**
- * Reactive Memory Info.
+ * 响应式内存信息
  *
  * @see https://vueuse.org/useMemory
  * @param options

@@ -19,7 +19,7 @@ export interface ScreenOrientation extends EventTarget {
 }
 
 /**
- * Reactive screen orientation
+ * 响应式屏幕方向
  *
  * @see https://vueuse.org/useScreenOrientation
  */

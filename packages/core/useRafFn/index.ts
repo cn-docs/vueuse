@@ -6,26 +6,26 @@ import { defaultWindow } from '../_configurable'
 
 export interface UseRafFnCallbackArguments {
   /**
-   * Time elapsed between this and the last frame.
+   * 当前帧与上一帧之间经过的时间。
    */
   delta: number
 
   /**
-   * Time elapsed since the creation of the web page. See {@link https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp#the_time_origin Time origin}.
+   * 自网页创建以来经过的时间。参见 {@link https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp#the_time_origin 时间起点}。
    */
   timestamp: DOMHighResTimeStamp
 }
 
 export interface UseRafFnOptions extends ConfigurableWindow {
   /**
-   * Start the requestAnimationFrame loop immediately on creation
+   * 在创建时立即开始 requestAnimationFrame 循环。
    *
    * @default true
    */
   immediate?: boolean
   /**
-   * The maximum frame per second to execute the function.
-   * Set to `undefined` to disable the limit.
+   * 每秒执行函数的最大帧数。
+   * 设置为 `undefined` 来禁用限制。
    *
    * @default undefined
    */
@@ -33,7 +33,7 @@ export interface UseRafFnOptions extends ConfigurableWindow {
 }
 
 /**
- * Call function on every `requestAnimationFrame`. With controls of pausing and resuming.
+ * 在每次 `requestAnimationFrame` 上调用函数。具有暂停和恢复控制。
  *
  * @see https://vueuse.org/useRafFn
  * @param fn

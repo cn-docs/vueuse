@@ -22,26 +22,26 @@ const { history, undo, redo, canUndo, canRedo } = useThrottledRefHistory(
 </script>
 
 <template>
-  <div>Count: {{ count }}</div>
+  <div>计数：{{ count }}</div>
   <button @click="inc()">
-    Increment
+    增加
   </button>
   <button @click="dec()">
-    Decrement
+    减少
   </button>
   <span class="ml-2">/</span>
   <button :disabled="!canUndo" @click="undo()">
-    Undo
+    撤销
   </button>
   <button :disabled="!canRedo" @click="redo()">
-    Redo
+    重做
   </button>
   <br>
-  <span>Delay (in ms):</span>
+  <span>延迟时间（毫秒）：</span>
   <input v-model="delay" type="number">
   <br>
   <br>
-  <note>History (limited to 10 records for demo)</note>
+  <note>历史记录（为演示目的限制为10条记录）</note>
   <div class="code-block mt-4">
     <div v-for="i in history" :key="i.timestamp">
       <span class="opacity-50 mr-2 font-mono">{{ format(i.timestamp) }}</span>

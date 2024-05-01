@@ -18,7 +18,7 @@ export interface UseWebWorkerReturn<Data = any> {
 type WorkerFn = (...args: unknown[]) => Worker
 
 /**
- * Simple Web Workers registration and communication.
+ * 简单的 Web Workers 注册和通信。
  *
  * @see https://vueuse.org/useWebWorker
  * @param url
@@ -32,7 +32,7 @@ export function useWebWorker<T = any>(
 ): UseWebWorkerReturn<T>
 
 /**
- * Simple Web Workers registration and communication.
+ * 简单的 Web Workers 注册和通信。
  *
  * @see https://vueuse.org/useWebWorker
  * @param worker
