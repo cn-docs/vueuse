@@ -43,7 +43,7 @@ export interface MousePressedOptions extends ConfigurableWindow {
 }
 
 /**
- * Reactive mouse pressing state. Triggered by `mousedown` `touchstart` on target element and released by `mouseup` `mouseleave` `touchend` `touchcancel` on window.
+ * 反应性鼠标按下状态。由目标元素上的mousedown touchstart触发，并由窗口上的mouseup mouseleave touchend touchcancel释放。
  *
  * @see https://vueuse.org/useMousePressed
  * @param options

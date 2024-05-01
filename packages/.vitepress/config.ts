@@ -59,7 +59,6 @@ export default withPwa(defineConfig({
   description: 'Collection of essential Vue Composition Utilities',
   lang: 'en-US',
   ignoreDeadLinks: true,
-  base: '/vueuse/',
   markdown: {
     theme: {
       light: 'vitesse-light',
