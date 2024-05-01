@@ -68,7 +68,9 @@ export default withPwa(defineConfig({
       transformerTwoslash(),
     ],
   },
-
+  sitemap: {
+    hostname: 'https://vueuse-cn.netlify.app/',
+  },
   themeConfig: {
     logo: '/favicon.svg',
     editLink: {
