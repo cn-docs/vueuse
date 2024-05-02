@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "nr update && esno scripts/build-run.ts",
+    "build:urls": "esno scripts/build-urls.ts",
     "build:redirects": "esno scripts/redirects.ts",
     "build:rollup": "NODE_OPTIONS=\"--max-old-space-size=6144\" rollup --config=rollup.config.ts --configPlugin=rollup-plugin-esbuild",
     "build:types": "tsc --emitDeclarationOnly && nr types:fix",
