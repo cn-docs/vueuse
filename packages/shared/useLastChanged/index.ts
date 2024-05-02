@@ -10,7 +10,7 @@ export interface UseLastChangedOptions<
 }
 
 /**
- * Records the timestamp of the last change
+ * 记录最后更改的时间戳
  *
  * @see https://vueuse.org/useLastChanged
  */

@@ -4,9 +4,9 @@ category: State
 
 # createInjectionState
 
-Create global state that can be injected into components.
+创建可注入到组件中的全局状态。
 
-## Usage
+## 用法
 
 ```ts
 // useCounterStore.ts
@@ -14,13 +14,13 @@ import { computed, ref } from 'vue'
 import { createInjectionState } from '@vueuse/core'
 
 const [useProvideCounterStore, useCounterStore] = createInjectionState((initialValue: number) => {
-  // state
+  // 状态
   const count = ref(initialValue)
 
-  // getters
+  // 计算属性
   const double = computed(() => count.value * 2)
 
-  // actions
+  // 动作
   function increment() {
     count.value++
   }
@@ -29,7 +29,7 @@ const [useProvideCounterStore, useCounterStore] = createInjectionState((initialV
 })
 
 export { useProvideCounterStore }
-// If you want to hide `useCounterStore` and wrap it in default value logic or throw error logic, please don't export `useCounterStore`
+// 如果想隐藏 `useCounterStore` 并将其包装在默认值逻辑或抛出错误逻辑中，请不要导出 `useCounterStore`
 export { useCounterStore }
 
 export function useCounterStoreWithDefaultValue() {
@@ -43,7 +43,7 @@ export function useCounterStoreWithDefaultValue() {
 export function useCounterStoreOrThrow() {
   const counterStore = useCounterStore()
   if (counterStore == null)
-    throw new Error('Please call `useProvideCounterStore` on the appropriate parent component')
+    throw new Error('请在适当的父组件上调用 `useProvideCounterStore`')
   return counterStore
 }
 ```
@@ -68,23 +68,23 @@ useProvideCounterStore(0)
 <script setup lang="ts">
 import { useCounterStore } from './useCounterStore'
 
-// use non-null assertion operator to ignore the case that store is not provided.
+// 使用非空断言操作符来忽略未提供存储的情况。
 const { count, double } = useCounterStore()!
-// if you want to allow component to working without providing store, you can use follow code instead:
+// 如果要允许组件在未提供存储的情况下工作，可以改用以下代码：
 // const { count, double } = useCounterStore() ?? { count: ref(0), double: ref(0) }
-// also, you can use another hook to provide default value
+// 同样，您可以使用另一个钩子来提供默认值
 // const { count, double } = useCounterStoreWithDefaultValue()
-// or throw error
+// 或者抛出错误
 // const { count, double } = useCounterStoreOrThrow()
 </script>
 
 <template>
   <ul>
     <li>
-      count: {{ count }}
+      计数: {{ count }}
     </li>
     <li>
-      double: {{ double }}
+      两倍: {{ double }}
     </li>
   </ul>
 </template>
@@ -95,7 +95,7 @@ const { count, double } = useCounterStore()!
 <script setup lang="ts">
 import { useCounterStore } from './useCounterStore'
 
-// use non-null assertion operator to ignore the case that store is not provided.
+// 使用非空断言操作符来忽略未提供存储的情况。
 const { increment } = useCounterStore()!
 </script>
 
@@ -106,24 +106,24 @@ const { increment } = useCounterStore()!
 </template>
 ```
 
-## Provide a custom InjectionKey
+## 提供自定义的 InjectionKey
 
 ```ts
 // useCounterStore.ts
 import { computed, ref } from 'vue'
 import { createInjectionState } from '@vueuse/core'
 
-// custom injectionKey
+// 自定义 injectionKey
 const CounterStoreKey = 'counter-store'
 
 const [useProvideCounterStore, useCounterStore] = createInjectionState((initialValue: number) => {
-  // state
+  // 状态
   const count = ref(initialValue)
 
-  // getters
+  // 计算属性
   const double = computed(() => count.value * 2)
 
-  // actions
+  // 动作
   function increment() {
     count.value++
   }

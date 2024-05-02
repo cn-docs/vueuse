@@ -12,7 +12,7 @@ const formatted = useDateFormat(useNow(), formatter)
   </p>
   <div class="flex items-center">
     <span class="mr-5px text-18px">
-      Formatter Editor :
+      格式化编辑器 :
     </span>
     <input v-model="formatter" type="text">
   </div>

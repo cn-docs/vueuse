@@ -4,7 +4,7 @@ import { tryOnScopeDispose } from '../tryOnScopeDispose'
 import type { AnyFn } from '../utils'
 
 /**
- * Make a composable function usable with multiple Vue instances.
+ * 使可组合函数可用于多个 Vue 实例。
  *
  * @see https://vueuse.org/createSharedComposable
  */

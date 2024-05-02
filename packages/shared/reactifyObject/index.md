@@ -4,9 +4,9 @@ category: Reactivity
 
 # reactifyObject
 
-Apply `reactify` to an object
+将 `reactify` 应用于对象
 
-## Usage
+## 使用
 
 ```ts
 import { reactifyObject } from '@vueuse/core'

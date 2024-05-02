@@ -7,7 +7,7 @@ const source = ref(0)
 
 const { ignoreUpdates } = watchIgnorable(
   source,
-  v => (log.value += `Changed to "${v}"\n`),
+  v => (log.value += `更改为 "${v}"\n`),
   { flush: 'sync' },
 )
 
@@ -26,20 +26,20 @@ function ignoredUpdate() {
 </script>
 
 <template>
-  <div>Value: {{ source }}</div>
+  <div>数值: {{ source }}</div>
   <button @click="update">
-    Update
+    更新
   </button>
   <button class="orange" @click="ignoredUpdate">
-    Ignored Update
+    忽略更新
   </button>
   <button @click="clear">
-    Reset
+    重置
   </button>
 
   <br>
 
-  <note>Log</note>
+  <note>日志</note>
 
   <pre>{{ log }}</pre>
 </template>

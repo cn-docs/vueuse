@@ -16,7 +16,7 @@ export function reactivePick<T extends object>(
 ): { [S in keyof T]?: UnwrapRef<T[S]> }
 
 /**
- * Reactively pick fields from a reactive object
+ * 从响应式对象中动态地选择字段。
  *
  * @see https://vueuse.org/reactivePick
  */

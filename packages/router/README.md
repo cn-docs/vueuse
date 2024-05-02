@@ -19,9 +19,9 @@ npm i @vueuse/router vue-router@4
 <!--GENERATED LIST, DO NOT MODIFY MANUALLY-->
 <!--FUNCTIONS_LIST_STARTS-->
 
-- [`useRouteHash`](https://vueuse.org/router/useRouteHash/) — shorthand for a reactive `route.hash`
-- [`useRouteParams`](https://vueuse.org/router/useRouteParams/) — shorthand for a reactive `route.params`
-- [`useRouteQuery`](https://vueuse.org/router/useRouteQuery/) — shorthand for a reactive `route.query`
+- [`useRouteHash`](https://vueuse.org/router/useRouteHash/) — 对响应式的 `route.hash` 的简写。
+- [`useRouteParams`](https://vueuse.org/router/useRouteParams/) — 对响应式的 `route.params` 的简写。
+- [`useRouteQuery`](https://vueuse.org/router/useRouteQuery/) — 对响应式的 `route.query` 的简写。
 
 <!--FUNCTIONS_LIST_ENDS-->
 

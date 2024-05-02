@@ -6,29 +6,29 @@ import { promiseTimeout } from '../utils'
 
 export interface UntilToMatchOptions {
   /**
-   * Milliseconds timeout for promise to resolve/reject if the when condition does not meet.
-   * 0 for never timed out
+   * 当条件未满足时，Promise resolve/reject 的毫秒超时时间。
+   * 0 表示永不超时
    *
    * @default 0
    */
   timeout?: number
 
   /**
-   * Reject the promise when timeout
+   * 当超时时是否拒绝 Promise
    *
    * @default false
    */
   throwOnTimeout?: boolean
 
   /**
-   * `flush` option for internal watch
+   * 内部监视的 `flush` 选项
    *
    * @default 'sync'
    */
   flush?: WatchOptions['flush']
 
   /**
-   * `deep` option for internal watch
+   * 内部监视的 `deep` 选项
    *
    * @default 'false'
    */
@@ -208,7 +208,7 @@ function createUntil<T>(r: any, isNot = false) {
 }
 
 /**
- * Promised one-time watch for changes
+ * 等待变化的一次性 Promise
  *
  * @see https://vueuse.org/until
  * @example
@@ -217,7 +217,7 @@ function createUntil<T>(r: any, isNot = false) {
  *
  * await until(count).toMatch(v => v > 7)
  *
- * alert('Counter is now larger than 7!')
+ * alert('计数器现在大于 7!')
  * ```
  */
 export function until<T extends unknown[]>(r: WatchSource<T> | MaybeRefOrGetter<T>): UntilArrayInstance<T>

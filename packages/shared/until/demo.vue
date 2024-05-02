@@ -6,17 +6,17 @@ const { count, inc, dec } = useCounter()
 invoke(async () => {
   await until(count).toBe(7)
 
-  alert('You got 7!')
+  alert('你获得了7!')
 })
 </script>
 
 <template>
-  <note>Add to 7 to show the alert.</note>
-  <p>Count: {{ count }}</p>
+  <note>将计数增加到 7 以显示警报。</note>
+  <p>计数: {{ count }}</p>
   <button @click="inc()">
-    Increment
+    增加
   </button>
   <button @click="dec()">
-    Decrement
+    减少
   </button>
 </template>

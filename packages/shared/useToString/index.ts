@@ -4,7 +4,7 @@ import { toValue } from '../toValue'
 import type { MaybeRefOrGetter } from '../utils'
 
 /**
- * Reactively convert a ref to string.
+ * 将 ref 转换为字符串。
  *
  * @see https://vueuse.org/useToString
  */

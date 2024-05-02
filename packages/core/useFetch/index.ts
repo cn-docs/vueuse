@@ -141,7 +141,7 @@ export interface UseFetchOptions {
 
   /**
    * 当以下情况发生时是否自动重新获取：
-   * - 如果 URL 是一个引用，则 URL 被更改
+   * - 如果 URL 是一个 ref，则 URL 被更改
    * - 如果 payload 是一个引用，则 payload 被更改
    *
    * @default false

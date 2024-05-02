@@ -4,11 +4,11 @@ category: Array
 
 # useArrayIncludes
 
-Reactive `Array.includes`
+响应式 `Array.includes`。
 
-## Usage
+## 用法
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayIncludes } from '@vueuse/core'

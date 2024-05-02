@@ -4,11 +4,11 @@ category: Utilities
 
 # createEventHook
 
-Utility for creating event hooks
+用于创建事件钩子的实用工具
 
-## Usage
+## 用法
 
-Creating a function that uses `createEventHook`
+创建一个使用 `createEventHook` 的函数
 
 ```ts
 import { createEventHook } from '@vueuse/core'
@@ -28,7 +28,7 @@ export function useMyFetch(url) {
 }
 ```
 
-Using a function that uses `createEventHook`
+使用一个使用 `createEventHook` 的函数
 
 ```vue
 <script setup lang="ts">

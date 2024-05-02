@@ -4,13 +4,13 @@ import type { MaybeRefOrGetter } from '../utils'
 import { toValue } from '../toValue'
 
 /**
- * Reactive `Array.find`
+ * 响应式 `Array.find`
  *
  * @see https://vueuse.org/useArrayFind
- * @param list - the array was called upon.
- * @param fn - a function to test each element.
+ * @param list - 被调用的数组。
+ * @param fn - 用于测试每个元素的函数。
  *
- * @returns the first element in the array that satisfies the provided testing function. Otherwise, undefined is returned.
+ * @returns 数组中满足提供的测试函数的第一个元素。否则，返回 undefined。
  */
 export function useArrayFind<T>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,

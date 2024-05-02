@@ -3,9 +3,9 @@ import { nextTick, watch } from 'vue-demi'
 
 export interface WheneverOptions extends WatchOptions {
   /**
-   * Only trigger once when the condition is met
+   * 当条件满足时仅触发一次
    *
-   * Override the `once` option in `WatchOptions`
+   * 覆盖 `WatchOptions` 中的 `once` 选项
    *
    * @default false
    */
@@ -13,7 +13,7 @@ export interface WheneverOptions extends WatchOptions {
 }
 
 /**
- * Shorthand for watching value to be truthy
+ * 监视值为真的简写形式
  *
  * @see https://vueuse.org/whenever
  */

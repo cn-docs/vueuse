@@ -4,9 +4,9 @@ category: Animation
 
 # useTimeout
 
-Update value after a given time with controls.
+在一定时间后更新值，并带有控制功能。
 
-## Usage
+## 使用方法
 
 ```js
 import { promiseTimeout, useTimeout } from '@vueuse/core'

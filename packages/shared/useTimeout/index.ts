@@ -7,19 +7,19 @@ import { noop } from '../utils'
 
 export interface UseTimeoutOptions<Controls extends boolean> extends UseTimeoutFnOptions {
   /**
-   * Expose more controls
+   * 暴露更多控制选项
    *
    * @default false
    */
   controls?: Controls
   /**
-   * Callback on timeout
+   * 超时时的回调函数
    */
   callback?: Fn
 }
 
 /**
- * Update value after a given time with controls.
+ * 在一定时间后更新值，并带有控制功能。
  *
  * @see   {@link https://vueuse.org/useTimeout}
  * @param interval

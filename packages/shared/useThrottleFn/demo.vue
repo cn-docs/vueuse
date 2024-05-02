@@ -17,11 +17,11 @@ function clickedFn() {
 <template>
   <div>
     <button @click="clickedFn">
-      Smash me!
+      点我！
     </button>
-    <note>Delay is set to 1000ms for this demo.</note>
+    <note>此演示中延迟设置为 1000ms。</note>
 
-    <p>Button clicked: {{ clicked }}</p>
-    <p>Event handler called: {{ updated }}</p>
+    <p>按钮点击次数：{{ clicked }}</p>
+    <p>事件处理程序调用次数：{{ updated }}</p>
   </div>
 </template>

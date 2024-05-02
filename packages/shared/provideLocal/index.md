@@ -4,9 +4,9 @@ category: State
 
 # provideLocal
 
-Extended `provide` with ability to call `injectLocal` to obtain the value in the same component.
+扩展了 `provide` 方法，使其能够通过调用 `injectLocal` 在同一组件中获取值。
 
-## Usage
+## 用法
 
 ```vue
 <script setup>

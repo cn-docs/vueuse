@@ -3,7 +3,7 @@ import { computed } from 'vue-demi'
 import { toReactive } from '../toReactive'
 
 /**
- * Computed reactive object.
+ * 计算响应式对象。
  */
 export function reactiveComputed<T extends object>(fn: () => T): UnwrapNestedRefs<T> {
   return toReactive(computed(fn))

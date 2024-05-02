@@ -4,11 +4,11 @@ category: Array
 
 # useArrayUnique
 
-reactive unique array
+响应式唯一数组。
 
-## Usage
+## 用法
 
-### Use with array of multiple refs
+### 与多个 ref 组成的数组一起使用
 
 ```js
 import { useArrayUnique } from '@vueuse/core'
@@ -25,7 +25,7 @@ item5.value = 1
 // result.value: [0, 1, 2]
 ```
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayUnique } from '@vueuse/core'
@@ -38,7 +38,7 @@ list.push(1)
 // result.value: [1, 2, 3]
 ```
 
-### Use with custom function
+### 使用自定义函数
 
 ```js
 import { useArrayUnique } from '@vueuse/core'

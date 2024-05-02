@@ -4,9 +4,9 @@ category: Utilities
 
 # useToString
 
-Reactively convert a ref to string.
+将 ref 转换为字符串。
 
-## Usage
+## 使用方法
 
 ```ts
 import { useToString } from '@vueuse/core'

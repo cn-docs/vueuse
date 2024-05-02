@@ -26,7 +26,7 @@ export interface EventHook<T = any> {
 }
 
 /**
- * Utility for creating event hooks
+ * 用于创建事件钩子的工具函数
  *
  * @see https://vueuse.org/createEventHook
  */

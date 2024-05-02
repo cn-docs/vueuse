@@ -16,11 +16,11 @@ export interface UseArrayIncludesOptions<T, V> {
 }
 
 /**
- * Reactive `Array.includes`
+ * 响应式 `Array.includes`
  *
  * @see https://vueuse.org/useArrayIncludes
  *
- * @returns true if the `value` is found in the array. Otherwise, false.
+ * @returns 如果在数组中找到了 `value`，则返回 true。否则返回 false。
  */
 export function useArrayIncludes<T, V = any>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,

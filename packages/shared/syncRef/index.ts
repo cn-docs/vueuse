@@ -101,20 +101,20 @@ type TransformType<D extends Direction, L, R> = Equal<L, R> extends true
 
 export type SyncRefOptions<L, R, D extends Direction> = ConfigurableFlushSync & {
   /**
-   * Watch deeply
+   * 深度监视
    *
    * @default false
    */
   deep?: boolean
   /**
-   * Sync values immediately
+   * 立即同步值
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * Direction of syncing. Value will be redefined if you define syncConvertors
+   * 同步方向。如果定义了 syncConvertors，值将被重新定义
    *
    * @default 'both'
    */
@@ -122,9 +122,9 @@ export type SyncRefOptions<L, R, D extends Direction> = ConfigurableFlushSync & 
 } & TransformType<D, L, R>
 
 /**
- * Two-way refs synchronization.
- * From the set theory perspective to restrict the option's type
- * Check in the following order:
+ * 双向引用同步。
+ * 从集合论的角度来看，限制选项的类型
+ * 按以下顺序检查：
  * 1. L = R
  * 2. L ∩ R ≠ ∅
  * 3. L ⊆ R

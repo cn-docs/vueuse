@@ -6,7 +6,7 @@ import { isClient } from '../utils'
 
 export interface UseTimeoutFnOptions {
   /**
-   * Start the timer immediate after calling this function
+   * 在调用此函数后立即启动计时器
    *
    * @default true
    */
@@ -14,11 +14,11 @@ export interface UseTimeoutFnOptions {
 }
 
 /**
- * Wrapper for `setTimeout` with controls.
+ * 带有控制选项的 setTimeout 函数的封装
  *
- * @param cb
- * @param interval
- * @param options
+ * @param cb 回调函数
+ * @param interval 延迟的时间（毫秒）
+ * @param options 可选参数
  */
 export function useTimeoutFn<CallbackFn extends AnyFn>(
   cb: CallbackFn,

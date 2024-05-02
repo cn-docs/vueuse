@@ -11,6 +11,6 @@ const isOver5 = computedEager(() => count.value > 5)
 
 <template>
   <div>
-    Is over 5: <BooleanDisplay :value="isOver5" />
+    已超过5: <BooleanDisplay :value="isOver5" />
   </div>
 </template>

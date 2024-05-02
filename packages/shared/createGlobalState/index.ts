@@ -2,10 +2,10 @@ import { effectScope } from 'vue-demi'
 import type { AnyFn } from '../utils'
 
 /**
- * Keep states in the global scope to be reusable across Vue instances.
+ * 在全局范围内保留状态，以便在 Vue 实例之间重复使用。
  *
  * @see https://vueuse.org/createGlobalState
- * @param stateFactory A factory function to create the state
+ * @param stateFactory 用于创建状态的工厂函数
  */
 export function createGlobalState<Fn extends AnyFn>(
   stateFactory: Fn,

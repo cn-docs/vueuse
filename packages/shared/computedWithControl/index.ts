@@ -4,7 +4,7 @@ import type { Fn } from '../utils'
 
 export interface ComputedWithControlRefExtra {
   /**
-   * Force update the computed value.
+   * 强制更新计算值
    */
   trigger: () => void
 }
@@ -23,7 +23,7 @@ export function computedWithControl<T, S>(
 ): WritableComputedRefWithControl<T>
 
 /**
- * Explicitly define the deps of computed.
+ * 显式定义计算属性的依赖关系。
  *
  * @param source
  * @param fn

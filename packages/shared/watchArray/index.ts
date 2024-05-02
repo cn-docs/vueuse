@@ -5,7 +5,7 @@ import { toValue } from '../toValue'
 export declare type WatchArrayCallback<V = any, OV = any> = (value: V, oldValue: OV, added: V, removed: OV, onCleanup: (cleanupFn: () => void) => void) => any
 
 /**
- * Watch for an array with additions and removals.
+ * 监视数组的添加和移除。
  *
  * @see https://vueuse.org/watchArray
  */

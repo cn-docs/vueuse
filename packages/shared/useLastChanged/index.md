@@ -4,9 +4,9 @@ category: State
 
 # useLastChanged
 
-Records the timestamp of the last change
+记录最后更改的时间戳
 
-## Usage
+## 使用方法
 
 ```ts
 import { useLastChanged } from '@vueuse/core'
@@ -22,7 +22,7 @@ await nextTick()
 console.log(lastChanged.value) // 1704709379457
 ```
 
-By default the change is recorded on the next tick (`watch()` with `flush: 'post'`). If you want to record the change immediately, pass `flush: 'sync'` as the second argument.
+默认情况下，更改将在下一个tick上记录（使用 `watch()` 并且 `flush: 'post'`）。如果你想立即记录更改，请将 `flush: 'sync'` 作为第二个参数传递。
 
 ```ts
 import { useLastChanged } from '@vueuse/core'

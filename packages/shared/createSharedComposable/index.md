@@ -5,9 +5,9 @@ related: createGlobalState
 
 # createSharedComposable
 
-Make a composable function usable with multiple Vue instances.
+创建一个可在多个 Vue 实例中使用的可组合函数。
 
-## Usage
+## 用法
 
 ```ts
 import { createSharedComposable, useMouse } from '@vueuse/core'
@@ -17,6 +17,6 @@ const useSharedMouse = createSharedComposable(useMouse)
 // CompA.vue
 const { x, y } = useSharedMouse()
 
-// CompB.vue - will reuse the previous state and no new event listeners will be registered
+// CompB.vue - 将重用先前的状态，不会注册新的事件监听器
 const { x, y } = useSharedMouse()
 ```

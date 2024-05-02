@@ -4,11 +4,11 @@ category: Watch
 
 # watchDeep
 
-Shorthand for watching value with `{deep: true}`
+使用 `{ deep: true }` 监听值的简写形式。
 
-## Usage
+## 使用方法
 
-Similar to `watch`, but with `{ deep: true }`
+类似于 `watch`，但使用 `{ deep: true }`
 
 ```ts
 import { watchDeep } from '@vueuse/core'

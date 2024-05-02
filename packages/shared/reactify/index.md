@@ -5,27 +5,27 @@ alias: createReactiveFn
 
 # reactify
 
-Converts plain functions into reactive functions. The converted function accepts refs as its arguments and returns a ComputedRef, with proper typing.
+将普通函数转换为响应式函数。转换后的函数接受引用作为其参数，并返回一个 ComputedRef，具有正确的类型。
 
 ::: tip
-Interested to see some application or looking for some pre-reactified functions?
+想要看一些应用示例或者寻找一些预先已转换为响应式的函数吗？
 
-Check out [⚗️ Vue Chemistry](https://github.com/antfu/vue-chemistry)!
+查看 [⚗️ Vue Chemistry](https://github.com/antfu/vue-chemistry)!
 :::
 
-## Usage
+## 用法
 
-Basic example
+基本示例
 
 ```ts
 import { reactify } from '@vueuse/core'
 
-// a plain function
+// 一个普通函数
 function add(a: number, b: number): number {
   return a + b
 }
 
-// now it accept refs and returns a computed ref
+// 现在它接受引用并返回一个计算引用
 // (a: number | Ref<number>, b: number | Ref<number>) => ComputedRef<number>
 const reactiveAdd = reactify(add)
 
@@ -40,9 +40,7 @@ a.value = 5
 console.log(sum.value) // 7
 ```
 
-An example of implementing a reactive [Pythagorean theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem).
-
-<!-- eslint-skip -->
+实现响应式 [勾股定理](https://en.wikipedia.org/wiki/Pythagorean_theorem) 的示例。
 
 ```ts
 import { reactify } from '@vueuse/core'
@@ -62,7 +60,7 @@ b.value = 12
 console.log(c.value) // 13
 ```
 
-You can also do it this way:
+你也可以这样做:
 
 ```ts
 import { reactify } from '@vueuse/core'
@@ -78,7 +76,7 @@ const c = reactify(pythagorean)(a, b)
 console.log(c.value) // 5
 ```
 
-Another example of making reactive `stringify`
+另一个将 `stringify` 变为响应式的示例
 
 ```ts
 import { reactify } from '@vueuse/core'

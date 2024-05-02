@@ -29,7 +29,7 @@ export function watchDeep<
 ): WatchStopHandle
 
 /**
- * Shorthand for watching value with {deep: true}
+ * 使用 `{ deep: true }` 监听值的简写形式。
  *
  * @see https://vueuse.org/watchDeep
  */

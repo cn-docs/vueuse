@@ -3,7 +3,7 @@ import { onUnmounted } from 'vue-demi'
 import { type Fn, getLifeCycleTarget } from '../utils'
 
 /**
- * Call onUnmounted() if it's inside a component lifecycle, if not, do nothing
+ * 如果在组件生命周期内，调用 onUnmounted()，如果不是，不执行任何操作
  *
  * @param fn
  * @param target

@@ -4,13 +4,13 @@ import type { ConfigurableFlushSync } from '../utils'
 
 export interface SyncRefsOptions extends ConfigurableFlushSync {
   /**
-   * Watch deeply
+   * 深度监视
    *
    * @default false
    */
   deep?: boolean
   /**
-   * Sync values immediately
+   * 立即同步值
    *
    * @default true
    */
@@ -18,10 +18,10 @@ export interface SyncRefsOptions extends ConfigurableFlushSync {
 }
 
 /**
- * Keep target ref(s) in sync with the source ref
+ * 将目标引用与源引用保持同步
  *
- * @param source source ref
- * @param targets
+ * @param source 源引用
+ * @param targets 目标值
  */
 export function syncRefs<T>(
   source: WatchSource<T>,

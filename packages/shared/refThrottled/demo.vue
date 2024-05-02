@@ -15,12 +15,12 @@ watch(throttled, () => {
 
 <template>
   <div>
-    <input v-model="input" placeholder="Try to type anything..." type="text">
-    <note>Delay is set to 1000ms for this demo.</note>
+    <input v-model="input" placeholder="尝试输入任何内容..." type="text">
+    <note>此演示设置了 1000 毫秒的延迟。</note>
 
-    <p>Throttled: {{ throttled }}</p>
-    <p>Times Updated: {{ updated }}</p>
-    <p>Trailing: {{ trailing }}</p>
-    <p>Leading: {{ leading }}</p>
+    <p>节流后的值: {{ throttled }}</p>
+    <p>更新次数: {{ updated }}</p>
+    <p>尾部触发: {{ trailing }}</p>
+    <p>头部触发: {{ leading }}</p>
   </div>
 </template>

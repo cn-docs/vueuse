@@ -4,13 +4,13 @@ import { injectLocal } from '../injectLocal'
 
 export interface CreateInjectionStateOptions<Return> {
   /**
-   * Custom injectionKey for InjectionState
+   * 自定义注入状态的 injectionKey
    */
   injectionKey?: string | InjectionKey<Return>
 }
 
 /**
- * Create global state that can be injected into components.
+ * 创建可以注入到组件中的全局状态。
  *
  * @see https://vueuse.org/createInjectionState
  *

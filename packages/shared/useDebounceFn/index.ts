@@ -2,14 +2,14 @@ import type { DebounceFilterOptions, FunctionArgs, MaybeRefOrGetter, PromisifyFn
 import { createFilterWrapper, debounceFilter } from '../utils'
 
 /**
- * Debounce execution of a function.
+ * 延迟执行函数。
  *
  * @see https://vueuse.org/useDebounceFn
- * @param  fn          A function to be executed after delay milliseconds debounced.
- * @param  ms          A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
- * @param  options     Options
+ * @param  fn          要在延迟毫秒后执行的函数。
+ * @param  ms          毫秒为单位的延迟时间，必须为零或更大。对于事件回调，最有用的值大约为 100 或 250（甚至更高）。
+ * @param  options     选项
  *
- * @return A new, debounce, function.
+ * @return 一个新的延迟函数。
  */
 export function useDebounceFn<T extends FunctionArgs>(
   fn: T,

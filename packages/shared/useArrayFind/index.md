@@ -4,9 +4,9 @@ category: Array
 
 # useArrayFind
 
-Reactive `Array.find`.
+响应式 `Array.find`。
 
-## Usage
+## 用法
 
 ```js
 import { useArrayFind } from '@vueuse/core'
@@ -16,7 +16,7 @@ const positive = useArrayFind(list, val => val > 0)
 // positive.value: 1
 ```
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayFind } from '@vueuse/core'

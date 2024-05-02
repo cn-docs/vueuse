@@ -4,9 +4,9 @@ category: Utilities
 
 # useToNumber
 
-Reactively convert a string ref to number.
+将字符串 ref 转换为数字。
 
-## Usage
+## 使用方法
 
 ```ts
 import { useToNumber } from '@vueuse/core'

@@ -10,6 +10,6 @@ const isOver10 = computed(() => count.value > 5)
 
 <template>
   <div>
-    Is over 5: <BooleanDisplay :value="isOver10" />
+    已超过5: <BooleanDisplay :value="isOver10" />
   </div>
 </template>

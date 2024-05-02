@@ -30,20 +30,20 @@ function update() {
 </script>
 
 <template>
-  <div>Value: {{ source }}</div>
+  <div>数值：{{ source }}</div>
   <button @click="update">
-    Update
+    更新
   </button>
   <button class="orange" @click="trigger">
-    Manual Trigger
+    手动触发
   </button>
   <button @click="clear">
-    Reset
+    重置
   </button>
 
   <br>
 
-  <note>Log (500 ms delay)</note>
+  <note>日志（500 毫秒延迟）</note>
 
   <pre>{{ log }}</pre>
 </template>

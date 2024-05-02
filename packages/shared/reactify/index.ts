@@ -19,11 +19,10 @@ export interface ReactifyOptions<T extends boolean> {
 }
 
 /**
- * Converts plain function into a reactive function.
- * The converted function accepts refs as it's arguments
- * and returns a ComputedRef, with proper typing.
+ * 将普通函数转换为响应式函数。
+ * 转换后的函数接受引用作为其参数，并返回一个具有正确类型的 ComputedRef。
  *
- * @param fn - Source function
+ * @param fn - 源函数
  */
 export function reactify<T extends Function, K extends boolean = true>(fn: T, options?: ReactifyOptions<K>): Reactified<T, K> {
   const unrefFn = options?.computedGetter === false ? unref : toValue

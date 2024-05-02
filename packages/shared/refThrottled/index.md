@@ -5,9 +5,9 @@ alias: useThrottle, throttledRef
 
 # refThrottled
 
-Throttle changing of a ref value.
+限制 ref 值的变化频率。
 
-## Usage
+## 用法
 
 ```js
 import { refThrottled } from '@vueuse/core'
@@ -16,9 +16,9 @@ const input = ref('')
 const throttled = refThrottled(input, 1000)
 ```
 
-### Trailing
+### 尾部触发
 
-If you don't want to watch trailing changes, set 3rd param `false` (it's `true` by default):
+如果你不想监听尾部的变化，可以设置第三个参数为 `false`（默认为 `true`）：
 
 ```js
 import { refThrottled } from '@vueuse/core'
@@ -27,9 +27,9 @@ const input = ref('')
 const throttled = refThrottled(input, 1000, false)
 ```
 
-### Leading
+### 头部触发
 
-Allows the callback to be invoked immediately (on the leading edge of the `ms` timeout). If you don't want this behavior, set the 4th param `false` (it's `true` by default):
+允许回调函数立即被调用（在 `ms` 超时的头部）。如果你不想这种行为，可以将第四个参数设置为 `false`（默认为 `true`）：
 
 ```js
 import { refThrottled } from '@vueuse/core'
@@ -38,7 +38,7 @@ const input = ref('')
 const throttled = refThrottled(input, 1000, undefined, false)
 ```
 
-## Recommended Reading
+## 推荐阅读
 
-- [Debounce vs Throttle: Definitive Visual Guide](https://redd.one/blog/debounce-vs-throttle)
-- [Debouncing and Throttling Explained Through Examples](https://css-tricks.com/debouncing-throttling-explained-examples/)
+- [防抖和节流：图解指南](https://redd.one/blog/debounce-vs-throttle)
+- [通过示例解释防抖和节流](https://css-tricks.com/debouncing-throttling-explained-examples/)

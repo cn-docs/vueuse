@@ -5,21 +5,21 @@ import { useIntervalFn } from '../useIntervalFn'
 
 export interface UseIntervalOptions<Controls extends boolean> {
   /**
-   * Expose more controls
+   * 暴露更多控制选项
    *
    * @default false
    */
   controls?: Controls
 
   /**
-   * Execute the update immediately on calling
+   * 在调用时立即执行更新
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * Callback on every interval
+   * 每个间隔上的回调函数
    */
   callback?: (count: number) => void
 }
@@ -30,7 +30,7 @@ export interface UseIntervalControls {
 }
 
 /**
- * Reactive counter increases on every interval
+ * 每个间隔上增加的响应式计数器
  *
  * @see https://vueuse.org/useInterval
  * @param interval

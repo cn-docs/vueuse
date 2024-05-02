@@ -4,9 +4,9 @@ category: Animation
 
 # useTimeoutFn
 
-Wrapper for `setTimeout` with controls.
+带有控制选项的 setTimeout 函数的封装
 
-## Usage
+## 用法
 
 ```js
 import { useTimeoutFn } from '@vueuse/core'

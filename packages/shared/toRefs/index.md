@@ -4,9 +4,9 @@ category: Reactivity
 
 # toRefs
 
-Extended [`toRefs`](https://v3.vuejs.org/api/refs-api.html#torefs) that also accepts refs of an object.
+扩展了 [`toRefs`](https://v3.vuejs.org/api/refs-api.html#torefs)，还接受对象引用的 refs。
 
-## Usage
+## 用法
 
 <!-- eslint-disable array-bracket-spacing -->
 <!-- eslint-disable ts/no-redeclare -->
@@ -28,9 +28,9 @@ const { a, b } = toRefs(obj)
 const [a, b] = toRefs(arr)
 ```
 
-## Use-cases
+## 使用场景
 
-### Destructuring a props object
+### 解构 props 对象
 
 ```vue
 <script lang="ts">

@@ -19,11 +19,11 @@ function uniqueElementsBy<T>(
 }
 
 /**
- * reactive unique array
+ * 响应式唯一数组
  * @see https://vueuse.org/useArrayUnique
- * @param list - the array was called upon.
+ * @param list - 被调用的数组。
  * @param compareFn
- * @returns A computed ref that returns a unique array of items.
+ * @returns 返回一个计算属性 ref，该 ref 返回一个唯一项目的数组。
  */
 export function useArrayUnique<T>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,
