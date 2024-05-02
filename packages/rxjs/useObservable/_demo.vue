@@ -13,6 +13,6 @@ const count = useObservable(
 </script>
 
 <template>
-  <note>Update every 1s</note>
+  <note>每1s更新一次</note>
   <p>Counter: {{ count }}</p>
 </template>

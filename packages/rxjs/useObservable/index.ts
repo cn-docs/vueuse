@@ -6,7 +6,7 @@ import { tryOnScopeDispose } from '@vueuse/shared'
 export interface UseObservableOptions<I> {
   onError?: (err: any) => void
   /**
-   * The value that should be set if the observable has not emitted.
+   * 如果可观察对象尚未发出，则应设置的值。
    */
   initialValue?: I | undefined
 }

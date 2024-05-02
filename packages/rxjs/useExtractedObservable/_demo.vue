@@ -19,9 +19,9 @@ const count = useExtractedObservable(
 </script>
 
 <template>
-  <note>Update every 1s</note>
+  <note>每 1 秒更新一次</note>
   <label>
-    Start: <input v-model="start" type="number">
+    开始: <input v-model="start" type="number">
   </label>
-  <p>Counter: {{ count }}</p>
+  <p>计数器: {{ count }}</p>
 </template>

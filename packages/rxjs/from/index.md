@@ -4,9 +4,9 @@ category: '@RxJS'
 
 # from / fromEvent
 
-Wrappers around RxJS's [`from()`](https://rxjs.dev/api/index/function/from) and [`fromEvent()`](https://rxjs.dev/api/index/function/fromEvent) to allow them to accept `ref`s.
+RxJS 的 [`from()`](https://rxjs.dev/api/index/function/from) 和 [`fromEvent()`](https://rxjs.dev/api/index/function/fromEvent) 的包装器，使它们能够接受 `ref`。
 
-## Usage
+## 用法
 
 ```ts
 import { ref } from 'vue'
@@ -28,6 +28,6 @@ useSubscription(
       })),
       map(([curr, total]) => curr + total),
     )
-    .subscribe(toObserver(count)), // same as ).subscribe(val => (count.value = val))
+    .subscribe(toObserver(count)), // 与 ).subscribe(val => (count.value = val)) 相同
 )
 ```
