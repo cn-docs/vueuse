@@ -4,9 +4,9 @@ category: '@Router'
 
 # useRouteHash
 
-Shorthand for a reactive `route.hash`.
+对响应式的 `route.hash` 的简写。
 
-## Usage
+## 用法
 
 ```ts
 import { useRouteHash } from '@vueuse/router'
