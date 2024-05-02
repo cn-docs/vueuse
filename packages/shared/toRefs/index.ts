@@ -13,7 +13,7 @@ export interface ToRefsOptions {
 }
 
 /**
- * 扩展的 `toRefs`，还接受对象的引用。
+ * 扩展的 `toRefs`，还接受对象的 ref。
  *
  * @see https://vueuse.org/toRefs
  * @param objectRef 一个 ref 或普通对象或数组。

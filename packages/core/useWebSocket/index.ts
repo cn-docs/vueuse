@@ -94,7 +94,7 @@ export interface UseWebSocketOptions {
 
 export interface UseWebSocketReturn<T> {
   /**
-   * WebSocket 最新接收到的数据的引用，可以监听以响应传入的消息
+   * WebSocket 最新接收到的数据的 ref，可以监听以响应传入的消息
    */
   data: Ref<T | null>
 
@@ -124,7 +124,7 @@ export interface UseWebSocketReturn<T> {
   send: (data: string | ArrayBuffer | Blob, useBuffer?: boolean) => boolean
 
   /**
-   * WebSocket 实例的引用。
+   * WebSocket 实例的 ref。
    */
   ws: Ref<WebSocket | undefined>
 }

@@ -20,7 +20,7 @@ export interface ReactifyOptions<T extends boolean> {
 
 /**
  * 将普通函数转换为响应式函数。
- * 转换后的函数接受引用作为其参数，并返回一个具有正确类型的 ComputedRef。
+ * 转换后的函数接受 ref 作为其参数，并返回一个具有正确类型的 ComputedRef。
  *
  * @param fn - 源函数
  */

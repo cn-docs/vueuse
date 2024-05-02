@@ -122,7 +122,7 @@ export type SyncRefOptions<L, R, D extends Direction> = ConfigurableFlushSync & 
 } & TransformType<D, L, R>
 
 /**
- * 双向引用同步。
+ * 双向 ref 同步。
  * 从集合论的角度来看，限制选项的类型
  * 按以下顺序检查：
  * 1. L = R

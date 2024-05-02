@@ -6,7 +6,7 @@ alias: resolveRef
 
 # toRef
 
-将值、引用或 getter 规范化为 `ref` 或 `computed`。
+将值、ref 或 getter 规范化为 `ref` 或 `computed`。
 
 ## 用法
 

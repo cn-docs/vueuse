@@ -10,7 +10,7 @@ import type { MaybeRefOrGetter } from '../utils'
 import { noop } from '../utils'
 
 /**
- * 将值、引用或 getter 规范化为 `ref` 或 `computed`。
+ * 将值、ref 或 getter 规范化为 `ref` 或 `computed`。
  */
 export function toRef<T>(r: () => T): Readonly<Ref<T>>
 export function toRef<T>(r: ComputedRef<T>): ComputedRef<T>

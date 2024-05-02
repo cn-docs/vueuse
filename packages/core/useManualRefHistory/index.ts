@@ -38,7 +38,7 @@ export interface UseManualRefHistoryOptions<Raw, Serialized = Raw> {
 
 export interface UseManualRefHistoryReturn<Raw, Serialized> {
   /**
-   * 绕过跟踪的原始引用
+   * 绕过跟踪的原始 ref
    */
   source: Ref<Raw>
 
@@ -63,12 +63,12 @@ export interface UseManualRefHistoryReturn<Raw, Serialized> {
   redoStack: Ref<UseRefHistoryRecord<Serialized>[]>
 
   /**
-   * 表示是否可以撤销的引用（undoStack 不为空）
+   * 表示是否可以撤销的 ref（undoStack 不为空）
    */
   canUndo: Ref<boolean>
 
   /**
-   * 表示是否可以重做的引用（redoStack 不为空）
+   * 表示是否可以重做的 ref（redoStack 不为空）
    */
   canRedo: Ref<boolean>
 
@@ -93,7 +93,7 @@ export interface UseManualRefHistoryReturn<Raw, Serialized> {
   commit: () => void
 
   /**
-   * 使用最新历史记录重置引用的值
+   * 使用最新历史记录重置 ref 的值
    */
   reset: () => void
 }

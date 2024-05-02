@@ -21,7 +21,7 @@ export interface UseClipboardItemsOptions<Source> extends ConfigurableNavigator 
   source?: Source
 
   /**
-   * 重置 `copied` 引用状态的毫秒数
+   * 重置 `copied` ref 状态的毫秒数
    *
    * @default 1500
    */

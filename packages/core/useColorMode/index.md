@@ -18,7 +18,7 @@ import { useColorMode } from '@vueuse/core'
 const mode = useColorMode() // Ref<'dark' | 'light'>
 ```
 
-默认情况下，它将使用 `usePreferredDark`（也称为 `auto` 模式）匹配用户浏览器的偏好。在读取引用时，默认将返回当前的颜色模式（`dark`、`light` 或您的自定义模式）。可以通过启用 `emitAuto` 选项将 `auto` 模式包含在返回的模式中。在写入引用时，它将触发 DOM 更新并将颜色模式持久化到本地存储（或您的自定义存储）。您可以传递 `auto` 来设置回自动模式。
+默认情况下，它将使用 `usePreferredDark`（也称为 `auto` 模式）匹配用户浏览器的偏好。在读取 ref 时，默认将返回当前的颜色模式（`dark`、`light` 或您的自定义模式）。可以通过启用 `emitAuto` 选项将 `auto` 模式包含在返回的模式中。在写入 ref 时，它将触发 DOM 更新并将颜色模式持久化到本地存储（或您的自定义存储）。您可以传递 `auto` 来设置回自动模式。
 
 ```ts
 mode.value // 'dark' | 'light'

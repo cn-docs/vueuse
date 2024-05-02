@@ -18,9 +18,9 @@ export interface SyncRefsOptions extends ConfigurableFlushSync {
 }
 
 /**
- * 将目标引用与源引用保持同步
+ * 将目标 ref 与源 ref 保持同步
  *
- * @param source 源引用
+ * @param source 源 ref
  * @param targets 目标值
  */
 export function syncRefs<T>(

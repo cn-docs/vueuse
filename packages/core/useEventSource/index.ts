@@ -45,7 +45,7 @@ export interface UseEventSourceOptions extends EventSourceInit {
 
 export interface UseEventSourceReturn<Events extends string[]> {
   /**
-   * 对通过 EventSource 接收到的最新数据的引用，
+   * 对通过 EventSource 接收到的最新数据的 ref，
    * 可以被监视以响应传入的消息
    */
   data: Ref<string | null>
@@ -78,7 +78,7 @@ export interface UseEventSourceReturn<Events extends string[]> {
   open: Fn
 
   /**
-   * 对当前 EventSource 实例的引用。
+   * 对当前 EventSource 实例的 ref。
    */
   eventSource: Ref<EventSource | null>
 }
