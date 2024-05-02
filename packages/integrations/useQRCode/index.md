@@ -4,30 +4,30 @@ category: '@Integrations'
 
 # useQRCode
 
-Wrapper for [`qrcode`](https://github.com/soldair/node-qrcode).
+[`qrcode`](https://github.com/soldair/node-qrcode) 的封装。
 
-## Install
+## 安装
 
 ```bash
 npm i qrcode@^1
 ```
 
-## Usage
+## 使用方法
 
 ```ts
 import { useQRCode } from '@vueuse/integrations/useQRCode'
 
-// `qrcode` will be a ref of data URL
-const qrcode = useQRCode('text-to-encode')
+// `qrcode` 将是一个数据 URL 的 ref
+const qrcode = useQRCode('要编码的文本')
 ```
 
-or passing a `ref` to it, the returned data URL ref will change along with the source ref's changes.
+或者将一个 `ref` 传递给它，返回的数据 URL ref 将随着源 ref 的更改而改变。
 
 ```ts
 import { ref } from 'vue'
 import { useQRCode } from '@vueuse/integrations/useQRCode'
 
-const text = ref('text-to-encode')
+const text = ref('要编码的文本')
 const qrcode = useQRCode(text)
 ```
 

@@ -6,105 +6,104 @@ import axios, { AxiosError } from 'axios'
 
 export interface UseAxiosReturn<T, R = AxiosResponse<T>, _D = any> {
   /**
-   * Axios Response
+   * Axios 响应
    */
   response: ShallowRef<R | undefined>
 
   /**
-   * Axios response data
+   * Axios 响应数据
    */
   data: Ref<T | undefined>
 
   /**
-   * Indicates if the request has finished
+   * 表示请求是否已完成
    */
   isFinished: Ref<boolean>
 
   /**
-   * Indicates if the request is currently loading
+   * 表示请求是否当前正在加载
    */
   isLoading: Ref<boolean>
 
   /**
-   * Indicates if the request was canceled
+   * 表示请求是否已被取消
    */
   isAborted: Ref<boolean>
 
   /**
-   * Any errors that may have occurred
+   * 可能发生的任何错误
    */
   error: ShallowRef<unknown | undefined>
 
   /**
-   * Aborts the current request
+   * 中止当前请求
    */
   abort: (message?: string | undefined) => void
 
   /**
-   * Alias to `abort`
+   * `abort` 的别名
    */
   cancel: (message?: string | undefined) => void
 
   /**
-   * Alias to `isAborted`
+   * `isAborted` 的别名
    */
   isCanceled: Ref<boolean>
 }
 export interface StrictUseAxiosReturn<T, R, D> extends UseAxiosReturn<T, R, D> {
   /**
-   * Manually call the axios request
+   * 手动调用 axios 请求
    */
   execute: (url?: string | AxiosRequestConfig<D>, config?: AxiosRequestConfig<D>) => Promise<StrictUseAxiosReturn<T, R, D>>
 }
 export interface EasyUseAxiosReturn<T, R, D> extends UseAxiosReturn<T, R, D> {
   /**
-   * Manually call the axios request
+   * 手动调用 axios 请求
    */
   execute: (url: string, config?: AxiosRequestConfig<D>) => Promise<EasyUseAxiosReturn<T, R, D>>
 }
 export interface UseAxiosOptions<T = any> {
   /**
-   * Will automatically run axios request when `useAxios` is used
-   *
+   * 当使用 `useAxios` 时，是否自动运行 axios 请求
    */
   immediate?: boolean
 
   /**
-   * Use shallowRef.
+   * 使用 shallowRef。
    *
    * @default true
    */
   shallow?: boolean
 
   /**
-   * Abort previous request when a new request is made.
+   * 当发起新请求时，中止前一个请求。
    *
    * @default true
    */
   abortPrevious?: boolean
 
   /**
-   * Callback when error is caught.
+   * 在捕获错误时的回调。
    */
   onError?: (e: unknown) => void
 
   /**
-   * Callback when success is caught.
+   * 在捕获成功时的回调。
    */
   onSuccess?: (data: T) => void
 
   /**
-   * Initial data to use
+   * 初始数据
    */
   initialData?: T
 
   /**
-   * Sets the state to initialState before executing the promise.
+   * 在执行 Promise 之前将状态设置为 initialState。
    */
   resetOnExecute?: boolean
 
   /**
-   * Callback when request is finished.
+   * 请求完成时的回调。
    */
   onFinish?: () => void
 }
@@ -118,7 +117,7 @@ export function useAxios<T = any, R = AxiosResponse<T>, D = any>(instance?: Axio
 export function useAxios<T = any, R = AxiosResponse<T>, D = any>(config?: AxiosRequestConfig<D>, instance?: AxiosInstance): EasyUseAxiosReturn<T, R, D> & Promise<EasyUseAxiosReturn<T, R, D>>
 
 /**
- * Wrapper for axios.
+ * axios 的封装器。
  *
  * @see https://vueuse.org/useAxios
  */

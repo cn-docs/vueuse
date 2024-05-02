@@ -5,18 +5,18 @@ import { isRef, nextTick } from 'vue-demi'
 
 export interface UseSortableReturn {
   /**
-   * start sortable instance
+   * 启动可排序实例
    */
   start: () => void
   /**
-   * destroy sortable instance
+   * 销毁可排序实例
    */
   stop: () => void
 
   /**
-   * Options getter/setter
-   * @param name a Sortable.Options property.
-   * @param value a value.
+   * 选项的获取器/设置器
+   * @param name Sortable.Options 的属性名称。
+   * @param value 一个值。
    */
   option: (<K extends keyof Sortable.Options>(name: K, value: Sortable.Options[K]) => void) & (<K extends keyof Sortable.Options>(name: K) => Sortable.Options[K])
 }
@@ -29,7 +29,7 @@ export function useSortable<T>(el: MaybeRefOrGetter<HTMLElement | null | undefin
   options?: UseSortableOptions): UseSortableReturn
 
 /**
- * Wrapper for sortablejs.
+ * sortablejs 的响应式包装器。
  * @param el
  * @param list
  * @param options

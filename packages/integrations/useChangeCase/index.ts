@@ -11,7 +11,7 @@ export function useChangeCase(input: MaybeRef<string>, type: ChangeCaseType, opt
 export function useChangeCase(input: MaybeRefOrGetter<string>, type: ChangeCaseType, options?: Options | undefined): ComputedRef<string>
 
 /**
- * Reactive wrapper for `change-case`
+ * 响应式 `change-case` 包装器
  *
  * @see https://vueuse.org/useChangeCase
  */

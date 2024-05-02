@@ -4,18 +4,18 @@ category: '@Integrations'
 
 # useJwt
 
-Wrapper for [`jwt-decode`](https://github.com/auth0/jwt-decode).
+[`jwt-decode`](https://github.com/auth0/jwt-decode) 的封装。
 
-## Install
+## 安装
 
 ```bash
 npm install jwt-decode@^3
 ```
 
-## Usage
+## 使用方法
 
 ```typescript
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useJwt } from '@vueuse/integrations/useJwt'
 
 export default defineComponent({

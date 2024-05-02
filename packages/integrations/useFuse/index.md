@@ -4,29 +4,29 @@ category: '@Integrations'
 
 # useFuse
 
-Easily implement fuzzy search using a composable with [Fuse.js](https://github.com/krisk/fuse).
+使用 [Fuse.js](https://github.com/krisk/fuse) 组合式轻松实现模糊搜索。
 
-From the Fuse.js website:
+来自 Fuse.js 网站的介绍：
 
-> What is fuzzy searching?
+> 什么是模糊搜索？
 >
-> Generally speaking, fuzzy searching (more formally known as approximate string matching) is the technique of finding strings that are approximately equal to a given pattern (rather than exactly).
+> 通常情况下，模糊搜索（更正式地称为近似字符串匹配）是一种找到与给定模式大致相等的字符串的技术（而不是完全相等）。
 
-## Install Fuse.js as a peer dependency
+## 将 Fuse.js 安装为对等依赖项
 
-### NPM
+### 使用 NPM
 
 ```bash
 npm install fuse.js@^6
 ```
 
-### Yarn
+### 使用 Yarn
 
 ```bash
 yarn add fuse.js
 ```
 
-## Usage
+## 使用方法
 
 ```ts
 import { ref } from 'vue'
@@ -45,7 +45,7 @@ const input = ref('Jhon D')
 const { results } = useFuse(input, data)
 
 /*
- * Results:
+ * 结果:
  *
  * { "item": "John Doe", "index": 1 }
  * { "item": "John Smith", "index": 0 }

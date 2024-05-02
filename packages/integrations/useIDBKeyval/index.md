@@ -4,35 +4,35 @@ category: '@Integrations'
 
 # useIDBKeyval
 
-Wrapper for [`idb-keyval`](https://www.npmjs.com/package/idb-keyval).
+[`idb-keyval`](https://www.npmjs.com/package/idb-keyval) 的封装。
 
-## Install idb-keyval as a peer dependency
+## 将 idb-keyval 安装为对等依赖项
 
 ```bash
 npm install idb-keyval@^6
 ```
 
-## Usage
+## 使用方法
 
 ```ts
 import { useIDBKeyval } from '@vueuse/integrations/useIDBKeyval'
 
-// bind object
+// 绑定对象
 const { data: storedObject, isFinished } = useIDBKeyval('my-idb-keyval-store', { hello: 'hi', greeting: 'Hello' })
 
-// update object
+// 更新对象
 storedObject.value.hello = 'hola'
 
-// bind boolean
-const flag = useIDBKeyval('my-flag', true) // returns Ref<boolean>
+// 绑定布尔值
+const flag = useIDBKeyval('my-flag', true) // 返回 Ref<boolean>
 
-// bind number
-const count = useIDBKeyval('my-count', 0) // returns Ref<number>
+// 绑定数字
+const count = useIDBKeyval('my-count', 0) // 返回 Ref<number>
 
-// awaiting IDB transaction
+// 等待 IDB 事务
 await count.set(10)
-console.log('IDB transaction finished!')
+console.log('IDB 事务完成！')
 
-// delete data from idb storage
+// 从 IDB 存储中删除数据
 storedObject.value = null
 ```

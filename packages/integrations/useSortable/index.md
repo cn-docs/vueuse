@@ -4,19 +4,19 @@ category: '@Integrations'
 
 # useSortable
 
-Wrapper for [`sortable`](https://github.com/SortableJS/Sortable).
+[`sortable`](https://github.com/SortableJS/Sortable) 的封装。
 
-For more information on what options can be passed, see [`Sortable.options`](https://github.com/SortableJS/Sortable#options) in the `Sortable` documentation.
+要了解可以传递的选项的更多信息，请参阅 `Sortable` 文档中的 [`Sortable.options`](https://github.com/SortableJS/Sortable#options)。
 
-## Install
+## 安装
 
 ```bash
 npm i sortablejs@^1
 ```
 
-## Usage
+## 使用方法
 
-### Use template ref
+### 使用模板引用
 
 ```vue
 <script setup lang="ts">
@@ -38,7 +38,7 @@ useSortable(el, list)
 </template>
 ```
 
-### Use specifies the selector to operate on
+### 使用指定的选择器操作
 
 ```vue
 <script setup lang="ts">
@@ -52,11 +52,11 @@ const animation = 200
 
 const { option } = useSortable(el, list, {
   handle: '.handle',
-  // or option set
+  // 或者设置 option
   // animation
 })
 
-// You can use the option method to set and get the option of Sortable
+// 您可以使用 option 方法设置和获取 Sortable 的选项
 option('animation', animation)
 // option('animation') // 200
 </script>
@@ -71,7 +71,7 @@ option('animation', animation)
 </template>
 ```
 
-### Use a selector to get the root element
+### 使用选择器获取根元素
 
 ```vue
 <script setup lang="ts">
@@ -92,19 +92,19 @@ useSortable('#dv', list)
 </template>
 ```
 
-### Tips
+### 提示
 
-If you want to handle the onUpdate yourself, you can pass in onUpdate parameters, and we also exposed a function to move the item position.
+如果您想要自己处理 onUpdate，可以传递 onUpdate 参数，我们还提供了一个移动项目位置的函数。
 
 ```ts
 import { moveArrayElement } from '@vueuse/integrations/useSortable'
 
 useSortable(el, list, {
   onUpdate: (e) => {
-    // do something
+    // 处理更新
     moveArrayElement(list.value, e.oldIndex, e.newIndex)
-    // nextTick required here as moveArrayElement is executed in a microtas
-    // so we need to wait until the next tick until that is finished.
+    // 这里需要 nextTick，因为 moveArrayElement 在微任务中执行
+    // 所以我们需要等到下一个刻度直到它完成。
     nextTick(() => {
       /* do something */
     })

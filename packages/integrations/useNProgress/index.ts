@@ -7,7 +7,7 @@ import { computed, ref, watchEffect } from 'vue-demi'
 export type UseNProgressOptions = Partial<NProgressOptions>
 
 /**
- * Reactive progress bar.
+ * 响应式进度条。
  *
  * @see https://vueuse.org/useNProgress
  */

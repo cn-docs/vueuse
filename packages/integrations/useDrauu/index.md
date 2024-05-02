@@ -4,15 +4,15 @@ category: '@Integrations'
 
 # useDrauu
 
-Reactive instance for [drauu](https://github.com/antfu/drauu).
+这是 [drauu](https://github.com/antfu/drauu) 的响应式实例。
 
-## Install
+## 安装
 
 ```bash
 npm i drauu@^0
 ```
 
-## Usage
+## 使用
 
 ```vue
 <script setup>

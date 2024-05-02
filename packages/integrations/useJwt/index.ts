@@ -7,14 +7,14 @@ import type { JwtDecodeOptions, JwtHeader, JwtPayload } from 'jwt-decode'
 
 export interface UseJwtOptions<Fallback> {
   /**
-   * Value returned when encounter error on decoding
+   * 解码出错时返回的值
    *
    * @default null
    */
   fallbackValue?: Fallback
 
   /**
-   * Error callback for decoding
+   * 解码出错时的错误回调函数
    */
   onError?: (error: unknown) => void
 }
@@ -25,7 +25,7 @@ export interface UseJwtReturn<Payload, Header, Fallback> {
 }
 
 /**
- * Reactive decoded jwt token.
+ * 响应式解码的 JWT token。
  *
  * @see https://vueuse.org/useJwt
  */

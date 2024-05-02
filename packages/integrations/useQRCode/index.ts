@@ -4,7 +4,7 @@ import { ref, watch } from 'vue-demi'
 import QRCode from 'qrcode'
 
 /**
- * Wrapper for qrcode.
+ * 响应式 qrcode 包装器
  *
  * @see https://vueuse.org/useQRCode
  * @param text

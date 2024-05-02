@@ -7,27 +7,27 @@ import { del, get, set, update } from 'idb-keyval'
 
 export interface UseIDBOptions extends ConfigurableFlush {
   /**
-   * Watch for deep changes
+   * 监听深层变化
    *
    * @default true
    */
   deep?: boolean
 
   /**
-   * On error callback
+   * 错误回调函数
    *
-   * Default log error to `console.error`
+   * 默认将错误记录到 `console.error`
    */
   onError?: (error: unknown) => void
 
   /**
-   * Use shallow ref as reference
+   * 使用浅层 Ref 作为参考
    *
    * @default false
    */
   shallow?: boolean
   /**
-   * Write the default value to the storage when it does not exist
+   * 当存储中不存在时，将默认值写入存储
    *
    * @default true
    */
