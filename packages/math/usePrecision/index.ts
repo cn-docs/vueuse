@@ -4,11 +4,11 @@ import type { MaybeRefOrGetter } from '@vueuse/shared'
 import { toValue } from '@vueuse/shared'
 
 /**
- * Accuracy of handling numerical values.
+ * 处理数值精度的准确性。
  *
- * @param value - The value
- * @param power - The power
- * @returns The result of multiplying the value with the power
+ * @param value - 值
+ * @param power - 幂
+ * @returns 将值与幂相乘的结果
  */
 function accurateMultiply(value: number, power: number): number {
   const valueStr = value.toString()

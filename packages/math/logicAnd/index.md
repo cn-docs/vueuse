@@ -6,9 +6,9 @@ related: logicNot, logicOr
 
 # logicAnd
 
-`AND` condition for refs.
+`AND` 条件的响应式封装。
 
-## Usage
+## 用法
 
 ```ts
 import { logicAnd } from '@vueuse/math'
@@ -18,6 +18,6 @@ const a = ref(true)
 const b = ref(false)
 
 whenever(logicAnd(a, b), () => {
-  console.log('both a and b are now truthy!')
+  console.log('a 和 b 现在都为真值！')
 })
 ```

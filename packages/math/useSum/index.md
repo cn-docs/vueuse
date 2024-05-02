@@ -4,9 +4,9 @@ category: '@Math'
 
 # useSum
 
-Get the sum of an array reactively
+响应式地获取数组的总和。
 
-## Usage
+## 用法
 
 ```ts
 import { useSum } from '@vueuse/math'

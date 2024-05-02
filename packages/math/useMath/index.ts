@@ -4,7 +4,7 @@ import { reactify } from '@vueuse/shared'
 export type UseMathKeys = keyof { [K in keyof Math as Math[K] extends (...args: any) => any ? K : never]: unknown }
 
 /**
- * Reactive `Math` methods.
+ * 响应式 `Math` 方法
  *
  * @see https://vueuse.org/useMath
  */

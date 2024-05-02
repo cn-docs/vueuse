@@ -4,7 +4,7 @@ import type { MaybeRefOrGetter } from '@vueuse/shared'
 import { toValue } from '@vueuse/shared'
 
 /**
- * Reactive `Math.trunc`.
+ * 响应式 `Math.trunc`.
  *
  * @see https://vueuse.org/useTrunc
  */

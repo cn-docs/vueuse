@@ -4,7 +4,7 @@ import type { MaybeRefOrGetter } from '@vueuse/shared'
 import { toValue } from '@vueuse/shared'
 
 /**
- * Reactive `Math.ceil`.
+ * 响应式 `Math.ceil`
  *
  * @see https://vueuse.org/useCeil
  */

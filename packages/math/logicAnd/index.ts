@@ -4,7 +4,7 @@ import { toValue } from '@vueuse/shared'
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 
 /**
- * `AND` conditions for refs.
+ * `AND` 条件的响应式封装。
  *
  * @see https://vueuse.org/logicAnd
  */

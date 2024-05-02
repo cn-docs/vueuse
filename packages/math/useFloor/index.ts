@@ -4,7 +4,7 @@ import type { MaybeRefOrGetter } from '@vueuse/shared'
 import { toValue } from '@vueuse/shared'
 
 /**
- * Reactive `Math.floor`
+ * 响应式 `Math.floor`
  *
  * @see https://vueuse.org/useFloor
  */

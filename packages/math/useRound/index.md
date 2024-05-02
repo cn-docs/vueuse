@@ -4,9 +4,9 @@ category: '@Math'
 
 # useRound
 
-Reactive `Math.round`.
+响应式 `Math.round`.
 
-## Usage
+## 用法
 
 ```ts
 import { useRound } from '@vueuse/math'

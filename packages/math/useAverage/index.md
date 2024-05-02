@@ -4,9 +4,9 @@ category: '@Math'
 
 # useAverage
 
-Get the average of an array reactively.
+响应式地获取数组的平均值。
 
-## Usage
+## 用法
 
 ```ts
 import { useAverage } from '@vueuse/math'

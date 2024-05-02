@@ -4,9 +4,9 @@ category: '@Math'
 
 # useMin
 
-Reactive `Math.min`.
+响应式 `Math.min`.
 
-## Usage
+## 用法
 
 ```ts
 import { useMin } from '@vueuse/math'
