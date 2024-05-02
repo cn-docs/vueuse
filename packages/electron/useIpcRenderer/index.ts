@@ -6,80 +6,80 @@ import { useIpcRendererInvoke } from '../useIpcRendererInvoke'
 import { useIpcRendererOn } from '../useIpcRendererOn'
 
 /**
- * Result from useIpcRenderer
+ * useIpcRenderer 返回的结果
  *
  * @see https://www.electronjs.org/docs/api/ipc-renderer
  */
 export interface UseIpcRendererReturn {
   /**
-   * Listens to channel, when a new message arrives listener would be called with listener(event, args...).
-   * [ipcRenderer.removeListener](https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererremovelistenerchannel-listener) automatically on unmounted.
+   * 监听频道，当新消息到达时，调用监听器 listener(event, args...)。
+   * 在卸载时自动 [ipcRenderer.removeListener](https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererremovelistenerchannel-listener)。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrendereronchannel-listener
    */
   on: (channel: string, listener: IpcRendererListener) => IpcRenderer
 
   /**
-   * Adds a one time listener function for the event. This listener is invoked only the next time a message is sent to channel, after which it is removed.
+   * 添加一次性监听器函数到事件上。当事件被触发时，监听器会被调用一次，然后被移除。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrendereroncechannel-listener
    */
   once: (channel: string, listener: (event: IpcRendererEvent, ...args: any[]) => void) => IpcRenderer
 
   /**
-   * Removes the specified listener from the listener array for the specified channel.
+   * 从监听器数组中移除指定的监听器。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererremovelistenerchannel-listener
    */
   removeListener: (channel: string, listener: (...args: any[]) => void) => IpcRenderer
 
   /**
-   * Removes all listeners, or those of the specified channel.
+   * 移除所有监听器，或指定频道的所有监听器。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererremovealllistenerschannel
    */
   removeAllListeners: (channel: string) => IpcRenderer
 
   /**
-   * Send an asynchronous message to the main process via channel, along with arguments.
+   * 通过频道异步发送消息到主进程，附带参数。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrenderersendchannel-args
    */
   send: (channel: string, ...args: any[]) => void
 
   /**
-   * Returns Promise<any> - Resolves with the response from the main process.
-   * Send a message to the main process via channel and expect a result ~~asynchronously~~.
-   * As composition-api, it makes asynchronous operations look like synchronous.
+   * 返回 Promise<any> - 解析为来自主进程的响应。
+   * 通过频道发送消息到主进程，并异步期待结果。
+   * 作为组合 API，它使得异步操作看起来像同步的。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args
    */
   invoke: <T>(channel: string, ...args: any[]) => Ref<T | null>
 
   /**
-   * Returns any - The value sent back by the ipcMain handler.
-   * Send a message to the main process via channel and expect a result synchronously.
+   * 返回 any - 由 ipcMain 处理程序返回的值。
+   * 通过频道发送消息到主进程，并同步期待结果。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrenderersendsyncchannel-args
    */
   sendSync: <T>(channel: string, ...args: any[]) => Ref<T | null>
 
   /**
-   * Send a message to the main process, optionally transferring ownership of zero or more MessagePort objects.
+   * 发送消息到主进程，可选择传输零个或多个 MessagePort 对象的所有权。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererpostmessagechannel-message-transfer
    */
   postMessage: (channel: string, message: any, transfer?: MessagePort[]) => void
 
   /**
-   * Sends a message to a window with webContentsId via channel.
+   * 通过频道将消息发送到具有 webContentsId 的窗口。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrenderersendtowebcontentsid-channel-args
    */
   sendTo: (webContentsId: number, channel: string, ...args: any[]) => void
 
   /**
-   * Like ipcRenderer.send but the event will be sent to the <webview> element in the host page instead of the main process.
+   * 类似 ipcRenderer.send，但事件将被发送到主页中的 <webview> 元素，而不是主进程。
    *
    * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrenderersendtohostchannel-args
    */
@@ -87,7 +87,7 @@ export interface UseIpcRendererReturn {
 }
 
 /**
- * Create a `sendSync` function
+ * 创建一个 `sendSync` 函数
  */
 function setSendSync(ipcRenderer: IpcRenderer) {
   return <T>(channel: string, ...args: any[]): Ref<T | null> => {
@@ -98,7 +98,7 @@ function setSendSync(ipcRenderer: IpcRenderer) {
 }
 
 /**
- * Get the `ipcRenderer` module with all APIs.
+ * 获取 `ipcRenderer` 模块及其所有 API。
  *
  * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrenderersendtohostchannel-args
  * @see https://vueuse.org/useIpcRenderer

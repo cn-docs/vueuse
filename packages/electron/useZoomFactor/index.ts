@@ -9,7 +9,7 @@ export function useZoomFactor(webFrame: WebFrame): Ref<number>
 export function useZoomFactor(): Ref<number>
 
 /**
- * Reactive WebFrame zoom factor
+ * 响应式 WebFrame 缩放因子
  *
  * @see https://www.electronjs.org/docs/api/web-frame#webframesetzoomfactorfactor
  * @see https://vueuse.org/useZoomFactor
