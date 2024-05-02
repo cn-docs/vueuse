@@ -2,7 +2,7 @@
 category: '@Electron'
 ---
 
-# 使用 useZoomFactor
+# useZoomFactor
 
 响应式的 [WebFrame](https://www.electronjs.org/docs/api/web-frame#webframe) 缩放因子。
 

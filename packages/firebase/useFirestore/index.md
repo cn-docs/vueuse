@@ -4,9 +4,9 @@ category: '@Firebase'
 
 # useFirestore
 
-Reactive [Firestore](https://firebase.google.com/docs/firestore) binding. Making it straightforward to **always keep your local data in sync** with remotes databases.
+响应式的 [Firestore](https://firebase.google.com/docs/firestore) 绑定。使得**始终将本地数据与远程数据库同步**变得简单直观。
 
-## Usage
+## 用法
 
 ```js {9,12,17,22}
 import { computed, ref } from 'vue'
@@ -19,32 +19,32 @@ const db = getFirestore(app)
 
 const todos = useFirestore(collection(db, 'todos'))
 
-// or for doc reference
+// 或者用于文档引用
 const user = useFirestore(doc(db, 'users', 'my-user-id'))
 
-// you can also use ref value for reactive query
+// 您还可以使用 ref 值来创建响应式查询
 const postsLimit = ref(10)
 const postsQuery = computed(() => query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit(postsLimit.value)))
 const posts = useFirestore(postsQuery)
 
-// you can use the boolean value to tell a query when it is ready to run
-// when it gets falsy value, return the initial value
+// 您可以使用布尔值告诉查询何时准备好运行
+// 当它获取到假值时，返回初始值
 const userId = ref('')
 const userQuery = computed(() => userId.value && doc(db, 'users', userId.value))
 const userData = useFirestore(userQuery, null)
 ```
 
-## Share across instances
+## 在实例之间共享
 
-You can reuse the db reference by passing `autoDispose: false`. You can also set an amount of milliseconds before auto disposing the db reference.
+您可以通过传递 `autoDispose: false` 来重用 db 引用。您还可以设置自动释放 db 引用之前的毫秒数。
 
-Note : Getting a not disposed db reference again don't cost a Firestore read.
+注意：再次获取未释放的 db 引用不会产生 Firestore 读取成本。
 
 ```ts
 const todos = useFirestore(collection(db, 'todos'), undefined, { autoDispose: false })
 ```
 
-or use `createGlobalState` from the core package
+或者使用核心包中的 `createGlobalState`
 
 ```js
 // store.js
