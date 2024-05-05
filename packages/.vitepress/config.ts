@@ -175,13 +175,6 @@ export default withPwa(defineConfig({
     },
   },
   head: [
-    [
-      'meta',
-      {
-        name: 'baidu-site-verification',
-        content: 'codeva-ypc2hbdVKj',
-      },
-    ],
     ['meta', { name: 'theme-color', content: '#ffffff' }],
     ['link', { rel: 'icon', href: '/favicon.ico', sizes: '48x48' }],
     ['link', { rel: 'icon', href: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }],
