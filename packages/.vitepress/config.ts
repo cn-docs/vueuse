@@ -178,13 +178,6 @@ export default withPwa(defineConfig({
     [
       'meta',
       {
-        name: 'google-site-verification',
-        content: '8IOepBegltkiVSPVRuFIZv_0gEUytJhXhn3pmZxoy6Y',
-      },
-    ],
-    [
-      'meta',
-      {
         name: 'baidu-site-verification',
         content: 'codeva-ypc2hbdVKj',
       },
