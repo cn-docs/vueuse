@@ -132,6 +132,11 @@ export default withPwa(defineConfig({
         link: 'https://play.vueuse.org',
       },
       {
+        text: '英文文档',
+        link: 'https://vueuse.org',
+        target: '_self',
+      },
+      {
         text: currentVersion,
         items: [
           {
