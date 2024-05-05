@@ -69,7 +69,7 @@ export default withPwa(defineConfig({
     ],
   },
   sitemap: {
-    hostname: 'https://vueuse-cn.netlify.app/',
+    hostname: 'https://vueuse.pages.dev/',
   },
   themeConfig: {
     logo: '/favicon.svg',
