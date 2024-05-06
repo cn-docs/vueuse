@@ -1,10 +1,14 @@
 <script setup lang="ts">
 // @ts-expect-error missing types
 import _contributors from '/virtual-contributors'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import type { ContributorInfo } from '@vueuse/metadata'
 
 const props = defineProps<{ fn: string }>()
+onMounted(() => {
+  // eslint-disable-next-line no-console
+  console.log('贡献者', _contributors)
+})
 
 const contributors = computed(() => _contributors[props.fn] || [] as ContributorInfo[])
 </script>
