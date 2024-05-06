@@ -1,0 +1,37 @@
+name: Deploy To Github pages
+on:
+  push:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: lts/*
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.x
+      - name: Set node version to LTS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+          cache: pnpm
+      - name: Install and Build
+        run: |
+          pnpm run install-fonts
+          pnpm run docs:build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        with:
+          branch: gh-pages
+          folder: ./packages/.vitepress/dist
+
