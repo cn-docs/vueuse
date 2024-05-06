@@ -4,21 +4,21 @@ category: '@Integrations'
 
 # useCookies
 
-Wrapper for [`universal-cookie`](https://www.npmjs.com/package/universal-cookie).
+对 [`universal-cookie`](https://www.npmjs.com/package/universal-cookie) 的包装。
 
 ::: tip
-When using with Nuxt 3, this functions will **NOT** be auto imported in favor of Nuxt's built-in [`useCookie()`](https://v3.nuxtjs.org/api/composables/use-cookie). Use explicit import if you want to use the function from VueUse.
+在 Nuxt 3 中使用时，这些函数不会自动导入，而是使用 Nuxt 内置的 [`useCookie()`](https://v3.nuxtjs.org/api/composables/use-cookie)。如果要使用 VueUse 中的函数，请显式导入。
 :::
 
-## Install
+## 安装
 
 ```bash
 npm i universal-cookie@^6
 ```
 
-## Usage
+## 用法
 
-### Common usage
+### 常规用法
 
 ```vue
 <script>
@@ -50,33 +50,33 @@ export default defineComponent({
 </template>
 ```
 
-## Options
+## 选项
 
-Access and modify cookies using vue composition-api.
+使用 vue composition-api 访问和修改 cookie。
 
-> By default, you should use it inside `setup()`, but this function also works anywhere else.
+> 默认情况下，应该在 `setup()` 中使用它，但此函数也可以在其他任何地方使用。
 
 ```ts
 const { get, getAll, set, remove, addChangeListener, removeChangeListener } = useCookies(['cookie-name'], { doNotParse: false, autoUpdateDependencies: false })
 ```
 
-### `dependencies` (optional)
+### `dependencies`（可选）
 
-Let you optionally specify a list of cookie names your component depend on or that should trigger a re-render. If unspecified, it will render on every cookie change.
+允许您可选地指定组件依赖的或应触发重新渲染的 cookie 名称列表。如果未指定，它将在每次 cookie 更改时重新渲染。
 
-### `options` (optional)
+### `options`（可选）
 
-- `doNotParse` (boolean = false): do not convert the cookie into an object no matter what. **Passed as default value to `get`/`getAll` methods.**
-- `autoUpdateDependencies` (boolean = false): automatically add cookie names ever provided to `get` method. If **true** then you don't need to care about provided `dependencies`.
+- `doNotParse`（布尔值 = false）：无论如何都不将 cookie 转换为对象。**作为传递给 `get`/`getAll` 方法的默认值。**
+- `autoUpdateDependencies`（布尔值 = false）：自动添加传递给 `get` 方法的 cookie 名称。如果为 **true**，则无需关心提供的 `dependencies`。
 
-### `cookies` (optional)
+### `cookies`（可选）
 
-Let you provide a `universal-cookie` instance (creates a new instance by default)
+允许您提供一个 `universal-cookie` 实例（默认情况下创建一个新实例）
 
-> Info about methods available in the [universal-cookie api docs](https://www.npmjs.com/package/universal-cookie#api---cookies-class)
+> 关于可用方法的信息，请参阅 [universal-cookie api 文档](https://www.npmjs.com/package/universal-cookie#api---cookies-class)
 
 ## `createCookies([req])`
 
-Create a `universal-cookie` instance using request (default is window.document.cookie) and returns `useCookies` function with provided universal-cookie instance
+使用请求创建一个 `universal-cookie` 实例（默认是 window.document.cookie），并返回带有提供的 `universal-cookie` 实例的 `useCookies` 函数
 
-- req (object): Node's [http.IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage) request object
+- req（对象）：Node 的 [http.IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage) 请求对象

@@ -8,7 +8,7 @@ export function useMin(array: MaybeRefOrGetter<MaybeRefOrGetter<number>[]>): Com
 export function useMin(...args: MaybeRefOrGetter<number>[]): ComputedRef<number>
 
 /**
- * Reactive `Math.min`.
+ * 响应式 `Math.min`.
  *
  * @see https://vueuse.org/useMin
  */

@@ -8,7 +8,7 @@ export function useAverage(array: MaybeRefOrGetter<MaybeRefOrGetter<number>[]>):
 export function useAverage(...args: MaybeRefOrGetter<number>[]): ComputedRef<number>
 
 /**
- * Get the average of an array reactively
+ * 响应式地获取数组的平均值。
  *
  * @see https://vueuse.org/useAverage
  */

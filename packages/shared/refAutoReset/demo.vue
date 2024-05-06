@@ -11,7 +11,7 @@ function setMessage() {
 <template>
   <div>
     <button @click="setMessage()">
-      Change Message
+      更改 message
     </button>
     <p>
       {{ message }}

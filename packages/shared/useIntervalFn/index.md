@@ -4,14 +4,14 @@ category: Animation
 
 # useIntervalFn
 
-Wrapper for `setInterval` with controls
+带有控制功能的 `setInterval` 包装器
 
-## Usage
+## 使用方法
 
 ```js
 import { useIntervalFn } from '@vueuse/core'
 
 const { pause, resume, isActive } = useIntervalFn(() => {
-  /* your function */
+  /* 你的函数 */
 }, 1000)
 ```

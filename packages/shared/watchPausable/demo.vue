@@ -18,11 +18,11 @@ function clear() {
   log.value = ''
 }
 function pause() {
-  log.value += 'Paused\n'
+  log.value += '暂停\n'
   watcher.pause()
 }
 function resume() {
-  log.value += 'Resumed\n'
+  log.value += '恢复\n'
   watcher.resume()
 }
 
@@ -32,7 +32,7 @@ const { isActive } = watcher
 <template>
   <div>
     <note class="mb-2">
-      Type something below to trigger the watch
+      在下方输入以触发观察
     </note>
     <input
       ref="input"
@@ -41,19 +41,19 @@ const { isActive } = watcher
     >
 
     <button :disabled="!isActive" class="orange" @click="pause">
-      Pause
+      暂停
     </button>
     <button :disabled="isActive" @click="resume">
-      Resume
+      恢复
     </button>
     <button @click="clear">
-      Clear Log
+      清除日志
     </button>
 
     <br>
     <br>
 
-    <note>Log</note>
+    <note>日志</note>
 
     <pre>{{ log }}</pre>
   </div>

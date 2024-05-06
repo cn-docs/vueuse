@@ -4,9 +4,9 @@ category: '@Math'
 
 # useTrunc
 
-Reactive `Math.trunc`.
+响应式 `Math.trunc`.
 
-## Usage
+## 用法
 
 ```ts
 import { useTrunc } from '@vueuse/math'

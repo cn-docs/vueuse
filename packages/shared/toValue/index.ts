@@ -3,7 +3,7 @@ import { unref } from 'vue-demi'
 import type { AnyFn, MaybeRefOrGetter } from '../utils'
 
 /**
- * Get the value of value/ref/getter.
+ * 获取值、ref 或 getter 的值。
  */
 export function toValue<T>(r: MaybeRefOrGetter<T>): T {
   return typeof r === 'function'

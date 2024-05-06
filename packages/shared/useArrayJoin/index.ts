@@ -4,13 +4,13 @@ import type { MaybeRefOrGetter } from '../utils'
 import { toValue } from '../toValue'
 
 /**
- * Reactive `Array.join`
+ * 响应式 `Array.join`
  *
  * @see https://vueuse.org/useArrayJoin
- * @param list - the array was called upon.
- * @param separator - a string to separate each pair of adjacent elements of the array. If omitted, the array elements are separated with a comma (",").
+ * @param list - 被调用的数组。
+ * @param separator - 用于分隔数组中每对相邻元素的字符串。如果省略，则使用逗号（","）分隔数组元素。
  *
- * @returns a string with all array elements joined. If arr.length is 0, the empty string is returned.
+ * @returns 包含所有数组元素连接的字符串。如果 arr.length 为 0，则返回空字符串。
  */
 export function useArrayJoin(
   list: MaybeRefOrGetter<MaybeRefOrGetter<any>[]>,

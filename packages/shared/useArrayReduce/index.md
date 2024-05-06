@@ -4,9 +4,9 @@ category: Array
 
 # useArrayReduce
 
-Reactive `Array.reduce`.
+响应式 `Array.reduce`。
 
-## Usage
+## 用法
 
 ```js
 import { useArrayReduce } from '@vueuse/core'
@@ -15,7 +15,7 @@ const sum = useArrayReduce([ref(1), ref(2), ref(3)], (sum, val) => sum + val)
 // sum.value: 6
 ```
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayReduce } from '@vueuse/core'
@@ -27,7 +27,7 @@ list.push(3)
 // sum.value: 6
 ```
 
-### Use with initialValue
+### 与初始值一起使用
 
 ```js
 import { useArrayReduce } from '@vueuse/core'

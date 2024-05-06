@@ -50,7 +50,7 @@ export interface UseColorModeOptions<T extends string = BasicColorMode> extends 
   onChanged?: (mode: T | BasicColorMode, defaultHandler:((mode: T | BasicColorMode) => void)) => void
 
   /**
-   * 自定义存储引用
+   * 自定义存储 ref
    *
    * 如果提供了，将跳过 `useStorage`
    */

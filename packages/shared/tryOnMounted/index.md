@@ -4,9 +4,9 @@ category: Component
 
 # tryOnMounted
 
-Safe `onMounted`. Call `onMounted()` if it's inside a component lifecycle, if not, just call the function
+安全的 `onMounted`。如果在组件生命周期内，调用 `onMounted()`，如果不是，直接调用函数。
 
-## Usage
+## 用法
 
 ```js
 import { tryOnMounted } from '@vueuse/core'

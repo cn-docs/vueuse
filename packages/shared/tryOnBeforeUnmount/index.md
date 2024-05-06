@@ -4,9 +4,9 @@ category: Component
 
 # tryOnBeforeUnmount
 
-Safe `onBeforeUnmount`. Call `onBeforeUnmount()` if it's inside a component lifecycle, if not, do nothing
+安全的 `onBeforeUnmount`。如果在组件生命周期内，调用 `onBeforeUnmount()`，如果不是，不执行任何操作。
 
-## Usage
+## 用法
 
 ```js
 import { tryOnBeforeUnmount } from '@vueuse/core'

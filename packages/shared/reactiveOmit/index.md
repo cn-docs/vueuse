@@ -4,11 +4,11 @@ category: Reactivity
 
 # reactiveOmit
 
-Reactively omit fields from a reactive object.
+从响应式对象中动态地排除字段。
 
-## Usage
+## 用法
 
-### Basic Usage
+### 基本用法
 
 ```ts
 import { reactiveOmit } from '@vueuse/core'
@@ -23,7 +23,7 @@ const obj = reactive({
 const picked = reactiveOmit(obj, 'x', 'elementX') // { y: number, elementY: number }
 ```
 
-### Predicate Usage
+### 条件用法
 
 ```ts
 import { reactiveOmit } from '@vueuse/core'
@@ -39,9 +39,9 @@ const picked = reactiveOmit(obj, (value, key) => key === 'baz' || value === true
 // { bar: string, foo: string }
 ```
 
-### Scenarios
+### 场景
 
-#### Selectively passing props to child
+#### 有选择地将属性传递给子组件
 
 ```vue
 <script setup>
@@ -64,7 +64,7 @@ const childProps = reactiveOmit(props, 'value')
 
 <template>
   <div>
-    <!-- only passes "color" and "font" props to child -->
+    <!-- 只将 "color" 和 "font" 属性传递给子组件 -->
     <ChildComp v-bind="childProps" />
   </div>
 </template>

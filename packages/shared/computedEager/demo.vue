@@ -11,30 +11,30 @@ const eagerRenders = ref(0)
 <template>
   <div grid grid-cols-2>
     <div>
-      <span text-primary font-bold>Lazy Computed</span>
+      <span text-primary font-bold>惰性计算</span>
       <div font-mono>
         <LazyDemo @update="lazyRenders++" />
         <div>
-          Renders: {{ lazyRenders }}
+          渲染次数: {{ lazyRenders }}
         </div>
       </div>
     </div>
     <div>
-      <span text-primary font-bold>Eager Computed</span>
+      <span text-primary font-bold>急性计算</span>
       <div font-mono>
         <EagerDemo @update="eagerRenders++" />
-        <div>Renders: {{ eagerRenders }}</div>
+        <div>渲染次数: {{ eagerRenders }}</div>
       </div>
     </div>
   </div>
 
   <div mt-4 font-mono>
-    Count: {{ count }}
+    计数: {{ count }}
   </div>
   <button secondary @click="count--">
-    Decrement
+    减少
   </button>
   <button @click="count++">
-    Increment
+    增加
   </button>
 </template>

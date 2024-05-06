@@ -9,7 +9,7 @@ export interface UseCounterOptions {
 }
 
 /**
- * Basic counter with utility functions.
+ * 基础计数器，带有工具函数。
  *
  * @see https://vueuse.org/useCounter
  * @param [initialValue]

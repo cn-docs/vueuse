@@ -8,7 +8,7 @@ export function useMax(array: MaybeRefOrGetter<MaybeRefOrGetter<number>[]>): Com
 export function useMax(...args: MaybeRefOrGetter<number>[]): ComputedRef<number>
 
 /**
- * Reactively get maximum of values.
+ * 响应式的获取最大值。
  *
  * @see https://vueuse.org/useMax
  */

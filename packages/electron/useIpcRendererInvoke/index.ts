@@ -3,11 +3,11 @@ import type { Ref } from 'vue-demi'
 import { shallowRef } from 'vue-demi'
 
 /**
- * Returns Promise<any> - Resolves with the response from the main process.
+ * 返回 Promise<any> - 解析为来自主进程的响应。
  *
- * Send a message to the main process via channel and expect a result ~~asynchronously~~. As composition-api, it makes asynchronous operations look like synchronous.
+ * 通过频道发送消息到主进程，并期待结果 ~~异步~~。作为组合 API，它使得异步操作看起来像同步的。
  *
- * You need to provide `ipcRenderer` to this function.
+ * 您需要为此函数提供 `ipcRenderer`。
  *
  * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args
  * @see https://vueuse.org/useIpcRendererInvoke
@@ -15,11 +15,11 @@ import { shallowRef } from 'vue-demi'
 export function useIpcRendererInvoke<T>(ipcRenderer: IpcRenderer, channel: string, ...args: any[]): Ref<T | null>
 
 /**
- * Returns Promise<any> - Resolves with the response from the main process.
+ * 返回 Promise<any> - 解析为来自主进程的响应。
  *
- * Send a message to the main process via channel and expect a result ~~asynchronously~~. As composition-api, it makes asynchronous operations look like synchronous.
+ * 通过频道发送消息到主进程，并期待结果 ~~异步~~。作为组合 API，它使得异步操作看起来像同步的。
  *
- * `ipcRenderer` will be automatically gotten.
+ * `ipcRenderer` 将自动获取。
  *
  * @see https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args
  * @see https://vueuse.org/useIpcRendererInvoke

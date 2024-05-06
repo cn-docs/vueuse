@@ -4,11 +4,11 @@ category: Array
 
 # useArrayMap
 
-Reactive `Array.map`
+响应式 `Array.map`。
 
-## Usage
+## 用法
 
-### Use with array of multiple refs
+### 与多个 ref 组成的数组一起使用
 
 ```js
 import { useArrayMap } from '@vueuse/core'
@@ -25,7 +25,7 @@ item1.value = 1
 // result.value: [2, 4, 8, 12, 16]
 ```
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayMap } from '@vueuse/core'

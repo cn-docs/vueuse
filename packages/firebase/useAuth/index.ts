@@ -8,7 +8,7 @@ export interface UseFirebaseAuthOptions {
 }
 
 /**
- * Reactive Firebase Auth binding
+ * 响应式 Firebase 身份验证绑定
  *
  * @see https://vueuse.org/useAuth
  */

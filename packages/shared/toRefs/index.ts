@@ -5,7 +5,7 @@ import type { MaybeRef, MaybeRefOrGetter } from '../utils'
 
 export interface ToRefsOptions {
   /**
-   * Replace the original ref with a copy on property update.
+   * 当属性更新时，是否用副本替换原始的 ref。
    *
    * @default true
    */
@@ -13,10 +13,10 @@ export interface ToRefsOptions {
 }
 
 /**
- * Extended `toRefs` that also accepts refs of an object.
+ * 扩展的 `toRefs`，还接受对象的 ref。
  *
  * @see https://vueuse.org/toRefs
- * @param objectRef A ref or normal object or array.
+ * @param objectRef 一个 ref 或普通对象或数组。
  */
 export function toRefs<T extends object>(
   objectRef: MaybeRef<T>,

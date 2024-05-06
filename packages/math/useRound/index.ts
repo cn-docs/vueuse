@@ -4,7 +4,7 @@ import type { MaybeRefOrGetter } from '@vueuse/shared'
 import { toValue } from '@vueuse/shared'
 
 /**
- * Reactive `Math.round`.
+ * 响应式 `Math.round`
  *
  * @see https://vueuse.org/useRound
  */

@@ -11,10 +11,10 @@ watch(debounced, () => (updated.value += 1))
 
 <template>
   <div>
-    <input v-model="input" placeholder="Try to type anything..." type="text">
-    <note>Delay is set to 1000ms for this demo.</note>
+    <input v-model="input" placeholder="尝试输入任何内容..." type="text">
+    <note>此演示设置了 1000ms 的延迟。</note>
 
     <p>Debounced: {{ debounced }}</p>
-    <p>Times Updated: {{ updated }}</p>
+    <p>更新次数: {{ updated }}</p>
   </div>
 </template>

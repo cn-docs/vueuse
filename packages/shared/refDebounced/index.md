@@ -5,9 +5,9 @@ alias: useDebounce, debouncedRef
 
 # refDebounced
 
-Debounce execution of a ref value.
+对 ref 的更新进行防抖。
 
-## Usage
+## 用法
 
 ```js {4}
 import { refDebounced } from '@vueuse/core'
@@ -23,8 +23,8 @@ await sleep(1100)
 console.log(debounced.value) // 'bar'
 ```
 
-You can also pass an optional 3rd parameter including maxWait option. See `useDebounceFn` for details.
+你也可以传递一个可选的第三个参数，包括 `maxWait` 选项。详情请参阅 `useDebounceFn`。
 
-## Recommended Reading
+## 推荐阅读
 
-- [**Debounce vs Throttle**: Definitive Visual Guide](https://redd.one/blog/debounce-vs-throttle)
+- [**防抖与节流**: 完整的可视化指南](https://redd.one/blog/debounce-vs-throttle)

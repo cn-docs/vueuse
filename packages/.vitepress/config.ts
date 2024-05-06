@@ -59,7 +59,6 @@ export default withPwa(defineConfig({
   description: 'Collection of essential Vue Composition Utilities',
   lang: 'en-US',
   ignoreDeadLinks: true,
-  base: '/vueuse/',
   markdown: {
     theme: {
       light: 'vitesse-light',
@@ -69,7 +68,9 @@ export default withPwa(defineConfig({
       transformerTwoslash(),
     ],
   },
-
+  sitemap: {
+    hostname: 'https://vueuse.pages.dev/',
+  },
   themeConfig: {
     logo: '/favicon.svg',
     editLink: {
@@ -131,6 +132,11 @@ export default withPwa(defineConfig({
         link: 'https://play.vueuse.org',
       },
       {
+        text: '英文文档',
+        link: 'https://vueuse.org',
+        target: '_self',
+      },
+      {
         text: currentVersion,
         items: [
           {
@@ -174,12 +180,19 @@ export default withPwa(defineConfig({
     },
   },
   head: [
+    [
+      'meta',
+      {
+        name: 'baidu-site-verification',
+        content: 'codeva-mer2viC6td',
+      },
+    ],
     ['meta', { name: 'theme-color', content: '#ffffff' }],
     ['link', { rel: 'icon', href: '/favicon.ico', sizes: '48x48' }],
     ['link', { rel: 'icon', href: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }],
     ['meta', { name: 'author', content: 'Anthony Fu' }],
-    ['meta', { property: 'og:title', content: 'VueUse' }],
-    ['meta', { property: 'og:description', content: 'Collection of essential Vue Composition Utilities' }],
+    ['meta', { property: 'og:title', content: 'VueUse 中文文档' }],
+    ['meta', { property: 'og:description', content: '基本 Vue 的组合式函数工具库' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:creator', content: '@antfu7' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover' }],

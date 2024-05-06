@@ -4,11 +4,11 @@ category: Utilities
 
 # makeDestructurable
 
-Make isomorphic destructurable for object and array at the same time. See [this blog](https://antfu.me/posts/destructuring-with-object-or-array/) for more details.
+使对象和数组具有等价的解构性能。详见[这篇博文](https://antfu.me/posts/destructuring-with-object-or-array/)获取更多详情。
 
-## Usage
+## 用法
 
-TypeScript Example:
+TypeScript 示例:
 
 <!-- eslint-disable array-bracket-spacing -->
 <!-- eslint-disable ts/no-redeclare -->
@@ -25,7 +25,7 @@ const obj = makeDestructurable(
 )
 ```
 
-Usage:
+用法:
 
 <!-- eslint-disable array-bracket-spacing -->
 <!-- eslint-disable ts/no-redeclare -->

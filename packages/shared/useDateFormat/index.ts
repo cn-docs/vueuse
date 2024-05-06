@@ -6,14 +6,14 @@ export type DateLike = Date | number | string | undefined
 
 export interface UseDateFormatOptions {
   /**
-   * The locale(s) to used for dd/ddd/dddd/MMM/MMMM format
+   * 用于 dd/ddd/dddd/MMM/MMMM 格式的语言环境
    *
    * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
    */
   locales?: Intl.LocalesArgument
 
   /**
-   * A custom function to re-modify the way to display meridiem
+   * 重新修改显示上午下午的方式的自定义函数
    *
    */
   customMeridiem?: (hours: number, minutes: number, isLowercase?: boolean, hasPeriod?: boolean) => string
@@ -103,11 +103,11 @@ export function normalizeDate(date: DateLike) {
 }
 
 /**
- * Get the formatted date according to the string of tokens passed in.
+ * 根据传入的令牌字符串获取格式化日期。
  *
  * @see https://vueuse.org/useDateFormat
- * @param date - The date to format, can either be a `Date` object, a timestamp, or a string
- * @param formatStr - The combination of tokens to format the date
+ * @param date - 要格式化的日期，可以是 `Date` 对象、时间戳或字符串
+ * @param formatStr - 用于格式化日期的令牌组合
  * @param options - UseDateFormatOptions
  */
 

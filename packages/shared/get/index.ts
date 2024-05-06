@@ -3,7 +3,7 @@ import { unref } from 'vue-demi'
 import type { MaybeRef } from '../utils'
 
 /**
- * Shorthand for accessing `ref.value`
+ * 访问 `ref.value` 的简写方式
  */
 export function get<T>(ref: MaybeRef<T>): T
 export function get<T, K extends keyof T>(ref: MaybeRef<T>, key: K): T[K]

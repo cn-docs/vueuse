@@ -6,9 +6,9 @@ alias: resolveRef
 
 # toRef
 
-Normalize value/ref/getter to `ref` or `computed`.
+将值、ref 或 getter 规范化为 `ref` 或 `computed`。
 
-## Usage
+## 用法
 
 ```ts
 import { toRef } from '@vueuse/core'

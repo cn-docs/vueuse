@@ -3,7 +3,7 @@ layout: home
 sidebar: false
 
 hero:
-  name: VueUse
+  name: VueUse 中文文档
   text: Vue 组合式工具集
   tagline: Vue 必备的组合式工具集
   image:

@@ -4,11 +4,11 @@ category: Array
 
 # useArrayDifference
 
-Reactive get array difference of two arrays
+获取两个数组的差集的响应式结果
 
-## Usage
+## 用法
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayDifference } from '@vueuse/core'
@@ -21,7 +21,7 @@ list2.value = [0, 1, 2]
 // result.value: [3, 4, 5]
 ```
 
-### Use with reactive array and use function comparison
+### 与响应式数组和自定义比较函数一起使用
 
 ```js
 import { useArrayDifference } from '@vueuse/core'

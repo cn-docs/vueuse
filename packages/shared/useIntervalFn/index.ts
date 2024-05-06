@@ -6,14 +6,14 @@ import { isClient } from '../utils'
 
 export interface UseIntervalFnOptions {
   /**
-   * Start the timer immediately
+   * 立即开始计时器
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * Execute the callback immediate after calling this function
+   * 在调用此函数后立即执行回调函数
    *
    * @default false
    */
@@ -21,7 +21,7 @@ export interface UseIntervalFnOptions {
 }
 
 /**
- * Wrapper for `setInterval` with controls
+ * 带有控制功能的 `setInterval` 包装器
  *
  * @param cb
  * @param interval

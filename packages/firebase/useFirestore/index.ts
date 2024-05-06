@@ -59,8 +59,7 @@ export function useFirestore<T extends DocumentData>(
 ): Ref<T[] | undefined>
 
 /**
- * Reactive Firestore binding. Making it straightforward to always keep your
- * local data in sync with remotes databases.
+ * 响应式 Firestore 绑定。使本地数据始终与远程数据库保持同步变得简单
  *
  * @see https://vueuse.org/useFirestore
  */

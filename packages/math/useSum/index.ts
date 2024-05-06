@@ -8,7 +8,7 @@ export function useSum(array: MaybeRefOrGetter<MaybeRefOrGetter<number>[]>): Com
 export function useSum(...args: MaybeRefOrGetter<number>[]): ComputedRef<number>
 
 /**
- * Get the sum of a set of numbers.
+ * 获取一组数字的总和。
  *
  * @see https://vueuse.org/useSum
  */

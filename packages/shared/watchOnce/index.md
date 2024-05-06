@@ -4,17 +4,17 @@ category: Watch
 
 # watchOnce
 
-`watch` that only triggers once.
+仅触发一次的 `watch`。
 
-## Usage
+## 使用方法
 
-After the callback function has been triggered once, the watch will be stopped automatically.
+一旦回调函数被触发一次，监听将自动停止。
 
-```ts
+```typescript
 import { watchOnce } from '@vueuse/core'
 
 watchOnce(source, () => {
-  // triggers only once
-  console.log('source changed!')
+  // 仅触发一次
+  console.log('源发生变化！')
 })
 ```

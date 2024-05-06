@@ -4,9 +4,9 @@ category: '@Math'
 
 # useAbs
 
-Reactive `Math.abs`.
+响应式 `Math.abs`。
 
-## Usage
+## 用法
 
 ```ts
 import { useAbs } from '@vueuse/math'

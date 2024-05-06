@@ -5,13 +5,13 @@ alias: pausableWatch
 
 # watchPausable
 
-Pausable watch
+可暂停的 watch
 
-## Usage
+## 使用方法
 
-Use as normal the `watch`, but return extra `pause()` and `resume()` functions to control.
+像正常使用 `watch` 一样，但返回额外的 `pause()` 和 `resume()` 函数以进行控制。
 
-```ts
+```typescript
 import { watchPausable } from '@vueuse/core'
 import { nextTick, ref } from 'vue'
 
@@ -23,15 +23,15 @@ const { stop, pause, resume } = watchPausable(
 )
 
 source.value = 'bar'
-await nextTick() // Changed to bar!
+await nextTick() // 改变为 bar！
 
 pause()
 
 source.value = 'foobar'
-await nextTick() // (nothing happend)
+await nextTick() // （没有发生变化）
 
 resume()
 
 source.value = 'hello'
-await nextTick() // Changed to hello!
+await nextTick() // 改变为 hello！
 ```

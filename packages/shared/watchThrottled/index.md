@@ -5,13 +5,13 @@ alias: throttledWatch
 
 # watchThrottled
 
-Throttled watch.
+节流式监视。
 
-## Usage
+## 用法
 
-Similar to `watch`, but offering an extra option `throttle` which will be applied to the callback function.
+类似于 `watch`，但提供了额外的选项 `throttle`，该选项将应用于回调函数。
 
-```ts
+```typescript
 import { watchThrottled } from '@vueuse/core'
 
 watchThrottled(
@@ -21,9 +21,9 @@ watchThrottled(
 )
 ```
 
-It's essentially a shorthand for the following code:
+实质上，它相当于以下代码的简写：
 
-```ts
+```typescript
 import { throttleFilter, watchWithFilter } from '@vueuse/core'
 
 watchWithFilter(

@@ -11,9 +11,9 @@ export function useArrayDifference<T>(list: MaybeRefOrGetter<T[]>, values: Maybe
 export function useArrayDifference<T>(list: MaybeRefOrGetter<T[]>, values: MaybeRefOrGetter<T[]>, compareFn?: (value: T, othVal: T) => boolean): ComputedRef<T[]>
 
 /**
- * Reactive get array difference of two array
+ * 获取两个数组的差集的响应式结果
  * @see https://vueuse.org/useArrayDifference
- * @returns - the difference of two array
+ * @returns - 两个数组的差集
  * @param args
  */
 export function useArrayDifference<T>(...args: any[]): ComputedRef<T[]> {

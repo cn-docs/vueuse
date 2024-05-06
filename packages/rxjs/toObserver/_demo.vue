@@ -30,9 +30,9 @@ useSubscription(
 
 <template>
   <button @click="count++">
-    count is: {{ count }}
+    count : {{ count }}
   </button>
   <button ref="button">
-    stop
+    停止
   </button>
 </template>

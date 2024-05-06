@@ -2,7 +2,7 @@ import { getCurrentInstance, provide } from 'vue-demi'
 import { localProvidedStateMap } from './map'
 
 /**
- * On the basis of `provide`, it is allowed to directly call inject to obtain the value after call provide in the same component.
+ * 在 `provide` 的基础上，允许在同一组件中直接调用 `inject` 来获取值。
  *
  * @example
  * ```ts

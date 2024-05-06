@@ -3,14 +3,14 @@ import { isRef, isVue3, version } from 'vue-demi'
 
 export interface ExtendRefOptions<Unwrap extends boolean = boolean> {
   /**
-   * Is the extends properties enumerable
+   * 是否将扩展属性设置为可枚举
    *
    * @default false
    */
   enumerable?: boolean
 
   /**
-   * Unwrap for Ref properties
+   * 是否对 Ref 属性进行解封装
    *
    * @default true
    */
@@ -18,20 +18,20 @@ export interface ExtendRefOptions<Unwrap extends boolean = boolean> {
 }
 
 /**
- * Overload 1: Unwrap set to false
+ * 重载 1：unwrap 设置为 false
  */
 export function extendRef<R extends Ref<any>, Extend extends object, Options extends ExtendRefOptions<false>>(ref: R, extend: Extend, options?: Options): ShallowUnwrapRef<Extend> & R
 /**
- * Overload 2: Unwrap unset or set to true
+ * 重载 2：unwrap 未设置或设置为 true
  */
 export function extendRef<R extends Ref<any>, Extend extends object, Options extends ExtendRefOptions>(ref: R, extend: Extend, options?: Options): Extend & R
 
-// implementation
+// 实现
 export function extendRef<R extends Ref<any>, Extend extends object>(ref: R, extend: Extend, { enumerable = false, unwrap = true }: ExtendRefOptions = {}) {
-  // compatibility: Vue 2.7 or above
+  // 兼容性：Vue 2.7 或以上版本
   if (!isVue3 && !version.startsWith('2.7.')) {
     if (process.env.NODE_ENV !== 'production')
-      throw new Error('[VueUse] extendRef only works in Vue 2.7 or above.')
+      throw new Error('[VueUse] extendRef 只能在 Vue 2.7 或以上版本中使用。')
     return
   }
 

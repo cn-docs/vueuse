@@ -6,6 +6,6 @@ const counter = useInterval(200)
 
 <template>
   <div>
-    <p>Interval fired: {{ counter }}</p>
+    <p>间隔: {{ counter }}</p>
   </div>
 </template>

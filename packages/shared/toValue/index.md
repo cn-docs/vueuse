@@ -6,9 +6,9 @@ alias: resolveUnref
 
 # toValue
 
-Get the value of value/ref/getter.
+获取值、ref 或 getter 的值。
 
-## Usage
+## 用法
 
 ```ts
 import { toValue } from '@vueuse/core'

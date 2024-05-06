@@ -5,7 +5,7 @@ export function set<T>(ref: Ref<T>, value: T): void
 export function set<O extends object, K extends keyof O>(target: O, key: K, value: O[K]): void
 
 /**
- *  Shorthand for `ref.value = x`
+ *  `ref.value = x` 的简写。
  */
 export function set(...args: any[]) {
   if (args.length === 2) {

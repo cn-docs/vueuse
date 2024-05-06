@@ -4,9 +4,9 @@ import { useDebounceFn } from '../useDebounceFn'
 import type { DebounceFilterOptions, MaybeRefOrGetter } from '../utils'
 
 /**
- * Debounce updates of a ref.
+ * 对 ref 的更新进行防抖。
  *
- * @return A new debounced ref.
+ * @return 一个新的防抖 Ref
  */
 export function refDebounced<T>(value: Ref<T>, ms: MaybeRefOrGetter<number> = 200, options: DebounceFilterOptions = {}): Readonly<Ref<T>> {
   const debounced = ref(value.value as T) as Ref<T>

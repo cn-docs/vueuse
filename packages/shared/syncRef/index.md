@@ -5,9 +5,9 @@ related: syncRefs
 
 # syncRef
 
-Two-way refs synchronization.
+双向引用同步。
 
-## Usage
+## 用法
 
 ```ts
 import { syncRef } from '@vueuse/core'
@@ -28,7 +28,7 @@ a.value = 'bar'
 console.log(b.value) // bar
 ```
 
-### One directional
+### 单向
 
 ```ts
 import { syncRef } from '@vueuse/core'
@@ -39,7 +39,7 @@ const b = ref('b')
 const stop = syncRef(a, b, { direction: 'rtl' })
 ```
 
-### Custom Transform
+### 自定义转换
 
 ```ts
 import { syncRef } from '@vueuse/core'

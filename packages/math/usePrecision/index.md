@@ -4,9 +4,9 @@ category: '@Math'
 
 # usePrecision
 
-Reactively set the precision of a number.
+在数字上响应式的设置精度。
 
-## Usage
+## 用法
 
 ```ts
 import { usePrecision } from '@vueuse/math'

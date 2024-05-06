@@ -4,9 +4,9 @@ category: Component
 
 # tryOnUnmounted
 
-Safe `onUnmounted`. Call `onUnmounted()` if it's inside a component lifecycle, if not, do nothing
+安全的 `onUnmounted`。如果在组件生命周期内，调用 `onUnmounted()`，如果不是，不执行任何操作。
 
-## Usage
+## 用法
 
 ```js
 import { tryOnUnmounted } from '@vueuse/core'

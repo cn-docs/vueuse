@@ -5,9 +5,9 @@ alias: controlledComputed
 
 # computedWithControl
 
-Explicitly define the dependencies of computed.
+显式定义计算属性的依赖关系。
 
-## Usage
+## 用法
 
 ```ts
 import { computedWithControl } from '@vueuse/core'
@@ -16,12 +16,12 @@ const source = ref('foo')
 const counter = ref(0)
 
 const computedRef = computedWithControl(
-  () => source.value, // watch source, same as `watch`
-  () => counter.value, // computed getter, same as `computed`
+  () => source.value, // 监视 source，与 `watch` 相同
+  () => counter.value, // 计算属性的 getter，与 `computed` 相同
 )
 ```
 
-With this, the changes of `counter` won't trigger `computedRef` to update but the `source` ref does.
+通过这种方式，`counter` 的更改不会触发 `computedRef` 更新，但是 `source` ref 会。
 
 ```ts
 console.log(computedRef.value) // 0
@@ -35,9 +35,9 @@ source.value = 'bar'
 console.log(computedRef.value) // 1
 ```
 
-### Manual Triggering
+### 手动触发
 
-You can also manually trigger the update of the computed by:
+您还可以通过以下方式手动触发计算属性的更新：
 
 ```ts
 const computedRef = computedWithControl(
@@ -49,5 +49,5 @@ computedRef.trigger()
 ```
 
 ::: warning
-Manual triggering only works for Vue 3
+手动触发仅适用于 Vue 3
 :::

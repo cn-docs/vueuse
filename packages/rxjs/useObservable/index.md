@@ -4,9 +4,9 @@ category: '@RxJS'
 
 # useObservable
 
-Use an RxJS [`Observable`](https://rxjs.dev/guide/observable), return a `ref`, and automatically unsubscribe from it when the component is unmounted.
+使用 RxJS [`Observable`](https://rxjs.dev/guide/observable)，返回一个 `ref`，并在组件卸载时自动取消订阅。
 
-## Usage
+## 用法
 
 ```ts
 import { ref } from 'vue'
@@ -24,7 +24,7 @@ const count = useObservable(
 )
 ```
 
-If you want to add custom error handling to an `Observable` that might error, you can supply an optional `onError` configuration. Without this, RxJS will treat any error in the supplied `Observable` as an "unhandled error" and it will be thrown in a new call stack and reported to `window.onerror` (or `process.on('error')` if you happen to be in Node).
+如果您想要为可能出错的 `Observable` 添加自定义错误处理，您可以提供一个可选的 `onError` 配置。如果没有提供，RxJS 将把提供的 `Observable` 中的任何错误视为"未处理的错误"，并且它将在一个新的调用栈中抛出，并报告给 `window.onerror`（或者如果您恰好在 Node 中，则为 `process.on('error')`）。
 
 ```ts
 import { ref } from 'vue'

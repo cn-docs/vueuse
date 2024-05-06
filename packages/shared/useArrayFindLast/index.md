@@ -4,9 +4,9 @@ category: Array
 
 # useArrayFindLast
 
-Reactive `Array.findLast`.
+响应式 `Array.findLast`。
 
-## Usage
+## 用法
 
 ```js
 import { useArrayFindLast } from '@vueuse/core'
@@ -16,7 +16,7 @@ const positive = useArrayFindLast(list, val => val > 0)
 // positive.value: 2
 ```
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayFindLast } from '@vueuse/core'

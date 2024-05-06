@@ -5,14 +5,14 @@ import type { Ref, WatchOptionsBase } from 'vue-demi'
 import { readonly, shallowRef, watchEffect } from 'vue-demi'
 
 /**
- * Note: If you are using Vue 3.4+, you can straight use computed instead.
- * Because in Vue 3.4+, if computed new value does not change,
- * computed, effect, watch, watchEffect, render dependencies will not be triggered.
- * refer: https://github.com/vuejs/core/pull/5912
+ * 注意: 如果您正在使用 Vue 3.4+，您可以直接使用 computed。
+ * 因为在 Vue 3.4+ 中，如果计算属性的新值没有变化，
+ * computed、effect、watch、watchEffect、render 的依赖关系将不会触发。
+ * 参考: https://github.com/vuejs/core/pull/5912
  *
  * @param fn effect function
  * @param options WatchOptionsBase
- * @returns readonly ref
+ * @returns 只读的 ref
  */
 export function computedEager<T>(fn: () => T, options?: WatchOptionsBase): Readonly<Ref<T>> {
   const result = shallowRef()

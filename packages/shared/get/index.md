@@ -4,9 +4,9 @@ category: Utilities
 
 # get
 
-Shorthand for accessing `ref.value`
+用于访问 `ref.value` 的简写方式
 
-## Usage
+## 用法
 
 ```ts
 import { get } from '@vueuse/core'

@@ -6,7 +6,7 @@ export type ReactifyNested<T, Keys extends keyof T = keyof T, S extends boolean 
 
 export interface ReactifyObjectOptions<T extends boolean> extends ReactifyOptions<T> {
   /**
-   * Includes names from Object.getOwnPropertyNames
+   * 包括来自 Object.getOwnPropertyNames 的名称
    *
    * @default true
    */
@@ -14,7 +14,7 @@ export interface ReactifyObjectOptions<T extends boolean> extends ReactifyOption
 }
 
 /**
- * Apply `reactify` to an object
+ * 将 `reactify` 应用于对象
  */
 export function reactifyObject<T extends object, Keys extends keyof T>(obj: T, keys?: (keyof T)[]): ReactifyNested<T, Keys, true>
 export function reactifyObject<T extends object, S extends boolean = true>(obj: T, options?: ReactifyObjectOptions<S>): ReactifyNested<T, keyof T, S>

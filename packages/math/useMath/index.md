@@ -4,9 +4,9 @@ category: '@Math'
 
 # useMath
 
-Reactive `Math` methods.
+响应式 `Math` 方法
 
-## Usage
+## 用法
 
 ```ts
 import { useMath } from '@vueuse/math'

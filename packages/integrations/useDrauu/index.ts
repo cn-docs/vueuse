@@ -29,7 +29,7 @@ export interface UseDrauuReturn {
 }
 
 /**
- * Reactive drauu
+ * 响应式 drauu
  *
  * @see https://vueuse.org/useDrauu
  * @param target The target svg element

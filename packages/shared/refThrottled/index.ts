@@ -3,13 +3,12 @@ import { ref, watch } from 'vue-demi'
 import { useThrottleFn } from '../useThrottleFn'
 
 /**
- * Throttle execution of a function. Especially useful for rate limiting
- * execution of handlers on events like resize and scroll.
+ * 函数节流，特别适用于限制像 resize 和 scroll 这样的事件处理程序的执行频率。
  *
- * @param value Ref value to be watched with throttle effect
- * @param  delay  A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
- * @param [trailing] if true, update the value again after the delay time is up
- * @param [leading] if true, update the value on the leading edge of the ms timeout
+ * @param value 要使用节流效果监视的 Ref 值
+ * @param delay 以毫秒为单位的延迟时间，必须是大于或等于零的值。对于事件回调，最有用的值通常在 100 或 250（甚至更高）左右。
+ * @param [trailing] 如果为 true，在延迟时间结束后再次更新值
+ * @param [leading] 如果为 true，在 ms 超时的头部立即更新值
  */
 export function refThrottled<T>(value: Ref<T>, delay = 200, trailing = true, leading = true) {
   if (delay <= 0)

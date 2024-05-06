@@ -12,7 +12,7 @@ export interface UseClonedOptions<T = any> extends WatchOptions {
   clone?: (source: T) => T
 
   /**
-   * 手动同步引用
+   * 手动同步 ref
    *
    * @default false
    */
@@ -21,7 +21,7 @@ export interface UseClonedOptions<T = any> extends WatchOptions {
 
 export interface UseClonedReturn<T> {
   /**
-   * 克隆的引用
+   * 克隆的 ref
    */
   cloned: Ref<T>
   /**

@@ -5,9 +5,9 @@ related: syncRef
 
 # syncRefs
 
-Keep target refs in sync with a source ref
+将目标引用与源引用保持同步
 
-## Usage
+## 用法
 
 ```ts
 import { syncRefs } from '@vueuse/core'
@@ -24,9 +24,9 @@ source.value = 'foo'
 console.log(target.value) // foo
 ```
 
-### Sync with multiple targets
+### 与多个目标同步
 
-You can also pass an array of refs to sync.
+您也可以传递一个引用数组来同步。
 
 ```ts
 import { syncRefs } from '@vueuse/core'
@@ -46,26 +46,26 @@ console.log(target1.value) // foo
 console.log(target2.value) // foo
 ```
 
-## Watch options
+## 监听选项
 
-The options for `syncRefs` are similar to `watch`'s `WatchOptions` but with different default values.
+`syncRefs` 的选项类似于 `watch` 的 `WatchOptions`，但具有不同的默认值。
 
 ```ts
 export interface SyncRefOptions {
   /**
-   * Timing for syncing, same as watch's flush option
+   * 同步时机，与 watch 的 flush 选项相同
    *
    * @default 'sync'
    */
   flush?: WatchOptions['flush']
   /**
-   * Watch deeply
+   * 深度监视
    *
    * @default false
    */
   deep?: boolean
   /**
-   * Sync values immediately
+   * 立即同步值
    *
    * @default true
    */
@@ -73,7 +73,7 @@ export interface SyncRefOptions {
 }
 ```
 
-When setting `{ flush: 'pre' }`, the target reference will be updated at [the end of the current "tick"](https://vuejs.org/guide/essentials/watchers.html#callback-flush-timing) before rendering starts.
+当设置 `{ flush: 'pre' }` 时，目标引用将在渲染开始之前的 [当前“tick”](https://vuejs.org/guide/essentials/watchers.html#callback-flush-timing) 结束时更新。
 
 ```ts
 import { syncRefs } from '@vueuse/core'
@@ -87,9 +87,9 @@ console.log(target.value) // hello
 
 source.value = 'foo'
 
-console.log(target.value) // hello <- still unchanged, because of flush 'pre'
+console.log(target.value) // hello <- 仍未更改，因为设置了 flush 'pre'
 
 await nextTick()
 
-console.log(target.value) // foo <- changed!
+console.log(target.value) // foo <- 已更改！
 ```

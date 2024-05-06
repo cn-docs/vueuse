@@ -4,9 +4,9 @@ category: '@Math'
 
 # useMax
 
-Reactive `Math.max`.
+响应式 `Math.max`.
 
-## Usage
+## 用法
 
 ```ts
 import { useMax } from '@vueuse/math'

@@ -4,9 +4,9 @@ category: Utilities
 
 # isDefined
 
-Non-nullish checking type guard for Ref.
+用于 Ref 的非空检查类型守卫。
 
-## Usage
+## 用法
 
 ```ts
 import { isDefined } from '@vueuse/core'

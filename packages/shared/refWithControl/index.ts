@@ -4,22 +4,22 @@ import type { Fn } from '../utils'
 
 export interface ControlledRefOptions<T> {
   /**
-   * Callback function before the ref changing.
+   * Ref 变化前的回调函数。
    *
-   * Returning `false` to dismiss the change.
+   * 返回 `false` 可以取消变化。
    */
   onBeforeChange?: (value: T, oldValue: T) => void | boolean
 
   /**
-   * Callback function after the ref changed
+   * Ref 变化后的回调函数
    *
-   * This happens synchronously, with less overhead compare to `watch`
+   * 这个回调是同步发生的，与 `watch` 相比具有较少的开销
    */
   onChanged?: (value: T, oldValue: T) => void
 }
 
 /**
- * Explicitly define the deps of computed.
+ * 对 ref 及其响应性进行细粒度控制。
  */
 export function refWithControl<T>(
   initial: T,

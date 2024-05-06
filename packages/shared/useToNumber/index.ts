@@ -5,20 +5,20 @@ import type { MaybeRefOrGetter } from '../utils'
 
 export interface UseToNumberOptions {
   /**
-   * Method to use to convert the value to a number.
+   * 用于将值转换为数字的方法。
    *
    * @default 'parseFloat'
    */
   method?: 'parseFloat' | 'parseInt'
 
   /**
-   * The base in mathematical numeral systems passed to `parseInt`.
-   * Only works with `method: 'parseInt'`
+   * 传递给 `parseInt` 的数学数字系统的基数。
+   * 仅适用于 `method: 'parseInt'`
    */
   radix?: number
 
   /**
-   * Replace NaN with zero
+   * 将 NaN 替换为零
    *
    * @default false
    */
@@ -26,7 +26,7 @@ export interface UseToNumberOptions {
 }
 
 /**
- * Computed reactive object.
+ * 将字符串 ref 转换为数字。
  */
 export function useToNumber(
   value: MaybeRefOrGetter<number | string>,

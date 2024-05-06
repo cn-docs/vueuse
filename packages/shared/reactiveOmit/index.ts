@@ -13,7 +13,7 @@ export function reactiveOmit<T extends object>(
   predicate: ReactiveOmitPredicate<T>,
 ): Partial<T>
 /**
- * Reactively omit fields from a reactive object
+ * 从响应式对象中动态地排除字段。
  *
  * @see https://vueuse.org/reactiveOmit
  */

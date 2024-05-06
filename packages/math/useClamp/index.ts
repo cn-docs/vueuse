@@ -16,7 +16,7 @@ export function useClamp(
 ): Ref<number>
 
 /**
- * Reactively clamp a value between two other values.
+ * 在两个其他值之间响应式的夹取一个值。
  *
  * @see https://vueuse.org/useClamp
  * @param value number

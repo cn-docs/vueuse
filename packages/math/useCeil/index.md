@@ -4,9 +4,9 @@ category: '@Math'
 
 # useCeil
 
-Reactive `Math.ceil`
+响应式 `Math.ceil`
 
-## Usage
+## 用法
 
 ```ts
 import { useCeil } from '@vueuse/math'

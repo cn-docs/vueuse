@@ -5,11 +5,11 @@ import { toValue } from '../toValue'
 import { tryOnScopeDispose } from '../tryOnScopeDispose'
 
 /**
- * Create a ref which will be reset to the default value after some time.
+ * 一个在一段时间后将重置为默认值的 ref。
  *
  * @see https://vueuse.org/refAutoReset
- * @param defaultValue The value which will be set.
- * @param afterMs      A zero-or-greater delay in milliseconds.
+ * @param defaultValue 将要设置的值。
+ * @param afterMs      延迟时间 （以毫秒为单位）。
  */
 export function refAutoReset<T>(defaultValue: MaybeRefOrGetter<T>, afterMs: MaybeRefOrGetter<number> = 10000): Ref<T> {
   return customRef<T>((track, trigger) => {

@@ -4,16 +4,16 @@ category: '@Electron'
 
 # useIpcRendererInvoke
 
-Reactive [ipcRenderer.invoke API](https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args) result. Make asynchronous operations look synchronous.
+响应式的 [ipcRenderer.invoke API](https://www.electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args) 结果。使异步操作看起来像同步的。
 
-## Usage
+## 用法
 
 ```ts
 import { useIpcRendererInvoke } from '@vueuse/electron'
 
-// enable nodeIntegration if you don't provide ipcRenderer explicitly
+// 如果没有明确提供 ipcRenderer，则需要启用 nodeIntegration
 // @see: https://www.electronjs.org/docs/api/webview-tag#nodeintegration
-// Ref result will return
+// Ref 结果将返回
 const result = useIpcRendererInvoke<string>('custom-channel', 'some data')
 const msg = computed(() => result.value?.msg)
 ```

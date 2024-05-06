@@ -4,11 +4,11 @@ category: Array
 
 # useArrayEvery
 
-Reactive `Array.every`
+响应式 `Array.every`
 
-## Usage
+## 用法
 
-### Use with array of multiple refs
+### 与多个 ref 组成的数组一起使用
 
 ```js
 import { useArrayEvery } from '@vueuse/core'
@@ -25,7 +25,7 @@ item1.value = 1
 // result.value: false
 ```
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayEvery } from '@vueuse/core'

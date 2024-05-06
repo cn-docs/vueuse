@@ -4,20 +4,20 @@ category: Watch
 
 # watchWithFilter
 
-`watch` with additional EventFilter control.
+带有额外 EventFilter 控制的 `watch`。
 
-## Usage
+## 用法
 
-Similar to `watch`, but offering an extra option `eventFilter` which will be applied to the callback function.
+类似于 `watch`，但提供了额外选项 `eventFilter`，该选项将应用于回调函数。
 
 ```ts
 import { debounceFilter, watchWithFilter } from '@vueuse/core'
 
 watchWithFilter(
   source,
-  () => { console.log('changed!') }, // callback will be called in 500ms debounced manner
+  () => { console.log('changed!') }, // 回调函数将以 500ms 的防抖方式调用
   {
-    eventFilter: debounceFilter(500), // throttledFilter, pausabledFilter or custom filters
+    eventFilter: debounceFilter(500), // throttledFilter、pausabledFilter 或自定义过滤器
   },
 )
 ```

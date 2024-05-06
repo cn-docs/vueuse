@@ -35,20 +35,20 @@ export interface UseAsyncValidatorOptions {
    */
   validateOption?: ValidateOption
   /**
-   * The validation will be triggered right away for the first time.
-   * Only works when `manual` is not set to true.
+   * 第一次将会立即触发验证。
+   * 当 `manual` 设置为 true 时才有效。
    *
    * @default true
    */
   immediate?: boolean
   /**
-   * If set to true, the validation will not be triggered automatically.
+   * 如果设置为 true，验证将不会自动触发。
    */
   manual?: boolean
 }
 
 /**
- * Wrapper for async-validator.
+ * async-validator 的包装器。
  *
  * @see https://vueuse.org/useAsyncValidator
  * @see https://github.com/yiminghe/async-validator

@@ -4,9 +4,9 @@ category: Utilities
 
 # set
 
-Shorthand for `ref.value = x`
+`ref.value = x` 的简写。
 
-## Usage
+## 用法
 
 ```ts
 import { set } from '@vueuse/core'

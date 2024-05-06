@@ -9,7 +9,7 @@ export function useZoomLevel(webFrame: WebFrame): Ref<number>
 export function useZoomLevel(): Ref<number>
 
 /**
- * Reactive WebFrame zoom level
+ * 响应式 WebFrame 缩放级别
  *
  * @see https://www.electronjs.org/docs/api/web-frame#webframesetzoomlevellevel
  * @see https://vueuse.org/useZoomLevel

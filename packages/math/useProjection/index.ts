@@ -3,7 +3,7 @@ import type { ProjectorFunction } from '../createGenericProjection'
 import { createProjection } from '../createProjection'
 
 /**
- * Reactive numeric projection from one domain to another.
+ * 从一个域映射到另一个域的响应式数值投影。
  *
  * @see https://vueuse.org/useProjection
  */

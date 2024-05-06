@@ -4,6 +4,6 @@ category: '@Math'
 
 # createGenericProjection
 
-Generic version of `createProjection`. Accepts a custom projector function to map arbitrary type of domains.
+`createGenericProjection` 是 `createProjection` 的通用版本。它接受一个自定义的投影函数，用于映射任意类型的域。
 
-Refer to `createProjection` and `useProjection`
+请参考 `createProjection` 和 `useProjection`。

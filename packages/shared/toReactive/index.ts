@@ -3,7 +3,7 @@ import { type UnwrapNestedRefs, isRef, reactive, unref } from 'vue-demi'
 import type { MaybeRef } from '../utils'
 
 /**
- * Converts ref to reactive.
+ * 将 ref 转换为 reactive。
  *
  * @see https://vueuse.org/toReactive
  * @param objectRef A ref of object

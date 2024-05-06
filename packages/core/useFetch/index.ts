@@ -141,8 +141,8 @@ export interface UseFetchOptions {
 
   /**
    * 当以下情况发生时是否自动重新获取：
-   * - 如果 URL 是一个引用，则 URL 被更改
-   * - 如果 payload 是一个引用，则 payload 被更改
+   * - 如果 URL 是一个 ref，则 URL 被更改
+   * - 如果 payload 是一个 ref，则 payload 被更改
    *
    * @default false
    */
@@ -164,7 +164,7 @@ export interface UseFetchOptions {
   timeout?: number
 
   /**
-   * 允许在发生 fetch 错误时更新 `data` 引用，无论是在提供的回调函数中还是在 `onFetchError` 回调中改变
+   * 允许在发生 fetch 错误时更新 `data` ref，无论是在提供的回调函数中还是在 `onFetchError` 回调中改变
    *
    * @default false
    */

@@ -5,30 +5,30 @@ alias: debouncedWatch
 
 # watchDebounced
 
-Debounced watch
+延迟触发的监听器
 
-## Usage
+## 使用方法
 
-Similar to `watch`, but offering extra options `debounce` and `maxWait` which will be applied to the callback function.
+类似于 `watch`，但提供额外选项 `debounce` 和 `maxWait`，它们将应用于回调函数。
 
 ```ts
 import { watchDebounced } from '@vueuse/core'
 
 watchDebounced(
   source,
-  () => { console.log('changed!') },
+  () => { console.log('变化了！') },
   { debounce: 500, maxWait: 1000 },
 )
 ```
 
-It's essentially a shorthand for the following code:
+本质上，它是以下代码的简写形式：
 
 ```ts
 import { debounceFilter, watchWithFilter } from '@vueuse/core'
 
 watchWithFilter(
   source,
-  () => { console.log('changed!') },
+  () => { console.log('变化了！') },
   {
     eventFilter: debounceFilter(500, { maxWait: 1000 }),
   },

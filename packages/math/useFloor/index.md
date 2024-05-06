@@ -4,9 +4,9 @@ category: '@Math'
 
 # useFloor
 
-Reactive `Math.floor`.
+响应式 `Math.floor`
 
-## Usage
+## 用法
 
 ```ts
 import { useFloor } from '@vueuse/math'

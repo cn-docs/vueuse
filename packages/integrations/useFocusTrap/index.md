@@ -4,19 +4,19 @@ category: '@Integrations'
 
 # useFocusTrap
 
-Reactive wrapper for [`focus-trap`](https://github.com/focus-trap/focus-trap).
+这是 [`focus-trap`](https://github.com/focus-trap/focus-trap) 的响应式封装。
 
-For more information on what options can be passed, see [`createOptions`](https://github.com/focus-trap/focus-trap#createfocustrapelement-createoptions) in the `focus-trap` documentation.
+有关可以传递的选项的更多信息，请参阅 `focus-trap` 文档中的 [`createOptions`](https://github.com/focus-trap/focus-trap#createfocustrapelement-createoptions)。
 
-## Install
+## 安装
 
 ```bash
 npm i focus-trap@^7
 ```
 
-## Usage
+## 使用
 
-**Basic Usage**
+**基本用法**
 
 ```vue
 <script setup>
@@ -30,20 +30,20 @@ const { hasFocus, activate, deactivate } = useFocusTrap(target)
 <template>
   <div>
     <button @click="activate()">
-      Activate
+      激活
     </button>
     <div ref="target">
-      <span>Has Focus: {{ hasFocus }}</span>
+      <span>是否有焦点: {{ hasFocus }}</span>
       <input type="text">
       <button @click="deactivate()">
-        Deactivate
+        停用
       </button>
     </div>
   </div>
 </template>
 ```
 
-**Automatically Focus**
+**自动聚焦**
 
 ```vue
 <script setup>
@@ -63,9 +63,9 @@ const { hasFocus, activate, deactivate } = useFocusTrap(target, { immediate: tru
 </template>
 ```
 
-**Conditional Rendering**
+**条件渲染**
 
-This function can't properly activate focus on elements with conditional rendering using `v-if`. This is because they do not exist in the DOM at the time of the focus activation. To solve this you need to activate on the next tick.
+这个函数不能正确激活具有使用 `v-if` 进行条件渲染的元素上的焦点。这是因为它们在焦点激活时尚不存在于 DOM 中。要解决这个问题，您需要在下一个刻度上激活。
 
 ```vue
 <script setup>
@@ -91,15 +91,15 @@ async function reveal() {
     </div>
 
     <button @click="reveal">
-      Reveal and Focus
+      显示并聚焦
     </button>
   </div>
 </template>
 ```
 
-## Using Component
+## 使用组件
 
-With the `UseFocusTrap` component, Focus Trap will be activated automatically on mounting this component and deactivated on unmount.
+通过 `UseFocusTrap` 组件，在挂载此组件时，焦点陷阱将自动激活，并在卸载时停用。
 
 ```vue
 <script setup>

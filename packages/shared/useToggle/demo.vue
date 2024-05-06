@@ -6,15 +6,15 @@ const [value, toggle] = useToggle()
 
 <template>
   <div>
-    <p>Value: {{ value ? 'ON' : 'OFF' }}</p>
+    <p>值：{{ value ? '开' : '关' }}</p>  <!-- 根据 value 的值显示“开”或“关” -->
     <button @click="toggle()">
-      Toggle
+      切换
     </button>
     <button @click="value = true">
-      Set ON
+      设为开
     </button>
     <button @click="value = false">
-      Set OFF
+      设为关
     </button>
   </div>
 </template>

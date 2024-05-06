@@ -4,11 +4,11 @@ category: Watch
 
 # whenever
 
-Shorthand for watching value to be truthy.
+监视值为真的简写形式。
 
-## Usage
+## 用法
 
-```js
+```javascript
 import { useAsyncState, whenever } from '@vueuse/core'
 
 const { state, isReady } = useAsyncState(
@@ -19,49 +19,49 @@ const { state, isReady } = useAsyncState(
 whenever(isReady, () => console.log(state))
 ```
 
-```ts
-// this
+```typescript
+// 这个
 whenever(ready, () => console.log(state))
 
-// is equivalent to:
+// 等同于:
 watch(ready, (isReady) => {
   if (isReady)
     console.log(state)
 })
 ```
 
-### Callback Function
+### 回调函数
 
-Same as `watch`, the callback will be called with `cb(value, oldValue, onInvalidate)`.
+与 `watch` 相同，回调函数将使用 `cb(value, oldValue, onInvalidate)` 调用。
 
-```ts
+```typescript
 whenever(height, (current, lastHeight) => {
   if (current > lastHeight)
-    console.log(`Increasing height by ${current - lastHeight}`)
+    console.log(`高度增加了 ${current - lastHeight}`)
 })
 ```
 
-### Computed
+### 计算属性
 
-Same as `watch`, you can pass a getter function to calculate on each change.
+与 `watch` 相同，您可以传递一个获取器函数来在每次更改时计算。
 
-```ts
-// this
+```typescript
+// 这个
 whenever(
   () => counter.value === 7,
-  () => console.log('counter is 7 now!'),
+  () => console.log('counter 现在为 7!'),
 )
 ```
 
-### Options
+### 选项
 
-Options and defaults are same with `watch`.
+选项和默认值与 `watch` 相同。
 
-```ts
-// this
+```typescript
+// 这个
 whenever(
   () => counter.value === 7,
-  () => console.log('counter is 7 now!'),
+  () => console.log('counter 现在为 7!'),
   { flush: 'sync' },
 )
 ```

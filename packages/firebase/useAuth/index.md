@@ -4,10 +4,9 @@ category: '@Firebase'
 
 # useAuth
 
-Reactive [Firebase Auth](https://firebase.google.com/docs/auth) binding. It provides a reactive `user` and `isAuthenticated` so you
-can easily react to changes in the users' authentication status.
+响应式的 [Firebase Auth](https://firebase.google.com/docs/auth) 绑定。它提供了一个响应式的 `user` 和 `isAuthenticated`，因此您可以轻松地对用户的身份验证状态变化做出反应。
 
-## Usage
+## 用法
 
 ```vue
 <script setup lang="ts">
@@ -15,7 +14,7 @@ import { initializeApp } from 'firebase/app'
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
 import { useAuth } from '@vueuse/firebase/useAuth'
 
-const app = initializeApp({ /* config */ })
+const app = initializeApp({ /* 配置 */ })
 const auth = getAuth(app)
 const { isAuthenticated, user } = useAuth(auth)
 
@@ -26,7 +25,7 @@ const signIn = () => signInWithPopup(auth, new GoogleAuthProvider())
   <pre v-if="isAuthenticated">{{ user }}</pre>
   <div v-else>
     <button @click="signIn">
-      Sign In with Google
+      使用 Google 登录
     </button>
   </div>
 </template>

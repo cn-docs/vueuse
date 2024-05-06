@@ -4,9 +4,9 @@ category: '@RxJS'
 
 # useSubscription
 
-Use an RxJS [`Subscription`](https://rxjs.dev/guide/subscription) without worrying about unsubscribing from it or creating memory leaks.
+使用 RxJS [`Subscription`](https://rxjs.dev/guide/subscription)，无需担心取消订阅或创建内存泄漏。
 
-## Usage
+## 用法
 
 ```ts
 import { useSubscription } from '@vueuse/rxjs'
@@ -14,7 +14,7 @@ import { interval } from 'rxjs'
 
 const count = ref(0)
 
-// useSubscription call unsubscribe method before unmount the component
+// 在组件卸载前调用 unsubscribe 方法
 useSubscription(
   interval(1000)
     .subscribe(() => {
