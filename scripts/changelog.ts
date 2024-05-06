@@ -1,7 +1,7 @@
 import md5 from 'md5'
 import Git from 'simple-git'
 import type { CommitInfo, ContributorInfo } from '@vueuse/metadata'
-import { functions } from '@vueuse/metadata'
+import { functions } from '../packages/metadata'
 import { uniq } from './utils'
 
 const git = Git({
@@ -72,5 +72,6 @@ export async function getFunctionContributors() {
   const result = await Promise.all(functions.map(async (i) => {
     return [i.name, await getContributorsAt(`packages/${i.package}/${i.name}`)] as const
   }))
+  console.log('查看贡献者列表', Object.fromEntries(result.slice(0, 10)))
   return Object.fromEntries(result)
 }
