@@ -153,7 +153,11 @@ export async function readMetadata() {
 
 async function run() {
   const indexes = await readMetadata()
+  // eslint-disable-next-line no-console
+  console.log('index.json === dir', join(DIR_PACKAGE, 'index.json'))
   await fs.writeJSON(join(DIR_PACKAGE, 'index.json'), indexes, { spaces: 2 })
+  // eslint-disable-next-line no-console
+  console.log('写入成功')
 }
 
 run()
