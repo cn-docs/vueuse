@@ -47,7 +47,7 @@ const Learn = [
 const DefaultSideBar = [
   { text: '指南', items: Guide },
   { text: '核心功能', items: CoreCategories },
-  { text: '附加功能', items: AddonCategories },
+  { text: '插件', items: AddonCategories },
   { text: '学习', items: Learn },
   { text: '链接', items: Links },
 ]
@@ -162,7 +162,7 @@ export default withPwa(defineConfig({
         ],
       },
       {
-        text: '附加功能',
+        text: '插件',
         link: '/add-ons',
       },
       {
