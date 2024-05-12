@@ -7,6 +7,17 @@
   "description": "基于 Vue 的组合式函数工具库",
   "author": "Anthony Fu<https://github.com/antfu>",
   "license": "MIT",
+  "keywords": [
+    "vue",
+    "composition-api",
+    "vue3",
+    "vue2",
+    "composition",
+    "functions",
+    "utilities",
+    "utils",
+    "vueuse中文文档"
+  ],
   "scripts": {
     "build": "nr update && esno scripts/build-run.ts",
     "build:urls": "esno scripts/build-urls.ts",
