@@ -2,7 +2,7 @@
 
 <CourseLink href="https://vueschool.io/courses/vueuse-for-everyone?friend=vueuse">通过视频学习 VueUse</CourseLink>
 
-VueUse 是基于[组合 API](https://v3.vuejs.org/guide/composition-api-introduction.html)的一系列实用函数集合。在继续之前，我们假设您已经对[组合 API](https://v3.vuejs.org/guide/composition-api-introduction.html)的基本概念有所了解。
+VueUse 是基于[组合 API](https://cn.vuejs.org/guide/extras/composition-api-faq)的一系列实用函数集合。在继续之前，我们假设您已经对[组合 API](https://cn.vuejs.org/guide/extras/composition-api-faq)的基本概念有所了解。
 
 ## 安装
 
