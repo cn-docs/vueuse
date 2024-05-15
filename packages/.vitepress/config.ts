@@ -101,8 +101,8 @@ export default withPwa(defineConfig({
         text: '指南',
         items: [
           {
-            text: '声明',
-            link: '/guide/disclaimer',
+            text: '关于本站',
+            link: '/guide/about',
           },
           { text: '指南', items: Guide },
           { text: '学习', items: Learn },
