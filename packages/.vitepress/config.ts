@@ -240,6 +240,14 @@ export default withPwa(defineConfig({
     ['link', { rel: 'preconnect', crossorigin: 'anonymous', href: 'https://fonts.gstatic.com' }],
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap' }],
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fira+Code&display=swap' }],
+    [
+      'script',
+      {
+        'defer': 'true',
+        'src': 'https://static.cloudflareinsights.com/beacon.min.js',
+        'data-cf-beacon': '{"token": "209dd2531f454cfb8e5c3da073513878"}',
+      },
+    ],
   ],
 
   transformHead,
