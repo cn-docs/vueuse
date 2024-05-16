@@ -109,16 +109,16 @@ export async function getFunctionMarkdown(pkg: string, name: string) {
     const code = `\`\`\`typescript\n${types.trim()}\n\`\`\``
     typingSection = types.length > 1000
       ? `
-## Type Declarations
+## 类型声明
 
 <details>
-<summary op50 italic cursor-pointer select-none>Show Type Declarations</summary>
+<summary op50 italic cursor-pointer select-none>显示类型声明</summary>
 
 ${code}
 
 </details>
 `
-      : `\n## Type Declarations\n\n${code}`
+      : `\n## 类型声明\n\n${code}`
   }
 
   const links = ([
@@ -131,12 +131,12 @@ ${code}
 
   const sourceSection = `## Source\n\n${links}\n`
   const ContributorsSection = `
-## Contributors
+## 贡献者
 
 <Contributors fn="${name}" />
   `
   const changelogSection = `
-## Changelog
+## 变更日志
 
 <Changelog fn="${name}" />
 `
