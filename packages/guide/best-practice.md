@@ -57,7 +57,7 @@ const stop = useEventListener('mousemove', () => {})
 stop()
 ```
 
-并非所有函数都会返回一个 `stop` 处理器，因此更通用的解决方案是使用 Vue 的 [`effectScope` API](https://vuejs.org/api/reactivity-advanced.html#effectscope)。
+并非所有函数都会返回一个 `stop` 处理器，因此更通用的解决方案是使用 Vue 的 [`effectScope` API](https://cn.vuejs.org/api/reactivity-advanced#effectscope)。
 
 ```ts
 import { effectScope } from 'vue'
@@ -119,7 +119,7 @@ useTitle(title)
 
 ###### 响应式 Getter 参数
 
-自 VueUse 9.0 起，我们引入了一种新的传递“响应式 Getter”作为参数的约定，它与响应式对象和[响应式转换](https://vuejs.org/guide/extras/reactivity-transform.html#reactivity-transform)非常配合。
+自 VueUse 9.0 起，我们引入了一种新的传递“响应式 Getter”作为参数的约定，它与响应式对象和[响应式转换](https://cn.vuejs.org/guide/extras/reactivity-transform)非常配合。
 
 ```ts twoslash
 import { useDark, useTitle } from '@vueuse/core'

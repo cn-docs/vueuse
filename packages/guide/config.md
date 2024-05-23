@@ -34,7 +34,7 @@ motionControl.resume()
 
 ### 响应式定时
 
-VueUse 的函数在可能的情况下遵循 Vue 的响应式系统默认的[刷新时机](https://vuejs.org/guide/essentials/watchers.html#callback-flush-timing)。
+VueUse 的函数在可能的情况下遵循 Vue 的响应式系统默认的[刷新时机](https://cn.vuejs.org/guide/essentials/watchers#callback-flush-timing)。
 
 对于类似 `watch` 的组合式（例如 `pausableWatch`、`whenever`、`useStorage`、`useRefHistory`），默认值为 `{ flush: 'pre' }`。这意味着它们将缓冲无效的效果并异步刷新它们。当在同一 "tick" 中发生多次状态突变时，避免不必要的重复调用。
 
