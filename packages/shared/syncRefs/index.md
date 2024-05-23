@@ -73,7 +73,7 @@ export interface SyncRefOptions {
 }
 ```
 
-当设置 `{ flush: 'pre' }` 时，目标引用将在渲染开始之前的 [当前“tick”](https://vuejs.org/guide/essentials/watchers.html#callback-flush-timing) 结束时更新。
+当设置 `{ flush: 'pre' }` 时，目标引用将在渲染开始之前的 [当前“tick”](https://cn.vuejs.org/guide/essentials/watchers#callback-flush-timing) 结束时更新。
 
 ```ts
 import { syncRefs } from '@vueuse/core'

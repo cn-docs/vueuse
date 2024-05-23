@@ -121,7 +121,7 @@ refHistory.clear() // 明确清除所有的历史记录
 
 ### 历史记录刷新时机
 
-来自 [Vue 文档](https://vuejs.org/guide/essentials/watchers.html#callback-flush-timing)：Vue 的响应性系统会缓冲失效的效果并异步刷新它们，以避免在同一“时刻”发生许多状态突变时不必要的重复调用。
+来自 [Vue 文档](https://cn.vuejs.org/guide/essentials/watchers#callback-flush-timing)：Vue 的响应性系统会缓冲失效的效果并异步刷新它们，以避免在同一“时刻”发生许多状态突变时不必要的重复调用。
 
 与 `watch` 类似，您可以使用 `flush` 选项修改刷新时机。
 
