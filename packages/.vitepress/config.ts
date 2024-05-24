@@ -55,7 +55,7 @@ const DefaultSideBar = [
 const FunctionsSideBar = getFunctionsSideBar()
 
 export default withPwa(defineConfig({
-  title: 'VueUse',
+  title: 'VueUse 中文文档',
   description: 'Collection of essential Vue Composition Utilities',
   lang: 'en-US',
   ignoreDeadLinks: true,
