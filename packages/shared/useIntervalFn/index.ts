@@ -13,7 +13,7 @@ export interface UseIntervalFnOptions {
   immediate?: boolean
 
   /**
-   * 在调用此函数后立即执行回调函数
+   * 在调用 `resume` 函数后立即执行回调函数
    *
    * @default false
    */

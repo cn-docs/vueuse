@@ -19,6 +19,7 @@ export interface UseAnimateOptions extends KeyframeAnimationOptions, Configurabl
   immediate?: boolean
   /**
    * 是否将动画的结束样式状态提交给被动画的元素
+   * 通常情况下，你应该将 `fill` 选项与这个一起使用
    *
    * @default false
    */
@@ -251,8 +252,6 @@ export function useAnimate(
     if (!animate.value)
       animate.value = el.animate(toValue(keyframes), animateOptions)
 
-    if (commitStyles)
-      animate.value.commitStyles()
     if (persist)
       animate.value.persist()
     if (_playbackRate !== 1)
@@ -267,6 +266,11 @@ export function useAnimate(
   }
 
   useEventListener(animate, ['cancel', 'finish', 'remove'], syncPause)
+
+  useEventListener(animate, 'finish', () => {
+    if (commitStyles)
+      animate.value?.commitStyles()
+  })
 
   const { resume: resumeRef, pause: pauseRef } = useRafFn(() => {
     if (!animate.value)

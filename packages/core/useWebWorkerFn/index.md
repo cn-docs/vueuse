@@ -34,6 +34,22 @@ const { workerFn, workerStatus, workerTerminate } = useWebWorkerFn(
 )
 ```
 
+### With local dependencies
+
+```ts {9-9}
+import { useWebWorkerFn } from '@vueuse/core'
+
+const pow = (a: number) => a * a
+
+const { workerFn, workerStatus, workerTerminate } = useWebWorkerFn(
+  numbers => pow(numbers),
+  {
+    timeout: 50000,
+    localDependencies: [pow]
+  },
+)
+```
+
 ## Web Worker
 
 在开始使用此函数之前，我们建议您阅读 [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) 文档。
