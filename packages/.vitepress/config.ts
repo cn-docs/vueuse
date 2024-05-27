@@ -166,7 +166,7 @@ export default withPwa(defineConfig({
         link: '/add-ons',
       },
       {
-        text: 'Playground',
+        text: '演练场',
         link: 'https://play.vueuse.org',
       },
       {
