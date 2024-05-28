@@ -6,7 +6,13 @@ import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 
 export interface UseWindowSizeOptions extends ConfigurableWindow {
+  /**
+   * 初始宽度
+   */
   initialWidth?: number
+  /**
+   * 初始高度
+   */
   initialHeight?: number
   /**
    * 监听窗口 `orientationchange` 事件
