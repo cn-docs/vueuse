@@ -26,7 +26,7 @@ const { isFetching, error, data } = useFetch(url)
 
 ### 异步用法
 
-`useFetch` 也可以像普通的 fetch 一样被等待。请注意，无论组件是否是异步的，使用它的组件都必须将组件包装在 `<Suspense>` 标签中。您可以在[官方 Vue 3 文档](https://vuejs.org/guide/built-ins/suspense.html)中了解有关 suspense API 的更多信息。
+`useFetch` 也可以像普通的 fetch 一样被等待。请注意，无论组件是否是异步的，使用它的组件都必须将组件包装在 `<Suspense>` 标签中。您可以在[官方 Vue 3 文档](https://cn.vuejs.org/guide/built-ins/suspense)中了解有关 suspense API 的更多信息。
 
 ```ts
 import { useFetch } from '@vueuse/core'

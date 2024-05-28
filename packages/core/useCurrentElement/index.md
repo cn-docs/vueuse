@@ -40,7 +40,7 @@ const el = useCurrentElement(componentRef) // ComputedRef<Element>
 
 ## 注意事项
 
-此函数在底层使用 [`$el`](https://vuejs.org/api/component-instance.html#el)。
+此函数在底层使用 [`$el`](https://cn.vuejs.org/api/component-instance#el)。
 
 在组件挂载之前，ref 的值将为 `undefined`。
 

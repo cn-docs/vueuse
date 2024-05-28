@@ -59,7 +59,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
 ### 选项式API
 
-当与[选项式API](https://vuejs.org/guide/introduction.html#api-styles)一起使用时，你需要在组件设置外定义`createReusableTemplate`，并将其传递给`components`选项以在模板中使用。
+当与[选项式API](https://cn.vuejs.org/guide/introduction#api-styles)一起使用时，你需要在组件设置外定义`createReusableTemplate`，并将其传递给`components`选项以在模板中使用。
 
 ```vue
 <script>

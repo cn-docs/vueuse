@@ -8,7 +8,7 @@ category: '@RxJS'
 
 在可观察对象发生变化时自动取消订阅，并在组件卸载时自动取消订阅。
 
-支持与 [`watch`](https://vuejs.org/guide/essentials/watchers.html#basic-example) 的所有重载签名匹配的签名。
+支持与 [`watch`](https://cn.vuejs.org/guide/essentials/watchers#basic-example) 的所有重载签名匹配的签名。
 
 ## 用法
 
