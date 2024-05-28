@@ -33,7 +33,7 @@ features:
   - title: 支持 tree shaking
     details: 只打包您使用的功能
     icon: ⚡
-  - title: 类型强大
+  - title: 强类型
     details: 使用 TypeScript 编写，具有完整的 TS 文档
     icon: 🦾
   - title: 灵活
