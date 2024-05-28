@@ -148,17 +148,17 @@ export default withPwa(defineConfig({
         ],
       },
       {
-        text: '功能',
+        text: '函数',
         items: [
           {
             text: '',
             items: [
-              { text: '所有功能', link: '/functions#' },
+              { text: '所有函数', link: '/functions#' },
               { text: '最近更新', link: '/functions#sort=updated' },
             ],
           },
-          { text: '核心功能', items: CoreCategories },
-          { text: '附件功能', items: AddonCategories },
+          { text: '核心函数', items: CoreCategories },
+          { text: '插件', items: AddonCategories },
         ],
       },
       {

@@ -14,7 +14,7 @@ hero:
       text: 开始使用
       link: /guide/
     - theme: alt
-      text: 功能
+      text: 函数
       link: /functions
     - theme: alt
       text: 插件
