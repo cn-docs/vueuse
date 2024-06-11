@@ -4,7 +4,7 @@
 
 本站由社区维护，由[远方os](https://github.com/Alfred-Skyblue)发起，若有用词不当或者翻译错误的地方，欢迎提出 [PR](https://github.com/cn-docs/vueuse/pulls) 或者 [Issue](https://github.com/cn-docs/vueuse/issues)，我们会及时修改，感谢您的参与。
 
-文档github地址：[unocss](https://github.com/cn-docs/vueuse)
+文档github地址：[vueuse](https://github.com/cn-docs/vueuse)
 
 ## 联系我
 
