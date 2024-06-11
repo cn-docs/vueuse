@@ -42,7 +42,7 @@ function done() {
 
 ### 自定义
 
-只需编辑 [nprogress.css](http://ricostacruz.com/nprogress/nprogress.css) 以满足您的喜好。提示：您可能只想查找和替换 #29d 的出现。
+只需编辑 [nprogress.css](https://github.com/rstacruz/nprogress/blob/master/nprogress.css) 以满足您的喜好。提示：您可能只想查找和替换 #29d 的出现。
 
 您可以通过将对象作为第二个参数传递来[配置](https://github.com/rstacruz/nprogress#configuration)它。
 
