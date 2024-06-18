@@ -9,7 +9,7 @@ category: '@Integrations'
 ## 安装
 
 ```bash
-npm install jwt-decode@^3
+npm install jwt-decode@^4
 ```
 
 ## 使用方法

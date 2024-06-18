@@ -11,7 +11,7 @@ category: '@Integrations'
 ## 安装
 
 ```bash
-npm i change-case@^4
+npm i change-case@^5
 ```
 
 ## 用法

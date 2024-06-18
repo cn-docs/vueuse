@@ -17,7 +17,7 @@ category: '@Integrations'
 ### 使用 NPM
 
 ```bash
-npm install fuse.js@^6
+npm install fuse.js@^7
 ```
 
 ### 使用 Yarn
