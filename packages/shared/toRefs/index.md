@@ -4,7 +4,7 @@ category: Reactivity
 
 # toRefs
 
-扩展了 [`toRefs`](https://v3.vuejs.org/api/refs-api.html#torefs)，还接受对象引用的 refs。
+扩展了 [`toRefs`](https://vuejs.org/api/reactivity-utilities.html#torefs)，还接受对象引用的 refs。
 
 ## 用法
 

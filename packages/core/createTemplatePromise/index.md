@@ -145,7 +145,7 @@ const TemplatePromise = createTemplatePromise<ReturnType>({
 </style>
 ```
 
-了解更多关于 [Vue 过渡](https://v3.vuejs.org/guide/transitions-overview.html)。
+了解更多关于 [Vue 过渡](https://vuejs.org/guide/built-ins/transition.html)。
 
 ## 动机
 
