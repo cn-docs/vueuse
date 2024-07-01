@@ -6,8 +6,14 @@
 
 文档github地址：[vueuse](https://github.com/cn-docs/vueuse)
 
+## 微信群
+
+ <img width="300" height="300" src="/group.jpg" >
+
+若二维码过期，请扫描以下二维码加我微信，我拉你入群。
+
 ## 联系我
 
 - [GitHub](https://github.com/Alfred-Skyblue)
 - 微信
-  <img width="300" height="300" src="/WeChat.png">
+  <img width="300" height="300" src="/wechat.png">
