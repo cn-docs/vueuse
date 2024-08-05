@@ -8,7 +8,7 @@
 
 ## 微信群
 
- <img width="300" height="300" src="/group.jpg" >
+ <img width="300" height="300" src="https://pub-18696240699f4d72a6461cef5f9df04c.r2.dev/we_chat_group.jpg" >
 
 若二维码过期，请扫描以下二维码加我微信，我拉你入群。
 
