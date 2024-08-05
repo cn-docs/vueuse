@@ -43,6 +43,39 @@ const { hasFocus, activate, deactivate } = useFocusTrap(target)
 </template>
 ```
 
+**多个 Ref 引用**
+
+```vue
+<script setup>
+import { ref } from 'vue'
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+
+const targetOne = ref()
+const targetTwo = ref()
+const { hasFocus, activate, deactivate } = useFocusTrap([targetOne, targetTwo])
+</script>
+
+<template>
+  <div>
+    <button @click="activate()">
+      激活
+    </button>
+    <div ref="targetOne">
+      <span>有焦点: {{ hasFocus }}</span>
+      <input type="text">
+    </div>
+    ...
+    <div ref="targetTwo">
+      <p>另一个目标在这里</p>
+      <input type="text">
+      <button @click="deactivate()">
+        取消激活
+      </button>
+    </div>
+  </div>
+</template>
+```
+
 **自动聚焦**
 
 ```vue

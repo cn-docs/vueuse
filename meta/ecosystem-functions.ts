@@ -27,13 +27,13 @@ export const motion: VueUseFunction[] = [
     ...motionDefaults,
     name: 'useMotion',
     description: '使您的组件拥有动效。',
-    external: 'https://motion.vueuse.org/api/use-motion.html',
+    external: 'https://motion.vueuse.org/api/use-motion',
   },
   {
     ...motionDefaults,
     name: 'useSpring',
     description: 'spring 动画。',
-    external: 'https://motion.vueuse.org/api/use-spring.html',
+    external: 'https://motion.vueuse.org/api/use-spring',
   },
   {
     ...motionDefaults,
@@ -45,19 +45,19 @@ export const motion: VueUseFunction[] = [
     ...motionDefaults,
     name: 'useMotionVariants',
     description: '用于处理 Variants 状态和选择。',
-    external: 'https://motion.vueuse.org/api/use-motion-variants.html',
+    external: 'https://motion.vueuse.org/api/use-motion-variants',
   },
   {
     ...motionDefaults,
     name: 'useElementStyle',
     description: '用于将响应式对象同步到目标元素 CSS 样式。',
-    external: 'https://motion.vueuse.org/api/use-element-style.html',
+    external: 'https://motion.vueuse.org/api/use-element-style',
   },
   {
     ...motionDefaults,
     name: 'useElementTransform',
     description: '用于将反应式对象同步到目标元素 CSS 转换。',
-    external: 'https://motion.vueuse.org/api/use-element-transform.html',
+    external: 'https://motion.vueuse.org/api/use-element-transform',
   },
 ]
 

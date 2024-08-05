@@ -369,7 +369,10 @@ export function useMediaControls(target: MaybeRef<HTMLMediaElement | null | unde
     if (!el)
       return
 
-    isPlaying ? el.play() : el.pause()
+    if (isPlaying)
+      el.play()
+    else
+      el.pause()
   })
 
   useEventListener(target, 'timeupdate', () => ignoreCurrentTimeUpdates(() => currentTime.value = (toValue(target))!.currentTime))

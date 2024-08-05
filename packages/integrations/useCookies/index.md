@@ -13,7 +13,7 @@ category: '@Integrations'
 ## 安装
 
 ```bash
-npm i universal-cookie@^6
+npm i universal-cookie@^7
 ```
 
 ## 用法

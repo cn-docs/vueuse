@@ -11,7 +11,11 @@ category: Browser
 ```js
 import { useWakeLock } from '@vueuse/core'
 
-const { isSupported, isActive, request, release } = useWakeLock()
+const { isSupported, isActive, forceRequest, request, release } = useWakeLock()
 ```
 
-如果调用了 `request`，`isActive` 将为 **true**，如果调用了 `release`，或者其他选项卡被显示，或者窗口被最小化，`isActive` 将为 **false**。
+当调用 `request` 时，如果文档是可见的，将会请求唤醒锁。否则，请求将会排队等待文档变得可见。如果请求成功，`isActive` 将会是 **true**。每当文档隐藏时，`isActive` 将会是 **false**。
+
+当调用 `release` 时，唤醒锁将会被释放。如果有排队的请求，将会被取消。
+
+要立即请求唤醒锁，即使文档是隐藏的，请使用 `forceRequest`。请注意，如果文档是隐藏的，这可能会抛出错误。

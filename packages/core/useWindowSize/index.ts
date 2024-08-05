@@ -22,10 +22,19 @@ export interface UseWindowSizeOptions extends ConfigurableWindow {
   listenOrientation?: boolean
 
   /**
-   * 是否应将滚动条包含在宽度和高度中
+   * 是否包含滚动条在宽度和高度中
+   * 仅当 `type` 为 `'inner'` 时有效
+   *
    * @default true
    */
   includeScrollbar?: boolean
+
+  /**
+   * 使用 `window.innerWidth` 或 `window.outerWidth`
+   *
+   * @default 'inner'
+   */
+  type?: 'inner' | 'outer'
 }
 
 /**
@@ -41,6 +50,7 @@ export function useWindowSize(options: UseWindowSizeOptions = {}) {
     initialHeight = Number.POSITIVE_INFINITY,
     listenOrientation = true,
     includeScrollbar = true,
+    type = 'inner',
   } = options
 
   const width = ref(initialWidth)
@@ -48,7 +58,11 @@ export function useWindowSize(options: UseWindowSizeOptions = {}) {
 
   const update = () => {
     if (window) {
-      if (includeScrollbar) {
+      if (type === 'outer') {
+        width.value = window.outerWidth
+        height.value = window.outerHeight
+      }
+      else if (includeScrollbar) {
         width.value = window.innerWidth
         height.value = window.innerHeight
       }
