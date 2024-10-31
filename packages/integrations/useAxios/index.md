@@ -23,8 +23,8 @@ const { data, isFinished } = useAxios('/api/posts')
 或者使用 axios 的实例
 
 ```ts
-import axios from 'axios'
 import { useAxios } from '@vueuse/integrations/useAxios'
+import axios from 'axios'
 
 const instance = axios.create({
   baseURL: '/api',
@@ -36,8 +36,8 @@ const { data, isFinished } = useAxios('/posts', instance)
 使用带有配置选项的 axios 实例
 
 ```ts
-import axios from 'axios'
 import { useAxios } from '@vueuse/integrations/useAxios'
+import axios from 'axios'
 
 const instance = axios.create({
   baseURL: '/api',
@@ -86,8 +86,8 @@ const result = await execute(url)
 使用带有 `immediate` 选项的 axios 实例
 
 ```ts
-import axios from 'axios'
 import { useAxios } from '@vueuse/integrations/useAxios'
+import axios from 'axios'
 
 const instance = axios.create({
   baseURL: '/api',

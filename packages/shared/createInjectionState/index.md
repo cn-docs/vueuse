@@ -9,9 +9,9 @@ category: State
 ## 用法
 
 ```ts
+import { createInjectionState } from '@vueuse/core'
 // useCounterStore.ts
 import { computed, ref } from 'vue'
-import { createInjectionState } from '@vueuse/core'
 
 const [useProvideCounterStore, useCounterStore] = createInjectionState((initialValue: number) => {
   // 状态
@@ -109,9 +109,9 @@ const { increment } = useCounterStore()!
 ## 提供自定义的 InjectionKey
 
 ```ts
+import { createInjectionState } from '@vueuse/core'
 // useCounterStore.ts
 import { computed, ref } from 'vue'
-import { createInjectionState } from '@vueuse/core'
 
 // 自定义 injectionKey
 const CounterStoreKey = 'counter-store'
@@ -135,9 +135,9 @@ const [useProvideCounterStore, useCounterStore] = createInjectionState((initialV
 ## Provide a custom default value
 
 ```ts
+import { createInjectionState } from '@vueuse/core'
 // useCounterStore.ts
 import { computed, ref } from 'vue'
-import { createInjectionState } from '@vueuse/core'
 
 const [useProvideCounterStore, useCounterStore] = createInjectionState((initialValue: number) => {
   // state

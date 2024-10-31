@@ -13,9 +13,9 @@ category: '@RxJS'
 ## 用法
 
 ```ts
-import { computed } from 'vue'
 import { useExtractedObservable } from '@vueuse/rxjs'
 import ObservableSocket from 'observable-socket'
+import { computed } from 'vue'
 import { makeSocket, useUser } from '../some/lib/func'
 
 // setup()
@@ -26,10 +26,10 @@ const lastMessage = useExtractedObservable(user, u => ObservableSocket.create(ma
 如果您想要为可能出错的 `Observable` 添加自定义错误处理，您可以提供一个可选的 `onError` 配置。如果没有提供，RxJS 将把提供的 `Observable` 中的任何错误视为"未处理的错误"，并且它将在一个新的调用栈中抛出，并报告给 `window.onerror`（或者如果您恰好在 Node 中，则为 `process.on('error')`）。
 
 ```ts
-import { ref } from 'vue'
 import { useExtractedObservable } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { mapTo, scan, startWith, tap } from 'rxjs/operators'
+import { ref } from 'vue'
 
 // setup()
 const start = ref(0)
@@ -58,10 +58,10 @@ const count = useExtractedObservable(
 如果需要，在观察的可观察对象完成时附加特殊行为，您还可以提供一个可选的 `onComplete` 配置。
 
 ```ts
-import { ref } from 'vue'
 import { useExtractedObservable } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { mapTo, scan, startWith, takeWhile } from 'rxjs/operators'
+import { ref } from 'vue'
 
 // setup()
 const start = ref(0)
@@ -87,10 +87,10 @@ const count = useExtractedObservable(
 如果需要，您还可以将 `watch` 选项作为最后一个参数传递：
 
 ```ts
-import { ref } from 'vue'
 import { useExtractedObservable } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { mapTo, scan, startWith, takeWhile } from 'rxjs/operators'
+import { ref } from 'vue'
 
 // setup()
 const start = ref<number>()

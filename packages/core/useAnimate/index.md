@@ -14,8 +14,8 @@ category: Animation
 
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { useAnimate } from '@vueuse/core'
+import { ref } from 'vue'
 
 const el = ref()
 const {

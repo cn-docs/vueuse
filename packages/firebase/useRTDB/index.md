@@ -9,9 +9,9 @@ category: '@Firebase'
 ## 用法
 
 ```js
+import { useRTDB } from '@vueuse/firebase/useRTDB'
 import { initializeApp } from 'firebase/app'
 import { getDatabase } from 'firebase/database'
-import { useRTDB } from '@vueuse/firebase/useRTDB'
 
 const app = initializeApp({ /* 配置 */ })
 const db = getDatabase(app)

@@ -1,5 +1,5 @@
-import { useMediaQuery } from '../useMediaQuery'
 import type { ConfigurableWindow } from '../_configurable'
+import { useMediaQuery } from '../useMediaQuery'
 
 /**
  * 响应式深色主题偏好。

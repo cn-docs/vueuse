@@ -38,8 +38,8 @@ const { focused } = useFocus(target, { initialValue: true })
 
 ```vue
 <script>
-import { ref } from 'vue'
 import { useFocus } from '@vueuse/core'
+import { ref } from 'vue'
 
 export default {
   setup() {

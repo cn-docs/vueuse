@@ -12,8 +12,8 @@ related: useManualRefHistory
 ## 用法
 
 ```ts {5}
-import { ref } from 'vue'
 import { useRefHistory } from '@vueuse/core'
+import { ref } from 'vue'
 
 const counter = ref(0)
 const { history, undo, redo } = useRefHistory(counter)
@@ -79,8 +79,8 @@ const refHistory = useRefHistory(target, { clone: structuredClone })
 或使用 [lodash 的 `cloneDeep`](https://lodash.com/docs/4.17.15#cloneDeep)：
 
 ```ts
-import { cloneDeep } from 'lodash-es'
 import { useRefHistory } from '@vueuse/core'
+import { cloneDeep } from 'lodash-es'
 
 const refHistory = useRefHistory(target, { clone: cloneDeep })
 ```
@@ -88,8 +88,8 @@ const refHistory = useRefHistory(target, { clone: cloneDeep })
 或更轻量级的 [`klona`](https://github.com/lukeed/klona)：
 
 ```ts
-import { klona } from 'klona'
 import { useRefHistory } from '@vueuse/core'
+import { klona } from 'klona'
 
 const refHistory = useRefHistory(target, { clone: klona })
 ```

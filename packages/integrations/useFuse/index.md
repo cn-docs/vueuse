@@ -29,8 +29,8 @@ yarn add fuse.js
 ## 使用方法
 
 ```ts
-import { ref } from 'vue'
 import { useFuse } from '@vueuse/integrations/useFuse'
+import { ref } from 'vue'
 
 const data = [
   'John Smith',

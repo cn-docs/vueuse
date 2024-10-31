@@ -12,8 +12,8 @@ related: useDebouncedRefHistory, useRefHistory
 该函数在计数器的值更改后立即获取第一个快照，并在延迟 1000ms 后获取第二个快照。
 
 ```ts
-import { ref } from 'vue'
 import { useThrottledRefHistory } from '@vueuse/core'
+import { ref } from 'vue'
 
 const counter = ref(0)
 const { history, undo, redo } = useThrottledRefHistory(counter, { deep: true, throttle: 1000 })

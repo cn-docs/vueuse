@@ -12,9 +12,9 @@ related: createSharedComposable
 ### 无持久性（存储在内存中）
 
 ```js
+import { createGlobalState } from '@vueuse/core'
 // store.js
 import { ref } from 'vue'
-import { createGlobalState } from '@vueuse/core'
 
 export const useGlobalState = createGlobalState(
   () => {
@@ -27,9 +27,9 @@ export const useGlobalState = createGlobalState(
 更大的示例：
 
 ```js
+import { createGlobalState } from '@vueuse/core'
 // store.js
 import { computed, ref } from 'vue'
-import { createGlobalState } from '@vueuse/core'
 
 export const useGlobalState = createGlobalState(
   () => {

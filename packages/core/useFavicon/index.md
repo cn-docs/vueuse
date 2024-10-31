@@ -20,9 +20,9 @@ icon.value = 'dark.png' // 更改当前图标
 
 你可以将一个 `ref` 传递给它，源 ref 的更改将自动反映到你的网站图标上。
 
-```js
-import { computed, ref } from 'vue'
+```js {7}
 import { useFavicon, usePreferredDark } from '@vueuse/core'
+import { computed } from 'vue'
 
 const isDark = usePreferredDark()
 const favicon = computed(() => isDark.value ? 'dark.png' : 'light.png')

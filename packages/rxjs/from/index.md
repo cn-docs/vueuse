@@ -9,10 +9,10 @@ RxJS 的 [`from()`](https://rxjs.dev/api/index/function/from) 和 [`fromEvent()`
 ## 用法
 
 ```ts
-import { ref } from 'vue'
 import { from, fromEvent, toObserver, useSubscription } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { map, mapTo, takeUntil, withLatestFrom } from 'rxjs/operators'
+import { ref } from 'vue'
 
 const count = ref(0)
 const button = ref<HTMLButtonElement>(null)

@@ -63,8 +63,8 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
 ```vue
 <script>
-import { defineComponent } from 'vue'
 import { createReusableTemplate } from '@vueuse/core'
+import { defineComponent } from 'vue'
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 

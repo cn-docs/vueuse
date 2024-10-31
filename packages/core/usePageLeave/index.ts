@@ -1,7 +1,7 @@
-import { ref } from 'vue-demi'
-import { useEventListener } from '../useEventListener'
 import type { ConfigurableWindow } from '../_configurable'
+import { ref } from 'vue-demi'
 import { defaultWindow } from '../_configurable'
+import { useEventListener } from '../useEventListener'
 
 /**
  * 响应式状态，用于显示鼠标是否离开页面。

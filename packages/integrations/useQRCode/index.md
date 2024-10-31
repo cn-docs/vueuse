@@ -24,8 +24,8 @@ const qrcode = useQRCode('要编码的文本')
 或者将一个 `ref` 传递给它，返回的数据 URL ref 将随着源 ref 的更改而改变。
 
 ```ts
-import { ref } from 'vue'
 import { useQRCode } from '@vueuse/integrations/useQRCode'
+import { ref } from 'vue'
 
 const text = ref('要编码的文本')
 const qrcode = useQRCode(text)

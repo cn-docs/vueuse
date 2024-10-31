@@ -1,7 +1,7 @@
-import { timestamp } from '@vueuse/shared'
-import type { Ref } from 'vue-demi'
-import { computed, markRaw, ref } from 'vue-demi'
+import type { ComputedRef, Ref } from 'vue-demi'
 import type { CloneFn } from '../useCloned'
+import { timestamp } from '@vueuse/shared'
+import { computed, markRaw, ref } from 'vue-demi'
 import { cloneFnJSON } from '../useCloned'
 
 export interface UseRefHistoryRecord<T> {
@@ -65,12 +65,12 @@ export interface UseManualRefHistoryReturn<Raw, Serialized> {
   /**
    * 表示是否可以撤销的 ref（undoStack 不为空）
    */
-  canUndo: Ref<boolean>
+  canUndo: ComputedRef<boolean>
 
   /**
    * 表示是否可以重做的 ref（redoStack 不为空）
    */
-  canRedo: Ref<boolean>
+  canRedo: ComputedRef<boolean>
 
   /**
    * 撤销更改

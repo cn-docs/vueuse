@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
 import { useWindowFocus } from '@vueuse/core'
+import { ref, watch } from 'vue'
 
 const startMessage = '💡 单击文档外的任何地方取消焦点。'
 const message = ref(startMessage)

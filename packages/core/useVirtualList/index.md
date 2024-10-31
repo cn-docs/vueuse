@@ -18,7 +18,7 @@ category: Component
 import { useVirtualList } from '@vueuse/core'
 
 const { list, containerProps, wrapperProps } = useVirtualList(
-  Array.from(Array(99999).keys()),
+  Array.from(Array.from({ length: 99999 }).keys()),
   {
     // 确保 `itemHeight` 与每行的高度保持同步。
     itemHeight: 22,
@@ -43,7 +43,7 @@ import { useToggle, useVirtualList } from '@vueuse/core'
 import { computed } from 'vue'
 
 const [isEven, toggle] = useToggle()
-const allItems = Array.from(Array(99999).keys())
+const allItems = Array.from(Array.from({ length: 99999 }).keys())
 const filteredList = computed(() => allItems.filter(i => isEven.value ? i % 2 === 0 : i % 2 === 1))
 
 const { list, containerProps, wrapperProps } = useVirtualList(
@@ -75,7 +75,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(
 ```typescript
 import { useVirtualList } from '@vueuse/core'
 
-const allItems = Array.from(Array(99999).keys())
+const allItems = Array.from(Array.from({ length: 99999 }).keys())
 
 const { list, containerProps, wrapperProps } = useVirtualList(
   allItems,
@@ -105,7 +105,7 @@ const { list, containerProps, wrapperProps } = useVirtualList(
     <template #default="props">
       <!-- 在这里获取列表的当前项目 -->
       <div style="height: 22px">
-        Row {{ props.data }}
+        Row {{ props.index }} {{ props.data }}
       </div>
     </template>
   </UseVirtualList>

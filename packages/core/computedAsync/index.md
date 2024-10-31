@@ -10,8 +10,8 @@ alias: asyncComputed
 ## 用法
 
 ```js
-import { ref } from 'vue'
 import { computedAsync } from '@vueuse/core'
+import { ref } from 'vue'
 
 const name = ref('jack')
 
@@ -28,8 +28,8 @@ const userInfo = computedAsync(
 您需要传递一个 ref 来跟踪异步函数的状态。
 
 ```js
-import { ref } from 'vue'
 import { computedAsync } from '@vueuse/core'
+import { ref } from 'vue'
 
 const evaluating = ref(false)
 
@@ -66,8 +66,8 @@ const downloads = computedAsync(async (onCancel) => {
 默认情况下，`computedAsync` 在创建时立即开始解析，指定 `lazy: true` 可以使其在第一次访问时开始解析。
 
 ```js
-import { ref } from 'vue'
 import { computedAsync } from '@vueuse/core'
+import { ref } from 'vue'
 
 const evaluating = ref(false)
 

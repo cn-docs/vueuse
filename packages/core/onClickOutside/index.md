@@ -10,8 +10,8 @@ category: Sensors
 
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
+import { ref } from 'vue'
 
 const target = ref(null)
 
@@ -44,8 +44,8 @@ onClickOutside(target, event => console.log(event))
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
+import { ref } from 'vue'
 
 const modal = ref(false)
 function closeModal() {
@@ -67,8 +67,8 @@ function closeModal() {
 
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
+import { ref } from 'vue'
 
 const modal = ref(false)
 

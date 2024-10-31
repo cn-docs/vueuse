@@ -14,8 +14,8 @@ npm i @vueuse/core @vueuse/components
 
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
+import { ref } from 'vue'
 
 const el = ref()
 

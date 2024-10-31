@@ -9,8 +9,8 @@ category: Animation
 ## 用法
 
 ```js
-import { ref } from 'vue'
 import { useRafFn } from '@vueuse/core'
+import { ref } from 'vue'
 
 const count = ref(0)
 

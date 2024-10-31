@@ -19,9 +19,9 @@ Vue Demi 是一个为库作者设计的工具，用于创建与 VueUse 类似的
 Vue Chemistry 利用了 `reactify` 函数，并将其应用于常见的 JavaScript API，从而实现纯粹的响应式编程体验。例如：
 
 ```js
+import * as console from 'vue-chemistry/console'
 import { set } from 'vue-chemistry/core'
 import { sum } from 'vue-chemistry/math'
-import * as console from 'vue-chemistry/console'
 
 const a = ref(1)
 const b = ref(2)

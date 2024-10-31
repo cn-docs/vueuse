@@ -13,8 +13,8 @@ category: '@RxJS'
 ## 用法
 
 ```ts
-import { computed, ref } from 'vue'
 import { watchExtractedObservable } from '@vueuse/rxjs'
+import { computed, ref } from 'vue'
 import { AudioPlayer } from '../my/libs/AudioPlayer'
 
 // setup()
@@ -35,8 +35,8 @@ watchExtractedObservable(player, p => p.progress$, (percentage) => {
 您还可以提供一个可选的 `onComplete` 配置，如果需要在观察到的可观察对象完成时附加特殊行为。
 
 ```ts
-import { computed, ref } from 'vue'
 import { watchExtractedObservable } from '@vueuse/rxjs'
+import { computed, ref } from 'vue'
 import { AudioPlayer } from '../my/libs/AudioPlayer'
 
 // setup()
@@ -62,8 +62,8 @@ watchExtractedObservable(player, p => p.progress$, (percentage) => {
 如果需要，您还可以将 `watch` 选项作为最后一个参数传递：
 
 ```ts
-import { computed, ref } from 'vue'
 import { watchExtractedObservable } from '@vueuse/rxjs'
+import { computed, ref } from 'vue'
 import { AudioPlayer } from '../my/libs/AudioPlayer'
 
 // setup()

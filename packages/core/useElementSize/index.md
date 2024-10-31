@@ -10,8 +10,8 @@ category: Elements
 
 ```vue
 <script>
-import { ref } from 'vue'
 import { useElementSize } from '@vueuse/core'
+import { ref } from 'vue'
 
 export default {
   setup() {

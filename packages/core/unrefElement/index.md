@@ -10,8 +10,8 @@ category: Component
 
 ```vue
 <script setup>
-import { onMounted, ref } from 'vue'
 import { unrefElement } from '@vueuse/core'
+import { onMounted, ref } from 'vue'
 
 const div = ref() // 将绑定到 <div> 元素
 const hello = ref() // 将绑定到 HelloWorld 组件

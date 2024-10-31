@@ -1,9 +1,10 @@
-import { readonly, ref, watch } from 'vue-demi'
-import type { Ref } from 'vue-demi'
-import { tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
 import type { MaybeRef } from '@vueuse/shared'
+import type { Ref } from 'vue-demi'
 import type { ConfigurableDocument } from '../_configurable'
+import { tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
+import { readonly, ref, watch } from 'vue-demi'
 import { defaultDocument } from '../_configurable'
+
 export interface UseStyleTagOptions extends ConfigurableDocument {
   /**
    * 要应用的样式的媒体查询

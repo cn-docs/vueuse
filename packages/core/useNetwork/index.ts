@@ -1,54 +1,54 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
 import type { Ref } from 'vue-demi'
-import { ref } from 'vue-demi'
+import type { ConfigurableWindow } from '../_configurable'
+import { readonly, ref } from 'vue-demi'
+import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { useSupported } from '../useSupported'
-import type { ConfigurableWindow } from '../_configurable'
-import { defaultWindow } from '../_configurable'
 
 export type NetworkType = 'bluetooth' | 'cellular' | 'ethernet' | 'none' | 'wifi' | 'wimax' | 'other' | 'unknown'
 
 export type NetworkEffectiveType = 'slow-2g' | '2g' | '3g' | '4g' | undefined
 
 export interface NetworkState {
-  isSupported: Ref<boolean>
+  isSupported: Readonly<Ref<boolean>>
   /**
    * 用户当前是否连接到网络。
    */
-  isOnline: Ref<boolean>
+  isOnline: Readonly<Ref<boolean>>
   /**
    * 用户上次连接到网络的时间。
    */
-  offlineAt: Ref<number | undefined>
+  offlineAt: Readonly<Ref<number | undefined>>
   /**
    * 在此时间点，如果用户处于离线状态并重新连接。
    */
-  onlineAt: Ref<number | undefined>
+  onlineAt: Readonly<Ref<number | undefined>>
   /**
    * 下载速度，以 Mbps 为单位。
    */
-  downlink: Ref<number | undefined>
+  downlink: Readonly<Ref<number | undefined>>
   /**
    * 可达到的最大下载速度，以 Mbps 为单位。
    */
-  downlinkMax: Ref<number | undefined>
+  downlinkMax: Readonly<Ref<number | undefined>>
   /**
    * 检测到的有效速度类型。
    */
-  effectiveType: Ref<NetworkEffectiveType | undefined>
+  effectiveType: Readonly<Ref<NetworkEffectiveType | undefined>>
   /**
    * 当前连接的预估往返时间。
    */
-  rtt: Ref<number | undefined>
+  rtt: Readonly<Ref<number | undefined>>
   /**
    * 用户是否启用了数据节省模式。
    */
-  saveData: Ref<boolean | undefined>
+  saveData: Readonly<Ref<boolean | undefined>>
   /**
    * 检测到的 connection/network 类型。
    */
-  type: Ref<NetworkType>
+  type: Readonly<Ref<NetworkType>>
 }
 
 /**
@@ -110,16 +110,16 @@ export function useNetwork(options: ConfigurableWindow = {}): Readonly<NetworkSt
   updateNetworkInformation()
 
   return {
-    isSupported,
-    isOnline,
-    saveData,
-    offlineAt,
-    onlineAt,
-    downlink,
-    downlinkMax,
-    effectiveType,
-    rtt,
-    type,
+    isSupported: readonly(isSupported),
+    isOnline: readonly(isOnline),
+    saveData: readonly(saveData),
+    offlineAt: readonly(offlineAt),
+    onlineAt: readonly(onlineAt),
+    downlink: readonly(downlink),
+    downlinkMax: readonly(downlinkMax),
+    effectiveType: readonly(effectiveType),
+    rtt: readonly(rtt),
+    type: readonly(type),
   }
 }
 

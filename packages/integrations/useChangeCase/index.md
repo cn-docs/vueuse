@@ -45,8 +45,8 @@ changeCase.value // vueUse
 可以将其传递给 `options` 进行定制化
 
 ```ts
-import { ref } from 'vue'
 import { useChangeCase } from '@vueuse/integrations/useChangeCase'
+import { ref } from 'vue'
 
 const input = ref('helloWorld')
 const changeCase = useChangeCase(input, 'camelCase', {

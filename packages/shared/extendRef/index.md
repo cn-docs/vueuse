@@ -15,8 +15,8 @@ category: Reactivity
 > 请注意，额外属性将无法在 Vue 的模板中访问。
 
 ```ts
-import { ref } from 'vue'
 import { extendRef } from '@vueuse/core'
+import { ref } from 'vue'
 
 const myRef = ref('content')
 

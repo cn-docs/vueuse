@@ -9,8 +9,8 @@ category: Sensors
 ## 使用方法
 
 ```ts
-import { defineComponent, ref, watch } from 'vue'
 import { useNavigatorLanguage } from '@vueuse/core'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup() {

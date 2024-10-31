@@ -41,8 +41,8 @@ VueUse 的函数在可能的情况下遵循 Vue 的响应式系统默认的[刷�
 与 `watch` 相同，VueUse 允许您通过传递 `flush` 选项来配置时机：
 
 ```ts twoslash
-import { ref } from 'vue'
 import { pausableWatch } from '@vueuse/core'
+import { ref } from 'vue'
 
 const counter = ref(0)
 const { pause, resume } = pausableWatch(

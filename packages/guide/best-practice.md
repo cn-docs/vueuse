@@ -20,8 +20,8 @@ console.log(mouse.x.value)
 如果你更喜欢将它们用作对象属性，你可以使用 `reactive()` 来取消引用 ref。例如：
 
 ```ts twoslash
-import { reactive } from 'vue'
 import { useMouse } from '@vueuse/core'
+import { reactive } from 'vue'
 
 const mouse = reactive(useMouse())
 

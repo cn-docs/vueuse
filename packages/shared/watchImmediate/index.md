@@ -18,7 +18,7 @@ const obj = ref('vue-use')
 // 从某些外部存储/组合中更改值
 obj.value = 'VueUse'
 
-watchImmediate(nestedObject, (updated) => {
-  console.log(updated) // 控制台日志将被记录两次
+watchImmediate(obj, (updated) => {
+  console.log(updated) // Console.log will be logged twice
 })
 ```

@@ -15,8 +15,8 @@ npm install jwt-decode@^4
 ## 使用方法
 
 ```typescript
-import { defineComponent, ref } from 'vue'
 import { useJwt } from '@vueuse/integrations/useJwt'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   setup() {

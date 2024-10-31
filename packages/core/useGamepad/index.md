@@ -12,8 +12,8 @@ category: Browser
 
 ```vue
 <script setup>
-import { computed } from 'vue'
 import { useGamepad } from '@vueuse/core'
+import { computed } from 'vue'
 
 const { isSupported, gamepads } = useGamepad()
 const gamepad = computed(() => gamepads.value.find(g => g.mapping === 'standard'))

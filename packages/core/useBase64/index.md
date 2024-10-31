@@ -9,8 +9,8 @@ category: Utilities
 ## 用法
 
 ```ts
-import { Ref, ref } from 'vue'
 import { useBase64 } from '@vueuse/core'
+import { Ref, ref } from 'vue'
 
 const text = ref('')
 

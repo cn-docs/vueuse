@@ -10,9 +10,9 @@ category: '@Firebase'
 
 ```vue
 <script setup lang="ts">
-import { initializeApp } from 'firebase/app'
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
 import { useAuth } from '@vueuse/firebase/useAuth'
+import { initializeApp } from 'firebase/app'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 const app = initializeApp({ /* 配置 */ })
 const auth = getAuth(app)

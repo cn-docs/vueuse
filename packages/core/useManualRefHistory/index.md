@@ -10,8 +10,8 @@ related: useRefHistory
 ## 使用方法
 
 ```ts {5}
-import { ref } from 'vue'
 import { useManualRefHistory } from '@vueuse/core'
+import { ref } from 'vue'
 
 const counter = ref(0)
 const { history, commit, undo, redo } = useManualRefHistory(counter)
@@ -39,8 +39,8 @@ console.log(counter.value) // 0
 如果您要修改源对象，则需要传递一个自定义克隆函数或将 `clone` 参数设置为 `true`，它是一个最小克隆函数 `x => JSON.parse(JSON.stringify(x))` 的快捷方式，它将在 `dump` 和 `parse` 中使用。
 
 ```ts {5}
-import { ref } from 'vue'
 import { useManualRefHistory } from '@vueuse/core'
+import { ref } from 'vue'
 
 const counter = ref({ foo: 1, bar: 2 })
 const { history, commit, undo, redo } = useManualRefHistory(counter, { clone: true })
@@ -64,8 +64,8 @@ const refHistory = useManualRefHistory(target, { clone: structuredClone })
 或者使用 [lodash 的 `cloneDeep`](https://lodash.com/docs/4.17.15#cloneDeep)：
 
 ```ts
-import { cloneDeep } from 'lodash-es'
 import { useManualRefHistory } from '@vueuse/core'
+import { cloneDeep } from 'lodash-es'
 
 const refHistory = useManualRefHistory(target, { clone: cloneDeep })
 ```
@@ -73,8 +73,8 @@ const refHistory = useManualRefHistory(target, { clone: cloneDeep })
 或者更轻量级的 [`klona`](https://github.com/lukeed/klona)：
 
 ```ts
-import { klona } from 'klona'
 import { useManualRefHistory } from '@vueuse/core'
+import { klona } from 'klona'
 
 const refHistory = useManualRefHistory(target, { clone: klona })
 ```

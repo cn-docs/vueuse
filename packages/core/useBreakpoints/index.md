@@ -55,6 +55,7 @@ const laptop = breakpoints.between('laptop', 'desktop')
 - Sematic: `breakpointsSematic`
 - Master CSS: `breakpointsMasterCss`
 - Prime Flex: `breakpointsPrimeFlex`
+- ElementUI / ElementPlus: `breakpointsElement`
 
 _断点预设不会自动导入，因为它们的名称不以 `use` 开头以适应 VueUse 的范围。必须显式导入：_
 

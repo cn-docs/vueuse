@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { useFileDialog } from '.'
 
-const { files, open, reset, onChange } = useFileDialog()
+const { files, open, reset, onCancel, onChange } = useFileDialog()
 onChange((files) => {
   /** 对文件做操作 */
+})
+
+onCancel(() => {
+  /** do something on cancel */
 })
 </script>
 

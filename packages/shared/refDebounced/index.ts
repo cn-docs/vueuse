@@ -1,7 +1,7 @@
 import type { Ref } from 'vue-demi'
+import type { DebounceFilterOptions, MaybeRefOrGetter } from '../utils'
 import { ref, watch } from 'vue-demi'
 import { useDebounceFn } from '../useDebounceFn'
-import type { DebounceFilterOptions, MaybeRefOrGetter } from '../utils'
 
 /**
  * 对 ref 的更新进行防抖。

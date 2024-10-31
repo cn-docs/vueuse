@@ -9,8 +9,8 @@ category: Elements
 ## 用法
 
 ```ts
-import { ref } from 'vue'
 import { useMutationObserver } from '@vueuse/core'
+import { ref } from 'vue'
 
 export default {
   setup() {

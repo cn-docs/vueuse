@@ -9,8 +9,8 @@ category: Utilities
 ## 用法
 
 ```ts
-import { ref } from 'vue'
 import { usePrevious } from '@vueuse/core'
+import { ref } from 'vue'
 
 const counter = ref('Hello')
 const previous = usePrevious(counter)

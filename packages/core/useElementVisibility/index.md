@@ -10,8 +10,8 @@ category: Elements
 
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { useElementVisibility } from '@vueuse/core'
+import { ref } from 'vue'
 
 const target = ref(null)
 const targetIsVisible = useElementVisibility(target)
@@ -38,8 +38,8 @@ const targetIsVisible = useElementVisibility(target)
 
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { vElementVisibility } from '@vueuse/components'
+import { ref } from 'vue'
 
 const target = ref(null)
 const isVisible = ref(false)

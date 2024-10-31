@@ -11,8 +11,8 @@ category: Animation
 定义一个数值型的源值，当其改变时，输出值会过渡到新值。如果源值在过渡进行中发生变化，则会从中断处开始新的过渡。
 
 ```js
-import { ref } from 'vue'
 import { TransitionPresets, useTransition } from '@vueuse/core'
+import { ref } from 'vue'
 
 const source = ref(0)
 

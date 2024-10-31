@@ -1,7 +1,7 @@
 import type { ComputedRef } from 'vue-demi'
+import type { MaybeRefOrGetter } from '../utils'
 import { computed } from 'vue-demi'
 import { toValue } from '../toValue'
-import type { MaybeRefOrGetter } from '../utils'
 
 /**
  * 将 ref 转换为字符串。

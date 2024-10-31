@@ -15,8 +15,8 @@ related: reactify
 ## 用法
 
 ```ts
-import { ref } from 'vue'
 import { createUnrefFn } from '@vueuse/core'
+import { ref } from 'vue'
 
 const url = ref('https://httpbin.org/post')
 const data = ref({ foo: 'bar' })

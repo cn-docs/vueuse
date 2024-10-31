@@ -209,9 +209,9 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>): UseFetchReturn<T> & 
 - 仅当函数需要绑定目标时，才将插槽包裹在 HTML 元素中。
 
 ```ts
-import { defineComponent, reactive } from 'vue-demi'
 import type { MouseOptions } from '@vueuse/core'
 import { useMouse } from '@vueuse/core'
+import { defineComponent, reactive } from 'vue-demi'
 
 export const UseMouse = defineComponent<MouseOptions>({
   name: 'UseMouse',

@@ -19,8 +19,8 @@ console.log(idle.value) // true 或 false
 程序化重置：
 
 ```js
-import { watch } from 'vue'
 import { useCounter, useIdle } from '@vueuse/core'
+import { watch } from 'vue'
 
 const { inc, count } = useCounter()
 

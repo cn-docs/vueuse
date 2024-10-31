@@ -9,8 +9,8 @@ category: State
 ## 用法
 
 ```ts
-import axios from 'axios'
 import { useAsyncState } from '@vueuse/core'
+import axios from 'axios'
 
 const { state, isReady, isLoading } = useAsyncState(
   axios
