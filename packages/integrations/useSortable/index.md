@@ -6,7 +6,7 @@ category: '@Integrations'
 
 [`sortable`](https://github.com/SortableJS/Sortable) 的封装。
 
-要了解可以传递的选项的更多信息，请参阅 `Sortable` 文档中的 [`Sortable.options`](https://github.com/SortableJS/Sortable#options)。
+关于可传递的选项的更多信息，请参见 `Sortable` 文档中的 [`Sortable.options`](https://github.com/SortableJS/Sortable#options)。
 
 ## 安装
 
@@ -38,7 +38,7 @@ useSortable(el, list)
 </template>
 ```
 
-### 使用指定的选择器操作
+### 使用指定选择器进行操作
 
 ```vue
 <script setup lang="ts">
@@ -52,11 +52,11 @@ const animation = 200
 
 const { option } = useSortable(el, list, {
   handle: '.handle',
-  // 或者设置 option
+  // 或设置选项
   // animation
 })
 
-// 您可以使用 option 方法设置和获取 Sortable 的选项
+// 你可以使用 option 方法来设置和获取 Sortable 的选项
 option('animation', animation)
 // option('animation') // 200
 </script>
@@ -94,19 +94,19 @@ useSortable('#dv', list)
 
 ### 提示
 
-如果您想要自己处理 onUpdate，可以传递 onUpdate 参数，我们还提供了一个移动项目位置的函数。
+如果你想自己处理 onUpdate，你可以传入 onUpdate 参数，我们也提供了一个移动项目位置的函数。
 
 ```ts
 import { moveArrayElement } from '@vueuse/integrations/useSortable'
 
 useSortable(el, list, {
   onUpdate: (e) => {
-    // 处理更新
-    moveArrayElement(list.value, e.oldIndex, e.newIndex)
+    // 执行某些操作
+    moveArrayElement(list.value, e.oldIndex, e.newIndex, e)
     // 这里需要 nextTick，因为 moveArrayElement 在微任务中执行
-    // 所以我们需要等到下一个刻度直到它完成。
+    // 所以我们需要等到下一个 tick 直到完成
     nextTick(() => {
-      /* do something */
+      /* 执行某些操作 */
     })
   }
 })

@@ -1,5 +1,5 @@
-import { defineNuxtPlugin, useCookie, useHead } from '#imports'
 import { setSSRHandler } from '@vueuse/core'
+import { defineNuxtPlugin, useCookie, useHead } from '#imports'
 
 setSSRHandler('getDefaultStorage', () => {
   const cookieMap = new Map()

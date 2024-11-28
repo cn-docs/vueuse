@@ -1,7 +1,7 @@
+import { computed, ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeComputedElementRef } from '../unrefElement'
 import type { UseMouseSourceType } from '../useMouse'
-import { computed, ref } from 'vue-demi'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useEventListener } from '../useEventListener'

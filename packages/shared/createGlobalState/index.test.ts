@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { computed, ref } from 'vue-demi'
-import { createGlobalState } from '.'
+import { computed, ref } from 'vue'
 import { useSetup } from '../../.test'
+import { createGlobalState } from '.'
 
 describe('createGlobalState', () => {
   it('should work after dispose 1', async () => {

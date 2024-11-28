@@ -1,5 +1,5 @@
+import { isRef, ref, watch } from 'vue'
 import type { Fn, MaybeRefOrGetter, Pausable } from '../utils'
-import { isRef, ref, watch } from 'vue-demi'
 import { toValue } from '../toValue'
 import { tryOnScopeDispose } from '../tryOnScopeDispose'
 import { isClient } from '../utils'

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
-import { ref } from 'vue-demi'
-import { useTimeoutFn } from '.'
+import { ref } from 'vue'
 import { promiseTimeout } from '../utils'
+import { useTimeoutFn } from '.'
 
 describe('useTimeoutFn', () => {
   it('supports reactive intervals', async () => {

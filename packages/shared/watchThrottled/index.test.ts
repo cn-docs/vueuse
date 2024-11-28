@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
-import { nextTick, ref } from 'vue-demi'
-import { throttledWatch, watchThrottled } from '.'
+import { nextTick, ref } from 'vue'
 import { promiseTimeout } from '../utils'
+import { throttledWatch, watchThrottled } from '.'
 
 describe('watchThrottled', () => {
   it('should export module', () => {

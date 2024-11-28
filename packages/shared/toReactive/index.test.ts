@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { isReactive, nextTick, reactive, ref, watchSyncEffect } from 'vue-demi'
-import { toReactive } from '.'
+import { isReactive, nextTick, reactive, ref, watchSyncEffect } from 'vue'
 import { toRefs } from '../toRefs'
+import { toReactive } from '.'
 
 describe('toReactive', () => {
   it('should be defined', () => {

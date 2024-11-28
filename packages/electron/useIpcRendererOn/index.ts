@@ -1,6 +1,6 @@
 import type { IpcRenderer } from 'electron'
-import type { IpcRendererListener } from '../_types'
 import { tryOnScopeDispose } from '@vueuse/shared'
+import type { IpcRendererListener } from '../_types'
 
 /**
  * Listens to channel, when a new message arrives listener would be called with listener(event, args...).

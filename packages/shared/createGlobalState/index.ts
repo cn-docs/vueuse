@@ -1,5 +1,5 @@
+import { effectScope } from 'vue'
 import type { AnyFn } from '../utils'
-import { effectScope } from 'vue-demi'
 
 /**
  * 在全局范围内保留状态，以便在 Vue 实例之间重复使用。

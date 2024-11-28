@@ -1,5 +1,5 @@
-import type { Ref } from 'vue-demi'
-import { computed } from 'vue-demi'
+import type { Ref } from 'vue'
+import { computed } from 'vue'
 
 /**
  * 将默认值应用于 ref。

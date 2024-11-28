@@ -1,8 +1,8 @@
+import { tryOnMounted } from '@vueuse/shared'
+import { computed, ref } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
 import type { MaybeElement } from '../unrefElement'
 
-import { tryOnMounted } from '@vueuse/shared'
-import { computed, ref } from 'vue-demi'
 import { defaultDocument } from '../_configurable'
 import { useMutationObserver } from '../useMutationObserver'
 

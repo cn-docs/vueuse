@@ -1,5 +1,5 @@
+import { ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
-import { ref } from 'vue-demi'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 

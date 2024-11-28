@@ -1,8 +1,8 @@
 import type { UseDraggableOptions } from '@vueuse/core'
-import type { Position, RenderableComponent } from '../types'
 import { isClient, useDraggable, useStorage } from '@vueuse/core'
 import { toValue } from '@vueuse/shared'
-import { computed, defineComponent, h, reactive, ref } from 'vue-demi'
+import { computed, defineComponent, h, reactive, ref } from 'vue'
+import type { Position, RenderableComponent } from '../types'
 
 export interface UseDraggableProps extends UseDraggableOptions, RenderableComponent {
   /**

@@ -1,18 +1,17 @@
-import { hasOwn } from '@vueuse/shared'
-import { del, isVue2, set, shallowReactive } from 'vue-demi'
+import { shallowReactive } from 'vue'
 
 type CacheKey = any
 
 /**
- * 自定义记忆缓存处理程序
+ * 自定义记忆缓存处理器
  */
 export interface UseMemoizeCache<Key, Value> {
   /**
-   * 获取键的值
+   * 获取键对应的值
    */
   get: (key: Key) => Value | undefined
   /**
-   * 设置键的值
+   * 设置键值对
    */
   set: (key: Key, value: Value) => void
   /**
@@ -20,7 +19,7 @@ export interface UseMemoizeCache<Key, Value> {
    */
   has: (key: Key) => boolean
   /**
-   * 删除键的值
+   * 删除键对应的值
    */
   delete: (key: Key) => void
   /**
@@ -30,29 +29,11 @@ export interface UseMemoizeCache<Key, Value> {
 }
 
 /**
- * Fallback for Vue 2 not able to make a reactive Map
- */
-function getMapVue2Compat<Value>(): UseMemoizeCache<CacheKey, Value> {
-  const data: Record<CacheKey, Value> = shallowReactive({})
-  return {
-    get: key => data[key],
-    set: (key, value) => set(data, key, value),
-    has: key => hasOwn(data, key),
-    delete: key => del(data, key),
-    clear: () => {
-      Object.keys(data).forEach((key) => {
-        del(data, key)
-      })
-    },
-  }
-}
-
-/**
  * 记忆化函数
  */
 export interface UseMemoizeReturn<Result, Args extends unknown[]> {
   /**
-   * 从缓存中获取结果或调用记忆化函数
+   * 从缓存获取结果或调用记忆化函数
    */
   (...args: Args): Result
   /**
@@ -92,23 +73,20 @@ export function useMemoize<Result, Args extends unknown[]>(
   const initCache = (): UseMemoizeCache<CacheKey, Result> => {
     if (options?.cache)
       return shallowReactive(options.cache)
-    // Use fallback for Vue 2 not able to make a reactive Map
-    if (isVue2)
-      return getMapVue2Compat<Result>()
     return shallowReactive(new Map<CacheKey, Result>())
   }
   const cache = initCache()
 
   /**
-   * Generate key from args
+   * 从参数生成键
    */
   const generateKey = (...args: Args) => options?.getKey
     ? options.getKey(...args)
-    // Default key: Serialize args
+    // 默认键：序列化参数
     : JSON.stringify(args)
 
   /**
-   * Load data and save in cache
+   * 加载数据并保存到缓存中
    */
   const _loadData = (key: string | number, ...args: Args): Result => {
     cache.set(key, resolver(...args))
@@ -117,14 +95,14 @@ export function useMemoize<Result, Args extends unknown[]>(
   const loadData = (...args: Args): Result => _loadData(generateKey(...args), ...args)
 
   /**
-   * Delete key from cache
+   * 从缓存中删除键
    */
   const deleteData = (...args: Args): void => {
     cache.delete(generateKey(...args))
   }
 
   /**
-   * Clear cached data
+   * 清除缓存数据
    */
   const clearData = () => {
     cache.clear()

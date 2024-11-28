@@ -1,6 +1,6 @@
-import type { MaybeRef } from '../utils'
 // eslint-disable-next-line no-restricted-imports
-import { isRef, reactive, unref, type UnwrapNestedRefs } from 'vue-demi'
+import { type UnwrapNestedRefs, isRef, reactive, unref } from 'vue'
+import type { MaybeRef } from '../utils'
 
 /**
  * 将 ref 转换为 reactive。

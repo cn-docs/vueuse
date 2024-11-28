@@ -1,6 +1,6 @@
-import type { PackageIndexes, VueUseFunction } from '@vueuse/metadata'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import type { PackageIndexes, VueUseFunction } from '@vueuse/metadata'
 import fs from 'fs-extra'
 import matter from 'gray-matter'
 import YAML from 'js-yaml'

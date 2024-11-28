@@ -1,7 +1,7 @@
-import type { ComputedRef, Ref } from 'vue-demi'
-import type { ConfigurableNavigator } from '../_configurable'
+import type { ComputedRef, Ref } from 'vue'
 import { tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
-import { computed, ref, shallowRef, watch } from 'vue-demi'
+import { computed, ref, shallowRef, watch } from 'vue'
+import type { ConfigurableNavigator } from '../_configurable'
 
 import { defaultNavigator } from '../_configurable'
 import { useSupported } from '../useSupported'
