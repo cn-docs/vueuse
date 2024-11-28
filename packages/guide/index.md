@@ -72,7 +72,10 @@ export default {
 
 ```vue twoslash
 <script setup lang="ts">
+// ---cut-start---
+// Actually auto-imported, but here we need to tell TwoSlash about it
 import { useMouse } from '@vueuse/core'
+// ---cut-end---
 const { x, y } = useMouse()
 </script>
 
