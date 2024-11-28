@@ -1,7 +1,7 @@
-import type { Ref } from 'vue-demi'
-import type { ConfigurableWindow } from '../_configurable'
+import type { Ref } from 'vue'
 import { tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
-import { ref, shallowRef } from 'vue-demi'
+import { ref, shallowRef } from 'vue'
+import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 import { useSupported } from '../useSupported'
 

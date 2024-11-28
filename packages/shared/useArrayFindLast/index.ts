@@ -1,6 +1,6 @@
-import type { ComputedRef } from 'vue-demi'
+import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { computed } from 'vue-demi'
 import { toValue } from '../toValue'
 
 // Polyfill for node version < 18

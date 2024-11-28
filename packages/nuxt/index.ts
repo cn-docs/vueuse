@@ -1,6 +1,6 @@
-import type { Import, Preset } from 'unimport'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import type { Import, Preset } from 'unimport'
 import { defineNuxtModule } from '@nuxt/kit'
 import { metadata } from '@vueuse/metadata'
 import { isPackageExists } from 'local-pkg'

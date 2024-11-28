@@ -1,5 +1,5 @@
-import type { Plugin } from 'vite'
 import { join, resolve } from 'node:path'
+import type { Plugin } from 'vite'
 import fs from 'fs-extra'
 import { format } from 'prettier'
 import ts from 'typescript'

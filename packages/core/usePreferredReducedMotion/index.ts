@@ -1,5 +1,5 @@
+import { computed } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
-import { computed } from 'vue-demi'
 import { useMediaQuery } from '../useMediaQuery'
 
 export type ReducedMotionType = 'reduce' | 'no-preference'

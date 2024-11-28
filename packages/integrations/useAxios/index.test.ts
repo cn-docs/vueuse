@@ -1,8 +1,8 @@
 import type { RawAxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import { describe, expect, it, vi } from 'vitest'
-import { useAxios } from '.'
 import { isBelowNode18 } from '../../.test'
+import { useAxios } from '.'
 
 // The tests does not run properly below node 18
 describe.skipIf(isBelowNode18)('useAxios', () => {

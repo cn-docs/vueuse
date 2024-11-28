@@ -1,7 +1,7 @@
 import type { IpcRenderer, IpcRendererEvent } from 'electron'
-import type { Ref } from 'vue-demi'
+import type { Ref } from 'vue'
+import { shallowRef } from 'vue'
 import type { IpcRendererListener } from '../_types'
-import { shallowRef } from 'vue-demi'
 import { useIpcRendererInvoke } from '../useIpcRendererInvoke'
 import { useIpcRendererOn } from '../useIpcRendererOn'
 

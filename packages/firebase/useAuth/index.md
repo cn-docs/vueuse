@@ -12,7 +12,7 @@ category: '@Firebase'
 <script setup lang="ts">
 import { useAuth } from '@vueuse/firebase/useAuth'
 import { initializeApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
 
 const app = initializeApp({ /* 配置 */ })
 const auth = getAuth(app)

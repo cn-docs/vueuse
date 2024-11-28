@@ -1,8 +1,8 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
+import { ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeComputedElementRef } from '../unrefElement'
 import type { UseIntersectionObserverOptions } from '../useIntersectionObserver'
-import { ref } from 'vue-demi'
 import { defaultWindow } from '../_configurable'
 import { useIntersectionObserver } from '../useIntersectionObserver'
 

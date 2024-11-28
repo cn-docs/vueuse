@@ -1,9 +1,9 @@
 import type { MockInstance } from 'vitest'
 import { until } from '@vueuse/shared'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { nextTick, ref } from 'vue-demi'
-import { createFetch, useFetch } from '.'
+import { nextTick, ref } from 'vue'
 import { isBelowNode18, retry } from '../../.test'
+import { createFetch, useFetch } from '.'
 import '../../.test/mockServer'
 
 const jsonMessage = { hello: 'world' }
@@ -81,6 +81,22 @@ describe.skipIf(isBelowNode18)('useFetch', () => {
       expect(fetchSpy).toHaveBeenCalledOnce()
       expect(options.body).toEqual({ x: 1 })
       expect(options.headers['Content-Type']).toBe('unknown')
+    })
+  })
+
+  it('should use \'json\' payloadType', async () => {
+    let options: any
+    const payload = [1, 2]
+    useFetch('https://example.com', {
+      beforeFetch: (ctx) => {
+        options = ctx.options
+      },
+    }).post(payload)
+
+    await retry(() => {
+      expect(fetchSpy).toHaveBeenCalledOnce()
+      expect(options.body).toEqual(JSON.stringify(payload))
+      expect(options.headers['Content-Type']).toBe('application/json')
     })
   })
 

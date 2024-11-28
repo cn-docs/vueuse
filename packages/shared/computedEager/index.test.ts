@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
-import { computed, isVue3, ref, watch } from 'vue-demi'
-import { computedEager } from '.'
+import { computed, ref, watch } from 'vue'
 import { nextTwoTick } from '../../.test'
+import { computedEager } from '.'
 
 describe('computedEager', () => {
   it('should be defined', () => {
@@ -95,7 +95,7 @@ describe('computedEager', () => {
     expect(isOddComputedRefSpy).toBeCalledTimes(1)
     // Since Vue 3.4, computed will not trigger collect change if result is not changed
     // refer: https://github.com/vuejs/core/pull/5912
-    expect(isOddComputedCollectSpy).toBeCalledTimes(isVue3 ? 2 : 3)
+    expect(isOddComputedCollectSpy).toBeCalledTimes(2)
     expect(isOddComputedRefCollectSpy).toBeCalledTimes(2)
   })
 })

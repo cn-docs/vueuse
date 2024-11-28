@@ -1,6 +1,6 @@
-import type { Ref } from 'vue-demi'
+import type { Ref } from 'vue'
+import { customRef } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { customRef } from 'vue-demi'
 import { toValue } from '../toValue'
 import { tryOnScopeDispose } from '../tryOnScopeDispose'
 

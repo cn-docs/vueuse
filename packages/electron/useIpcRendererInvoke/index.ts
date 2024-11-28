@@ -1,6 +1,6 @@
 import type { IpcRenderer } from 'electron'
-import type { Ref } from 'vue-demi'
-import { shallowRef } from 'vue-demi'
+import type { Ref } from 'vue'
+import { shallowRef } from 'vue'
 
 /**
  * 返回 Promise<any> - 解析为来自主进程的响应。

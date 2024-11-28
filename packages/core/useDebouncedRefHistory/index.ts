@@ -1,7 +1,7 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
-import type { Ref } from 'vue-demi'
-import type { UseRefHistoryOptions, UseRefHistoryReturn } from '../useRefHistory'
+import type { Ref } from 'vue'
 import { debounceFilter } from '@vueuse/shared'
+import type { UseRefHistoryOptions, UseRefHistoryReturn } from '../useRefHistory'
 import { useRefHistory } from '../useRefHistory'
 
 /**

@@ -1,46 +1,46 @@
-import type { Ref, UnwrapRef, WritableComputedRef } from 'vue-demi'
-import type { CloneFn } from '../useCloned'
+import type { Ref, UnwrapRef, WritableComputedRef } from 'vue'
 import { isDef } from '@vueuse/shared'
-import { computed, getCurrentInstance, isVue2, nextTick, ref, watch } from 'vue-demi'
+import { computed, getCurrentInstance, nextTick, ref, watch } from 'vue'
+import type { CloneFn } from '../useCloned'
 import { cloneFnJSON } from '../useCloned'
 
 export interface UseVModelOptions<T, Passive extends boolean = false> {
   /**
-   * 当 passive 设置为 `true` 时，它将使用 `watch` 来与 props 和 ref 同步。
-   * 而不是依赖于 `v-model` 或 `.sync`。
+   * 当 passive 设置为 `true` 时，将使用 `watch` 来同步 props 和 ref，
+   * 而不是依赖 `v-model` 或 `.sync` 来工作。
    *
    * @default false
    */
   passive?: Passive
   /**
-   * 当设置了 eventName 时，它的值将用于覆盖 emit 事件的名称。
+   * 当设置 eventName 时，其值将用于覆盖触发事件的名称。
    *
    * @default undefined
    */
   eventName?: string
   /**
-   * 尝试检查嵌套对象或数组中属性的更改。
-   * 仅在将 `passive` 选项设置为 `true` 时应用
+   * 尝试检查深层嵌套对象或数组中属性的变化。
+   * 仅在 `passive` 选项设置为 `true` 时适用
    *
    * @default false
    */
   deep?: boolean
   /**
-   * 在未传递值时定义返回 ref 的默认值。
+   * 当没有传入值时，为返回的 ref 定义默认值。
    *
    * @default undefined
    */
   defaultValue?: T
   /**
    * 克隆 props。
-   * 接受一个自定义克隆函数。
-   * 当设置为 `true` 时，它将使用 `JSON.parse(JSON.stringify(value))` 进行克隆。
+   * 接受自定义克隆函数。
+   * 当设置为 `true` 时，将使用 `JSON.parse(JSON.stringify(value))` 进行克隆。
    *
    * @default false
    */
   clone?: boolean | CloneFn<T>
   /**
-   * 在触发 emit 事件之前的钩子，可用于表单验证。
+   * 触发 emit 事件前的钩子函数，可用于表单验证。
    * 如果返回 false，则不会触发 emit 事件。
    *
    * @default undefined
@@ -63,11 +63,11 @@ export function useVModel<P extends object, K extends keyof P, Name extends stri
 ): Ref<UnwrapRef<P[K]>>
 
 /**
- * v-model 绑定的简写，props + emit -> ref
+ * v-model 绑定的简写方式，将 props + emit 转换为 ref
  *
  * @see https://vueuse.org/useVModel
  * @param props
- * @param key （Vue 2 中默认为 'value'，Vue 3 中为 'modelValue'）
+ * @param key (默认值 'modelValue')
  * @param emit
  */
 export function useVModel<P extends object, K extends keyof P, Name extends string, Passive extends boolean>(
@@ -91,15 +91,7 @@ export function useVModel<P extends object, K extends keyof P, Name extends stri
   let event: string | undefined = eventName
 
   if (!key) {
-    if (isVue2) {
-      const modelOptions = vm?.proxy?.$options?.model
-      key = modelOptions?.value || 'value' as K
-      if (!eventName)
-        event = modelOptions?.event || 'input'
-    }
-    else {
-      key = 'modelValue' as K
-    }
+    key = 'modelValue' as K
   }
 
   event = event || `update:${key!.toString()}`

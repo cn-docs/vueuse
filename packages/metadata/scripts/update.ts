@@ -1,6 +1,6 @@
-import type { PackageIndexes, VueUseFunction, VueUsePackage } from '@vueuse/metadata'
 import { join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import type { PackageIndexes, VueUseFunction, VueUsePackage } from '@vueuse/metadata'
 import fg from 'fast-glob'
 import fs from 'fs-extra'
 import matter from 'gray-matter'

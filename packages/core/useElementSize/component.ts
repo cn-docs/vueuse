@@ -1,8 +1,8 @@
 import type { ElementSize } from '@vueuse/core'
+import { useElementSize } from '@vueuse/core'
+import { defineComponent, h, reactive, ref } from 'vue'
 import type { RenderableComponent } from '../types'
 import type { UseResizeObserverOptions } from '../useResizeObserver'
-import { useElementSize } from '@vueuse/core'
-import { defineComponent, h, reactive, ref } from 'vue-demi'
 
 export const UseElementSize = /* #__PURE__ */ defineComponent<ElementSize & UseResizeObserverOptions & RenderableComponent>({
   name: 'UseElementSize',

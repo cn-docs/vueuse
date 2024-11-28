@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import { useAsyncQueue } from '.'
 import { retry } from '../../.test'
+import { useAsyncQueue } from '.'
 
 describe('useAsyncQueue', () => {
   const p1 = () => {

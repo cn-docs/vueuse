@@ -1,9 +1,9 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
-import type { Ref, ShallowRef } from 'vue-demi'
-import type { ConfigurableWindow } from '../_configurable'
+import type { Ref, ShallowRef } from 'vue'
 import { tryOnScopeDispose } from '@vueuse/shared'
-import { ref, shallowRef } from 'vue-demi'
+import { ref, shallowRef } from 'vue'
+import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 
 type PostMessage = typeof Worker.prototype['postMessage']

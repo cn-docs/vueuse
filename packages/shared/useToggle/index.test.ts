@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { isRef, ref } from 'vue-demi'
-import { useToggle } from '.'
+import { isRef, ref } from 'vue'
 import { toValue } from '../toValue'
+import { useToggle } from '.'
 
 describe('useToggle', () => {
   it('should be defined', () => {

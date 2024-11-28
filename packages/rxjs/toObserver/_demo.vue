@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Ref } from 'vue-demi'
+import type { Ref } from 'vue'
 import { interval } from 'rxjs'
 import {
   map,
@@ -8,10 +8,10 @@ import {
   takeUntil,
   withLatestFrom,
 } from 'rxjs/operators'
-import { ref } from 'vue-demi'
-import { toObserver } from '.'
+import { ref } from 'vue'
 import { from, fromEvent } from '../from'
 import { useSubscription } from '../useSubscription'
+import { toObserver } from '.'
 
 const count = ref(0)
 const button = ref<HTMLButtonElement | null>(null)
