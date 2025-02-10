@@ -1,55 +1,55 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef } from 'vue'
-import { noop, toValue } from '@vueuse/shared'
-import { computed, reactive, ref } from 'vue'
+import { noop } from '@vueuse/shared'
+import { computed, reactive, ref, toValue } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { DefaultMagicKeysAliasMap } from './aliasMap'
 
 export interface UseMagicKeysOptions<Reactive extends boolean> {
   /**
-   * 返回一个响应式对象而不是 ref 对象
+   * Returns a reactive object instead of an object of refs
    *
    * @default false
    */
   reactive?: Reactive
 
   /**
-   * 监听事件的目标
+   * Target for listening events
    *
    * @default window
    */
   target?: MaybeRefOrGetter<EventTarget>
 
   /**
-   * 键的别名映射，所有键都应为小写
+   * Alias map for keys, all the keys should be lowercase
    * { target: keycode }
    *
    * @example { ctrl: "control" }
-   * @default <预定义映射>
+   * @default <predefined-map>
    */
   aliasMap?: Record<string, string>
 
   /**
-   * 注册被动监听器
+   * Register passive listener
    *
    * @default true
    */
   passive?: boolean
 
   /**
-   * 自定义键盘按下/释放事件的处理程序。
-   * 当您想应用自定义逻辑时很有用。
+   * Custom event handler for keydown/keyup event.
+   * Useful when you want to apply custom logic.
    *
-   * 当使用 `e.preventDefault()` 时，您需要传递 `passive: false` 给 `useMagicKeys()`。
+   * When using `e.preventDefault()`, you will need to pass `passive: false` to useMagicKeys().
    */
   onEventFired?: (e: KeyboardEvent) => void | boolean
 }
 
 export interface MagicKeysInternal {
   /**
-   * 当前按下的键的集合，
-   * 存储原始的键码。
+   * A Set of currently pressed keys,
+   * Stores raw keyCodes.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
    */
@@ -65,7 +65,7 @@ export type UseMagicKeysReturn<Reactive extends boolean> =
   >
 
 /**
- * 响应式按键按下状态，具有神奇按键组合支持。
+ * Reactive keys pressed state, with magical keys combination support.
  *
  * @see https://vueuse.org/useMagicKeys
  */
@@ -147,8 +147,8 @@ export function useMagicKeys(options: UseMagicKeysOptions<boolean> = {}): any {
   }, { passive })
 
   // #1350
-  useEventListener('blur', reset, { passive: true })
-  useEventListener('focus', reset, { passive: true })
+  useEventListener('blur', reset, { passive })
+  useEventListener('focus', reset, { passive })
 
   const proxy = new Proxy(
     refs,
@@ -165,7 +165,7 @@ export function useMagicKeys(options: UseMagicKeysOptions<boolean> = {}): any {
         if (!(prop in refs)) {
           if (/[+_-]/.test(prop)) {
             const keys = prop.split(/[+_-]/g).map(i => i.trim())
-            refs[prop] = computed(() => keys.every(key => toValue(proxy[key])))
+            refs[prop] = computed(() => keys.map(key => toValue(proxy[key])).every(Boolean))
           }
           else {
             refs[prop] = ref(false)

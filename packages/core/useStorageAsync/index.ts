@@ -1,9 +1,8 @@
 import type { MaybeRefOrGetter, RemovableRef } from '@vueuse/shared'
-import type { Ref } from 'vue'
-import { toValue, watchWithFilter } from '@vueuse/shared'
-import { ref, shallowRef } from 'vue'
 import type { StorageLikeAsync } from '../ssr-handlers'
 import type { SerializerAsync, UseStorageOptions } from '../useStorage'
+import { watchWithFilter } from '@vueuse/shared'
+import { ref, shallowRef, toValue } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { getSSRHandler } from '../ssr-handlers'
 import { useEventListener } from '../useEventListener'
@@ -12,7 +11,7 @@ import { guessSerializerType } from '../useStorage/guess'
 
 export interface UseStorageAsyncOptions<T> extends Omit<UseStorageOptions<T>, 'serializer'> {
   /**
-   * 自定义数据序列化
+   * Custom data serialization
    */
   serializer?: SerializerAsync<T>
 }
@@ -24,7 +23,7 @@ export function useStorageAsync<T>(key: string, initialValue: MaybeRefOrGetter<T
 export function useStorageAsync<T = unknown>(key: string, initialValue: MaybeRefOrGetter<null>, storage?: StorageLikeAsync, options?: UseStorageAsyncOptions<T>): RemovableRef<T>
 
 /**
- * 具有异步支持的响应式 Storage
+ * Reactive Storage in with async support.
  *
  * @see https://vueuse.org/useStorageAsync
  * @param key
@@ -55,7 +54,7 @@ export function useStorageAsync<T extends(string | number | boolean | object | n
   const rawInit: T = toValue(initialValue)
   const type = guessSerializerType<T>(rawInit)
 
-  const data = (shallow ? shallowRef : ref)(initialValue) as Ref<T>
+  const data = (shallow ? shallowRef : ref)(toValue(initialValue)) as RemovableRef<T>
   const serializer = options.serializer ?? StorageSerializers[type]
 
   if (!storage) {
@@ -98,7 +97,7 @@ export function useStorageAsync<T extends(string | number | boolean | object | n
   read()
 
   if (window && listenToStorageChanges)
-    useEventListener(window, 'storage', e => Promise.resolve().then(() => read(e)))
+    useEventListener(window, 'storage', e => Promise.resolve().then(() => read(e)), { passive: true })
 
   if (storage) {
     watchWithFilter(
@@ -122,5 +121,5 @@ export function useStorageAsync<T extends(string | number | boolean | object | n
     )
   }
 
-  return data as RemovableRef<T>
+  return data
 }

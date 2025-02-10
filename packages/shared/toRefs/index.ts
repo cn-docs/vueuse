@@ -1,11 +1,10 @@
 import type { ToRefs } from 'vue'
-import { toRefs as _toRefs, customRef, isRef } from 'vue'
 import type { MaybeRef, MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { toRefs as _toRefs, customRef, isRef, toValue } from 'vue'
 
 export interface ToRefsOptions {
   /**
-   * 当属性更新时，是否用副本替换原始的 ref。
+   * Replace the original ref with a copy on property update.
    *
    * @default true
    */
@@ -13,10 +12,10 @@ export interface ToRefsOptions {
 }
 
 /**
- * 扩展的 `toRefs`，还接受对象的 ref。
+ * Extended `toRefs` that also accepts refs of an object.
  *
  * @see https://vueuse.org/toRefs
- * @param objectRef 一个 ref 或普通对象或数组。
+ * @param objectRef A ref or normal object or array.
  */
 export function toRefs<T extends object>(
   objectRef: MaybeRef<T>,

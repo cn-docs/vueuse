@@ -1,4 +1,4 @@
-import type { DataSnapshot, DatabaseReference } from 'firebase/database'
+import type { DatabaseReference, DataSnapshot } from 'firebase/database'
 import type { Ref } from 'vue'
 import { tryOnScopeDispose } from '@vueuse/shared'
 import { onValue } from 'firebase/database'

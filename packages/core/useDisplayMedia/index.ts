@@ -1,29 +1,30 @@
 import type { MaybeRef } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { ref, shallowRef, watch } from 'vue'
 import type { ConfigurableNavigator } from '../_configurable'
+import { ref, shallowRef, watch } from 'vue'
 import { defaultNavigator } from '../_configurable'
+import { useEventListener } from '../useEventListener'
 import { useSupported } from '../useSupported'
 
 export interface UseDisplayMediaOptions extends ConfigurableNavigator {
   /**
-   * 流是否已启用
+   * If the stream is enabled
    * @default false
    */
   enabled?: MaybeRef<boolean>
 
   /**
-   * 流的视频媒体约束条件
+   * If the stream video media constraints
    */
   video?: boolean | MediaTrackConstraints | undefined
   /**
-   * 流的音频媒体约束条件
+   * If the stream audio media constraints
    */
   audio?: boolean | MediaTrackConstraints | undefined
 }
 
 /**
- * 响应式 `mediaDevices.getDisplayMedia` 获取屏幕共享流
+ * Reactive `mediaDevices.getDisplayMedia` streaming
  *
  * @see https://vueuse.org/useDisplayMedia
  * @param options
@@ -43,7 +44,7 @@ export function useDisplayMedia(options: UseDisplayMediaOptions = {}) {
     if (!isSupported.value || stream.value)
       return
     stream.value = await navigator!.mediaDevices.getDisplayMedia(constraint)
-    stream.value?.getTracks().forEach(t => t.addEventListener('ended', stop))
+    stream.value?.getTracks().forEach(t => useEventListener(t, 'ended', stop, { passive: true }))
     return stream.value
   }
 

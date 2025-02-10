@@ -1,28 +1,28 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { toRef, toValue } from '@vueuse/shared'
-import { computed, shallowRef, watch } from 'vue'
+import { toRef } from '@vueuse/shared'
+import { computed, shallowRef, toValue, watch } from 'vue'
 
 export interface UseCycleListOptions<T> {
   /**
-   * 状态的初始值。
-   * 可以提供一个 ref 来重用。
+   * The initial value of the state.
+   * A ref can be provided to reuse.
    */
   initialValue?: MaybeRef<T>
 
   /**
-   * 当找不到索引时的默认索引。
+   * The default index when
    */
   fallbackIndex?: number
 
   /**
-   * 获取当前值的索引的自定义函数。
+   * Custom function to get the index of the current value.
    */
   getIndexOf?: (value: T, list: T[]) => number
 }
 
 /**
- * 循环浏览列表
+ * Cycle through a list of items
  *
  * @see https://vueuse.org/useCycleList
  */

@@ -1,85 +1,85 @@
 import type { ConfigurableEventFilter, Fn } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { pausableFilter, watchIgnorable } from '@vueuse/shared'
 import type { CloneFn } from '../useCloned'
 import type { UseManualRefHistoryReturn } from '../useManualRefHistory'
+import { pausableFilter, watchIgnorable } from '@vueuse/shared'
 import { useManualRefHistory } from '../useManualRefHistory'
 
 export interface UseRefHistoryOptions<Raw, Serialized = Raw> extends ConfigurableEventFilter {
   /**
-   * 监听深层变化，默认为 false
+   * Watch for deep changes, default to false
    *
-   * 当设置为 true 时，它还将为存储在历史记录中的值创建克隆
+   * When set to true, it will also create clones for values store in the history
    *
    * @default false
    */
   deep?: boolean
 
   /**
-   * flush 选项允许更大的控制历史点的时间，默认为 'pre'
+   * The flush option allows for greater control over the timing of a history point, default to 'pre'
    *
-   * 可能的值：'pre', 'post', 'sync'
-   * 它的工作方式与 vue 响应性中 watch 和 watch effect 中的 flush 选项相同
+   * Possible values: 'pre', 'post', 'sync'
+   * It works in the same way as the flush option in watch and watch effect in vue reactivity
    *
    * @default 'pre'
    */
   flush?: 'pre' | 'post' | 'sync'
 
   /**
-   * 要保留的历史记录的最大数量。默认为无限。
+   * Maximum number of history to be kept. Default to unlimited.
    */
   capacity?: number
 
   /**
-   * 在获取快照时进行克隆，快捷方式为 dump: JSON.parse(JSON.stringify(value))。
-   * 默认为 false
+   * Clone when taking a snapshot, shortcut for dump: JSON.parse(JSON.stringify(value)).
+   * Default to false
    *
    * @default false
    */
   clone?: boolean | CloneFn<Raw>
   /**
-   * 将数据序列化到历史记录中
+   * Serialize data into the history
    */
   dump?: (v: Raw) => Serialized
   /**
-   * 从历史记录中反序列化数据
+   * Deserialize data from the history
    */
   parse?: (v: Serialized) => Raw
 }
 
 export interface UseRefHistoryReturn<Raw, Serialized> extends UseManualRefHistoryReturn<Raw, Serialized> {
   /**
-   * 表示是否启用跟踪的 ref
+   * A ref representing if the tracking is enabled
    */
   isTracking: Ref<boolean>
 
   /**
-   * 暂停更改跟踪
+   * Pause change tracking
    */
   pause: () => void
 
   /**
-   * 恢复更改跟踪
+   * Resume change tracking
    *
-   * @param [commit] 如果为 true，在恢复后将创建一个历史记录
+   * @param [commit] if true, a history record will be create after resuming
    */
   resume: (commit?: boolean) => void
 
   /**
-   * 在函数范围内提供自动暂停和自动恢复的语法糖
+   * A sugar for auto pause and auto resuming within a function scope
    *
    * @param fn
    */
   batch: (fn: (cancel: Fn) => void) => void
 
   /**
-   * 清除数据并停止观察
+   * Clear the data and stop the watch
    */
   dispose: () => void
 }
 
 /**
- * 跟踪 ref 的变更历史记录，并提供撤销和重做功能。
+ * Track the change history of a ref, also provides undo and redo functionality.
  *
  * @see https://vueuse.org/useRefHistory
  * @param source

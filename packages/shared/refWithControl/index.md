@@ -6,15 +6,15 @@ related: computedWithControl
 
 # refWithControl
 
-对 ref 及其响应式行为进行精细控制。
+Fine-grained controls over ref and its reactivity.
 
 ::: warning
-此函数仅适用于 Vue 3
+This function only works for Vue 3
 :::
 
-## 使用方法
+## Usage
 
-`refWithControl` 使用 `extendRef` 提供了两个额外的函数 `get` 和 `set`，用于更好地控制何时应该追踪/触发响应式行为。
+`refWithControl` uses `extendRef` to provide two extra functions `get` and `set` to have better control over when it should track/trigger the reactivity.
 
 ```ts
 import { refWithControl } from '@vueuse/core'
@@ -22,59 +22,59 @@ import { refWithControl } from '@vueuse/core'
 const num = refWithControl(0)
 const doubled = computed(() => num.value * 2)
 
-// 像普通的 ref 一样使用
+// just like normal ref
 num.value = 42
 console.log(num.value) // 42
 console.log(doubled.value) // 84
 
-// 设置值但不触发响应式更新
+// set value without triggering the reactivity
 num.set(30, false)
 console.log(num.value) // 30
-console.log(doubled.value) // 84 (不会更新)
+console.log(doubled.value) // 84 (doesn't update)
 
-// 获取值但不追踪响应式依赖
+// get value without tracking the reactivity
 watchEffect(() => {
   console.log(num.peek())
 }) // 30
 
-num.value = 50 // watch effect 不会被触发，因为它没有收集到任何依赖
-console.log(doubled.value) // 100 (因为是响应式的设置，所以会再次更新)
+num.value = 50 // watch effect wouldn't be triggered since it collected nothing.
+console.log(doubled.value) // 100 (updated again since it's a reactive set)
 ```
 
-### `peek`、`lay`、`untrackedGet`、`silentSet`
+### `peek`, `lay`, `untrackedGet`, `silentSet`
 
-我们还提供了一些简写方法来实现不追踪/触发响应式系统的获取/设置操作。以下几行代码是等效的。
+We also provide some shorthands for doing the get/set without track/triggering the reactivity system. The following lines are equivalent.
 
 ```ts
 const foo = refWithControl('foo')
 ```
 
 ```ts
-// 获取值
+// getting
 foo.get(false)
 foo.untrackedGet()
-foo.peek() // `untrackedGet` 的别名
+foo.peek() // an alias for `untrackedGet`
 ```
 
 ```ts
-// 设置值
+// setting
 foo.set('bar', false)
 foo.silentSet('bar')
-foo.lay('bar') // `silentSet` 的别名
+foo.lay('bar') // an alias for `silentSet`
 ```
 
-## 配置选项
+## Configurations
 
 ### `onBeforeChange()`
 
-`onBeforeChange` 选项用于控制是否接受新的值。例如：
+`onBeforeChange` option is offered to give control over if a new value should be accepted. For example:
 
 ```ts
 const num = refWithControl(0, {
   onBeforeChange(value, oldValue) {
-    // 不允许一次操作中变化超过 ±5
+    // disallow changes larger then ±5 in one operation
     if (Math.abs(value - oldValue) > 5)
-      return false // 返回 `false` 来拒绝这次改变
+      return false // returning `false` to dismiss the change
   },
 })
 
@@ -82,12 +82,12 @@ num.value += 1
 console.log(num.value) // 1
 
 num.value += 6
-console.log(num.value) // 1 (变化被拒绝)
+console.log(num.value) // 1 (change been dismissed)
 ```
 
 ### `onChanged()`
 
-`onChanged` 选项提供了类似于 Vue 的 `watch` 的功能，但是是同步的，并且相比 `watch` 有更少的开销。
+`onChanged` option offers a similar functionally as Vue's `watch` but being synchronized with less overhead compared to `watch`.
 
 ```ts
 const num = refWithControl(0, {

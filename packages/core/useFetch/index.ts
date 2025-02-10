@@ -1,73 +1,73 @@
 import type { EventHookOn, Fn, MaybeRefOrGetter, Stoppable } from '@vueuse/shared'
 import type { ComputedRef, Ref } from 'vue'
-import { containsProp, createEventHook, toRef, toValue, until, useTimeoutFn } from '@vueuse/shared'
-import { computed, isRef, readonly, ref, shallowRef, watch } from 'vue'
+import { containsProp, createEventHook, toRef, until, useTimeoutFn } from '@vueuse/shared'
+import { computed, isRef, readonly, ref, shallowRef, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 
 export interface UseFetchReturn<T> {
   /**
-   * 表示 fetch 请求是否已完成
+   * Indicates if the fetch request has finished
    */
   isFinished: Readonly<Ref<boolean>>
 
   /**
-   * HTTP fetch 响应的 statusCode
+   * The statusCode of the HTTP fetch response
    */
   statusCode: Ref<number | null>
 
   /**
-   * fetch 响应的原始数据
+   * The raw response of the fetch response
    */
   response: Ref<Response | null>
 
   /**
-   * 可能发生的任何 fetch 错误
+   * Any fetch errors that may have occurred
    */
   error: Ref<any>
 
   /**
-   * 成功时的 fetch 响应体，可能是 JSON 或文本
+   * The fetch response body on success, may either be JSON or text
    */
   data: Ref<T | null>
 
   /**
-   * 表示当前是否正在进行 fetch 请求
+   * Indicates if the request is currently being fetched.
    */
   isFetching: Readonly<Ref<boolean>>
 
   /**
-   * 表示 fetch 请求是否可以中止
+   * Indicates if the fetch request is able to be aborted
    */
   canAbort: ComputedRef<boolean>
 
   /**
-   * 表示 fetch 请求是否已中止
+   * Indicates if the fetch request was aborted
    */
   aborted: Ref<boolean>
 
   /**
-   * 中止 fetch 请求
+   * Abort the fetch request
    */
   abort: Fn
 
   /**
-   * 手动调用 fetch
-   * （默认不抛出错误）
+   * Manually call the fetch
+   * (default not throwing error)
    */
   execute: (throwOnFailed?: boolean) => Promise<any>
 
   /**
-   * 在 fetch 请求完成后触发
+   * Fires after the fetch request has finished
    */
   onFetchResponse: EventHookOn<Response>
 
   /**
-   * 在 fetch 请求错误后触发
+   * Fires after a fetch request error
    */
   onFetchError: EventHookOn
 
   /**
-   * 在 fetch 完成后触发
+   * Fires after a fetch has completed
    */
   onFetchFinally: EventHookOn
 
@@ -99,17 +99,17 @@ const payloadMapping: Record<string, string> = {
 
 export interface BeforeFetchContext {
   /**
-   * 当前请求的计算后的 URL
+   * The computed url of the current request
    */
   url: string
 
   /**
-   * 当前请求的请求选项
+   * The request options of the current request
    */
   options: RequestInit
 
   /**
-   * 取消当前请求
+   * Cancels the current request
    */
   cancel: Fn
 }
@@ -118,95 +118,105 @@ export interface AfterFetchContext<T = any> {
   response: Response
 
   data: T | null
+
+  context: BeforeFetchContext
+
+  execute: (throwOnFailed?: boolean) => Promise<any>
 }
 
 export interface OnFetchErrorContext<T = any, E = any> {
   error: E
 
   data: T | null
+
+  response: Response | null
+
+  context: BeforeFetchContext
+
+  execute: (throwOnFailed?: boolean) => Promise<any>
 }
 
 export interface UseFetchOptions {
   /**
-   * Fetch 函数
+   * Fetch function
    */
   fetch?: typeof window.fetch
 
   /**
-   * 当 `useFetch` 被使用时是否自动运行 fetch
+   * Will automatically run fetch when `useFetch` is used
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * 当以下情况发生时是否自动重新获取：
-   * - 如果 URL 是一个 ref，则 URL 被更改
-   * - 如果 payload 是一个 ref，则 payload 被更改
+   * Will automatically refetch when:
+   * - the URL is changed if the URL is a ref
+   * - the payload is changed if the payload is a ref
    *
    * @default false
    */
   refetch?: MaybeRefOrGetter<boolean>
 
   /**
-   * 请求完成之前的初始数据
+   * Initial data before the request finished
    *
    * @default null
    */
   initialData?: any
 
   /**
-   * 在多少毫秒后中止请求
-   * `0` 表示使用浏览器默认值
+   * Timeout for abort request after number of millisecond
+   * `0` means use browser default
    *
    * @default 0
    */
   timeout?: number
 
   /**
-   * 允许在发生 fetch 错误时更新 `data` ref，无论是在提供的回调函数中还是在 `onFetchError` 回调中改变
+   * Allow update the `data` ref when fetch error whenever provided, or mutated in the `onFetchError` callback
    *
    * @default false
    */
   updateDataOnError?: boolean
 
   /**
-   * 在 fetch 请求被分派之前立即运行
+   * Will run immediately before the fetch request is dispatched
    */
   beforeFetch?: (ctx: BeforeFetchContext) => Promise<Partial<BeforeFetchContext> | void> | Partial<BeforeFetchContext> | void
 
   /**
-   * 在 fetch 请求返回后立即运行。
-   * 在任何 2xx 响应之后运行
+   * Will run immediately after the fetch request is returned.
+   * Runs after any 2xx response
    */
   afterFetch?: (ctx: AfterFetchContext) => Promise<Partial<AfterFetchContext>> | Partial<AfterFetchContext>
 
   /**
-   * 在 fetch 请求返回后立即运行。
-   * 在任何 4xx 和 5xx 响应之后运行
+   * Will run immediately after the fetch request is returned.
+   * Runs after any 4xx and 5xx response
    */
-  onFetchError?: (ctx: { data: any, response: Response | null, error: any }) => Promise<Partial<OnFetchErrorContext>> | Partial<OnFetchErrorContext>
+  onFetchError?: (ctx: OnFetchErrorContext) => Promise<Partial<OnFetchErrorContext>> | Partial<OnFetchErrorContext>
 }
 
 export interface CreateFetchOptions {
   /**
-   * 除非 URL 是绝对的，否则将添加到所有 URL 前面的基础 URL
+   * The base URL that will be prefixed to all urls unless urls are absolute
    */
   baseUrl?: MaybeRefOrGetter<string>
 
   /**
-   * 确定 beforeFetch、afterFetch、onFetchError 的继承行为
+   * Determine the inherit behavior for beforeFetch, afterFetch, onFetchError
    * @default 'chain'
    */
   combination?: Combination
 
   /**
-   * useFetch 函数的默认选项
+   * Default Options for the useFetch function
    */
   options?: UseFetchOptions
 
   /**
-   * fetch 请求的选项
+   * Options for the fetch request
    */
   fetchOptions?: RequestInit
 }
@@ -416,9 +426,9 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>, ...args: any[]): UseF
       headers: {},
     }
 
-    if (config.payload) {
+    const payload = toValue(config.payload)
+    if (payload) {
       const headers = headersToObject(defaultFetchOptions.headers) as Record<string, string>
-      const payload = toValue(config.payload)
       // Set the payload to json type only if it's not provided and a literal object or array is provided and the object is not `formData`
       // The only case we can deduce the content type and `fetch` can't
       const proto = Object.getPrototypeOf(payload)
@@ -483,6 +493,8 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>, ...args: any[]): UseF
           ({ data: responseData } = await options.afterFetch({
             data: responseData,
             response: fetchResponse,
+            context,
+            execute,
           }))
         }
         data.value = responseData
@@ -498,6 +510,8 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>, ...args: any[]): UseF
             data: responseData,
             error: fetchError,
             response: response.value,
+            context,
+            execute,
           }))
         }
 

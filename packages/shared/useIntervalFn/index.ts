@@ -1,19 +1,18 @@
-import { isRef, ref, watch } from 'vue'
 import type { Fn, MaybeRefOrGetter, Pausable } from '../utils'
-import { toValue } from '../toValue'
+import { isRef, ref, toValue, watch } from 'vue'
 import { tryOnScopeDispose } from '../tryOnScopeDispose'
 import { isClient } from '../utils'
 
 export interface UseIntervalFnOptions {
   /**
-   * 立即开始计时器
+   * Start the timer immediately
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * 在调用 `resume` 函数后立即执行回调函数
+   * Execute the callback immediately after calling `resume`
    *
    * @default false
    */
@@ -21,7 +20,7 @@ export interface UseIntervalFnOptions {
 }
 
 /**
- * 带有控制功能的 `setInterval` 包装器
+ * Wrapper for `setInterval` with controls
  *
  * @param cb
  * @param interval

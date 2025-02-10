@@ -1,14 +1,14 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
 import type { Ref } from 'vue'
-import { ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { useSupported } from '../useSupported'
 
 /**
- * 响应式 DeviceOrientationEvent.
+ * Reactive DeviceOrientationEvent.
  *
  * @see https://vueuse.org/useDeviceOrientation
  * @param options
@@ -28,7 +28,7 @@ export function useDeviceOrientation(options: ConfigurableWindow = {}) {
       alpha.value = event.alpha
       beta.value = event.beta
       gamma.value = event.gamma
-    })
+    }, { passive: true })
   }
 
   return {

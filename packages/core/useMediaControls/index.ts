@@ -1,100 +1,116 @@
 import type { Fn, MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
-import { createEventHook, isObject, toRef, toValue, tryOnScopeDispose, watchIgnorable } from '@vueuse/shared'
-import { ref, watch, watchEffect } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
+import { createEventHook, isObject, toRef, tryOnScopeDispose, watchIgnorable } from '@vueuse/shared'
+import { ref, toValue, watch, watchEffect } from 'vue'
 import { defaultDocument } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
 /**
- * 这里的许多 jsdoc 定义都是修改自 MDN 的文档（https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement）的版本
+ * Many of the jsdoc definitions here are modified version of the
+ * documentation from MDN(https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
  */
 
 export interface UseMediaSource {
   /**
-   * 媒体的源 URL
+   * The source url for the media
    */
   src: string
 
   /**
-   * 媒体的编解码器类型
+   * The media codec type
    */
   type?: string
+
+  /**
+   * Specifies the media query for the resource's intended media.
+   */
+  media?: string
 }
 
 export interface UseMediaTextTrackSource {
   /**
-   * 指示除非用户的偏好指示其他轨道更合适，否则轨道应启用
+   * Indicates that the track should be enabled unless the user's preferences indicate
+   * that another track is more appropriate
    */
   default?: boolean
 
   /**
-   * 文本轨道的使用方式。如果省略，则默认类型是字幕。
+   * How the text track is meant to be used. If omitted the default kind is subtitles.
    */
   kind: TextTrackKind
 
   /**
-   * 文本轨道的用户可读标题，在列出可用文本轨道时浏览器使用
+   * A user-readable title of the text track which is used by the browser
+   * when listing available text tracks.
    */
   label: string
 
   /**
-   * 轨道的地址（.vtt 文件）。必须是有效的 URL。必须指定此属性，其 URL 值必须与文档具有相同的来源。
+   * Address of the track (.vtt file). Must be a valid URL. This attribute
+   * must be specified and its URL value must have the same origin as the document
    */
   src: string
 
   /**
-   * 轨道文本数据的语言。它必须是有效的 BCP 47 语言标签。
-   * 如果 kind 属性设置为 subtitles，则必须定义 srclang。
+   * Language of the track text data. It must be a valid BCP 47 language tag.
+   * If the kind attribute is set to subtitles, then srclang must be defined.
    */
   srcLang: string
 }
 
 interface UseMediaControlsOptions extends ConfigurableDocument {
   /**
-   * 媒体的源，可以是字符串、`UseMediaSource` 对象或 `UseMediaSource` 对象的列表
+   * The source for the media, may either be a string, a `UseMediaSource` object, or a list
+   * of `UseMediaSource` objects.
    */
   src?: MaybeRefOrGetter<string | UseMediaSource | UseMediaSource[]>
 
   /**
-   * 媒体的文本轨道列表
+   * A list of text tracks for the media
    */
   tracks?: MaybeRefOrGetter<UseMediaTextTrackSource[]>
 }
 
 export interface UseMediaTextTrack {
   /**
-   * 文本轨道的索引
+   * The index of the text track
    */
   id: number
 
   /**
-   * 文本轨道的标签
+   * The text track label
    */
   label: string
 
   /**
-   * 轨道文本数据的语言。它必须是有效的 BCP 47 语言标签。
-   * 如果 kind 属性设置为 subtitles，则必须定义 srclang。
+   * Language of the track text data. It must be a valid BCP 47 language tag.
+   * If the kind attribute is set to subtitles, then srclang must be defined.
    */
   language: string
 
   /**
-   * 指定文本轨道的显示模式，可以是 `disabled`、`hidden` 或 `showing`
+   * Specifies the display mode of the text track, either `disabled`,
+   * `hidden`, or `showing`
    */
   mode: TextTrackMode
 
   /**
-   * 文本轨道的带内元数据轨道调度类型
+   * How the text track is meant to be used. If omitted the default kind is subtitles.
+   */
+  kind: TextTrackKind
+
+  /**
+   * Indicates the track's in-band metadata track dispatch type.
    */
   inBandMetadataTrackDispatchType: string
 
   /**
-   * 文本轨道的提示列表
+   * A list of text track cues
    */
   cues: TextTrackCueList | null
 
   /**
-   * 活动文本轨道提示的列表
+   * A list of active text track cues
    */
   activeCues: TextTrackCueList | null
 }
@@ -142,6 +158,8 @@ export function useMediaControls(target: MaybeRef<HTMLMediaElement | null | unde
   const {
     document = defaultDocument,
   } = options
+
+  const listenerOptions = { passive: true }
 
   const currentTime = ref(0)
   const duration = ref(0)
@@ -249,33 +267,24 @@ export function useMediaControls(target: MaybeRef<HTMLMediaElement | null | unde
 
     // Clear the sources
     el.querySelectorAll('source').forEach((e) => {
-      e.removeEventListener('error', sourceErrorEvent.trigger)
       e.remove()
     })
 
     // Add new sources
-    sources.forEach(({ src, type }) => {
+    sources.forEach(({ src, type, media }) => {
       const source = document.createElement('source')
 
       source.setAttribute('src', src)
       source.setAttribute('type', type || '')
+      source.setAttribute('media', media || '')
 
-      source.addEventListener('error', sourceErrorEvent.trigger)
+      useEventListener(source, 'error', sourceErrorEvent.trigger, listenerOptions)
 
       el.appendChild(source)
     })
 
     // Finally, load the new sources.
     el.load()
-  })
-
-  // Remove source error listeners
-  tryOnScopeDispose(() => {
-    const el = toValue(target)
-    if (!el)
-      return
-
-    el.querySelectorAll('source').forEach(e => e.removeEventListener('error', sourceErrorEvent.trigger))
   })
 
   /**
@@ -377,36 +386,116 @@ export function useMediaControls(target: MaybeRef<HTMLMediaElement | null | unde
     }
   })
 
-  useEventListener(target, 'timeupdate', () => ignoreCurrentTimeUpdates(() => currentTime.value = (toValue(target))!.currentTime))
-  useEventListener(target, 'durationchange', () => duration.value = (toValue(target))!.duration)
-  useEventListener(target, 'progress', () => buffered.value = timeRangeToArray((toValue(target))!.buffered))
-  useEventListener(target, 'seeking', () => seeking.value = true)
-  useEventListener(target, 'seeked', () => seeking.value = false)
-  useEventListener(target, ['waiting', 'loadstart'], () => {
-    waiting.value = true
-    ignorePlayingUpdates(() => playing.value = false)
-  })
-  useEventListener(target, 'loadeddata', () => waiting.value = false)
-  useEventListener(target, 'playing', () => {
-    waiting.value = false
-    ended.value = false
-    ignorePlayingUpdates(() => playing.value = true)
-  })
-  useEventListener(target, 'ratechange', () => rate.value = (toValue(target))!.playbackRate)
-  useEventListener(target, 'stalled', () => stalled.value = true)
-  useEventListener(target, 'ended', () => ended.value = true)
-  useEventListener(target, 'pause', () => ignorePlayingUpdates(() => playing.value = false))
-  useEventListener(target, 'play', () => ignorePlayingUpdates(() => playing.value = true))
-  useEventListener(target, 'enterpictureinpicture', () => isPictureInPicture.value = true)
-  useEventListener(target, 'leavepictureinpicture', () => isPictureInPicture.value = false)
-  useEventListener(target, 'volumechange', () => {
-    const el = toValue(target)
-    if (!el)
-      return
+  useEventListener(
+    target,
+    'timeupdate',
+    () => ignoreCurrentTimeUpdates(() => currentTime.value = (toValue(target))!.currentTime),
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'durationchange',
+    () => duration.value = (toValue(target))!.duration,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'progress',
+    () => buffered.value = timeRangeToArray((toValue(target))!.buffered),
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'seeking',
+    () => seeking.value = true,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'seeked',
+    () => seeking.value = false,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    ['waiting', 'loadstart'],
+    () => {
+      waiting.value = true
+      ignorePlayingUpdates(() => playing.value = false)
+    },
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'loadeddata',
+    () => waiting.value = false,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'playing',
+    () => {
+      waiting.value = false
+      ended.value = false
+      ignorePlayingUpdates(() => playing.value = true)
+    },
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'ratechange',
+    () => rate.value = (toValue(target))!.playbackRate,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'stalled',
+    () => stalled.value = true,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'ended',
+    () => ended.value = true,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'pause',
+    () => ignorePlayingUpdates(() => playing.value = false),
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'play',
+    () => ignorePlayingUpdates(() => playing.value = true),
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'enterpictureinpicture',
+    () => isPictureInPicture.value = true,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'leavepictureinpicture',
+    () => isPictureInPicture.value = false,
+    listenerOptions,
+  )
+  useEventListener(
+    target,
+    'volumechange',
+    () => {
+      const el = toValue(target)
+      if (!el)
+        return
 
-    volume.value = el.volume
-    muted.value = el.muted
-  })
+      volume.value = el.volume
+      muted.value = el.muted
+    },
+    listenerOptions,
+  )
 
   /**
    * The following listeners need to listen to a nested
@@ -422,9 +511,9 @@ export function useMediaControls(target: MaybeRef<HTMLMediaElement | null | unde
 
     stop()
 
-    listeners[0] = useEventListener(el.textTracks, 'addtrack', () => tracks.value = tracksToArray(el.textTracks))
-    listeners[1] = useEventListener(el.textTracks, 'removetrack', () => tracks.value = tracksToArray(el.textTracks))
-    listeners[2] = useEventListener(el.textTracks, 'change', () => tracks.value = tracksToArray(el.textTracks))
+    listeners[0] = useEventListener(el.textTracks, 'addtrack', () => tracks.value = tracksToArray(el.textTracks), listenerOptions)
+    listeners[1] = useEventListener(el.textTracks, 'removetrack', () => tracks.value = tracksToArray(el.textTracks), listenerOptions)
+    listeners[2] = useEventListener(el.textTracks, 'change', () => tracks.value = tracksToArray(el.textTracks), listenerOptions)
   })
 
   // Remove text track listeners

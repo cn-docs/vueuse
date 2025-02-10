@@ -1,6 +1,6 @@
+import type { MaybeRef } from '../utils'
 // eslint-disable-next-line no-restricted-imports
 import { ref, unref } from 'vue'
-import type { MaybeRef } from '../utils'
 
 export interface UseCounterOptions {
   min?: number
@@ -8,7 +8,7 @@ export interface UseCounterOptions {
 }
 
 /**
- * 基础计数器，带有工具函数。
+ * Basic counter with utility functions.
  *
  * @see https://vueuse.org/useCounter
  * @param [initialValue]

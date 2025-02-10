@@ -1,8 +1,8 @@
 import type { Awaitable, MaybeRefOrGetter } from '@vueuse/shared'
 import type { UnwrapNestedRefs } from 'vue'
-import { toValue, tryOnUnmounted } from '@vueuse/shared'
-import { computed, nextTick, reactive, ref, watch } from 'vue'
 import type { UseScrollOptions } from '../useScroll'
+import { tryOnUnmounted } from '@vueuse/shared'
+import { computed, nextTick, reactive, ref, toValue, watch } from 'vue'
 import { resolveElement } from '../_resolve-element'
 import { useElementVisibility } from '../useElementVisibility'
 import { useScroll } from '../useScroll'
@@ -11,29 +11,30 @@ type InfiniteScrollElement = HTMLElement | SVGElement | Window | Document | null
 
 export interface UseInfiniteScrollOptions<T extends InfiniteScrollElement = InfiniteScrollElement> extends UseScrollOptions {
   /**
-   * 元素底部与视口底部的最小距离
+   * The minimum distance between the bottom of the element and the bottom of the viewport
    *
    * @default 0
    */
   distance?: number
 
   /**
-   * 监听滚动的方向。
+   * The direction in which to listen the scroll.
    *
    * @default 'bottom'
    */
   direction?: 'top' | 'bottom' | 'left' | 'right'
 
   /**
-   * 两次加载更多之间的时间间隔（用于避免过多的调用）。
+   * The interval time between two load more (to avoid too many invokes).
    *
    * @default 100
    */
   interval?: number
 
   /**
-   * 用于确定特定元素是否可以加载更多内容的函数。
-   * 如果对于给定的元素允许加载更多内容，则应返回 `true`，否则返回 `false`。
+   * A function that determines whether more content can be loaded for a specific element.
+   * Should return `true` if loading more content is allowed for the given element,
+   * and `false` otherwise.
    */
   canLoadMore?: (el: T) => boolean
 }

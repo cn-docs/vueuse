@@ -1,9 +1,8 @@
 import type { ComputedRef } from 'vue'
-// eslint-disable-next-line no-restricted-imports
-import { computed, unref } from 'vue'
-import type { MaybeRef, MaybeRefOrGetter } from '../utils'
 
-import { toValue } from '../toValue'
+import type { MaybeRef, MaybeRefOrGetter } from '../utils'
+// eslint-disable-next-line no-restricted-imports
+import { computed, toValue, unref } from 'vue'
 
 export type Reactified<T, Computed extends boolean> = T extends (...args: infer A) => infer R
   ? (...args: { [K in keyof A]: Computed extends true ? MaybeRefOrGetter<A[K]> : MaybeRef<A[K]> }) => ComputedRef<R>
@@ -19,10 +18,11 @@ export interface ReactifyOptions<T extends boolean> {
 }
 
 /**
- * 将普通函数转换为响应式函数。
- * 转换后的函数接受 ref 作为其参数，并返回一个具有正确类型的 ComputedRef。
+ * Converts plain function into a reactive function.
+ * The converted function accepts refs as it's arguments
+ * and returns a ComputedRef, with proper typing.
  *
- * @param fn - 源函数
+ * @param fn - Source function
  */
 export function reactify<T extends Function, K extends boolean = true>(fn: T, options?: ReactifyOptions<K>): Reactified<T, K> {
   const unrefFn = options?.computedGetter === false ? unref : toValue

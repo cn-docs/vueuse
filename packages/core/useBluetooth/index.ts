@@ -1,21 +1,23 @@
-import type { ComputedRef, Ref } from 'vue'
-import { tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
-import { computed, ref, shallowRef, watch } from 'vue'
+import type { ComputedRef, Ref, ShallowRef } from 'vue'
 import type { ConfigurableNavigator } from '../_configurable'
+import { tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
+import { readonly, shallowRef, watch } from 'vue'
 
 import { defaultNavigator } from '../_configurable'
+import { useEventListener } from '../useEventListener'
 import { useSupported } from '../useSupported'
 
 export interface UseBluetoothRequestDeviceOptions {
   /**
    *
-   * BluetoothScanFilters 的数组。此过滤器由 BluetoothServiceUUIDs 数组、名称参数和名称前缀参数组成。
+   * An array of BluetoothScanFilters. This filter consists of an array
+   * of BluetoothServiceUUIDs, a name parameter, and a namePrefix parameter.
    *
    */
   filters?: BluetoothLEScanFilter[] | undefined
   /**
    *
-   * BluetoothServiceUUIDs 的数组。
+   * An array of BluetoothServiceUUIDs.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/uuid
    *
@@ -26,12 +28,14 @@ export interface UseBluetoothRequestDeviceOptions {
 export interface UseBluetoothOptions extends UseBluetoothRequestDeviceOptions, ConfigurableNavigator {
   /**
    *
-   * 一个布尔值，指示请求脚本是否可以接受所有蓝牙设备。默认值为 false。
+   * A boolean value indicating that the requesting script can accept all Bluetooth
+   * devices. The default is false.
    *
-   * !! 这可能导致选择器中显示大量无关的设备，并因为没有过滤器而浪费能量。
+   * !! This may result in a bunch of unrelated devices being shown
+   * in the chooser and energy being wasted as there are no filters.
    *
    *
-   * 使用时要谨慎。
+   * Use it with caution.
    *
    * @default false
    *
@@ -52,7 +56,7 @@ export function useBluetooth(options?: UseBluetoothOptions): UseBluetoothReturn 
 
   const isSupported = useSupported(() => navigator && 'bluetooth' in navigator)
 
-  const device = shallowRef<undefined | BluetoothDevice>(undefined)
+  const device = shallowRef<undefined | BluetoothDevice>()
 
   const error = shallowRef<unknown | null>(null)
 
@@ -84,23 +88,27 @@ export function useBluetooth(options?: UseBluetoothOptions): UseBluetoothReturn 
     }
   }
 
-  const server = ref<undefined | BluetoothRemoteGATTServer>()
+  const server = shallowRef<undefined | BluetoothRemoteGATTServer>()
+  const isConnected = shallowRef(false)
 
-  const isConnected = computed((): boolean => {
-    return server.value?.connected || false
-  })
+  function reset() {
+    isConnected.value = false
+    device.value = undefined
+    server.value = undefined
+  }
 
   async function connectToBluetoothGATTServer() {
     // Reset any errors we currently have:
     error.value = null
 
     if (device.value && device.value.gatt) {
-      // Add callback to gattserverdisconnected event:
-      device.value.addEventListener('gattserverdisconnected', () => {})
+      // Add reset fn to gattserverdisconnected event:
+      useEventListener(device, 'gattserverdisconnected', reset, { passive: true })
 
       try {
         // Connect to the device:
         server.value = await device.value.gatt.connect()
+        isConnected.value = server.value.connected
       }
       catch (err) {
         error.value = err
@@ -120,7 +128,7 @@ export function useBluetooth(options?: UseBluetoothOptions): UseBluetoothReturn 
 
   return {
     isSupported,
-    isConnected,
+    isConnected: readonly(isConnected),
     // Device:
     device,
     requestDevice,
@@ -132,10 +140,10 @@ export function useBluetooth(options?: UseBluetoothOptions): UseBluetoothReturn 
 }
 
 export interface UseBluetoothReturn {
-  isSupported: Ref<boolean>
-  isConnected: ComputedRef<boolean>
+  isSupported: ComputedRef<boolean>
+  isConnected: Readonly<Ref<boolean>>
   device: Ref<BluetoothDevice | undefined>
   requestDevice: () => Promise<void>
-  server: Ref<BluetoothRemoteGATTServer | undefined>
+  server: ShallowRef<BluetoothRemoteGATTServer | undefined>
   error: Ref<unknown | null>
 }

@@ -1,11 +1,11 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { debounceFilter } from '@vueuse/shared'
 import type { UseRefHistoryOptions, UseRefHistoryReturn } from '../useRefHistory'
+import { debounceFilter } from '@vueuse/shared'
 import { useRefHistory } from '../useRefHistory'
 
 /**
- * [useRefHistory](https://vueuse.org/useRefHistory) 的防抖实现
+ * Shorthand for [useRefHistory](https://vueuse.org/useRefHistory) with debounce filter.
  *
  * @see https://vueuse.org/useDebouncedRefHistory
  * @param source

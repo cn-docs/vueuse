@@ -1,11 +1,11 @@
 import type { Ref } from 'vue'
-import { ref } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
+import { ref } from 'vue'
 import { defaultDocument } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
 /**
- * 响应式 `document.visibilityState`.
+ * Reactively track `document.visibilityState`.
  *
  * @see https://vueuse.org/useDocumentVisibility
  */
@@ -18,7 +18,7 @@ export function useDocumentVisibility(options: ConfigurableDocument = {}): Ref<D
 
   useEventListener(document, 'visibilitychange', () => {
     visibility.value = document.visibilityState
-  })
+  }, { passive: true })
 
   return visibility
 }

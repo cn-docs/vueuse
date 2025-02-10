@@ -1,16 +1,15 @@
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { computed, toValue } from 'vue'
 
 /**
- * 响应式 `Array.some`
+ * Reactive `Array.some`
  *
  * @see https://vueuse.org/useArraySome
- * @param list - 被调用的数组。
- * @param fn - 用于测试每个元素的函数。
+ * @param list - the array was called upon.
+ * @param fn - a function to test each element.
  *
- * @returns 如果 `fn` 函数对数组中的任何元素都返回一个真值，则返回 **true**。否则，返回 **false**。
+ * @returns **true** if the `fn` function returns a **truthy** value for any element from the array. Otherwise, **false**.
  */
 export function useArraySome<T>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,

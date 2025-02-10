@@ -1,10 +1,10 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef, Ref } from 'vue'
-import { toRef, tryOnMounted } from '@vueuse/shared'
-import { computed, watch } from 'vue'
 import type { StorageLike } from '../ssr-handlers'
 import type { MaybeElementRef } from '../unrefElement'
 import type { UseStorageOptions } from '../useStorage'
+import { toRef, tryOnMounted } from '@vueuse/shared'
+import { computed, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { getSSRHandler } from '../ssr-handlers'
 import { unrefElement } from '../unrefElement'
@@ -16,76 +16,76 @@ export type BasicColorSchema = BasicColorMode | 'auto'
 
 export interface UseColorModeOptions<T extends string = BasicColorMode> extends UseStorageOptions<T | BasicColorMode> {
   /**
-   * 应用目标元素的 CSS 选择器
+   * CSS Selector for the target element applying to
    *
    * @default 'html'
    */
   selector?: string | MaybeElementRef
 
   /**
-   * 应用于目标元素的 HTML 属性
+   * HTML attribute applying the target element
    *
    * @default 'class'
    */
   attribute?: string
 
   /**
-   * 初始颜色模式
+   * The initial color mode
    *
    * @default 'auto'
    */
   initialValue?: MaybeRefOrGetter<T | BasicColorSchema>
 
   /**
-   * 添加到属性时的前缀
+   * Prefix when adding value to the attribute
    */
   modes?: Partial<Record<T | BasicColorSchema, string>>
 
   /**
-   * 用于处理更新的自定义处理程序。
-   * 当指定时，将覆盖默认行为。
+   * A custom handler for handle the updates.
+   * When specified, the default behavior will be overridden.
    *
    * @default undefined
    */
   onChanged?: (mode: T | BasicColorMode, defaultHandler:((mode: T | BasicColorMode) => void)) => void
 
   /**
-   * 自定义存储 ref
+   * Custom storage ref
    *
-   * 如果提供了，将跳过 `useStorage`
+   * When provided, `useStorage` will be skipped
    */
   storageRef?: Ref<T | BasicColorSchema>
 
   /**
-   * 将数据持久化到 localStorage/sessionStorage 的键。
+   * Key to persist the data into localStorage/sessionStorage.
    *
-   * 将 `null` 传递以禁用持久性
+   * Pass `null` to disable persistence
    *
    * @default 'vueuse-color-scheme'
    */
   storageKey?: string | null
 
   /**
-   * 存储对象，可以是 localStorage 或 sessionStorage
+   * Storage object, can be localStorage or sessionStorage
    *
    * @default localStorage
    */
   storage?: StorageLike
 
   /**
-   * 从状态中发出 `auto` 模式
+   * Emit `auto` mode from state
    *
-   * 当设置为 `true` 时，首选模式不会被转换为 `light` 或 `dark`。
-   * 当需要知道选择了 `auto` 模式时，这很有用。
+   * When set to `true`, preferred mode won't be translated into `light` or `dark`.
+   * This is useful when the fact that `auto` mode was selected needs to be known.
    *
    * @default undefined
-   * @deprecated 当需要知道选择了 `auto` 模式时，使用 `store.value`
+   * @deprecated use `store.value` when `auto` mode needs to be known
    * @see https://vueuse.org/core/useColorMode/#advanced-usage
    */
   emitAuto?: boolean
 
   /**
-   * 关闭切换时的过渡效果
+   * Disable transition on switch
    *
    * @see https://paco.me/writing/disable-theme-transitions
    * @default true

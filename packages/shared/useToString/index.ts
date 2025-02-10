@@ -1,10 +1,9 @@
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { computed, toValue } from 'vue'
 
 /**
- * 将 ref 转换为字符串。
+ * Reactively convert a ref to string.
  *
  * @see https://vueuse.org/useToString
  */

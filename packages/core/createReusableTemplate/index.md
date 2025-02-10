@@ -5,30 +5,30 @@ outline: deep
 
 # createReusableTemplate
 
-在组件作用域内定义和重用模板。
+Define and reuse template inside the component scope.
 
-## 动机
+## Motivation
 
-在开发中经常需要重用模板的某些部分。例如：
+It's common to have the need to reuse some part of the template. For example:
 
 ```vue
 <template>
   <dialog v-if="showInDialog">
-    <!-- 一些复杂的内容 -->
+    <!-- something complex -->
   </dialog>
   <div v-else>
-    <!-- 一些复杂的内容 -->
+    <!-- something complex -->
   </div>
 </template>
 ```
 
-我们希望尽可能地重用代码。通常我们需要将这些重复的部分提取到一个组件中。但是，在独立的组件中，你会失去访问局部绑定的能力。为它们定义 props 和 emits 有时会很繁琐。
+We'd like to reuse our code as much as possible. So normally we might need to extract those duplicated parts into a component. However, in a separated component you lose the ability to access the local bindings. Defining props and emits for them can be tedious sometimes.
 
-因此，这个函数的目的是提供一种在组件作用域内定义和重用模板的方法。
+So this function is made to provide a way for defining and reusing templates inside the component scope.
 
-## 使用方法
+## Usage
 
-在上面的例子中，我们可以这样重构：
+In the previous example, we could refactor it to:
 
 ```vue
 <script setup>
@@ -39,7 +39,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
 <template>
   <DefineTemplate>
-    <!-- 一些复杂的内容 -->
+    <!-- something complex -->
   </DefineTemplate>
 
   <dialog v-if="showInDialog">
@@ -51,15 +51,15 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 </template>
 ```
 
-- `<DefineTemplate>` 将注册模板但不渲染任何内容。
-- `<ReuseTemplate>` 将渲染由 `<DefineTemplate>` 提供的模板。
-- `<DefineTemplate>` 必须在 `<ReuseTemplate>` 之前使用。
+- `<DefineTemplate>` will register the template and renders nothing.
+- `<ReuseTemplate>` will render the template provided by `<DefineTemplate>`.
+- `<DefineTemplate>` must be used before `<ReuseTemplate>`.
 
-> **注意**：建议尽可能将内容提取为独立组件。过度使用此函数可能会导致代码库的不良实践。
+> **Note**: It's recommended to extract as separate components whenever possible. Abusing this function might lead to bad practices for your codebase.
 
-### 选项式 API
+### Options API
 
-当使用[选项式 API](https://vuejs.org/guide/introduction.html#api-styles)时，你需要在组件设置之外定义 `createReusableTemplate`，并将其传递给 `components` 选项以在模板中使用。
+When using with [Options API](https://vuejs.org/guide/introduction.html#api-styles), you will need to define `createReusableTemplate` outside of the component setup and pass to the `components` option in order to use them in the template.
 
 ```vue
 <script>
@@ -81,19 +81,19 @@ export default defineComponent({
 
 <template>
   <DefineTemplate v-slot="{ data, msg, anything }">
-    <div>{{ data }} 从使用处传递</div>
+    <div>{{ data }} passed from usage</div>
   </DefineTemplate>
 
-  <ReuseTemplate :data="data" msg="第一次使用" />
+  <ReuseTemplate :data="data" msg="The first usage" />
 </template>
 ```
 
-### 传递数据
+### Passing Data
 
-你也可以使用插槽向模板传递数据：
+You can also pass data to the template using slots:
 
-- 在 `<DefineTemplate>` 上使用 `v-slot="..."` 来访问数据
-- 直接在 `<ReuseTemplate>` 上绑定数据以传递给模板
+- Use `v-slot="..."` to access the data on `<DefineTemplate>`
+- Directly bind the data on `<ReuseTemplate>` to pass them to the template
 
 ```vue
 <script setup>
@@ -104,44 +104,44 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
 <template>
   <DefineTemplate v-slot="{ data, msg, anything }">
-    <div>{{ data }} 从使用处传递</div>
+    <div>{{ data }} passed from usage</div>
   </DefineTemplate>
 
-  <ReuseTemplate :data="data" msg="第一次使用" />
-  <ReuseTemplate :data="anotherData" msg="第二次使用" />
-  <ReuseTemplate v-bind="{ data: something, msg: '第三次' }" />
+  <ReuseTemplate :data="data" msg="The first usage" />
+  <ReuseTemplate :data="anotherData" msg="The second usage" />
+  <ReuseTemplate v-bind="{ data: something, msg: 'The third' }" />
 </template>
 ```
 
-### TypeScript 支持
+### TypeScript Support
 
-`createReusableTemplate` 接受一个泛型类型来为传递给模板的数据提供类型支持：
+`createReusableTemplate` accepts a generic type to provide type support for the data passed to the template:
 
 ```vue
 <script setup lang="ts">
 import { createReusableTemplate } from '@vueuse/core'
 
-// 返回一对 `DefineTemplate` 和 `ReuseTemplate`
+// Comes with pair of `DefineTemplate` and `ReuseTemplate`
 const [DefineFoo, ReuseFoo] = createReusableTemplate<{ msg: string }>()
 
-// 你可以创建多个可重用模板
+// You can create multiple reusable templates
 const [DefineBar, ReuseBar] = createReusableTemplate<{ items: string[] }>()
 </script>
 
 <template>
   <DefineFoo v-slot="{ msg }">
-    <!-- `msg` 的类型为 `string` -->
+    <!-- `msg` is typed as `string` -->
     <div>Hello {{ msg.toUpperCase() }}</div>
   </DefineFoo>
 
   <ReuseFoo msg="World" />
 
-  <!-- @ts-expect-error 类型错误！ -->
+  <!-- @ts-expect-error Type Error! -->
   <ReuseFoo :msg="1" />
 </template>
 ```
 
-如果你不喜欢数组解构，以下用法也是合法的：
+Optionally, if you are not a fan of array destructuring, the following usages are also legal:
 
 ```vue
 <script setup lang="ts">
@@ -178,12 +178,37 @@ const TemplateFoo = createReusableTemplate<{ msg: string }>()
 ```
 
 ::: warning
-不支持在没有 `v-bind` 的情况下传递布尔类型的 props。详见[注意事项](#布尔类型-props)部分。
+Passing boolean props without `v-bind` is not supported. See the [Caveats](#boolean-props) section for more details.
 :::
 
-### 传递插槽
+### Props and Attributes
 
-也可以从 `<ReuseTemplate>` 传回插槽。你可以通过 `$slots` 在 `<DefineTemplate>` 上访问这些插槽：
+By default, all props and attributes passed to `<ReuseTemplate>` will be passed to the template. If you don't want certain props to be passed to the DOM, you need to define the runtime props:
+
+```ts
+import { createReusableTemplate } from '@vueuse/core'
+
+const [DefineTemplate, ReuseTemplate] = createReusableTemplate({
+  props: {
+    msg: String,
+    enable: Boolean,
+  }
+})
+```
+
+If you don't want to pass any props to the template, you can pass the `inheritAttrs` option:
+
+```ts
+import { createReusableTemplate } from '@vueuse/core'
+
+const [DefineTemplate, ReuseTemplate] = createReusableTemplate({
+  inheritAttrs: false,
+})
+```
+
+### Passing Slots
+
+It's also possible to pass slots back from `<ReuseTemplate>`. You can access the slots on `<DefineTemplate>` from `$slots`:
 
 ```vue
 <script setup>
@@ -195,25 +220,25 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 <template>
   <DefineTemplate v-slot="{ $slots, otherProp }">
     <div some-layout>
-      <!-- 渲染插槽 -->
+      <!-- To render the slot -->
       <component :is="$slots.default" />
     </div>
   </DefineTemplate>
 
   <ReuseTemplate>
-    <div>一些内容</div>
+    <div>Some content</div>
   </ReuseTemplate>
   <ReuseTemplate>
-    <div>另一些内容</div>
+    <div>Another content</div>
   </ReuseTemplate>
 </template>
 ```
 
-## 注意事项
+## Caveats
 
-### 布尔类型 props
+### Boolean props
 
-与 Vue 的行为不同，定义为 `boolean` 类型的 props 在没有 `v-bind` 传递或缺失时会分别解析为空字符串或 `undefined`：
+As opposed to Vue's behavior, props defined as `boolean` that were passed without `v-bind` or absent will be resolved into an empty string or `undefined` respectively:
 
 ```vue
 <script setup lang="ts">
@@ -243,15 +268,15 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 </template>
 ```
 
-## 参考
+## References
 
-此函数从 [vue-reuse-template](https://github.com/antfu/vue-reuse-template) 迁移而来。
+This function is migrated from [vue-reuse-template](https://github.com/antfu/vue-reuse-template).
 
-关于重用模板的现有 Vue 讨论/问题：
+Existing Vue discussions/issues about reusing template:
 
-- [关于重用模板的讨论](https://github.com/vuejs/core/discussions/6898)
+- [Discussion on Reusing Templates](https://github.com/vuejs/core/discussions/6898)
 
-替代方案：
+Alternative Approaches:
 
 - [Vue Macros - `namedTemplate`](https://vue-macros.sxzz.moe/features/named-template.html)
 - [`unplugin-@vueuse/core`](https://github.com/liulinboyi/unplugin-@vueuse/core)

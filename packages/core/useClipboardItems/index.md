@@ -6,21 +6,21 @@ related:
 
 # useClipboardItems
 
-使用 [剪贴板 API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)。提供对剪切、复制和粘贴命令的响应能力，以及异步从系统剪贴板读取和写入的功能。通过 [权限 API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API) 进行访问控制，未经用户许可，不允许读取或更改剪贴板内容。
+Reactive [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API). Provides the ability to respond to clipboard commands (cut, copy, and paste) as well as to asynchronously read from and write to the system clipboard. Access to the contents of the clipboard is gated behind the [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API). Without user permission, reading or altering the clipboard contents is not permitted.
 
-## 与 `useClipboard` 的区别
+## Difference from `useClipboard`
 
-`useClipboard` 是一个“仅限文本”的函数，而 `useClipboardItems` 基于 [ClipboardItem](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem)。你可以使用 `useClipboardItems` 复制 [ClipboardItem](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem) 支持的任何内容。
+`useClipboard` is a "text-only" function, while `useClipboardItems` is a [ClipboardItem](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem) based function. You can use `useClipboardItems` to copy any content supported by [ClipboardItem](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem).
 
-## 使用方式
+## Usage
 
 ```js
 import { useClipboardItems } from '@vueuse/core'
 
-const mime = 'text/html'
+const mime = 'text/plain'
 const source = ref([
   new ClipboardItem({
-    [mime]: new Blob(['\'<b>HTML content</b>\'', { type: mime }]),
+    [mime]: new Blob(['plain text'], { type: mime }),
   })
 ])
 
@@ -31,16 +31,16 @@ const { content, copy, copied, isSupported } = useClipboardItems({ source })
 <template>
   <div v-if="isSupported">
     <button @click="copy(source)">
-      <!-- 默认情况下，`copied` 将在 1.5 秒后重置 -->
-      <span v-if="!copied">复制</span>
-      <span v-else>已复制！</span>
+      <!-- by default, `copied` will be reset in 1.5s -->
+      <span v-if="!copied">Copy</span>
+      <span v-else>Copied!</span>
     </button>
     <p>
-      当前已复制内容：<code>{{ text || '无' }}</code>
+      Current copied: <code>{{ content || 'none' }}</code>
     </p>
   </div>
   <p v-else>
-    您的浏览器不支持剪贴板 API
+    Your browser does not support Clipboard API
   </p>
 </template>
 ```

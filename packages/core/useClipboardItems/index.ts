@@ -1,27 +1,27 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
-import type { ComputedRef, Ref } from 'vue'
-import { toValue, useTimeoutFn } from '@vueuse/shared'
-import { ref } from 'vue'
+import type { ComputedRef } from 'vue'
 import type { ConfigurableNavigator } from '../_configurable'
+import { useTimeoutFn } from '@vueuse/shared'
+import { ref, toValue } from 'vue'
 import { defaultNavigator } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { useSupported } from '../useSupported'
 
 export interface UseClipboardItemsOptions<Source> extends ConfigurableNavigator {
   /**
-   * 启用剪贴板读取
+   * Enabled reading for clipboard
    *
    * @default false
    */
   read?: boolean
 
   /**
-   * 复制的数据源
+   * Copy source
    */
   source?: Source
 
   /**
-   * 重置 `copied` ref 状态的毫秒数
+   * Milliseconds to reset state of `copied` ref
    *
    * @default 1500
    */
@@ -29,14 +29,14 @@ export interface UseClipboardItemsOptions<Source> extends ConfigurableNavigator 
 }
 
 export interface UseClipboardItemsReturn<Optional> {
-  isSupported: Ref<boolean>
+  isSupported: ComputedRef<boolean>
   content: ComputedRef<ClipboardItems>
   copied: ComputedRef<boolean>
   copy: Optional extends true ? (content?: ClipboardItems) => Promise<void> : (text: ClipboardItems) => Promise<void>
 }
 
 /**
- * 响应式 Clipboard API.
+ * Reactive Clipboard API.
  *
  * @see https://vueuse.org/useClipboardItems
  * @param options
@@ -54,7 +54,7 @@ export function useClipboardItems(options: UseClipboardItemsOptions<MaybeRefOrGe
   const isSupported = useSupported(() => (navigator && 'clipboard' in navigator))
   const content = ref<ClipboardItems>([])
   const copied = ref(false)
-  const timeout = useTimeoutFn(() => copied.value = false, copiedDuring)
+  const timeout = useTimeoutFn(() => copied.value = false, copiedDuring, { immediate: false })
 
   function updateContent() {
     if (isSupported.value) {
@@ -65,7 +65,7 @@ export function useClipboardItems(options: UseClipboardItemsOptions<MaybeRefOrGe
   }
 
   if (isSupported.value && read)
-    useEventListener(['copy', 'cut'], updateContent)
+    useEventListener(['copy', 'cut'], updateContent, { passive: true })
 
   async function copy(value = toValue(source)) {
     if (isSupported.value && value != null) {

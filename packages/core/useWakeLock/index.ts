@@ -1,6 +1,6 @@
+import type { ConfigurableDocument, ConfigurableNavigator } from '../_configurable'
 import { whenever } from '@vueuse/shared'
 import { computed, ref, shallowRef } from 'vue'
-import type { ConfigurableDocument, ConfigurableNavigator } from '../_configurable'
 import { defaultDocument, defaultNavigator } from '../_configurable'
 import { useDocumentVisibility } from '../useDocumentVisibility'
 import { useEventListener } from '../useEventListener'
@@ -21,7 +21,7 @@ type NavigatorWithWakeLock = Navigator & {
 export type UseWakeLockOptions = ConfigurableNavigator & ConfigurableDocument
 
 /**
- * 响应式屏幕唤醒锁定 API。
+ * Reactive Screen Wake Lock API.
  *
  * @see https://vueuse.org/useWakeLock
  * @param options
@@ -40,7 +40,7 @@ export function useWakeLock(options: UseWakeLockOptions = {}) {
   if (isSupported.value) {
     useEventListener(sentinel, 'release', () => {
       requestedType.value = sentinel.value?.type ?? false
-    })
+    }, { passive: true })
 
     whenever(
       () => documentVisibility.value === 'visible' && document?.visibilityState === 'visible' && requestedType.value,

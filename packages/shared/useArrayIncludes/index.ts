@@ -1,7 +1,6 @@
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { computed, toValue } from 'vue'
 import { containsProp, isObject } from '../utils'
 
 export type UseArrayIncludesComparatorFn<T, V> = ((element: T, value: V, index: number, array: MaybeRefOrGetter<T>[]) => boolean)
@@ -16,11 +15,11 @@ export interface UseArrayIncludesOptions<T, V> {
 }
 
 /**
- * 响应式 `Array.includes`
+ * Reactive `Array.includes`
  *
  * @see https://vueuse.org/useArrayIncludes
  *
- * @returns 如果在数组中找到了 `value`，则返回 true。否则返回 false。
+ * @returns true if the `value` is found in the array. Otherwise, false.
  */
 export function useArrayIncludes<T, V = any>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,

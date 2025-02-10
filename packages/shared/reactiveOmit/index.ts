@@ -1,6 +1,5 @@
-import { toRefs } from 'vue'
+import { toRefs, toValue } from 'vue'
 import { reactiveComputed } from '../reactiveComputed'
-import { toValue } from '../toValue'
 
 export type ReactiveOmitPredicate<T> = (value: T[keyof T], key: keyof T) => boolean
 
@@ -13,7 +12,7 @@ export function reactiveOmit<T extends object>(
   predicate: ReactiveOmitPredicate<T>,
 ): Partial<T>
 /**
- * 从响应式对象中动态地排除字段。
+ * Reactively omit fields from a reactive object
  *
  * @see https://vueuse.org/reactiveOmit
  */

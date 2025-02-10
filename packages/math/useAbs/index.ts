@@ -1,10 +1,9 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef } from 'vue'
-import { toValue } from '@vueuse/shared'
-import { computed } from 'vue'
+import { computed, toValue } from 'vue'
 
 /**
- * 响应式 `Math.abs`。
+ * Reactive `Math.abs`.
  *
  * @see https://vueuse.org/useAbs
  */

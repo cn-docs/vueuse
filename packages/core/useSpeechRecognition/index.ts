@@ -3,29 +3,28 @@
 
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { toRef, toValue, tryOnScopeDispose } from '@vueuse/shared'
-import { ref, shallowRef, watch } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import type { SpeechRecognition, SpeechRecognitionErrorEvent } from './types'
+import { toRef, tryOnScopeDispose } from '@vueuse/shared'
+import { ref, shallowRef, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useSupported } from '../useSupported'
-import type { SpeechRecognition, SpeechRecognitionErrorEvent } from './types'
 
 export interface UseSpeechRecognitionOptions extends ConfigurableWindow {
   /**
-   * 控制是否对每次识别返回连续的结果，还是仅返回单个结果。
+   * Controls whether continuous results are returned for each recognition, or only a single result.
    *
    * @default true
    */
   continuous?: boolean
   /**
-   * 控制是否返回临时结果（true）或不返回临时结果（false）。
-   * 临时结果是尚未最终确定的结果。
+   * Controls whether interim results should be returned (true) or not (false.) Interim results are results that are not yet final
    *
    * @default true
    */
   interimResults?: boolean
   /**
-   * 语音识别的语言
+   * Language for SpeechRecognition
    *
    * @default 'en-US'
    */
@@ -40,7 +39,7 @@ export interface UseSpeechRecognitionOptions extends ConfigurableWindow {
 }
 
 /**
- * 响应式语音识别。
+ * Reactive SpeechRecognition.
  *
  * @see https://vueuse.org/useSpeechRecognition
  * @see https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition SpeechRecognition
@@ -60,9 +59,7 @@ export function useSpeechRecognition(options: UseSpeechRecognitionOptions = {}) 
   const result = ref('')
   const error = shallowRef(undefined) as Ref<SpeechRecognitionErrorEvent | undefined>
 
-  const toggle = (value = !isListening.value) => {
-    isListening.value = value
-  }
+  let recognition: SpeechRecognition | undefined
 
   const start = () => {
     isListening.value = true
@@ -72,10 +69,17 @@ export function useSpeechRecognition(options: UseSpeechRecognitionOptions = {}) 
     isListening.value = false
   }
 
+  const toggle = (value = !isListening.value) => {
+    if (value) {
+      start()
+    }
+    else {
+      stop()
+    }
+  }
+
   const SpeechRecognition = window && ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition)
   const isSupported = useSupported(() => SpeechRecognition)
-
-  let recognition: SpeechRecognition | undefined
 
   if (isSupported.value) {
     recognition = new SpeechRecognition() as SpeechRecognition
@@ -86,6 +90,7 @@ export function useSpeechRecognition(options: UseSpeechRecognitionOptions = {}) 
     recognition.maxAlternatives = maxAlternatives
 
     recognition.onstart = () => {
+      isListening.value = true
       isFinal.value = false
     }
 
@@ -112,8 +117,11 @@ export function useSpeechRecognition(options: UseSpeechRecognitionOptions = {}) 
       recognition!.lang = toValue(lang)
     }
 
-    watch(isListening, () => {
-      if (isListening.value)
+    watch(isListening, (newValue, oldValue) => {
+      if (newValue === oldValue)
+        return
+
+      if (newValue)
         recognition!.start()
       else
         recognition!.stop()
@@ -121,7 +129,7 @@ export function useSpeechRecognition(options: UseSpeechRecognitionOptions = {}) 
   }
 
   tryOnScopeDispose(() => {
-    isListening.value = false
+    stop()
   })
 
   return {

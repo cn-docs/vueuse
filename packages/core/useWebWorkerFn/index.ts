@@ -1,8 +1,8 @@
 /* this implementation is a vue port of https://github.com/alewin/useWorker by Alessio Koci */
 
+import type { ConfigurableWindow } from '../_configurable'
 import { tryOnScopeDispose } from '@vueuse/shared'
 import { ref } from 'vue'
-import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 import createWorkerBlobUrl from './lib/createWorkerBlobUrl'
 
@@ -15,13 +15,13 @@ export type WebWorkerStatus =
 
 export interface UseWebWorkerOptions extends ConfigurableWindow {
   /**
-   * 在终止工作线程之前的毫秒数
+   * Number of milliseconds before killing the worker
    *
    * @default undefined
    */
   timeout?: number
   /**
-   * 包含运行工作线程所需的外部依赖项的数组
+   * An array that contains the external dependencies needed to run the worker
    */
   dependencies?: string[]
   /**
@@ -31,7 +31,7 @@ export interface UseWebWorkerOptions extends ConfigurableWindow {
 }
 
 /**
- * 使用简单的语法运行耗时函数，而不会阻塞用户界面，使用 Promise 来实现。
+ * Run expensive function without blocking the UI, using a simple syntax that makes use of Promise.
  *
  * @see https://vueuse.org/useWebWorkerFn
  * @param fn

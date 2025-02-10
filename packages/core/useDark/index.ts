@@ -1,25 +1,25 @@
-import { computed } from 'vue'
 import type { BasicColorSchema, UseColorModeOptions } from '../useColorMode'
+import { computed } from 'vue'
 import { useColorMode } from '../useColorMode'
 
 export interface UseDarkOptions extends Omit<UseColorModeOptions<BasicColorSchema>, 'modes' | 'onChanged'> {
   /**
-   * 当 isDark=true 时应用于目标元素的值
+   * Value applying to the target element when isDark=true
    *
    * @default 'dark'
    */
   valueDark?: string
 
   /**
-   * 当 isDark=false 时应用于目标元素的值
+   * Value applying to the target element when isDark=false
    *
    * @default ''
    */
   valueLight?: string
 
   /**
-   * 自定义处理更新的处理程序。
-   * 当指定时，将覆盖默认行为。
+   * A custom handler for handle the updates.
+   * When specified, the default behavior will be overridden.
    *
    * @default undefined
    */
@@ -27,7 +27,7 @@ export interface UseDarkOptions extends Omit<UseColorModeOptions<BasicColorSchem
 }
 
 /**
- * 响应式暗模式，自动数据持久化。
+ * Reactive dark mode with auto data persistence.
  *
  * @see https://vueuse.org/useDark
  * @param options

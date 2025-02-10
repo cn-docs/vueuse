@@ -4,26 +4,30 @@ category: '@Integrations'
 
 # useSortable
 
-[`sortable`](https://github.com/SortableJS/Sortable) 的封装。
+Wrapper for [`sortable`](https://github.com/SortableJS/Sortable).
 
-关于可传递的选项的更多信息，请参见 `Sortable` 文档中的 [`Sortable.options`](https://github.com/SortableJS/Sortable#options)。
+For more information on what options can be passed, see [`Sortable.options`](https://github.com/SortableJS/Sortable#options) in the `Sortable` documentation.
 
-## 安装
+::: warning
+Currently, `useSortable` only implements drag-and-drop sorting for a single list.
+:::
+
+## Install
 
 ```bash
 npm i sortablejs@^1
 ```
 
-## 使用方法
+## Usage
 
-### 使用模板引用
+### Use template ref
 
 ```vue
 <script setup lang="ts">
 import { useSortable } from '@vueuse/integrations/useSortable'
-import { ref } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef<HTMLElement>('el')
 const list = ref([{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }])
 
 useSortable(el, list)
@@ -38,25 +42,25 @@ useSortable(el, list)
 </template>
 ```
 
-### 使用指定选择器进行操作
+### Use specifies the selector to operate on
 
 ```vue
 <script setup lang="ts">
 import { useSortable } from '@vueuse/integrations/useSortable'
-import { ref } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef<HTMLElement>('el')
 const list = ref([{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }])
 
 const animation = 200
 
 const { option } = useSortable(el, list, {
   handle: '.handle',
-  // 或设置选项
+  // or option set
   // animation
 })
 
-// 你可以使用 option 方法来设置和获取 Sortable 的选项
+// You can use the option method to set and get the option of Sortable
 option('animation', animation)
 // option('animation') // 200
 </script>
@@ -71,7 +75,7 @@ option('animation', animation)
 </template>
 ```
 
-### 使用选择器获取根元素
+### Use a selector to get the root element
 
 ```vue
 <script setup lang="ts">
@@ -92,21 +96,21 @@ useSortable('#dv', list)
 </template>
 ```
 
-### 提示
+### Tips
 
-如果你想自己处理 onUpdate，你可以传入 onUpdate 参数，我们也提供了一个移动项目位置的函数。
+If you want to handle the onUpdate yourself, you can pass in onUpdate parameters, and we also exposed a function to move the item position.
 
 ```ts
 import { moveArrayElement } from '@vueuse/integrations/useSortable'
 
 useSortable(el, list, {
   onUpdate: (e) => {
-    // 执行某些操作
+    // do something
     moveArrayElement(list.value, e.oldIndex, e.newIndex, e)
-    // 这里需要 nextTick，因为 moveArrayElement 在微任务中执行
-    // 所以我们需要等到下一个 tick 直到完成
+    // nextTick required here as moveArrayElement is executed in a microtask
+    // so we need to wait until the next tick until that is finished.
     nextTick(() => {
-      /* 执行某些操作 */
+      /* do something */
     })
   }
 })

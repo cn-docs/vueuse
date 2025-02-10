@@ -1,98 +1,98 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
-import { isClient, toRefs, toValue } from '@vueuse/shared'
-import { computed, ref } from 'vue'
 import type { PointerType, Position } from '../types'
+import { isClient, toRefs } from '@vueuse/shared'
+import { computed, ref, toValue } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
 export interface UseDraggableOptions {
   /**
-   * 只有在直接点击元素时才开始拖动
+   * Only start the dragging when click on the element directly
    *
    * @default false
    */
   exact?: MaybeRefOrGetter<boolean>
 
   /**
-   * 阻止事件的默认行为
+   * Prevent events defaults
    *
    * @default false
    */
   preventDefault?: MaybeRefOrGetter<boolean>
 
   /**
-   * 阻止事件的传播
+   * Prevent events propagation
    *
    * @default false
    */
   stopPropagation?: MaybeRefOrGetter<boolean>
 
   /**
-   * 是否在捕获阶段分发事件
+   * Whether dispatch events in capturing phase
    *
    * @default true
    */
   capture?: boolean
 
   /**
-   * 要附加 `pointermove` 和 `pointerup` 事件的元素。
+   * Element to attach `pointermove` and `pointerup` events to.
    *
    * @default window
    */
   draggingElement?: MaybeRefOrGetter<HTMLElement | SVGElement | Window | Document | null | undefined>
 
   /**
-   * 用于计算边界的元素（如果未设置，将使用事件的目标）。
+   * Element for calculating bounds (If not set, it will use the event's target).
    *
    * @default undefined
    */
   containerElement?: MaybeRefOrGetter<HTMLElement | SVGElement | null | undefined>
 
   /**
-   * 触发拖动事件的句柄
+   * Handle that triggers the drag event
    *
    * @default target
    */
   handle?: MaybeRefOrGetter<HTMLElement | SVGElement | null | undefined>
 
   /**
-   * 监听的指针类型。
+   * Pointer types that listen to.
    *
    * @default ['mouse', 'touch', 'pen']
    */
   pointerTypes?: PointerType[]
 
   /**
-   * 元素的初始位置。
+   * Initial position of the element.
    *
    * @default { x: 0, y: 0 }
    */
   initialValue?: MaybeRefOrGetter<Position>
 
   /**
-   * 拖动开始时的回调函数。返回 `false` 可以防止拖动。
+   * Callback when the dragging starts. Return `false` to prevent dragging.
    */
   onStart?: (position: Position, event: PointerEvent) => void | false
 
   /**
-   * 拖动过程中的回调函数。
+   * Callback during dragging.
    */
   onMove?: (position: Position, event: PointerEvent) => void
 
   /**
-   * 拖动结束时的回调函数。
+   * Callback when dragging end.
    */
   onEnd?: (position: Position, event: PointerEvent) => void
 
   /**
-   * 要在其上拖动的轴。
+   * Axis to drag on.
    *
    * @default 'both'
    */
   axis?: 'x' | 'y' | 'both'
 
   /**
-   * 禁用拖放。
+   * Disabled drag and drop.
    *
    * @default false
    */
@@ -114,7 +114,7 @@ export interface UseDraggableOptions {
 }
 
 /**
- * 使元素可拖动。
+ * Make elements draggable.
  *
  * @see https://vueuse.org/useDraggable
  * @param target
@@ -216,7 +216,10 @@ export function useDraggable(
   }
 
   if (isClient) {
-    const config = { capture: options.capture ?? true }
+    const config = () => ({
+      capture: options.capture ?? true,
+      passive: !toValue(preventDefault),
+    })
     useEventListener(draggingHandle, 'pointerdown', start, config)
     useEventListener(draggingElement, 'pointermove', move, config)
     useEventListener(draggingElement, 'pointerup', end, config)

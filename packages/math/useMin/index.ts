@@ -1,14 +1,14 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeComputedRefArgs } from '../utils'
+import { computed } from 'vue'
 import { toValueArgsFlat } from '../utils'
 
 export function useMin(array: MaybeRefOrGetter<MaybeRefOrGetter<number>[]>): ComputedRef<number>
 export function useMin(...args: MaybeRefOrGetter<number>[]): ComputedRef<number>
 
 /**
- * 响应式 `Math.min`.
+ * Reactive `Math.min`.
  *
  * @see https://vueuse.org/useMin
  */

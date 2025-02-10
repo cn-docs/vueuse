@@ -1,7 +1,6 @@
 import type { MaybeRefOrGetter, Pausable } from '@vueuse/shared'
 import type { ComputedRef } from 'vue'
-import { toValue } from '@vueuse/shared'
-import { computed } from 'vue'
+import { computed, toValue } from 'vue'
 import { useNow } from '../useNow'
 
 export type UseTimeAgoFormatter<T = number> = (value: T, isPast: boolean) => string
@@ -21,52 +20,52 @@ export type UseTimeAgoMessages<UnitNames extends string = UseTimeAgoUnitNamesDef
 
 export interface FormatTimeAgoOptions<UnitNames extends string = UseTimeAgoUnitNamesDefault> {
   /**
-   * 最大单位（以毫秒为单位）在显示完整日期而不是相对时间之前显示
+   * Maximum unit (of diff in milliseconds) to display the full date instead of relative
    *
    * @default undefined
    */
   max?: UnitNames | number
 
   /**
-   * 完整日期的格式化程序
+   * Formatter for full date
    */
   fullDateFormatter?: (date: Date) => string
 
   /**
-   * 格式化字符串的消息
+   * Messages for formatting the string
    */
   messages?: UseTimeAgoMessages<UnitNames>
 
   /**
-   * 最小显示时间单位（默认为分钟）
+   * Minimum display time unit (default is minute)
    *
    * @default false
    */
   showSecond?: boolean
 
   /**
-   * 应用的舍入方法。
+   * Rounding method to apply.
    *
    * @default 'round'
    */
   rounding?: 'round' | 'ceil' | 'floor' | number
 
   /**
-   * 自定义单位
+   * Custom units
    */
   units?: UseTimeAgoUnit<UnitNames>[]
 }
 
 export interface UseTimeAgoOptions<Controls extends boolean, UnitNames extends string = UseTimeAgoUnitNamesDefault> extends FormatTimeAgoOptions<UnitNames> {
   /**
-   * 公开更多控件
+   * Expose more controls
    *
    * @default false
    */
   controls?: Controls
 
   /**
-   * 更新间隔，设置为 0 以禁用自动更新
+   * Intervals to update, set 0 to disable auto update
    *
    * @default 30_000
    */
@@ -126,7 +125,7 @@ function DEFAULT_FORMATTER(date: Date) {
 export type UseTimeAgoReturn<Controls extends boolean = false> = Controls extends true ? { timeAgo: ComputedRef<string> } & Pausable : ComputedRef<string>
 
 /**
- * 响应式的时间过去格式化工具。
+ * Reactive time ago formatter.
  *
  * @see https://vueuse.org/useTimeAgo
  */

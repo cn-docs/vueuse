@@ -4,9 +4,11 @@ category: Component
 
 # useVModel
 
-简化 `v-model` 绑定的简写方式，将 `props` + `emit` 转换为 `ref`
+Shorthand for v-model binding, props + emit -> ref
 
-## 用法
+> We encourage you to use Vue's [`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel) over this composable, however there are some edge-cases like using `TSX` or the `deep: true` option that `defineModel` doesn't support.
+
+## Usage
 
 ```js
 import { useVModel } from '@vueuse/core'

@@ -1,8 +1,8 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { toRef, toValue, tryOnScopeDispose } from '@vueuse/shared'
-import { computed, ref, shallowRef, watch } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { toRef, tryOnScopeDispose } from '@vueuse/shared'
+import { computed, ref, shallowRef, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useSupported } from '../useSupported'
 
@@ -10,29 +10,29 @@ export type UseSpeechSynthesisStatus = 'init' | 'play' | 'pause' | 'end'
 
 export interface UseSpeechSynthesisOptions extends ConfigurableWindow {
   /**
-   * 语音合成的语言
+   * Language for SpeechSynthesis
    *
    * @default 'en-US'
    */
   lang?: MaybeRefOrGetter<string>
   /**
-   * 获取和设置朗读时的音调。
+   * Gets and sets the pitch at which the utterance will be spoken at.
    *
    * @default 1
    */
   pitch?: MaybeRefOrGetter<SpeechSynthesisUtterance['pitch']>
   /**
-   * 获取和设置朗读时的速度。
+   * Gets and sets the speed at which the utterance will be spoken at.
    *
    * @default 1
    */
   rate?: MaybeRefOrGetter<SpeechSynthesisUtterance['rate']>
   /**
-   * 获取和设置用于朗读的声音。
+   * Gets and sets the voice that will be used to speak the utterance.
    */
   voice?: MaybeRef<SpeechSynthesisVoice>
   /**
-   * 获取和设置朗读的音量。
+   * Gets and sets the volume that the utterance will be spoken at.
    *
    * @default 1
    */
@@ -40,7 +40,7 @@ export interface UseSpeechSynthesisOptions extends ConfigurableWindow {
 }
 
 /**
- * 响应式语音合成。
+ * Reactive SpeechSynthesis.
  *
  * @see https://vueuse.org/useSpeechSynthesis
  * @see https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis SpeechSynthesis

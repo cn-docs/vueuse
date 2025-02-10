@@ -1,6 +1,7 @@
 import type { WatchCallback, WatchOptions, WatchSource, WatchStopHandle } from 'vue'
-import { watch } from 'vue'
 import type { MapOldSources, MapSources } from '../utils/types'
+
+import { watch } from 'vue'
 
 // overloads
 export function watchDeep<
@@ -28,7 +29,7 @@ export function watchDeep<
 ): WatchStopHandle
 
 /**
- * 使用 `{ deep: true }` 监听值的简写形式。
+ * Shorthand for watching value with {deep: true}
  *
  * @see https://vueuse.org/watchDeep
  */

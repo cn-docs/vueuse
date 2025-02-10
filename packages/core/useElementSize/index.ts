@@ -1,7 +1,7 @@
-import { tryOnMounted } from '@vueuse/shared'
-import { computed, ref, watch } from 'vue'
 import type { MaybeComputedElementRef } from '../unrefElement'
 import type { UseResizeObserverOptions } from '../useResizeObserver'
+import { toArray, tryOnMounted } from '@vueuse/shared'
+import { computed, ref, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useResizeObserver } from '../useResizeObserver'
@@ -12,7 +12,7 @@ export interface ElementSize {
 }
 
 /**
- * HTML 元素的响应式尺寸。
+ * Reactive size of an HTML element.
  *
  * @see https://vueuse.org/useElementSize
  */
@@ -45,7 +45,7 @@ export function useElementSize(
       }
       else {
         if (boxSize) {
-          const formatBoxSize = Array.isArray(boxSize) ? boxSize : [boxSize]
+          const formatBoxSize = toArray(boxSize)
           width.value = formatBoxSize.reduce((acc, { inlineSize }) => acc + inlineSize, 0)
           height.value = formatBoxSize.reduce((acc, { blockSize }) => acc + blockSize, 0)
         }

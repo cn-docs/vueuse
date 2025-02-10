@@ -1,33 +1,34 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
-import { noop, toValue, tryOnMounted, tryOnUnmounted } from '@vueuse/shared'
-import { ref } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
+import { noop, tryOnMounted, tryOnUnmounted } from '@vueuse/shared'
+import { ref, toValue } from 'vue'
 import { defaultDocument } from '../_configurable'
+import { useEventListener } from '../useEventListener'
 
 export interface UseScriptTagOptions extends ConfigurableDocument {
   /**
-   * 立即加载脚本
+   * Load the script immediately
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * 在脚本标签中添加 `async` 属性
+   * Add `async` attribute to the script tag
    *
    * @default true
    */
   async?: boolean
 
   /**
-   * 脚本类型
+   * Script type
    *
    * @default 'text/javascript'
    */
   type?: string
 
   /**
-   * 手动控制加载和卸载的时机
+   * Manual controls the timing of loading and unloading
    *
    * @default false
    */
@@ -40,14 +41,14 @@ export interface UseScriptTagOptions extends ConfigurableDocument {
   defer?: boolean
 
   /**
-   * 在脚本标签中添加自定义属性
+   * Add custom attribute to the script tag
    *
    */
   attrs?: Record<string, string>
 }
 
 /**
- * 异步加载脚本标签。
+ * Async script tag loading.
  *
  * @see https://vueuse.org/useScriptTag
  * @param src
@@ -128,14 +129,17 @@ export function useScriptTag(
     }
 
     // Event listeners
-    el.addEventListener('error', event => reject(event))
-    el.addEventListener('abort', event => reject(event))
-    el.addEventListener('load', () => {
+    const listenerOptions = {
+      passive: true,
+    }
+    useEventListener(el, 'error', event => reject(event), listenerOptions)
+    useEventListener(el, 'abort', event => reject(event), listenerOptions)
+    useEventListener(el, 'load', () => {
       el!.setAttribute('data-loaded', 'true')
 
       onLoaded(el!)
       resolveWithElement(el!)
-    })
+    }, listenerOptions)
 
     // Append the <script> tag to head.
     if (shouldAppend)

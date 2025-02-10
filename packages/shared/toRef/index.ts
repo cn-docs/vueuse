@@ -1,4 +1,5 @@
 import type { ComputedRef, Ref, ToRef } from 'vue'
+import type { MaybeRefOrGetter } from '../utils'
 import {
   customRef,
   readonly,
@@ -6,11 +7,10 @@ import {
   // eslint-disable-next-line no-restricted-imports
   toRef as vueToRef,
 } from 'vue'
-import type { MaybeRefOrGetter } from '../utils'
 import { noop } from '../utils'
 
 /**
- * 将值、ref 或 getter 规范化为 `ref` 或 `computed`。
+ * Normalize value/ref/getter to `ref` or `computed`.
  */
 export function toRef<T>(r: () => T): Readonly<Ref<T>>
 export function toRef<T>(r: ComputedRef<T>): ComputedRef<T>

@@ -1,6 +1,6 @@
+import type { MaybeComputedElementRef } from '../unrefElement'
 import { tryOnMounted } from '@vueuse/shared'
 import { ref, watch } from 'vue'
-import type { MaybeComputedElementRef } from '../unrefElement'
 import { unrefElement } from '../unrefElement'
 import { useEventListener } from '../useEventListener'
 import { useMutationObserver } from '../useMutationObserver'
@@ -8,27 +8,27 @@ import { useResizeObserver } from '../useResizeObserver'
 
 export interface UseElementBoundingOptions {
   /**
-   * 在组件卸载时将值重置为 0
+   * Reset values to 0 on component unmounted
    *
    * @default true
    */
   reset?: boolean
 
   /**
-   * 监听窗口大小调整事件
+   * Listen to window resize event
    *
    * @default true
    */
   windowResize?: boolean
   /**
-   * 监听窗口滚动事件
+   * Listen to window scroll event
    *
    * @default true
    */
   windowScroll?: boolean
 
   /**
-   * 组件挂载时立即调用更新
+   * Immediately call update on component mounted
    *
    * @default true
    */
@@ -46,7 +46,7 @@ export interface UseElementBoundingOptions {
 }
 
 /**
- * HTML 元素的响应式边界框。
+ * Reactive bounding box of an HTML element.
  *
  * @see https://vueuse.org/useElementBounding
  * @param target

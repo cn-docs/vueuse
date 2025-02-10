@@ -1,7 +1,7 @@
 import type { ComputedRef, Ref } from 'vue'
+import type { CloneFn } from '../useCloned'
 import { timestamp } from '@vueuse/shared'
 import { computed, markRaw, ref } from 'vue'
-import type { CloneFn } from '../useCloned'
 import { cloneFnJSON } from '../useCloned'
 
 export interface UseRefHistoryRecord<T> {
@@ -11,89 +11,89 @@ export interface UseRefHistoryRecord<T> {
 
 export interface UseManualRefHistoryOptions<Raw, Serialized = Raw> {
   /**
-   * 保留的历史记录的最大数量。默认为无限制。
+   * Maximum number of history to be kept. Default to unlimited.
    */
   capacity?: number
   /**
-   * 在获取快照时进行克隆，快捷方式为 dump: JSON.parse(JSON.stringify(value))。
-   * 默认为 false
+   * Clone when taking a snapshot, shortcut for dump: JSON.parse(JSON.stringify(value)).
+   * Default to false
    *
    * @default false
    */
   clone?: boolean | CloneFn<Raw>
   /**
-   * 将数据序列化到历史记录中
+   * Serialize data into the history
    */
   dump?: (v: Raw) => Serialized
   /**
-   * 从历史记录中反序列化数据
+   * Deserialize data from the history
    */
   parse?: (v: Serialized) => Raw
 
   /**
-   * 设置数据源
+   * set data source
    */
   setSource?: (source: Ref<Raw>, v: Raw) => void
 }
 
 export interface UseManualRefHistoryReturn<Raw, Serialized> {
   /**
-   * 绕过跟踪的原始 ref
+   * Bypassed tracking ref from the argument
    */
   source: Ref<Raw>
 
   /**
-   * 用于撤销的历史记录数组，最新的记录在最前面
+   * An array of history records for undo, newest comes to first
    */
   history: Ref<UseRefHistoryRecord<Serialized>[]>
 
   /**
-   * 最后的历史记录点，如果暂停，则源可能不同
+   * Last history point, source can be different if paused
    */
   last: Ref<UseRefHistoryRecord<Serialized>>
 
   /**
-   * 与 {@link UseManualRefHistoryReturn.history | history} 相同
+   * Same as {@link UseManualRefHistoryReturn.history | history}
    */
   undoStack: Ref<UseRefHistoryRecord<Serialized>[]>
 
   /**
-   * 用于重做的记录数组
+   * Records array for redo
    */
   redoStack: Ref<UseRefHistoryRecord<Serialized>[]>
 
   /**
-   * 表示是否可以撤销的 ref（undoStack 不为空）
+   * A ref representing if undo is possible (non empty undoStack)
    */
   canUndo: ComputedRef<boolean>
 
   /**
-   * 表示是否可以重做的 ref（redoStack 不为空）
+   * A ref representing if redo is possible (non empty redoStack)
    */
   canRedo: ComputedRef<boolean>
 
   /**
-   * 撤销更改
+   * Undo changes
    */
   undo: () => void
 
   /**
-   * 重做更改
+   * Redo changes
    */
   redo: () => void
 
   /**
-   * 清除所有历史记录
+   * Clear all the history
    */
   clear: () => void
 
   /**
-   * 创建新的历史记录
+   * Create a new history record
    */
   commit: () => void
 
   /**
-   * 使用最新历史记录重置 ref 的值
+   * Reset ref's value with latest history
    */
   reset: () => void
 }

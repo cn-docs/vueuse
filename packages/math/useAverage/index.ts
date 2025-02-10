@@ -1,14 +1,14 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeComputedRefArgs } from '../utils'
+import { computed } from 'vue'
 import { toValueArgsFlat } from '../utils'
 
 export function useAverage(array: MaybeRefOrGetter<MaybeRefOrGetter<number>[]>): ComputedRef<number>
 export function useAverage(...args: MaybeRefOrGetter<number>[]): ComputedRef<number>
 
 /**
- * 响应式地获取数组的平均值。
+ * Get the average of an array reactively
  *
  * @see https://vueuse.org/useAverage
  */

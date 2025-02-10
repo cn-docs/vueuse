@@ -1,7 +1,8 @@
-import { type MaybeRefOrGetter, toValue, tryOnScopeDispose } from '@vueuse/shared'
-import { computed, watch } from 'vue'
+import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeComputedElementRef, MaybeElement } from '../unrefElement'
+import { tryOnScopeDispose } from '@vueuse/shared'
+import { computed, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useSupported } from '../useSupported'
@@ -23,7 +24,8 @@ export type ResizeObserverCallback = (entries: ReadonlyArray<ResizeObserverEntry
 
 export interface UseResizeObserverOptions extends ConfigurableWindow {
   /**
-   * 设置观察器将观察哪种盒模型的变化。可能的值有 `content-box`（默认值）、`border-box` 和 `device-pixel-content-box`。
+   * Sets which box model the observer will observe changes to. Possible values
+   * are `content-box` (the default), `border-box` and `device-pixel-content-box`.
    *
    * @default 'content-box'
    */
@@ -38,7 +40,7 @@ declare class ResizeObserver {
 }
 
 /**
- * 监听元素内容或边框盒尺寸的变化
+ * Reports changes to the dimensions of an Element's content or the border-box
  *
  * @see https://vueuse.org/useResizeObserver
  * @param target

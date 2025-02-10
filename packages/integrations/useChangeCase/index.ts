@@ -1,9 +1,8 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
 import type { Options } from 'change-case'
 import type { ComputedRef, WritableComputedRef } from 'vue'
-import { toValue } from '@vueuse/shared'
 import * as changeCase from 'change-case'
-import { computed, ref } from 'vue'
+import { computed, ref, toValue } from 'vue'
 
 type EndsWithCase<T> = T extends `${infer _}Case` ? T : never
 type FilterKeys<T> = { [K in keyof T as K extends string ? K : never]: EndsWithCase<K> }
@@ -22,7 +21,7 @@ export function useChangeCase(input: MaybeRef<string>, type: MaybeRefOrGetter<Ch
 export function useChangeCase(input: MaybeRefOrGetter<string>, type: MaybeRefOrGetter<ChangeCaseType>, options?: MaybeRefOrGetter<Options> | undefined): ComputedRef<string>
 
 /**
- * 响应式 `change-case` 包装器
+ * Reactive wrapper for `change-case`
  *
  * @see https://vueuse.org/useChangeCase
  */

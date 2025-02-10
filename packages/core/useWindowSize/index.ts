@@ -1,44 +1,38 @@
+import type { ConfigurableWindow } from '../_configurable'
 import { tryOnMounted } from '@vueuse/shared'
 import { ref, watch } from 'vue'
-import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { useMediaQuery } from '../useMediaQuery'
 
 export interface UseWindowSizeOptions extends ConfigurableWindow {
-  /**
-   * 初始宽度
-   */
   initialWidth?: number
-  /**
-   * 初始高度
-   */
   initialHeight?: number
   /**
-   * 监听窗口 `orientationchange` 事件
+   * Listen to window `orientationchange` event
    *
    * @default true
    */
   listenOrientation?: boolean
 
   /**
-   * 是否包含滚动条在宽度和高度中
-   * 仅当 `type` 为 `'inner'` 时有效
+   * Whether the scrollbar should be included in the width and height
+   * Only effective when `type` is `'inner'`
    *
    * @default true
    */
   includeScrollbar?: boolean
 
   /**
-   * 使用 `window.innerWidth` 或 `window.outerWidth`
-   *
+   * Use `window.innerWidth` or `window.outerWidth` or `window.visualViewport`
+   * visualViewport documentation from MDN(https://developer.mozilla.org/zh-CN/docs/Web/API/VisualViewport)
    * @default 'inner'
    */
-  type?: 'inner' | 'outer'
+  type?: 'inner' | 'outer' | 'visual'
 }
 
 /**
- * 响应式窗口大小。
+ * Reactive window size.
  *
  * @see https://vueuse.org/useWindowSize
  * @param options
@@ -62,6 +56,11 @@ export function useWindowSize(options: UseWindowSizeOptions = {}) {
         width.value = window.outerWidth
         height.value = window.outerHeight
       }
+      else if (type === 'visual' && window.visualViewport) {
+        const { width: visualViewportWidth, height: visualViewportHeight, scale } = window.visualViewport
+        width.value = Math.round(visualViewportWidth * scale)
+        height.value = Math.round(visualViewportHeight * scale)
+      }
       else if (includeScrollbar) {
         width.value = window.innerWidth
         height.value = window.innerHeight
@@ -75,7 +74,13 @@ export function useWindowSize(options: UseWindowSizeOptions = {}) {
 
   update()
   tryOnMounted(update)
-  useEventListener('resize', update, { passive: true })
+
+  const listenerOptions = { passive: true }
+  useEventListener('resize', update, listenerOptions)
+
+  if (window && type === 'visual' && window.visualViewport) {
+    useEventListener(window.visualViewport, 'resize', update, listenerOptions)
+  }
 
   if (listenOrientation) {
     const matches = useMediaQuery('(orientation: portrait)')

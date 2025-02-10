@@ -1,12 +1,12 @@
 import type { Ref } from 'vue'
-import { ref, watch } from 'vue'
 import type { DebounceFilterOptions, MaybeRefOrGetter } from '../utils'
+import { ref, watch } from 'vue'
 import { useDebounceFn } from '../useDebounceFn'
 
 /**
- * 对 ref 的更新进行防抖。
+ * Debounce updates of a ref.
  *
- * @return 一个新的防抖 Ref
+ * @return A new debounced ref.
  */
 export function refDebounced<T>(value: Ref<T>, ms: MaybeRefOrGetter<number> = 200, options: DebounceFilterOptions = {}): Readonly<Ref<T>> {
   const debounced = ref(value.value as T) as Ref<T>
@@ -22,6 +22,6 @@ export function refDebounced<T>(value: Ref<T>, ms: MaybeRefOrGetter<number> = 20
 
 // alias
 export {
-  refDebounced as useDebounce,
   refDebounced as debouncedRef,
+  refDebounced as useDebounce,
 }

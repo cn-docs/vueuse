@@ -1,6 +1,6 @@
-import { ref, watch } from 'vue'
 import type { MaybeElementRef } from '../unrefElement'
 import type { UseMouseOptions } from '../useMouse'
+import { ref, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useEventListener } from '../useEventListener'
@@ -11,7 +11,7 @@ export interface MouseInElementOptions extends UseMouseOptions {
 }
 
 /**
- * 与元素相关的响应式鼠标位置
+ * Reactive mouse position related to an element.
  *
  * @see https://vueuse.org/useMouseInElement
  * @param target
@@ -74,9 +74,12 @@ export function useMouseInElement(
       { immediate: true },
     )
 
-    useEventListener(document, 'mouseleave', () => {
-      isOutside.value = true
-    })
+    useEventListener(
+      document,
+      'mouseleave',
+      () => isOutside.value = true,
+      { passive: true },
+    )
   }
 
   return {

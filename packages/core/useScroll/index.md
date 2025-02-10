@@ -11,8 +11,9 @@ category: Sensors
 ```vue
 <script setup lang="ts">
 import { useScroll } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef<HTMLElement>('el')
 const { x, y, isScrolling, arrivedState, directions } = useScroll(el)
 </script>
 
@@ -36,8 +37,9 @@ const { x, y, isScrolling, arrivedState, directions } = useScroll(el, {
 ```vue
 <script setup lang="ts">
 import { useScroll } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef<HTMLElement>('el')
 const { x, y } = useScroll(el)
 </script>
 
@@ -58,8 +60,9 @@ const { x, y } = useScroll(el)
 
 ```ts
 import { useScroll } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef<HTMLElement>('el')
 const { x, y } = useScroll(el, { behavior: 'smooth' })
 
 // 或作为 `ref`：

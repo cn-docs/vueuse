@@ -1,9 +1,9 @@
 import type { MaybeRef, Mutable } from '@vueuse/shared'
-import type { ComputedRef, Ref, ShallowRef, WritableComputedRef } from 'vue'
-import { isObject, objectOmit, toValue, tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
-import { computed, shallowReactive, shallowRef, watch } from 'vue'
+import type { ComputedRef, ShallowRef, WritableComputedRef } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeComputedElementRef } from '../unrefElement'
+import { isObject, objectOmit, tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
+import { computed, shallowReactive, shallowRef, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useEventListener } from '../useEventListener'
@@ -12,30 +12,30 @@ import { useSupported } from '../useSupported'
 
 export interface UseAnimateOptions extends KeyframeAnimationOptions, ConfigurableWindow {
   /**
-   * 当使用 `useAnimate` 时，是否自动运行播放
+   * Will automatically run play when `useAnimate` is used
    *
    * @default true
    */
   immediate?: boolean
   /**
-   * 是否将动画的结束样式状态提交给被动画的元素
-   * 通常情况下，你应该将 `fill` 选项与这个一起使用
+   * Whether to commits the end styling state of an animation to the element being animated
+   * In general, you should use `fill` option with this.
    *
    * @default false
    */
   commitStyles?: boolean
   /**
-   * 是否持续动画
+   * Whether to persists the animation
    *
    * @default false
    */
   persist?: boolean
   /**
-   * 在动画初始化后执行
+   * Executed after animation initialization
    */
   onReady?: (animate: Animation) => void
   /**
-   * 捕获到错误时的回调
+   * Callback when error is caught.
    */
   onError?: (e: unknown) => void
 }
@@ -43,7 +43,7 @@ export interface UseAnimateOptions extends KeyframeAnimationOptions, Configurabl
 export type UseAnimateKeyframes = MaybeRef<Keyframe[] | PropertyIndexedKeyframes | null>
 
 export interface UseAnimateReturn {
-  isSupported: Ref<boolean>
+  isSupported: ComputedRef<boolean>
   animate: ShallowRef<Animation | undefined>
   play: () => void
   pause: () => void
@@ -65,7 +65,7 @@ type AnimateStoreKeys = Extract<keyof Animation, 'startTime' | 'currentTime' | '
 type AnimateStore = Mutable<Pick<Animation, AnimateStoreKeys>>
 
 /**
- * 响应式 Web Animations API
+ * Reactive Web Animations API
  *
  * @see https://vueuse.org/useAnimate
  * @param target
@@ -266,12 +266,12 @@ export function useAnimate(
     onReady?.(animate.value)
   }
 
-  useEventListener(animate, ['cancel', 'finish', 'remove'], syncPause)
-
+  const listenerOptions = { passive: true }
+  useEventListener(animate, ['cancel', 'finish', 'remove'], syncPause, listenerOptions)
   useEventListener(animate, 'finish', () => {
     if (commitStyles)
       animate.value?.commitStyles()
-  })
+  }, listenerOptions)
 
   const { resume: resumeRef, pause: pauseRef } = useRafFn(() => {
     if (!animate.value)

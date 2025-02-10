@@ -1,7 +1,7 @@
 import type { ComputedRef } from 'vue'
-import { computed, ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeElementRef } from '../unrefElement'
+import { computed, ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useActiveElement } from '../useActiveElement'
@@ -9,16 +9,17 @@ import { useEventListener } from '../useEventListener'
 
 export interface UseFocusWithinReturn {
   /**
-   * 如果该元素或其任何子元素获得焦点，则为 true
+   * True if the element or any of its descendants are focused
    */
   focused: ComputedRef<boolean>
 }
 
 const EVENT_FOCUS_IN = 'focusin'
 const EVENT_FOCUS_OUT = 'focusout'
+const PSEUDO_CLASS_FOCUS_WITHIN = ':focus-within'
 
 /**
- * 跟踪焦点是否包含在目标元素内
+ * Track if focus is contained within the target element
  *
  * @see https://vueuse.org/useFocusWithin
  * @param target The target element to track
@@ -35,8 +36,10 @@ export function useFocusWithin(target: MaybeElementRef, options: ConfigurableWin
     return { focused }
   }
 
-  useEventListener(targetElement, EVENT_FOCUS_IN, () => _focused.value = true)
-  useEventListener(targetElement, EVENT_FOCUS_OUT, () => _focused.value = false)
+  const listenerOptions = { passive: true }
+  useEventListener(targetElement, EVENT_FOCUS_IN, () => _focused.value = true, listenerOptions)
+  useEventListener(targetElement, EVENT_FOCUS_OUT, () =>
+    _focused.value = targetElement.value?.matches?.(PSEUDO_CLASS_FOCUS_WITHIN) ?? false, listenerOptions)
 
   return { focused }
 }

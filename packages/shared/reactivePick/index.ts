@@ -1,8 +1,7 @@
 import type { UnwrapRef } from 'vue'
-import { toRefs } from 'vue'
+import { toRefs, toValue } from 'vue'
 import { reactiveComputed } from '../reactiveComputed'
 import { toRef } from '../toRef'
-import { toValue } from '../toValue'
 
 export type ReactivePickPredicate<T> = (value: T[keyof T], key: keyof T) => boolean
 
@@ -16,7 +15,7 @@ export function reactivePick<T extends object>(
 ): { [S in keyof T]?: UnwrapRef<T[S]> }
 
 /**
- * 从响应式对象中动态地选择字段。
+ * Reactively pick fields from a reactive object
  *
  * @see https://vueuse.org/reactivePick
  */

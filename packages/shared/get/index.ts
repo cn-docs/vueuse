@@ -1,9 +1,9 @@
+import type { MaybeRef } from '../utils'
 // eslint-disable-next-line no-restricted-imports
 import { unref } from 'vue'
-import type { MaybeRef } from '../utils'
 
 /**
- * 访问 `ref.value` 的简写方式
+ * Shorthand for accessing `ref.value`
  */
 export function get<T>(ref: MaybeRef<T>): T
 export function get<T, K extends keyof T>(ref: MaybeRef<T>, key: K): T[K]

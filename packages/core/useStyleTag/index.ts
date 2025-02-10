@@ -1,34 +1,34 @@
 import type { MaybeRef } from '@vueuse/shared'
 import type { Ref } from 'vue'
+import type { ConfigurableDocument } from '../_configurable'
 import { tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
 import { readonly, ref, watch } from 'vue'
-import type { ConfigurableDocument } from '../_configurable'
 import { defaultDocument } from '../_configurable'
 
 export interface UseStyleTagOptions extends ConfigurableDocument {
   /**
-   * 要应用的样式的媒体查询
+   * Media query for styles to apply
    */
   media?: string
 
   /**
-   * 立即加载样式
+   * Load the style immediately
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * 手动控制加载和卸载的时机
+   * Manual controls the timing of loading and unloading
    *
    * @default false
    */
   manual?: boolean
 
   /**
-   * 样式标签的 DOM id
+   * DOM id of the style tag
    *
-   * @default 自动递增
+   * @default auto-incremented
    */
   id?: string
 }
@@ -44,9 +44,9 @@ export interface UseStyleTagReturn {
 let _id = 0
 
 /**
- * 在头部注入 <style> 元素。
+ * Inject <style> element in head.
  *
- * 重载：省略了 id
+ * Overload: Omitted id
  *
  * @see https://vueuse.org/useStyleTag
  * @param css

@@ -1,48 +1,48 @@
 import type { DefineComponent, Ref, TransitionGroupProps } from 'vue'
-import { Fragment, TransitionGroup, defineComponent, h, ref, shallowReactive } from 'vue'
+import { defineComponent, Fragment, h, ref, shallowReactive, TransitionGroup } from 'vue'
 
 export interface TemplatePromiseProps<Return, Args extends any[] = []> {
   /**
-   * Promise 实例。
+   * The promise instance.
    */
   promise: Promise<Return> | undefined
   /**
-   * 解决（完成）promise。
+   * Resolve the promise.
    */
   resolve: (v: Return | Promise<Return>) => void
   /**
-   * 拒绝（失败）promise。
+   * Reject the promise.
    */
   reject: (v: any) => void
   /**
-   * 传递给 TemplatePromise.start() 的参数。
+   * Arguments passed to TemplatePromise.start()
    */
   args: Args
   /**
-   * 表示 promise 是否正在解决中。
-   * 当向 `resolve` 传递另一个 promise 时，这将被设置为 `true` 直到该 promise 被解决。
+   * Indicates if the promise is resolving.
+   * When passing another promise to `resolve`, this will be set to `true` until the promise is resolved.
    */
   isResolving: boolean
   /**
-   * 传递给 createTemplatePromise() 的选项。
+   * Options passed to createTemplatePromise()
    */
   options: TemplatePromiseOptions
   /**
-   * 用于列表渲染的唯一键。
+   * Unique key for list rendering.
    */
   key: number
 }
 
 export interface TemplatePromiseOptions {
   /**
-   * 决定 promise 是否只能一次调用一次。
+   * Determines if the promise can be called only once at a time.
    *
-   * @default false 默认为 false
+   * @default false
    */
   singleton?: boolean
 
   /**
-   * promise 的过渡属性。
+   * Transition props for the promise.
    */
   transition?: TransitionGroupProps
 }
@@ -58,7 +58,7 @@ export type TemplatePromise<Return, Args extends any[] = []> = DefineComponent<o
 }
 
 /**
- * 将模板作为 Promise。适用于构建自定义对话框、模态框、提示框等。
+ * Creates a template promise component.
  *
  * @see https://vueuse.org/createTemplatePromise
  */

@@ -1,8 +1,7 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
-import { toValue } from '@vueuse/shared'
-import { computed, ref, watch } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeElementRef } from '../unrefElement'
+import { computed, ref, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useMutationObserver } from '../useMutationObserver'
@@ -10,14 +9,14 @@ import { useMutationObserver } from '../useMutationObserver'
 export interface UseCssVarOptions extends ConfigurableWindow {
   initialValue?: string
   /**
-   * 使用 MutationObserver 监听变量更改
+   * Use MutationObserver to monitor variable changes
    * @default false
    */
   observe?: boolean
 }
 
 /**
- * 操作 CSS 变量。
+ * Manipulate CSS variables.
  *
  * @see https://vueuse.org/useCssVar
  * @param prop
@@ -30,7 +29,7 @@ export function useCssVar(
   options: UseCssVarOptions = {},
 ) {
   const { window = defaultWindow, initialValue, observe = false } = options
-  const variable = ref<string | null | undefined>(initialValue)
+  const variable = ref(initialValue)
   const elRef = computed(() => unrefElement(target) || window?.document?.documentElement)
 
   function updateCssVar() {

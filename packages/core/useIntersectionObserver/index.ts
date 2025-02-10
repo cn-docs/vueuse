@@ -1,45 +1,45 @@
 import type { MaybeRefOrGetter, Pausable } from '@vueuse/shared'
-import type { Ref } from 'vue'
-import { noop, notNullish, toValue, tryOnScopeDispose } from '@vueuse/shared'
-import { computed, ref, watch } from 'vue'
+import type { ComputedRef } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeComputedElementRef, MaybeElement } from '../unrefElement'
+import { noop, notNullish, toArray, tryOnScopeDispose } from '@vueuse/shared'
+import { computed, ref, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useSupported } from '../useSupported'
 
 export interface UseIntersectionObserverOptions extends ConfigurableWindow {
   /**
-   * 在创建时立即启动 IntersectionObserver
+   * Start the IntersectionObserver immediately on creation
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * 用作边界框的元素或文档，用于测试相交时使用的边界框。
+   * The Element or Document whose bounds are used as the bounding box when testing for intersection.
    */
   root?: MaybeComputedElementRef | Document
 
   /**
-   * 一个字符串，指定计算相交时要添加到根边界框的偏移量集。
+   * A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections.
    */
   rootMargin?: string
 
   /**
-   * 单个数字或介于 0.0 和 1 之间的数字数组。
+   * Either a single number or an array of numbers between 0.0 and 1.
    * @default 0
    */
   threshold?: number | number[]
 }
 
 export interface UseIntersectionObserverReturn extends Pausable {
-  isSupported: Ref<boolean>
+  isSupported: ComputedRef<boolean>
   stop: () => void
 }
 
 /**
- * 检测目标元素的可见性。
+ * Detects that a target element's visibility.
  *
  * @see https://vueuse.org/useIntersectionObserver
  * @param target
@@ -62,7 +62,7 @@ export function useIntersectionObserver(
   const isSupported = useSupported(() => window && 'IntersectionObserver' in window)
   const targets = computed(() => {
     const _target = toValue(target)
-    return (Array.isArray(_target) ? _target : [_target]).map(unrefElement).filter(notNullish)
+    return toArray(_target).map(unrefElement).filter(notNullish)
   })
 
   let cleanup = noop

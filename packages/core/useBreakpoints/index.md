@@ -4,19 +4,19 @@ category: Browser
 
 # useBreakpoints
 
-响应式的视口断点。
+Reactive viewport breakpoints.
 
-## 用法
+## Usage
 
 ```js
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
-const smAndLarger = breakpoints.greaterOrEqual('sm') // sm 及以上
-const largerThanSm = breakpoints.greater('sm') // 仅大于 sm
-const lgAndSmaller = breakpoints.smallerOrEqual('lg') // lg 及以下
-const smallerThanLg = breakpoints.smaller('lg') // 仅小于 lg
+const smAndLarger = breakpoints.greaterOrEqual('sm') // sm and larger
+const largerThanSm = breakpoints.greater('sm') // only larger than sm
+const lgAndSmaller = breakpoints.smallerOrEqual('lg') // lg and smaller
+const smallerThanLg = breakpoints.smaller('lg') // only smaller than lg
 ```
 
 ```vue
@@ -24,16 +24,16 @@ const smallerThanLg = breakpoints.smaller('lg') // 仅小于 lg
 import { useBreakpoints } from '@vueuse/core'
 
 const breakpoints = useBreakpoints({
-  mobile: 0, // 可选
+  mobile: 0, // optional
   tablet: 640,
   laptop: 1024,
   desktop: 1280,
 })
 
-// 可能是 'mobile'、'tablet'、'laptop' 或 'desktop'
+// Can be 'mobile' or 'tablet' or 'laptop' or 'desktop'
 const activeBreakpoint = breakpoints.active()
 
-// true 或 false
+// true or false
 const laptop = breakpoints.between('laptop', 'desktop')
 </script>
 
@@ -44,11 +44,26 @@ const laptop = breakpoints.between('laptop', 'desktop')
 </template>
 ```
 
-## 预设
+#### Server Side Rendering and Nuxt
+
+If you are using `useBreakpoints` with SSR enabled, then you need to specify which screen size you would like to render on the server and before hydration to avoid an hydration mismatch
+
+```js
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+
+const breakpoints = useBreakpoints(
+  breakpointsTailwind,
+  { ssrWidth: 768 } // Will enable SSR mode and render like if the screen was 768px wide
+)
+```
+
+Alternatively you can set this up globally for your app using [`provideSSRWidth`](../useSSRWidth/index.md)
+
+## Presets
 
 - Tailwind: `breakpointsTailwind`
 - Bootstrap v5: `breakpointsBootstrapV5`
-- Vuetify v2: `breakpointsVuetifyV2`（已弃用: `breakpointsVuetify`）
+- Vuetify v2: `breakpointsVuetifyV2` (deprecated: `breakpointsVuetify`)
 - Vuetify v3: `breakpointsVuetifyV3`
 - Ant Design: `breakpointsAntDesign`
 - Quasar v2: `breakpointsQuasar`
@@ -57,9 +72,9 @@ const laptop = breakpoints.between('laptop', 'desktop')
 - Prime Flex: `breakpointsPrimeFlex`
 - ElementUI / ElementPlus: `breakpointsElement`
 
-_断点预设不会自动导入，因为它们的名称不以 `use` 开头以适应 VueUse 的范围。必须显式导入：_
+_Breakpoint presets are deliberately not auto-imported, as they do not start with `use` to have the scope of VueUse. They have to be explicitly imported:_
 
 ```js
 import { breakpointsTailwind } from '@vueuse/core'
-// 以此类推
+// and so on
 ```

@@ -1,17 +1,13 @@
-// eslint-disable-next-line no-restricted-imports
-import { unref } from 'vue'
-import type { AnyFn, MaybeRefOrGetter } from '../utils'
+import { toValue as _toValue } from 'vue'
 
 /**
- * 获取值、ref 或 getter 的值。
+ * Get the value of value/ref/getter.
+ *
+ * @deprecated use `toValue` from `vue` instead
  */
-export function toValue<T>(r: MaybeRefOrGetter<T>): T {
-  return typeof r === 'function'
-    ? (r as AnyFn)()
-    : unref(r)
-}
+export const toValue = _toValue
 
 /**
  * @deprecated use `toValue` instead
  */
-export const resolveUnref = toValue
+export const resolveUnref = _toValue

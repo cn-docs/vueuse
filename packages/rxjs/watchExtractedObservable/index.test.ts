@@ -19,8 +19,6 @@ class TestWrapper {
   }
 }
 
-const waitFor = (delay: number) => new Promise(resolve => setTimeout(resolve, delay))
-
 describe('watchExtractedObservable', () => {
   describe('when no options are provided', () => {
     let numRef: Ref<number | undefined>
@@ -32,7 +30,7 @@ describe('watchExtractedObservable', () => {
       numRef = ref<number>()
       obj = computed(() => typeof numRef.value == 'number' ? new TestWrapper(numRef.value) : null)
       extractor = vi.fn().mockImplementation((wrapper: TestWrapper) => wrapper.obs$)
-      callback = vi.fn().mockImplementation((num: number) => console.log(num))
+      callback = vi.fn()
     })
 
     it('calls neither the extractor nor the callback if the provided ref is nullish', () => {
@@ -161,6 +159,7 @@ describe('watchExtractedObservable', () => {
     })
 
     it('doesn\'t call onComplete if the watched observable has changed before it could complete', async () => {
+      vi.useFakeTimers()
       expect.hasAssertions()
 
       const re = ref([42, 23, 420])
@@ -176,16 +175,15 @@ describe('watchExtractedObservable', () => {
         immediate: true,
       })
 
-      setTimeout(() => {
-        re.value = [42]
-      }, 500)
+      await vi.advanceTimersByTimeAsync(500)
+      re.value = [42]
 
-      await waitFor(6000)
+      await vi.advanceTimersByTimeAsync(6000)
 
       expect(onComplete).toHaveBeenCalledOnce()
 
       handle()
-    }, 9000)
+    })
   })
 
   it('properly uses an array of watch sources', () => {

@@ -1,6 +1,7 @@
 import type { WatchCallback, WatchOptions, WatchSource, WatchStopHandle } from 'vue'
-import { watch } from 'vue'
 import type { MapOldSources, MapSources } from '../utils/types'
+
+import { watch } from 'vue'
 
 // overloads
 export function watchImmediate<T extends Readonly<WatchSource<unknown>[]>>(
@@ -22,7 +23,7 @@ export function watchImmediate<T extends object>(
 ): WatchStopHandle
 
 /**
- * 使用 `{ immediate: true }` 监听值的简写形式。
+ * Shorthand for watching value with {immediate: true}
  *
  * @see https://vueuse.org/watchImmediate
  */

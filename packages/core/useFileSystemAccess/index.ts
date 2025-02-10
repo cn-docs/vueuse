@@ -1,13 +1,12 @@
 import type { Awaitable, MaybeRefOrGetter } from '@vueuse/shared'
-import type { Ref } from 'vue'
-import { toValue } from '@vueuse/shared'
-import { computed, ref, watch } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { computed, ref, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useSupported } from '../useSupported'
 
 /**
- * window.showOpenFilePicker 参数
+ * window.showOpenFilePicker parameters
  * @see https://developer.mozilla.org/en-US/docs/Web/API/window/showOpenFilePicker#parameters
  */
 export interface FileSystemAccessShowOpenFileOptions {
@@ -20,7 +19,7 @@ export interface FileSystemAccessShowOpenFileOptions {
 }
 
 /**
- * window.showSaveFilePicker 参数
+ * window.showSaveFilePicker parameters
  * @see https://developer.mozilla.org/en-US/docs/Web/API/window/showSaveFilePicker#parameters
  */
 export interface FileSystemAccessShowSaveFileOptions {
@@ -84,13 +83,13 @@ export type UseFileSystemAccessShowSaveFileOptions = Pick<FileSystemAccessShowSa
 
 export type UseFileSystemAccessOptions = ConfigurableWindow & UseFileSystemAccessCommonOptions & {
   /**
-   * 文件数据类型
+   * file data type
    */
   dataType?: MaybeRefOrGetter<'Text' | 'ArrayBuffer' | 'Blob'>
 }
 
 /**
- * 创建并读写本地文件。
+ * Create and read and write local files.
  * @see https://vueuse.org/useFileSystemAccess
  */
 export function useFileSystemAccess(): UseFileSystemAccessReturn<string | ArrayBuffer | Blob>
@@ -197,7 +196,7 @@ export function useFileSystemAccess(options: UseFileSystemAccessOptions = {}): U
 }
 
 export interface UseFileSystemAccessReturn<T = string> {
-  isSupported: Ref<boolean>
+  isSupported: ComputedRef<boolean>
   data: Ref<T | undefined>
   file: Ref<File | undefined>
   fileName: Ref<string>

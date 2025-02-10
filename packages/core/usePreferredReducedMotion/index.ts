@@ -1,11 +1,11 @@
-import { computed } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { computed } from 'vue'
 import { useMediaQuery } from '../useMediaQuery'
 
 export type ReducedMotionType = 'reduce' | 'no-preference'
 
 /**
- *  响应式动画偏好媒体查询
+ * Reactive prefers-reduced-motion media query.
  *
  * @see https://vueuse.org/usePreferredReducedMotion
  * @param [options]

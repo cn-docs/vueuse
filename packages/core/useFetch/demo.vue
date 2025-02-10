@@ -40,21 +40,21 @@ const text = stringify(reactive({
 <template>
   <div>
     <div>
-      <note>以下URL可用于测试useFetch的不同功能</note>
+      <note>The following URLs can be used to test different features of useFetch</note>
       <div class="mt-2">
-        普通请求：
+        Normal Request:
         <code>
           https://httpbin.org/get
         </code>
       </div>
       <div>
-        中止请求：
+        Abort Request:
         <code>
           https://httpbin.org/delay/10
         </code>
       </div>
       <div>
-        响应错误：
+        Response Error:
         <code>
           http://httpbin.org/status/500
         </code>
@@ -62,17 +62,17 @@ const text = stringify(reactive({
     </div>
 
     <input v-model="url" type="text">
-    <button @click="execute">
-      执行
+    <button @click="() => execute()">
+      Execute
     </button>
-    <button @click="toggleRefetch">
+    <button @click="() => toggleRefetch()">
       <i v-if="refetch" inline-block align-middle i-carbon-checkmark />
       <i v-else inline-block align-middle i-carbon-error />
 
-      <span class="ml-2">{{ refetch ? '重新获取已开启' : '重新获取已关闭' }}</span>
+      <span class="ml-2">{{ refetch ? 'Refetch On' : 'Refetch Off' }}</span>
     </button>
     <button v-if="canAbort" class="orange" @click="abort">
-      中止
+      Abort
     </button>
     <pre class="code-block">{{ text }}</pre>
   </div>

@@ -1,33 +1,32 @@
 import type { ConfigurableFlush, MaybeRefOrGetter, RemovableRef } from '@vueuse/shared'
 import type { Ref } from 'vue'
 import { watchPausable } from '@vueuse/core'
-import { toValue } from '@vueuse/shared'
 import { del, get, set, update } from 'idb-keyval'
-import { ref, shallowRef, toRaw } from 'vue'
+import { ref, shallowRef, toRaw, toValue } from 'vue'
 
 export interface UseIDBOptions extends ConfigurableFlush {
   /**
-   * 监听深层变化
+   * Watch for deep changes
    *
    * @default true
    */
   deep?: boolean
 
   /**
-   * 错误回调函数
+   * On error callback
    *
-   * 默认将错误记录到 `console.error`
+   * Default log error to `console.error`
    */
   onError?: (error: unknown) => void
 
   /**
-   * 使用浅层 Ref 作为参考
+   * Use shallow ref as reference
    *
    * @default false
    */
   shallow?: boolean
   /**
-   * 当存储中不存在时，将默认值写入存储
+   * Write the default value to the storage when it does not exist
    *
    * @default true
    */

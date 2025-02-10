@@ -1,8 +1,8 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
 import type { ComputedRef, Ref } from 'vue'
-import { computed, ref } from 'vue'
 import type { ConfigurableNavigator } from '../_configurable'
+import { computed, ref } from 'vue'
 import { defaultNavigator } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { usePermission } from '../usePermission'
@@ -11,13 +11,14 @@ import { useSupported } from '../useSupported'
 export interface UseDevicesListOptions extends ConfigurableNavigator {
   onUpdated?: (devices: MediaDeviceInfo[]) => void
   /**
-   * 如果权限未授予，则立即请求权限，否则标签和设备 ID 可能为空
+   * Request for permissions immediately if it's not granted,
+   * otherwise label and deviceIds could be empty
    *
    * @default false
    */
   requestPermissions?: boolean
   /**
-   * 请求媒体权限类型
+   * Request for types of media permissions
    *
    * @default { audio: true, video: true }
    */
@@ -26,7 +27,7 @@ export interface UseDevicesListOptions extends ConfigurableNavigator {
 
 export interface UseDevicesListReturn {
   /**
-   * 所有设备
+   * All devices
    */
   devices: Ref<MediaDeviceInfo[]>
   videoInputs: ComputedRef<MediaDeviceInfo[]>
@@ -34,11 +35,11 @@ export interface UseDevicesListReturn {
   audioOutputs: ComputedRef<MediaDeviceInfo[]>
   permissionGranted: Ref<boolean>
   ensurePermissions: () => Promise<boolean>
-  isSupported: Ref<boolean>
+  isSupported: ComputedRef<boolean>
 }
 
 /**
- * 响应式 `enumerateDevices` 列出可用的输入/输出设备
+ * Reactive `enumerateDevices` listing available input/output devices
  *
  * @see https://vueuse.org/useDevicesList
  * @param options
@@ -103,7 +104,7 @@ export function useDevicesList(options: UseDevicesListOptions = {}): UseDevicesL
     if (requestPermissions)
       ensurePermissions()
 
-    useEventListener(navigator!.mediaDevices, 'devicechange', update)
+    useEventListener(navigator!.mediaDevices, 'devicechange', update, { passive: true })
     update()
   }
 

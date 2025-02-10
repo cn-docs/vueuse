@@ -1,42 +1,41 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { toRef, tryOnMounted } from '@vueuse/shared'
-import { computed, reactive, readonly, ref } from 'vue'
 import type { PointerType, Position } from '../types'
 import type { UseSwipeDirection } from '../useSwipe'
+import { toRef, tryOnMounted } from '@vueuse/shared'
+import { computed, reactive, readonly, ref } from 'vue'
 import { useEventListener } from '../useEventListener'
 
 export interface UsePointerSwipeOptions {
   /**
    * @default 50
-   * 阈值
    */
   threshold?: number
 
   /**
-   * 滑动开始时的回调。
+   * Callback on swipe start.
    */
   onSwipeStart?: (e: PointerEvent) => void
 
   /**
-   * 滑动移动时的回调。
+   * Callback on swipe move.
    */
   onSwipe?: (e: PointerEvent) => void
 
   /**
-   * 滑动结束时的回调。
+   * Callback on swipe end.
    */
   onSwipeEnd?: (e: PointerEvent, direction: UseSwipeDirection) => void
 
   /**
-   * 要监听的指针类型。
+   * Pointer types to listen to.
    *
    * @default ['mouse', 'touch', 'pen']
    */
   pointerTypes?: PointerType[]
 
   /**
-   * 在滑动时禁用文本选择。
+   * Disable text selection on swipe.
    *
    * @default false
    */
@@ -54,7 +53,7 @@ export interface UsePointerSwipeReturn {
 }
 
 /**
- * 基于 PointerEvents 的响应式滑动检测。
+ * Reactive swipe detection based on PointerEvents.
  *
  * @see https://vueuse.org/usePointerSwipe
  * @param target
@@ -116,6 +115,8 @@ export function usePointerSwipe(
     return options.pointerTypes?.includes(e.pointerType as PointerType) ?? (isReleasingButton || isPrimaryButton) ?? true
   }
 
+  const listenerOptions = { passive: true }
+
   const stops = [
     useEventListener(target, 'pointerdown', (e: PointerEvent) => {
       if (!eventIsAllowed(e))
@@ -128,7 +129,7 @@ export function usePointerSwipe(
       updatePosStart(x, y)
       updatePosEnd(x, y)
       onSwipeStart?.(e)
-    }),
+    }, listenerOptions),
 
     useEventListener(target, 'pointermove', (e: PointerEvent) => {
       if (!eventIsAllowed(e))
@@ -142,7 +143,7 @@ export function usePointerSwipe(
         isSwiping.value = true
       if (isSwiping.value)
         onSwipe?.(e)
-    }),
+    }, listenerOptions),
 
     useEventListener(target, 'pointerup', (e: PointerEvent) => {
       if (!eventIsAllowed(e))
@@ -152,7 +153,7 @@ export function usePointerSwipe(
 
       isPointerDown.value = false
       isSwiping.value = false
-    }),
+    }, listenerOptions),
   ]
 
   tryOnMounted(() => {

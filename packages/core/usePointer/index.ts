@@ -1,9 +1,9 @@
 import type { MaybeRef } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { objectPick, toRefs } from '@vueuse/shared'
-import { ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { PointerType, Position } from '../types'
+import { objectPick, toRefs } from '@vueuse/shared'
+import { ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
@@ -20,14 +20,14 @@ export interface UsePointerState extends Position {
 
 export interface UsePointerOptions extends ConfigurableWindow {
   /**
-   * 监听的指针类型。
+   * Pointer types that listen to.
    *
    * @default ['mouse', 'touch', 'pen']
    */
   pointerTypes?: PointerType[]
 
   /**
-   * 初始值
+   * Initial values
    */
   initialValue?: MaybeRef<Partial<UsePointerState>>
 
@@ -52,7 +52,7 @@ const defaultState: UsePointerState = /* #__PURE__ */ {
 const keys = /* #__PURE__ */ Object.keys(defaultState) as (keyof UsePointerState)[]
 
 /**
- * 响应式指针状态
+ * Reactive pointer state.
  *
  * @see https://vueuse.org/usePointer
  * @param options

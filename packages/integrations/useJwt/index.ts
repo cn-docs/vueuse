@@ -1,20 +1,19 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { JwtDecodeOptions, JwtHeader, JwtPayload } from 'jwt-decode'
 import type { ComputedRef } from 'vue'
-import { toValue } from '@vueuse/shared'
 import { jwtDecode } from 'jwt-decode'
-import { computed } from 'vue'
+import { computed, toValue } from 'vue'
 
 export interface UseJwtOptions<Fallback> {
   /**
-   * 解码出错时返回的值
+   * Value returned when encounter error on decoding
    *
    * @default null
    */
   fallbackValue?: Fallback
 
   /**
-   * 解码出错时的错误回调函数
+   * Error callback for decoding
    */
   onError?: (error: unknown) => void
 }
@@ -25,7 +24,7 @@ export interface UseJwtReturn<Payload, Header, Fallback> {
 }
 
 /**
- * 响应式解码的 JWT token。
+ * Reactive decoded jwt token.
  *
  * @see https://vueuse.org/useJwt
  */

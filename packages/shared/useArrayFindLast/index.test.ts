@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { reactive, ref } from 'vue'
-import { useSetup } from '../../.test'
 import { useArrayFindLast } from '.'
+import { useSetup } from '../../.test'
 
 describe('useArrayFindLast', () => {
   it('should be defined', () => {

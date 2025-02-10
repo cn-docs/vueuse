@@ -4,9 +4,9 @@ category: Sensors
 
 # useDeviceMotion
 
-响应式 [DeviceMotionEvent](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent)。提供有关设备位置和方向变化速度的信息给 Web 开发者。
+Reactive [DeviceMotionEvent](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent). Provide web developers with information about the speed of changes for the device's position and orientation.
 
-## 用法
+## Usage
 
 ```js
 import { useDeviceMotion } from '@vueuse/core'
@@ -19,21 +19,27 @@ const {
 } = useDeviceMotion()
 ```
 
-| 状态                         | 类型     | 描述                                                                   |
-| ---------------------------- | -------- | ---------------------------------------------------------------------- |
-| acceleration                 | `object` | 一个对象，提供设备在三个轴 X、Y 和 Z 上的加速度。                      |
-| accelerationIncludingGravity | `object` | 一个对象，提供设备在三个轴 X、Y 和 Z 上受到重力影响后的加速度。        |
-| rotationRate                 | `object` | 一个对象，提供设备在三个方向轴 alpha、beta 和 gamma 上方向变化的速率。 |
-| interval                     | `Number` | 一个表示以毫秒为单位从设备获取数据的时间间隔的数字。                   |
+> Note: For iOS, you need to use `trigger` and bind it with user interaction.
+> After permission granted, the API will run automatically
 
-您可以在 [MDN 上找到有关状态的更多信息](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent#Properties)。
+| State                        | Type            | Description                                                                                                          |
+| ---------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------- |
+| acceleration                 | `object`        | An object giving the acceleration of the device on the three axis X, Y and Z.                                        |
+| accelerationIncludingGravity | `object`        | An object giving the acceleration of the device on the three axis X, Y and Z with the effect of gravity.             |
+| rotationRate                 | `object`        | An object giving the rate of change of the device's orientation on the three orientation axis alpha, beta and gamma. |
+| interval                     | `Number`        | A number representing the interval of time, in milliseconds, at which data is obtained from the device..             |
+| ensurePermissions            | `boolean`       | Indicates whether the platform requires permission to use the API                                                    |
+| permissionGranted            | `boolean`       | Indicates whether the user has granted permission. The default is always false                                       |
+| trigger                      | `Promise<void>` | An async function to request user permission. The API runs automatically once permission is granted                  |
 
-## 组件用法
+You can find [more information about the state on the MDN](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent#Properties).
+
+## Component Usage
 
 ```vue
 <template>
   <UseDeviceMotion v-slot="{ acceleration }">
-    加速度：{{ acceleration }}
+    Acceleration: {{ acceleration }}
   </UseDeviceMotion>
 </template>
 ```

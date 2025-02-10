@@ -4,9 +4,15 @@ category: Elements
 
 # useDropZone
 
-创建一个可接收文件拖放的区域。
+Create a zone where files can be dropped.
 
-## 用法
+::: warning
+
+Due to Safari browser limitations, file type validation is only possible during the drop event, not during drag events. As a result, the `isOverDropZone` value will always be `true` during drag operations in Safari, regardless of file type.
+
+:::
+
+## Usage
 
 ```vue
 <script setup lang="ts">
@@ -15,7 +21,7 @@ import { useDropZone } from '@vueuse/core'
 const dropZoneRef = ref<HTMLDivElement>()
 
 function onDrop(files: File[] | null) {
-  // 当文件被拖放到区域时调用
+  // called when files are dropped on zone
 }
 
 const { isOverDropZone } = useDropZone(dropZoneRef, {
@@ -31,7 +37,7 @@ const { isOverDropZone } = useDropZone(dropZoneRef, {
 
 <template>
   <div ref="dropZoneRef">
-    拖放文件到这里
+    Drop files here
   </div>
 </template>
 ```

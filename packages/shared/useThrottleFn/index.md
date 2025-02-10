@@ -18,7 +18,7 @@ const throttledFn = useThrottleFn(() => {
   // 做一些事情，它每秒最多被调用一次
 }, 1000)
 
-window.addEventListener('resize', throttledFn)
+useEventListener(window, 'resize', throttledFn)
 ```
 
 ## 推荐阅读

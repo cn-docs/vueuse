@@ -1,34 +1,33 @@
 import type { WatchOptions, WatchSource } from 'vue'
-import { isRef, nextTick, watch } from 'vue'
 import type { ElementOf, MaybeRefOrGetter, ShallowUnwrapRef } from '../utils'
-import { toValue } from '../toValue'
+import { isRef, nextTick, toValue, watch } from 'vue'
 import { promiseTimeout } from '../utils'
 
 export interface UntilToMatchOptions {
   /**
-   * 当条件未满足时，Promise resolve/reject 的毫秒超时时间。
-   * 0 表示永不超时
+   * Milliseconds timeout for promise to resolve/reject if the when condition does not meet.
+   * 0 for never timed out
    *
    * @default 0
    */
   timeout?: number
 
   /**
-   * 当超时时是否拒绝 Promise
+   * Reject the promise when timeout
    *
    * @default false
    */
   throwOnTimeout?: boolean
 
   /**
-   * 内部监视的 `flush` 选项
+   * `flush` option for internal watch
    *
    * @default 'sync'
    */
   flush?: WatchOptions['flush']
 
   /**
-   * 内部监视的 `deep` 选项
+   * `deep` option for internal watch
    *
    * @default 'false'
    */
@@ -214,7 +213,7 @@ function createUntil<T>(r: any, isNot = false) {
 }
 
 /**
- * 等待变化的一次性 Promise
+ * Promised one-time watch for changes
  *
  * @see https://vueuse.org/until
  * @example
@@ -223,7 +222,7 @@ function createUntil<T>(r: any, isNot = false) {
  *
  * await until(count).toMatch(v => v > 7)
  *
- * alert('计数器现在大于 7!')
+ * alert('Counter is now larger than 7!')
  * ```
  */
 export function until<T extends unknown[]>(r: WatchSource<T> | MaybeRefOrGetter<T>): UntilArrayInstance<T>

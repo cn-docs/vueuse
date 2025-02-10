@@ -1,25 +1,25 @@
 import type { Ref } from 'vue'
-import { ref } from 'vue'
 import type { MaybeRefOrGetter, Pausable } from '../utils'
+import { ref } from 'vue'
 import { useIntervalFn } from '../useIntervalFn'
 
 export interface UseIntervalOptions<Controls extends boolean> {
   /**
-   * 暴露更多控制选项
+   * Expose more controls
    *
    * @default false
    */
   controls?: Controls
 
   /**
-   * 在调用时立即执行更新
+   * Execute the update immediately on calling
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * 每个间隔上的回调函数
+   * Callback on every interval
    */
   callback?: (count: number) => void
 }
@@ -30,7 +30,7 @@ export interface UseIntervalControls {
 }
 
 /**
- * 每个间隔上增加的响应式计数器
+ * Reactive counter increases on every interval
  *
  * @see https://vueuse.org/useInterval
  * @param interval

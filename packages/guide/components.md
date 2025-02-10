@@ -15,9 +15,9 @@ npm i @vueuse/core @vueuse/components
 ```vue
 <script setup>
 import { onClickOutside } from '@vueuse/core'
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 
-const el = ref()
+const el = useTemplateRef('el')
 
 function close() {
   /* ... */

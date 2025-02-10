@@ -1,11 +1,11 @@
-import { computed } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { computed } from 'vue'
 import { useMediaQuery } from '../useMediaQuery'
 
 export type ContrastType = 'more' | 'less' | 'custom' | 'no-preference'
 
 /**
- * 响应式更喜欢的对比度媒体查询。
+ * Reactive prefers-contrast media query.
  *
  * @see https://vueuse.org/usePreferredContrast
  * @param [options]

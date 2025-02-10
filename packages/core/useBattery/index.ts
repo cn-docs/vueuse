@@ -1,7 +1,7 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
-import { ref } from 'vue'
 import type { ConfigurableNavigator } from '../_configurable'
+import { ref } from 'vue'
 import { defaultNavigator } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { useSupported } from '../useSupported'
@@ -18,7 +18,7 @@ type NavigatorWithBattery = Navigator & {
 }
 
 /**
- * 响应式电池状态
+ * Reactive Battery Status API.
  *
  * @see https://vueuse.org/useBattery
  */

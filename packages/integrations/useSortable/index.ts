@@ -1,23 +1,24 @@
 import type { ConfigurableDocument, MaybeRefOrGetter } from '@vueuse/core'
+import type { Options } from 'sortablejs'
 import type { MaybeRef } from 'vue'
-import { defaultDocument, toValue, tryOnMounted, tryOnScopeDispose, unrefElement } from '@vueuse/core'
-import Sortable, { type Options } from 'sortablejs'
-import { isRef, nextTick } from 'vue'
+import { defaultDocument, tryOnMounted, tryOnScopeDispose, unrefElement } from '@vueuse/core'
+import Sortable from 'sortablejs'
+import { isRef, nextTick, toValue } from 'vue'
 
 export interface UseSortableReturn {
   /**
-   * 启动可排序实例
+   * start sortable instance
    */
   start: () => void
   /**
-   * 销毁可排序实例
+   * destroy sortable instance
    */
   stop: () => void
 
   /**
-   * 选项的获取器/设置器
-   * @param name Sortable.Options 的属性名称。
-   * @param value 一个值。
+   * Options getter/setter
+   * @param name a Sortable.Options property.
+   * @param value a value.
    */
   option: (<K extends keyof Sortable.Options>(name: K, value: Sortable.Options[K]) => void) & (<K extends keyof Sortable.Options>(name: K) => Sortable.Options[K])
 }
@@ -30,7 +31,7 @@ export function useSortable<T>(el: MaybeRefOrGetter<HTMLElement | null | undefin
   options?: UseSortableOptions): UseSortableReturn
 
 /**
- * sortablejs 的响应式包装器。
+ * Wrapper for sortablejs.
  * @param el
  * @param list
  * @param options

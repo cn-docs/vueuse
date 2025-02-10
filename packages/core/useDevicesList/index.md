@@ -4,9 +4,9 @@ category: Sensors
 
 # useDevicesList
 
-响应式 [enumerateDevices](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) 列出可用的输入/输出设备。
+Reactive [enumerateDevices](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) listing available input/output devices.
 
-## 用法
+## Usage
 
 ```js
 import { useDevicesList } from '@vueuse/core'
@@ -19,14 +19,28 @@ const {
 } = useDevicesList()
 ```
 
-# 组件
+## Requesting Permissions
+
+To request permissions, use the `ensurePermissions` method.
+
+```js
+const {
+  ensurePermissions,
+  permissionGranted,
+} = useDevicesList()
+
+await ensurePermissions()
+console.log(permissionsGranted.value)
+```
+
+# Component
 
 ```vue
 <template>
   <UseDevicesList v-slot="{ videoInputs, audioInputs, audioOutputs }">
-    摄像头：{{ videoInputs }}
-    麦克风：{{ audioInputs }}
-    扬声器：{{ audioOutputs }}
+    Cameras: {{ videoInputs }}
+    Microphones: {{ audioInputs }}
+    Speakers: {{ audioOutputs }}
   </UseDevicesList>
 </template>
 ```

@@ -1,19 +1,20 @@
-import type { Ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import type { ConfigurableWindow } from '../_configurable'
 import { tryOnMounted, tryOnScopeDispose } from '@vueuse/shared'
 import { ref, shallowRef } from 'vue'
-import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
+import { useEventListener } from '../useEventListener'
 import { useSupported } from '../useSupported'
 
 export interface UseBroadcastChannelOptions extends ConfigurableWindow {
   /**
-   * 频道的名称。
+   * The name of the channel.
    */
   name: string
 }
 
 /**
- * 响应式频道广播
+ * Reactive BroadcastChannel
  *
  * @see https://vueuse.org/useBroadcastChannel
  * @see https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel
@@ -49,17 +50,21 @@ export function useBroadcastChannel<D, P>(options: UseBroadcastChannelOptions): 
       error.value = null
       channel.value = new BroadcastChannel(name)
 
-      channel.value.addEventListener('message', (e: MessageEvent) => {
+      const listenerOptions = {
+        passive: true,
+      }
+
+      useEventListener(channel, 'message', (e: MessageEvent) => {
         data.value = e.data
-      }, { passive: true })
+      }, listenerOptions)
 
-      channel.value.addEventListener('messageerror', (e: MessageEvent) => {
+      useEventListener(channel, 'messageerror', (e: MessageEvent) => {
         error.value = e
-      }, { passive: true })
+      }, listenerOptions)
 
-      channel.value.addEventListener('close', () => {
+      useEventListener(channel, 'close', () => {
         isClosed.value = true
-      })
+      }, listenerOptions)
     })
   }
 
@@ -79,7 +84,7 @@ export function useBroadcastChannel<D, P>(options: UseBroadcastChannelOptions): 
 }
 
 export interface UseBroadcastChannelReturn<D, P> {
-  isSupported: Ref<boolean>
+  isSupported: ComputedRef<boolean>
   channel: Ref<BroadcastChannel | undefined>
   data: Ref<D>
   post: (data: P) => void

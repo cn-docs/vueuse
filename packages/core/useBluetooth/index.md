@@ -47,7 +47,7 @@ const {
 在此示例中，我们使用 `characteristicvaluechanged` 事件侦听器来处理读取电池电量特征值。此事件侦听器还将选择性地处理即将到来的通知。
 
 ```ts
-import { pausableWatch, useBluetooth } from '@vueuse/core'
+import { pausableWatch, useBluetooth, useEventListener } from '@vueuse/core'
 
 const {
   isSupported,
@@ -78,9 +78,9 @@ async function getBatteryLevels() {
   )
 
   // Listen to when characteristic value changes on `characteristicvaluechanged` event:
-  batteryLevelCharacteristic.addEventListener('characteristicvaluechanged', (event) => {
+  useEventListener(batteryLevelCharacteristic, 'characteristicvaluechanged', (event) => {
     batteryPercent.value = event.target.value.getUint8(0)
-  })
+  }, { passive: true })
 
   // Convert received buffer to number:
   const batteryLevel = await batteryLevelCharacteristic.readValue()

@@ -2,13 +2,20 @@
 category: Reactivity
 related: toRef
 alias: resolveUnref
+deprecated: true
 ---
 
 # toValue
 
-获取值、ref 或 getter 的值。
+Get the value of value/ref/getter.
 
-## 用法
+:::warning
+
+Deprecated, use `import { toValue } from 'vue'` instead.
+
+:::
+
+## Usage
 
 ```ts
 import { toValue } from '@vueuse/core'

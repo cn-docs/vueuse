@@ -1,7 +1,8 @@
 import type { EventHookOn } from '@vueuse/shared'
-import { createEventHook, hasOwn } from '@vueuse/shared'
-import { type Ref, readonly, ref } from 'vue'
+import type { Ref } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
+import { createEventHook, hasOwn } from '@vueuse/shared'
+import { readonly, ref } from 'vue'
 import { defaultDocument } from '../_configurable'
 
 export interface UseFileDialogOptions extends ConfigurableDocument {
@@ -14,21 +15,27 @@ export interface UseFileDialogOptions extends ConfigurableDocument {
    */
   accept?: string
   /**
-   * 选择捕获文件的输入源。
+   * Select the input source for the capture file.
    * @see [HTMLInputElement Capture](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/capture)
    */
   capture?: string
   /**
-   * 打开文件对话框时重置。
+   * Reset when open file dialog.
    * @default false
    */
   reset?: boolean
   /**
-   * 选择目录而不是文件。
+   * Select directories instead of files.
    * @see [HTMLInputElement webkitdirectory](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitdirectory)
    * @default false
    */
   directory?: boolean
+
+  /**
+   * Initial files to set.
+   * @default null
+   */
+  initialFiles?: Array<File> | FileList
 }
 
 const DEFAULT_OPTIONS: UseFileDialogOptions = {
@@ -46,8 +53,23 @@ export interface UseFileDialogReturn {
   onCancel: EventHookOn
 }
 
+function prepareInitialFiles(files: UseFileDialogOptions['initialFiles']): FileList | null {
+  if (!files)
+    return null
+
+  if (files instanceof FileList)
+    return files
+
+  const dt = new DataTransfer()
+  for (const file of files) {
+    dt.items.add(file)
+  }
+
+  return dt.files
+}
+
 /**
- * 轻松打开文件对话框。
+ * Open file dialog with ease.
  *
  * @see https://vueuse.org/useFileDialog
  * @param options
@@ -57,7 +79,7 @@ export function useFileDialog(options: UseFileDialogOptions = {}): UseFileDialog
     document = defaultDocument,
   } = options
 
-  const files = ref<FileList | null>(null)
+  const files = ref<FileList | null>(prepareInitialFiles(options.initialFiles))
   const { on: onChange, trigger: changeTrigger } = createEventHook()
   const { on: onCancel, trigger: cancelTrigger } = createEventHook()
   let input: HTMLInputElement | undefined

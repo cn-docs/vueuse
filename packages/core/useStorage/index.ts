@@ -1,8 +1,8 @@
 import type { Awaitable, ConfigurableEventFilter, ConfigurableFlush, MaybeRefOrGetter, RemovableRef } from '@vueuse/shared'
-import { pausableWatch, toValue, tryOnMounted } from '@vueuse/shared'
-import { nextTick, ref, shallowRef } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { StorageLike } from '../ssr-handlers'
+import { pausableWatch, tryOnMounted } from '@vueuse/shared'
+import { computed, nextTick, ref, shallowRef, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { getSSRHandler } from '../ssr-handlers'
 import { useEventListener } from '../useEventListener'
@@ -64,76 +64,76 @@ export interface StorageEventLike {
 
 export interface UseStorageOptions<T> extends ConfigurableEventFilter, ConfigurableWindow, ConfigurableFlush {
   /**
-   * 监听深层次的变化
+   * Watch for deep changes
    *
    * @default true
    */
   deep?: boolean
 
   /**
-   * 监听存储变化，适用于多标签页应用程序
+   * Listen to storage changes, useful for multiple tabs application
    *
    * @default true
    */
   listenToStorageChanges?: boolean
 
   /**
-   * 当存储中不存在时，将默认值写入存储
+   * Write the default value to the storage when it does not exist
    *
    * @default true
    */
   writeDefaults?: boolean
 
   /**
-   * 将默认值与从存储中读取的值合并。
+   * Merge the default value with the value read from the storage.
    *
-   * 当设置为 true 时，它将对对象执行 **浅层合并**。
-   * 您可以传递一个函数来执行自定义合并（例如，深层合并），例如：
+   * When setting it to true, it will perform a **shallow merge** for objects.
+   * You can pass a function to perform custom merge (e.g. deep merge), for example:
    *
    * @default false
    */
   mergeDefaults?: boolean | ((storageValue: T, defaults: T) => T)
 
   /**
-   * 自定义数据序列化
+   * Custom data serialization
    */
   serializer?: Serializer<T>
 
   /**
-   * 错误回调
+   * On error callback
    *
-   * 默认将错误记录到 `console.error`
+   * Default log error to `console.error`
    */
   onError?: (error: unknown) => void
 
   /**
-   * 将浅层 ref 用作引用
+   * Use shallow ref as reference
    *
    * @default false
    */
   shallow?: boolean
 
   /**
-   * 在组件挂载后再读取存储
+   * Wait for the component to be mounted before reading the storage.
    *
    * @default false
    */
   initOnMounted?: boolean
 }
 
-export function useStorage(key: string, defaults: MaybeRefOrGetter<string>, storage?: StorageLike, options?: UseStorageOptions<string>): RemovableRef<string>
-export function useStorage(key: string, defaults: MaybeRefOrGetter<boolean>, storage?: StorageLike, options?: UseStorageOptions<boolean>): RemovableRef<boolean>
-export function useStorage(key: string, defaults: MaybeRefOrGetter<number>, storage?: StorageLike, options?: UseStorageOptions<number>): RemovableRef<number>
-export function useStorage<T>(key: string, defaults: MaybeRefOrGetter<T>, storage?: StorageLike, options?: UseStorageOptions<T>): RemovableRef<T>
-export function useStorage<T = unknown>(key: string, defaults: MaybeRefOrGetter<null>, storage?: StorageLike, options?: UseStorageOptions<T>): RemovableRef<T>
+export function useStorage(key: MaybeRefOrGetter<string>, defaults: MaybeRefOrGetter<string>, storage?: StorageLike, options?: UseStorageOptions<string>): RemovableRef<string>
+export function useStorage(key: MaybeRefOrGetter<string>, defaults: MaybeRefOrGetter<boolean>, storage?: StorageLike, options?: UseStorageOptions<boolean>): RemovableRef<boolean>
+export function useStorage(key: MaybeRefOrGetter<string>, defaults: MaybeRefOrGetter<number>, storage?: StorageLike, options?: UseStorageOptions<number>): RemovableRef<number>
+export function useStorage<T>(key: MaybeRefOrGetter<string>, defaults: MaybeRefOrGetter<T>, storage?: StorageLike, options?: UseStorageOptions<T>): RemovableRef<T>
+export function useStorage<T = unknown>(key: MaybeRefOrGetter<string>, defaults: MaybeRefOrGetter<null>, storage?: StorageLike, options?: UseStorageOptions<T>): RemovableRef<T>
 
 /**
- * 响应式 LocalStorage/SessionStorage.
+ * Reactive LocalStorage/SessionStorage.
  *
  * @see https://vueuse.org/useStorage
  */
 export function useStorage<T extends (string | number | boolean | object | null)>(
-  key: string,
+  key: MaybeRefOrGetter<string>,
   defaults: MaybeRefOrGetter<T>,
   storage: StorageLike | undefined,
   options: UseStorageOptions<T> = {},
@@ -154,6 +154,7 @@ export function useStorage<T extends (string | number | boolean | object | null)
   } = options
 
   const data = (shallow ? shallowRef : ref)(typeof defaults === 'function' ? defaults() : defaults) as RemovableRef<T>
+  const keyComputed = computed<string>(() => toValue(key))
 
   if (!storage) {
     try {
@@ -177,6 +178,8 @@ export function useStorage<T extends (string | number | boolean | object | null)
     { flush, deep, eventFilter },
   )
 
+  watch(keyComputed, () => update(), { flush })
+
   if (window && listenToStorageChanges) {
     tryOnMounted(() => {
       /**
@@ -188,7 +191,7 @@ export function useStorage<T extends (string | number | boolean | object | null)
        * TODO: Consider implementing a BroadcastChannel-based solution that fixes this.
        */
       if (storage instanceof Storage)
-        useEventListener(window, 'storage', update)
+        useEventListener(window, 'storage', update, { passive: true })
       else
         useEventListener(window, customStorageEventName, updateFromCustomEvent)
 
@@ -205,7 +208,7 @@ export function useStorage<T extends (string | number | boolean | object | null)
     // send custom event to communicate within same page
     if (window) {
       const payload = {
-        key,
+        key: keyComputed.value,
         oldValue,
         newValue,
         storageArea: storage as Storage,
@@ -222,16 +225,16 @@ export function useStorage<T extends (string | number | boolean | object | null)
 
   function write(v: unknown) {
     try {
-      const oldValue = storage!.getItem(key)
+      const oldValue = storage!.getItem(keyComputed.value)
 
       if (v == null) {
         dispatchWriteEvent(oldValue, null)
-        storage!.removeItem(key)
+        storage!.removeItem(keyComputed.value)
       }
       else {
         const serialized = serializer.write(v as any)
         if (oldValue !== serialized) {
-          storage!.setItem(key, serialized)
+          storage!.setItem(keyComputed.value, serialized)
           dispatchWriteEvent(oldValue, serialized)
         }
       }
@@ -244,11 +247,11 @@ export function useStorage<T extends (string | number | boolean | object | null)
   function read(event?: StorageEventLike) {
     const rawValue = event
       ? event.newValue
-      : storage!.getItem(key)
+      : storage!.getItem(keyComputed.value)
 
     if (rawValue == null) {
       if (writeDefaults && rawInit != null)
-        storage!.setItem(key, serializer.write(rawInit))
+        storage!.setItem(keyComputed.value, serializer.write(rawInit))
       return rawInit
     }
     else if (!event && mergeDefaults) {
@@ -276,7 +279,7 @@ export function useStorage<T extends (string | number | boolean | object | null)
       return
     }
 
-    if (event && event.key !== key)
+    if (event && event.key !== keyComputed.value)
       return
 
     pauseWatch()

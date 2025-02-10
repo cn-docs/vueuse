@@ -1,7 +1,7 @@
-import { tryOnScopeDispose } from '@vueuse/shared'
-import { computed, ref } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
 import type { MaybeElementRef } from '../unrefElement'
+import { tryOnScopeDispose } from '@vueuse/shared'
+import { computed, ref } from 'vue'
 import { defaultDocument } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useEventListener } from '../useEventListener'
@@ -9,7 +9,7 @@ import { useSupported } from '../useSupported'
 
 export interface UseFullscreenOptions extends ConfigurableDocument {
   /**
-   * 卸载组件时自动退出全屏
+   * Automatically exit fullscreen when component is unmounted
    *
    * @default false
    */
@@ -25,7 +25,7 @@ const eventHandlers = [
 ] as any as 'fullscreenchange'[]
 
 /**
- * 响应式 Fullscreen API.
+ * Reactive Fullscreen API.
  *
  * @see https://vueuse.org/useFullscreen
  * @param target
@@ -40,7 +40,7 @@ export function useFullscreen(
     autoExit = false,
   } = options
 
-  const targetRef = computed(() => unrefElement(target) ?? document?.querySelector('html'))
+  const targetRef = computed(() => unrefElement(target) ?? document?.documentElement)
   const isFullscreen = ref(false)
 
   const requestMethod = computed<'requestFullscreen' | undefined>(() => {
@@ -156,8 +156,9 @@ export function useFullscreen(
       isFullscreen.value = isElementFullScreenValue
   }
 
-  useEventListener(document, eventHandlers, handlerCallback, false)
-  useEventListener(() => unrefElement(targetRef), eventHandlers, handlerCallback, false)
+  const listenerOptions = { capture: false, passive: true }
+  useEventListener(document, eventHandlers, handlerCallback, listenerOptions)
+  useEventListener(() => unrefElement(targetRef), eventHandlers, handlerCallback, listenerOptions)
 
   if (autoExit)
     tryOnScopeDispose(exit)

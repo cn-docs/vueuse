@@ -1,8 +1,8 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
-import type { Ref } from 'vue'
-import { readonly, ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { readonly, ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { useSupported } from '../useSupported'
@@ -12,47 +12,47 @@ export type NetworkType = 'bluetooth' | 'cellular' | 'ethernet' | 'none' | 'wifi
 export type NetworkEffectiveType = 'slow-2g' | '2g' | '3g' | '4g' | undefined
 
 export interface NetworkState {
-  isSupported: Readonly<Ref<boolean>>
+  isSupported: ComputedRef<boolean>
   /**
-   * 用户当前是否连接到网络。
+   * If the user is currently connected.
    */
   isOnline: Readonly<Ref<boolean>>
   /**
-   * 用户上次连接到网络的时间。
+   * The time since the user was last connected.
    */
   offlineAt: Readonly<Ref<number | undefined>>
   /**
-   * 在此时间点，如果用户处于离线状态并重新连接。
+   * At this time, if the user is offline and reconnects
    */
   onlineAt: Readonly<Ref<number | undefined>>
   /**
-   * 下载速度，以 Mbps 为单位。
+   * The download speed in Mbps.
    */
   downlink: Readonly<Ref<number | undefined>>
   /**
-   * 可达到的最大下载速度，以 Mbps 为单位。
+   * The max reachable download speed in Mbps.
    */
   downlinkMax: Readonly<Ref<number | undefined>>
   /**
-   * 检测到的有效速度类型。
+   * The detected effective speed type.
    */
   effectiveType: Readonly<Ref<NetworkEffectiveType | undefined>>
   /**
-   * 当前连接的预估往返时间。
+   * The estimated effective round-trip time of the current connection.
    */
   rtt: Readonly<Ref<number | undefined>>
   /**
-   * 用户是否启用了数据节省模式。
+   * If the user activated data saver mode.
    */
   saveData: Readonly<Ref<boolean | undefined>>
   /**
-   * 检测到的 connection/network 类型。
+   * The detected connection/network type.
    */
   type: Readonly<Ref<NetworkType>>
 }
 
 /**
- * 响应式网络状态。
+ * Reactive Network status.
  *
  * @see https://vueuse.org/useNetwork
  * @param options
@@ -92,25 +92,27 @@ export function useNetwork(options: ConfigurableWindow = {}): Readonly<NetworkSt
     }
   }
 
+  const listenerOptions = { passive: true }
+
   if (window) {
     useEventListener(window, 'offline', () => {
       isOnline.value = false
       offlineAt.value = Date.now()
-    })
+    }, listenerOptions)
 
     useEventListener(window, 'online', () => {
       isOnline.value = true
       onlineAt.value = Date.now()
-    })
+    }, listenerOptions)
   }
 
   if (connection)
-    useEventListener(connection, 'change', updateNetworkInformation, false)
+    useEventListener(connection, 'change', updateNetworkInformation, listenerOptions)
 
   updateNetworkInformation()
 
   return {
-    isSupported: readonly(isSupported),
+    isSupported,
     isOnline: readonly(isOnline),
     saveData: readonly(saveData),
     offlineAt: readonly(offlineAt),

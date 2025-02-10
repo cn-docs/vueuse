@@ -1,10 +1,9 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef } from 'vue'
-import { toValue } from '@vueuse/shared'
-import { computed } from 'vue'
+import { computed, toValue } from 'vue'
 
 /**
- * `OR` 条件的响应式封装。
+ * `OR` conditions for refs.
  *
  * @see https://vueuse.org/logicOr
  */

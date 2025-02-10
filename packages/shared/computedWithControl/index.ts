@@ -1,10 +1,10 @@
 import type { ComputedGetter, ComputedRef, WatchSource, WritableComputedOptions, WritableComputedRef } from 'vue'
-import { customRef, ref, watch } from 'vue'
 import type { Fn } from '../utils'
+import { customRef, ref, watch } from 'vue'
 
 export interface ComputedWithControlRefExtra {
   /**
-   * 强制更新计算值
+   * Force update the computed value.
    */
   trigger: () => void
 }
@@ -23,7 +23,7 @@ export function computedWithControl<T, S>(
 ): WritableComputedRefWithControl<T>
 
 /**
- * 显式定义计算属性的依赖关系。
+ * Explicitly define the deps of computed.
  *
  * @param source
  * @param fn

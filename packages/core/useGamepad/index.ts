@@ -1,7 +1,7 @@
 import type { Ref } from 'vue'
+import type { ConfigurableNavigator, ConfigurableWindow } from '../_configurable'
 import { createEventHook, tryOnMounted } from '@vueuse/shared'
 import { computed, ref } from 'vue'
-import type { ConfigurableNavigator, ConfigurableWindow } from '../_configurable'
 import { defaultNavigator } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 import { useRafFn } from '../useRafFn'
@@ -12,7 +12,7 @@ export interface UseGamepadOptions extends ConfigurableWindow, ConfigurableNavig
 }
 
 /**
- * 将标准游戏手柄映射到 Xbox 360 控制器。
+ * Maps a standard standard gamepad to an Xbox 360 Controller.
  */
 export function mapGamepadToXbox360Controller(gamepad: Ref<Gamepad | undefined>) {
   return computed(() => {
@@ -119,8 +119,9 @@ export function useGamepad(options: UseGamepadOptions = {}) {
     onDisconnectedHook.trigger(gamepad.index)
   }
 
-  useEventListener('gamepadconnected', e => onGamepadConnected(e.gamepad))
-  useEventListener('gamepaddisconnected', e => onGamepadDisconnected(e.gamepad))
+  const listenerOptions = { passive: true }
+  useEventListener('gamepadconnected', e => onGamepadConnected(e.gamepad), listenerOptions)
+  useEventListener('gamepaddisconnected', e => onGamepadDisconnected(e.gamepad), listenerOptions)
 
   tryOnMounted(() => {
     const _gamepads = navigator?.getGamepads() || []

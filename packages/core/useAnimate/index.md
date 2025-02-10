@@ -15,9 +15,9 @@ category: Animation
 ```vue
 <script setup>
 import { useAnimate } from '@vueuse/core'
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 
-const el = ref()
+const el = useTemplateRef('el')
 const {
   isSupported,
   animate,

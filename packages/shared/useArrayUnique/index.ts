@@ -1,7 +1,6 @@
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { computed, toValue } from 'vue'
 
 function uniq<T>(array: T[]) {
   return Array.from(new Set(array))
@@ -19,11 +18,11 @@ function uniqueElementsBy<T>(
 }
 
 /**
- * 响应式唯一数组
+ * reactive unique array
  * @see https://vueuse.org/useArrayUnique
- * @param list - 被调用的数组。
+ * @param list - the array was called upon.
  * @param compareFn
- * @returns 返回一个计算属性 ref，该 ref 返回一个唯一项目的数组。
+ * @returns A computed ref that returns a unique array of items.
  */
 export function useArrayUnique<T>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,

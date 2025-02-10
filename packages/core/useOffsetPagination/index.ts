@@ -1,39 +1,39 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef, Ref, UnwrapNestedRefs } from 'vue'
-import { noop, syncRef, toValue } from '@vueuse/shared'
-import { computed, isReadonly, isRef, reactive, watch } from 'vue'
+import { noop, syncRef } from '@vueuse/shared'
+import { computed, isReadonly, isRef, reactive, toValue, watch } from 'vue'
 import { useClamp } from '../../math/useClamp'
 
 export interface UseOffsetPaginationOptions {
   /**
-   * 总项目数。
+   * Total number of items.
    */
   total?: MaybeRefOrGetter<number>
 
   /**
-   * 每页显示的项目数。
+   * The number of items to display per page.
    * @default 10
    */
   pageSize?: MaybeRefOrGetter<number>
 
   /**
-   * 当前页码。
+   * The current page number.
    * @default 1
    */
   page?: MaybeRef<number>
 
   /**
-   * 当 `page` 改变时的回调函数。
+   * Callback when the `page` change.
    */
   onPageChange?: (returnValue: UnwrapNestedRefs<UseOffsetPaginationReturn>) => unknown
 
   /**
-   * 当 `pageSize` 改变时的回调函数。
+   * Callback when the `pageSize` change.
    */
   onPageSizeChange?: (returnValue: UnwrapNestedRefs<UseOffsetPaginationReturn>) => unknown
 
   /**
-   * 当 `pageCount` 改变时的回调函数。
+   * Callback when the `pageCount` change.
    */
   onPageCountChange?: (returnValue: UnwrapNestedRefs<UseOffsetPaginationReturn>) => unknown
 }

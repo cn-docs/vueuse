@@ -1,7 +1,6 @@
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { computed, toValue } from 'vue'
 
 /**
  * Reactive `Array.filter`

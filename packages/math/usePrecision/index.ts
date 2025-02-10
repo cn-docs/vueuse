@@ -1,14 +1,13 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef } from 'vue'
-import { toValue } from '@vueuse/shared'
-import { computed } from 'vue'
+import { computed, toValue } from 'vue'
 
 /**
- * 处理数值精度的准确性。
+ * Accuracy of handling numerical values.
  *
- * @param value - 值
- * @param power - 幂
- * @returns 将值与幂相乘的结果
+ * @param value - The value
+ * @param power - The power
+ * @returns The result of multiplying the value with the power
  */
 function accurateMultiply(value: number, power: number): number {
   const valueStr = value.toString()

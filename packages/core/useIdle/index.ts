@@ -1,9 +1,9 @@
 import type { ConfigurableEventFilter } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { createFilterWrapper, throttleFilter, timestamp } from '@vueuse/shared'
-import { ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { WindowEventName } from '../useEventListener'
+import { createFilterWrapper, throttleFilter, timestamp } from '@vueuse/shared'
+import { ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
@@ -12,19 +12,19 @@ const oneMinute = 60_000
 
 export interface UseIdleOptions extends ConfigurableWindow, ConfigurableEventFilter {
   /**
-   * 用于监听检测到的用户活动的事件名称
+   * Event names that listen to for detected user activity
    *
    * @default ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']
    */
   events?: WindowEventName[]
   /**
-   * 监听文档可见性变化
+   * Listen for document visibility change
    *
    * @default true
    */
   listenForVisibilityChange?: boolean
   /**
-   * ref idle 的初始状态
+   * Initial state of the ref idle
    *
    * @default false
    */
@@ -38,7 +38,7 @@ export interface UseIdleReturn {
 }
 
 /**
- * 跟踪用户是否处于非活动状态。
+ * Tracks whether the user is being inactive.
  *
  * @see https://vueuse.org/useIdle
  * @param timeout default to 1 minute
@@ -76,14 +76,16 @@ export function useIdle(
 
   if (window) {
     const document = window.document
+    const listenerOptions = { passive: true }
+
     for (const event of events)
-      useEventListener(window, event, onEvent, { passive: true })
+      useEventListener(window, event, onEvent, listenerOptions)
 
     if (listenForVisibilityChange) {
       useEventListener(document, 'visibilitychange', () => {
         if (!document.hidden)
           onEvent()
-      })
+      }, listenerOptions)
     }
 
     reset()

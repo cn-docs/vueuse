@@ -1,11 +1,11 @@
-import { computed } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { computed } from 'vue'
 import { useMediaQuery } from '../useMediaQuery'
 
 export type ColorSchemeType = 'dark' | 'light' | 'no-preference'
 
 /**
- * 响应式首选颜色方案媒体查询。
+ * Reactive prefers-color-scheme media query.
  *
  * @see https://vueuse.org/usePreferredColorScheme
  * @param [options]

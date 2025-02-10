@@ -1,14 +1,15 @@
-import { computed } from 'vue'
 import type { Position } from '../types'
 import type { MaybeElementRef } from '../unrefElement'
+import { computed } from 'vue'
 import { unrefElement } from '../unrefElement'
 import { useEventListener } from '../useEventListener'
 
 const DEFAULT_DELAY = 500
 const DEFAULT_THRESHOLD = 10
+
 export interface OnLongPressOptions {
   /**
-   * 长按触发 `longpress` 的时间（毫秒）
+   * Time in ms till `longpress` gets called
    *
    * @default 500
    */
@@ -17,8 +18,8 @@ export interface OnLongPressOptions {
   modifiers?: OnLongPressModifiers
 
   /**
-   * 允许的移动距离（像素），
-   * 当移动距离超过该值时，动作将被取消。
+   * Allowance of moving distance in pixels,
+   * The action will get canceled When moving too far from the pointerdown position.
    * @default 10
    */
   distanceThreshold?: number | false

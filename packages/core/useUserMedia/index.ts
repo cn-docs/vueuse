@@ -1,27 +1,28 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
+import type { MaybeRef } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { type MaybeRef, tryOnScopeDispose } from '@vueuse/shared'
-import { ref, shallowRef, watch } from 'vue'
 import type { ConfigurableNavigator } from '../_configurable'
+import { tryOnScopeDispose } from '@vueuse/shared'
+import { ref, shallowRef, watch } from 'vue'
 import { defaultNavigator } from '../_configurable'
 import { useSupported } from '../useSupported'
 
 export interface UseUserMediaOptions extends ConfigurableNavigator {
   /**
-   * 流是否已启用
+   * If the stream is enabled
    * @default false
    */
   enabled?: MaybeRef<boolean>
   /**
-   * 当设备 ID 或约束条件发生变化时重新创建流
+   * Recreate stream when deviceIds or constraints changed
    *
    * @default true
    */
   autoSwitch?: MaybeRef<boolean>
   /**
-   * 应用于请求的 MediaStream 的 MediaStreamConstraints
-   * 如果提供了约束条件，则会覆盖 videoDeviceId 和 audioDeviceId
+   * MediaStreamConstraints to be applied to the requested MediaStream
+   * If provided, the constraints will override videoDeviceId and audioDeviceId
    *
    * @default {}
    */
@@ -29,7 +30,7 @@ export interface UseUserMediaOptions extends ConfigurableNavigator {
 }
 
 /**
- * 响应式 `mediaDevices.getUserMedia` 流处理
+ * Reactive `mediaDevices.getUserMedia` streaming
  *
  * @see https://vueuse.org/useUserMedia
  * @param options

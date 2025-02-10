@@ -5,11 +5,11 @@ alias: ignorableWatch
 
 # watchIgnorable
 
-可忽略的监听器
+Ignorable watch
 
-## 使用方法
+## Usage
 
-扩展了 `watch`，返回额外的 `ignoreUpdates(updater)` 和 `ignorePrevAsyncUpdates()`，用于忽略特定于源的更新。
+Extended `watch` that returns extra `ignoreUpdates(updater)` and `ignorePrevAsyncUpdates()` to ignore particular updates to the source.
 
 ```ts
 import { watchIgnorable } from '@vueuse/core'
@@ -19,36 +19,36 @@ const source = ref('foo')
 
 const { stop, ignoreUpdates } = watchIgnorable(
   source,
-  v => console.log(`更改为 ${v}！`),
+  v => console.log(`Changed to ${v}!`),
 )
 
 source.value = 'bar'
-await nextTick() // 日志: 更改为 bar!
+await nextTick() // logs: Changed to bar!
 
 ignoreUpdates(() => {
   source.value = 'foobar'
 })
-await nextTick() // (没有任何变化)
+await nextTick() // (nothing happened)
 
 source.value = 'hello'
-await nextTick() // 日志: 更改为 hello!
+await nextTick() // logs: Changed to hello!
 
 ignoreUpdates(() => {
   source.value = 'ignored'
 })
 source.value = 'logged'
 
-await nextTick() // 日志: 更改为 logged!
+await nextTick() // logs: Changed to logged!
 ```
 
-## 刷新时机
+## Flush timing
 
-`watchIgnorable` 接受与 `watch` 相同的选项，并使用相同的默认值。
-因此，默认情况下，组合函数使用 `flush: 'pre'`。
+`watchIgnorable` accepts the same options as `watch` and uses the same defaults.
+So, by default the composable works using `flush: 'pre'`.
 
 ## `ignorePrevAsyncUpdates`
 
-此功能仅适用于异步刷新 `'pre'` 和 `'post'`。如果使用了 `flush: 'sync'`，则 `ignorePrevAsyncUpdates()` 不起作用，因为在对源进行每次更新后，监听将立即触发。仍然为同步刷新提供此功能，以便代码可以更通用。
+This feature is only for async flush `'pre'` and `'post'`. If `flush: 'sync'` is used, `ignorePrevAsyncUpdates()` is a no-op as the watch will trigger immediately after each update to the source. It is still provided for sync flush so the code can be more generic.
 
 ```ts
 import { watchIgnorable } from '@vueuse/core'
@@ -58,25 +58,25 @@ const source = ref('foo')
 
 const { ignorePrevAsyncUpdates } = watchIgnorable(
   source,
-  v => console.log(`更改为 ${v}！`),
+  v => console.log(`Changed to ${v}!`),
 )
 
 source.value = 'bar'
-await nextTick() // 日志: 更改为 bar!
+await nextTick() // logs: Changed to bar!
 
 source.value = 'good'
 source.value = 'by'
 ignorePrevAsyncUpdates()
 
-await nextTick() // (没有任何变化)
+await nextTick() // (nothing happened)
 
 source.value = 'prev'
 ignorePrevAsyncUpdates()
 source.value = 'after'
 
-await nextTick() // 日志: 更改为 after!
+await nextTick() // logs: Changed to after!
 ```
 
-## 推荐阅读
+## Recommended Readings
 
-- [可忽略的监听器](https://patak.dev/vue/ignorable-watch.html) - 作者：[@matias-capeletto](https://github.com/matias-capeletto)
+- [Ignorable Watch](https://patak.dev/vue/ignorable-watch.html) - by [@patak-dev](https://github.com/patak-dev)

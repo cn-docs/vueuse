@@ -1,14 +1,14 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeComputedRefArgs } from '../utils'
+import { computed } from 'vue'
 import { toValueArgsFlat } from '../utils'
 
 export function useMax(array: MaybeRefOrGetter<MaybeRefOrGetter<number>[]>): ComputedRef<number>
 export function useMax(...args: MaybeRefOrGetter<number>[]): ComputedRef<number>
 
 /**
- * 响应式的获取最大值。
+ * Reactively get maximum of values.
  *
  * @see https://vueuse.org/useMax
  */

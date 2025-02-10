@@ -1,7 +1,7 @@
 import type { ComputedRef } from 'vue'
-import { computed, reactive } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeElementRef } from '../unrefElement'
+import { computed, reactive } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useDeviceOrientation } from '../useDeviceOrientation'
 import { useMouseInElement } from '../useMouseInElement'
@@ -16,15 +16,15 @@ export interface UseParallaxOptions extends ConfigurableWindow {
 
 export interface UseParallaxReturn {
   /**
-   * 滚动值。缩放至 `-0.5 ~ 0.5`
+   * Roll value. Scaled to `-0.5 ~ 0.5`
    */
   roll: ComputedRef<number>
   /**
-   * 倾斜值。缩放至 `-0.5 ~ 0.5`
+   * Tilt value. Scaled to `-0.5 ~ 0.5`
    */
   tilt: ComputedRef<number>
   /**
-   * 传感器来源，可以是 `mouse` 或 `deviceOrientation`
+   * Sensor source, can be `mouse` or `deviceOrientation`
    */
   source: ComputedRef<'deviceOrientation' | 'mouse'>
 }

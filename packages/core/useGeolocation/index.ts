@@ -1,9 +1,9 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
 import type { Ref } from 'vue'
+import type { ConfigurableNavigator } from '../_configurable'
 import { tryOnScopeDispose } from '@vueuse/shared'
 import { ref, shallowRef } from 'vue'
-import type { ConfigurableNavigator } from '../_configurable'
 import { defaultNavigator } from '../_configurable'
 import { useSupported } from '../useSupported'
 
@@ -12,7 +12,7 @@ export interface UseGeolocationOptions extends Partial<PositionOptions>, Configu
 }
 
 /**
- * 响应式 Geolocation API.
+ * Reactive Geolocation API.
  *
  * @see https://vueuse.org/useGeolocation
  * @param options

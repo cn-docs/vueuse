@@ -4,11 +4,15 @@ category: Array
 
 # useArrayDifference
 
-获取两个数组的差集的响应式结果
+Reactive get array difference of two arrays.
 
-## 用法
+By default, it returns the difference of the first array from the second array, so call `A \ B`, [Relative Complement](<https://en.wikipedia.org/wiki/Complement_(set_theory)>) of B in A.
 
-### 与响应式数组一起使用
+You can pass the `symmetric` option to get the [Symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) of two arrays `A △ B`.
+
+## Usage
+
+### Use with reactive array
 
 ```js
 import { useArrayDifference } from '@vueuse/core'
@@ -21,7 +25,7 @@ list2.value = [0, 1, 2]
 // result.value: [3, 4, 5]
 ```
 
-### 与响应式数组和自定义比较函数一起使用
+### Use with reactive array and use function comparison
 
 ```js
 import { useArrayDifference } from '@vueuse/core'
@@ -31,4 +35,23 @@ const list2 = ref([{ id: 4 }, { id: 5 }, { id: 6 }])
 
 const result = useArrayDifference(list1, list2, (value, othVal) => value.id === othVal.id)
 // result.value: [{ id: 1 }, { id: 2 }, { id: 3 }]
+```
+
+### Symmetric Difference
+
+This composable also supports [Symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) by passing the `symmetric` option.
+
+```js
+import { useArrayDifference } from '@vueuse/core'
+
+const list1 = ref([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }])
+const list2 = ref([{ id: 4 }, { id: 5 }, { id: 6 }])
+
+const result = useArrayDifference(
+  list1,
+  list2,
+  (value, othVal) => value.id === othVal.id,
+  { symmetric: true } // [!code hl]
+)
+// result.value: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 6 }]
 ```

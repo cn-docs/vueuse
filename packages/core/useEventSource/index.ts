@@ -8,77 +8,84 @@ export type EventSourceStatus = 'CONNECTING' | 'OPEN' | 'CLOSED'
 
 export interface UseEventSourceOptions extends EventSourceInit {
   /**
-   * 启用自动重连
+   * Enabled auto reconnect
    *
    * @default false
    */
   autoReconnect?: boolean | {
     /**
-     * 最大重试次数。
+     * Maximum retry times.
      *
-     * 或者你可以传递一个断言函数（如果要重试，则返回true）。
+     * Or you can pass a predicate function (which returns true if you want to retry).
      *
      * @default -1
      */
     retries?: number | (() => boolean)
 
     /**
-     * 重连延迟，单位为毫秒
+     * Delay for reconnect, in milliseconds
      *
      * @default 1000
      */
     delay?: number
 
     /**
-     * 在达到最大重试次数时触发。
+     * On maximum retry times reached.
      */
     onFailed?: Fn
   }
 
   /**
-   * 自动打开连接
+   * Immediately open the connection when calling this composable
    *
    * @default true
    */
   immediate?: boolean
+
+  /**
+   * Automatically connect to the websocket when URL changes
+   *
+   * @default true
+   */
+  autoConnect?: boolean
 }
 
 export interface UseEventSourceReturn<Events extends string[]> {
   /**
-   * 对通过 EventSource 接收到的最新数据的 ref，
-   * 可以被监视以响应传入的消息
+   * Reference to the latest data received via the EventSource,
+   * can be watched to respond to incoming messages
    */
   data: Ref<string | null>
 
   /**
-   * 连接的当前状态，只能是以下之一：
-   * 'CONNECTING', 'OPEN', 'CLOSED'
+   * The current state of the connection, can be only one of:
+   * 'CONNECTING', 'OPEN' 'CLOSED'
    */
   status: Ref<EventSourceStatus>
 
   /**
-   * 最新的命名事件
+   * The latest named event
    */
   event: Ref<Events[number] | null>
 
   /**
-   * 当前错误
+   * The current error
    */
   error: Ref<Event | null>
 
   /**
-   * 优雅地关闭 EventSource 连接。
+   * Closes the EventSource connection gracefully.
    */
   close: EventSource['close']
 
   /**
-   * 重新打开 EventSource 连接。
-   * 如果当前连接处于活动状态，则会在打开新连接之前关闭当前连接。
+   * Reopen the EventSource connection.
+   * If there the current one is active, will close it before opening a new one.
    */
   open: Fn
 
   /**
-   * 对当前 EventSource 实例的 ref。
+   * Reference to the current EventSource instance.
    */
   eventSource: Ref<EventSource | null>
   /**
@@ -95,7 +102,7 @@ function resolveNestedOptions<T>(options: T | true): T {
 }
 
 /**
- * EventSource 的响应式包装器。
+ * Reactive wrapper for EventSource.
  *
  * @see https://vueuse.org/useEventSource
  * @see https://developer.mozilla.org/en-US/docs/Web/API/EventSource/EventSource EventSource
@@ -122,6 +129,8 @@ export function useEventSource<Events extends string[]>(
   const {
     withCredentials = false,
     immediate = true,
+    autoConnect = true,
+    autoReconnect,
   } = options
 
   const close = () => {
@@ -154,13 +163,13 @@ export function useEventSource<Events extends string[]>(
 
       // only reconnect if EventSource isn't reconnecting by itself
       // this is the case when the connection is closed (readyState is 2)
-      if (es.readyState === 2 && !explicitlyClosed && options.autoReconnect) {
+      if (es.readyState === 2 && !explicitlyClosed && autoReconnect) {
         es.close()
         const {
           retries = -1,
           delay = 1000,
           onFailed,
-        } = resolveNestedOptions(options.autoReconnect)
+        } = resolveNestedOptions(autoReconnect)
         retried += 1
 
         if (typeof retries === 'number' && (retries < 0 || retried < retries))
@@ -182,7 +191,7 @@ export function useEventSource<Events extends string[]>(
       useEventListener(es, event_name, (e: Event & { data?: string }) => {
         event.value = event_name
         data.value = e.data || null
-      })
+      }, { passive: true })
     }
   }
 
@@ -196,7 +205,10 @@ export function useEventSource<Events extends string[]>(
   }
 
   if (immediate)
-    watch(urlRef, open, { immediate: true })
+    open()
+
+  if (autoConnect)
+    watch(urlRef, open)
 
   tryOnScopeDispose(close)
 

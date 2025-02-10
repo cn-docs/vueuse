@@ -1,7 +1,7 @@
 import type { ConfigurableEventFilter, MaybeRefOrGetter } from '@vueuse/shared'
-import { ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { Position } from '../types'
+import { ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
@@ -11,42 +11,42 @@ export type UseMouseEventExtractor = (event: MouseEvent | Touch) => [x: number, 
 
 export interface UseMouseOptions extends ConfigurableWindow, ConfigurableEventFilter {
   /**
-   * 基于页面、客户端、屏幕或相对于上一个位置的鼠标位置
+   * Mouse position based by page, client, screen, or relative to previous position
    *
    * @default 'page'
    */
   type?: UseMouseCoordType | UseMouseEventExtractor
 
   /**
-   * 在`target`元素上监听事件
+   * Listen events on `target` element
    *
    * @default 'Window'
    */
   target?: MaybeRefOrGetter<Window | EventTarget | null | undefined>
 
   /**
-   * 监听 `touchmove` 事件
+   * Listen to `touchmove` events
    *
    * @default true
    */
   touch?: boolean
 
   /**
-   * 在窗口上监听 `scroll` 事件，仅在 `type` 为 `page` 时有效
+   * Listen to `scroll` events on window, only effective on type `page`
    *
    * @default true
    */
   scroll?: boolean
 
   /**
-   * 当触发 `touchend` 事件时重置为初始值
+   * Reset to initial value when `touchend` event fired
    *
    * @default false
    */
   resetOnTouchEnds?: boolean
 
   /**
-   * 初始值
+   * Initial values
    */
   initialValue?: Position
 }
@@ -62,7 +62,7 @@ const UseMouseBuiltinExtractors: Record<UseMouseCoordType, UseMouseEventExtracto
 } as const
 
 /**
- * 响应式鼠标位置。
+ * Reactive mouse position.
  *
  * @see https://vueuse.org/useMouse
  * @param options
@@ -153,7 +153,7 @@ export function useMouse(options: UseMouseOptions = {}) {
         useEventListener(target, 'touchend', reset, listenerOptions)
     }
     if (scroll && type === 'page')
-      useEventListener(window, 'scroll', scrollHandlerWrapper, { passive: true })
+      useEventListener(window, 'scroll', scrollHandlerWrapper, listenerOptions)
   }
 
   return {

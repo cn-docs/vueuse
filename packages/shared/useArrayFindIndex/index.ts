@@ -1,16 +1,15 @@
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { computed, toValue } from 'vue'
 
 /**
- * 响应式 `Array.findIndex`
+ * Reactive `Array.findIndex`
  *
  * @see https://vueuse.org/useArrayFindIndex
- * @param list - 被调用的数组。
- * @param fn - 用于测试每个元素的函数。
+ * @param list - the array was called upon.
+ * @param fn - a function to test each element.
  *
- * @returns 数组中第一个通过测试的元素的索引。否则返回 "-1"。
+ * @returns the index of the first element in the array that passes the test. Otherwise, "-1".
  */
 export function useArrayFindIndex<T>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,

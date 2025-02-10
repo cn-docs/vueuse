@@ -1,9 +1,9 @@
 /* this implementation is original ported from https://github.com/logaretm/vue-use-web by Abdelrahman Awad */
 
 import type { Ref, ShallowRef } from 'vue'
+import type { ConfigurableWindow } from '../_configurable'
 import { tryOnScopeDispose } from '@vueuse/shared'
 import { ref, shallowRef } from 'vue'
-import type { ConfigurableWindow } from '../_configurable'
 import { defaultWindow } from '../_configurable'
 
 type PostMessage = typeof Worker.prototype['postMessage']
@@ -18,7 +18,7 @@ export interface UseWebWorkerReturn<Data = any> {
 type WorkerFn = (...args: unknown[]) => Worker
 
 /**
- * 简单的 Web Workers 注册和通信。
+ * Simple Web Workers registration and communication.
  *
  * @see https://vueuse.org/useWebWorker
  * @param url
@@ -32,7 +32,7 @@ export function useWebWorker<T = any>(
 ): UseWebWorkerReturn<T>
 
 /**
- * 简单的 Web Workers 注册和通信。
+ * Simple Web Workers registration and communication.
  *
  * @see https://vueuse.org/useWebWorker
  * @param worker

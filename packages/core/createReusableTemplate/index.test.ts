@@ -1,7 +1,7 @@
 import type { Slot } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import { Fragment, defineComponent, h, renderSlot } from 'vue'
+import { defineComponent, Fragment, h, renderSlot } from 'vue'
 import { createReusableTemplate } from '.'
 
 describe('createReusableTemplate', () => {

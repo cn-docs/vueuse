@@ -1,14 +1,14 @@
 ---
-category: 响应式
+category: Reactivity
 ---
 
 # extendRef
 
-为 Ref 添加额外的属性。
+Add extra attributes to Ref.
 
-## 使用方法
+## Usage
 
-> 请注意，在 Vue 的模板中无法访问这些额外的属性。
+> Please note the extra attribute will not be accessible in Vue's template.
 
 ```ts
 import { extendRef } from '@vueuse/core'
@@ -22,7 +22,7 @@ extended.value === 'content'
 extended.foo === 'extra data'
 ```
 
-Refs 将被自动解包并保持响应式
+Refs will be unwrapped and be reactive
 
 ```ts
 const myRef = ref('content')
@@ -33,6 +33,6 @@ const extended = extendRef(myRef, { extra: extraRef })
 extended.value === 'content'
 extended.extra === 'extra'
 
-extended.extra = 'new data' // 将触发更新
+extended.extra = 'new data' // will trigger update
 extraRef.value === 'new data'
 ```

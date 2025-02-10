@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { defineComponent, h, nextTick, ref } from 'vue'
-import { mount } from '../../.test'
 import { useParentElement } from '.'
+import { mount } from '../../.test'
 
 describe('useParentElement', () => {
   it('should be defined', () => {

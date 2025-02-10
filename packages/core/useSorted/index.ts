@@ -1,7 +1,6 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { toValue } from '@vueuse/shared'
-import { computed, isRef, watchEffect } from 'vue'
+import { computed, isRef, toValue, watchEffect } from 'vue'
 
 export type UseSortedCompareFn<T = any> = (a: T, b: T) => number
 
@@ -9,15 +8,15 @@ export type UseSortedFn<T = any> = (arr: T[], compareFn: UseSortedCompareFn<T>) 
 
 export interface UseSortedOptions<T = any> {
   /**
-   * 排序算法
+   * sort algorithm
    */
   sortFn?: UseSortedFn<T>
   /**
-   * 比较函数
+   * compare function
    */
   compareFn?: UseSortedCompareFn<T>
   /**
-   * 更改源数组的值
+   * change the value of the source array
    * @default false
    */
   dirty?: boolean

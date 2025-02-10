@@ -12,26 +12,26 @@ related: useThrottleFn
 ## 使用方法
 
 ```js
-import { useDebounceFn } from '@vueuse/core'
+import { useDebounceFn, useEventListener } from '@vueuse/core'
 
 const debouncedFn = useDebounceFn(() => {
   // 做一些事情
 }, 1000)
 
-window.addEventListener('resize', debouncedFn)
+useEventListener(window, 'resize', debouncedFn)
 ```
 
 你还可以传递第三个参数给它，带有一个最大等待时间，类似于 [lodash debounce](https://lodash.com/docs/4.17.15#debounce)
 
 ```js
-import { useDebounceFn } from '@vueuse/core'
+import { useDebounceFn, useEventListener } from '@vueuse/core'
 
 // 如果在重复输入后 5000ms 内没有调用，该函数将被调用。
 const debouncedFn = useDebounceFn(() => {
   // 做一些事情
 }, 1000, { maxWait: 5000 })
 
-window.addEventListener('resize', debouncedFn)
+useEventListener(window, 'resize', debouncedFn)
 ```
 
 此外，你可以使用 promise 操作获取函数的返回值。

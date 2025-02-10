@@ -1,8 +1,8 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
-import { notNullish, toValue, tryOnScopeDispose } from '@vueuse/shared'
-import { computed, watch } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeComputedElementRef, MaybeElement } from '../unrefElement'
+import { notNullish, toArray, tryOnScopeDispose } from '@vueuse/shared'
+import { computed, toValue, watch } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useSupported } from '../useSupported'
@@ -10,7 +10,7 @@ import { useSupported } from '../useSupported'
 export interface UseMutationObserverOptions extends MutationObserverInit, ConfigurableWindow {}
 
 /**
- * 监视对 DOM 树的变更
+ * Watch for changes being made to the DOM tree.
  *
  * @see https://vueuse.org/useMutationObserver
  * @see https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver MutationObserver MDN
@@ -36,7 +36,7 @@ export function useMutationObserver(
 
   const targets = computed(() => {
     const value = toValue(target)
-    const items = (Array.isArray(value) ? value : [value])
+    const items = toArray(value)
       .map(unrefElement)
       .filter(notNullish)
     return new Set(items)

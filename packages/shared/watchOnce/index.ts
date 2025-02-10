@@ -1,6 +1,6 @@
 import type { WatchCallback, WatchOptions, WatchSource, WatchStopHandle } from 'vue'
-import { nextTick, watch } from 'vue'
 import type { MapOldSources, MapSources } from '../utils'
+import { nextTick, watch } from 'vue'
 
 // overloads
 export function watchOnce<T extends Readonly<WatchSource<unknown>[]>, Immediate extends Readonly<boolean> = false>(source: [...T], cb: WatchCallback<MapSources<T>, MapOldSources<T, Immediate>>, options?: WatchOptions<Immediate>): WatchStopHandle

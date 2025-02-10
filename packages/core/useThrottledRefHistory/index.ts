@@ -1,7 +1,7 @@
 import type { MaybeRef } from '@vueuse/shared'
 import type { Ref } from 'vue'
-import { throttleFilter } from '@vueuse/shared'
 import type { UseRefHistoryOptions, UseRefHistoryReturn } from '../useRefHistory'
+import { throttleFilter } from '@vueuse/shared'
 import { useRefHistory } from '../useRefHistory'
 
 export type UseThrottledRefHistoryOptions<Raw, Serialized = Raw> = Omit<UseRefHistoryOptions<Raw, Serialized>, 'eventFilter'> & { throttle?: MaybeRef<number>, trailing?: boolean }
@@ -9,7 +9,7 @@ export type UseThrottledRefHistoryOptions<Raw, Serialized = Raw> = Omit<UseRefHi
 export type UseThrottledRefHistoryReturn<Raw, Serialized = Raw> = UseRefHistoryReturn<Raw, Serialized>
 
 /**
- * 带节流功能的 useRefHistory 的简写。
+ * Shorthand for [useRefHistory](https://vueuse.org/useRefHistory) with throttled filter.
  *
  * @see https://vueuse.org/useThrottledRefHistory
  * @param source

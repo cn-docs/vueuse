@@ -1,5 +1,5 @@
-import { computed, ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { computed, ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
@@ -9,7 +9,7 @@ function getRangesFromSelection(selection: Selection) {
 }
 
 /**
- * 基于 [`Window.getSelection`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection) 响应式跟踪用户文本选择。
+ * Reactively track user text selection based on [`Window.getSelection`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection).
  *
  * @see https://vueuse.org/useTextSelection
  */
@@ -30,7 +30,7 @@ export function useTextSelection(options: ConfigurableWindow = {}) {
   }
 
   if (window)
-    useEventListener(window.document, 'selectionchange', onSelectionChange)
+    useEventListener(window.document, 'selectionchange', onSelectionChange, { passive: true })
 
   return {
     text,

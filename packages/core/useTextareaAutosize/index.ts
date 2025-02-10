@@ -1,27 +1,27 @@
 import type { MaybeRef } from '@vueuse/shared'
 import type { WatchSource } from 'vue'
-import { toValue } from '@vueuse/shared'
-import { nextTick, ref, watch } from 'vue'
+import { toRef } from '@vueuse/shared'
+import { nextTick, ref, toValue, watch } from 'vue'
 import { useResizeObserver } from '../useResizeObserver'
 
 export interface UseTextareaAutosizeOptions {
-  /** 自动调整大小的文本区域元素。 */
+  /** Textarea element to autosize. */
   element?: MaybeRef<HTMLTextAreaElement | undefined>
-  /** 文本区域的内容。 */
-  input?: MaybeRef<string | undefined>
-  /** 监听应触发文本区域大小调整的源。 */
+  /** Textarea content. */
+  input?: MaybeRef<string>
+  /** Watch sources that should trigger a textarea resize. */
   watch?: WatchSource | Array<WatchSource>
-  /** 当文本区域大小发生变化时调用的函数。 */
+  /** Function called when the textarea size changes. */
   onResize?: () => void
-  /** 指定样式目标以根据文本区域内容应用高度。如果未提供，将使用文本区域本身。 */
+  /** Specify style target to apply the height based on textarea content. If not provided it will use textarea it self.  */
   styleTarget?: MaybeRef<HTMLElement | undefined>
-  /** 指定用于调整高度的样式属性。可以是 `height | minHeight`。默认值为 `height`。 */
+  /** Specify the style property that will be used to manipulate height. Can be `height | minHeight`. Default value is `height`. */
   styleProp?: 'height' | 'minHeight'
 }
 
 export function useTextareaAutosize(options?: UseTextareaAutosizeOptions) {
-  const textarea = ref<HTMLTextAreaElement>(options?.element as any)
-  const input = ref<string>(options?.input as any)
+  const textarea = toRef(options?.element)
+  const input = toRef(options?.input ?? '')
   const styleProp = options?.styleProp ?? 'height'
   const textareaScrollHeight = ref(1)
   const textareaOldWidth = ref(0)

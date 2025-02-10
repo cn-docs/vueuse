@@ -1,39 +1,40 @@
 import type { Pausable } from '@vueuse/shared'
-import { tryOnScopeDispose } from '@vueuse/shared'
-import { readonly, ref } from 'vue'
+import type { MaybeRefOrGetter } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { tryOnScopeDispose } from '@vueuse/shared'
+import { computed, readonly, ref, toValue } from 'vue'
 import { defaultWindow } from '../_configurable'
 
 export interface UseRafFnCallbackArguments {
   /**
-   * 当前帧与上一帧之间经过的时间。
+   * Time elapsed between this and the last frame.
    */
   delta: number
 
   /**
-   * 自网页创建以来经过的时间。参见 {@link https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp#the_time_origin 时间起点}。
+   * Time elapsed since the creation of the web page. See {@link https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp#the_time_origin Time origin}.
    */
   timestamp: DOMHighResTimeStamp
 }
 
 export interface UseRafFnOptions extends ConfigurableWindow {
   /**
-   * 在创建时立即开始 requestAnimationFrame 循环。
+   * Start the requestAnimationFrame loop immediately on creation
    *
    * @default true
    */
   immediate?: boolean
   /**
-   * 每秒执行函数的最大帧数。
-   * 设置为 `undefined` 来禁用限制。
+   * The maximum frame per second to execute the function.
+   * Set to `undefined` to disable the limit.
    *
    * @default undefined
    */
-  fpsLimit?: number
+  fpsLimit?: MaybeRefOrGetter<number>
 }
 
 /**
- * 在每次 `requestAnimationFrame` 上调用函数。具有暂停和恢复控制。
+ * Call function on every `requestAnimationFrame`. With controls of pausing and resuming.
  *
  * @see https://vueuse.org/useRafFn
  * @param fn
@@ -47,7 +48,9 @@ export function useRafFn(fn: (args: UseRafFnCallbackArguments) => void, options:
   } = options
 
   const isActive = ref(false)
-  const intervalLimit = fpsLimit ? 1000 / fpsLimit : null
+  const intervalLimit = computed(() => {
+    return fpsLimit ? 1000 / toValue(fpsLimit) : null
+  })
   let previousFrameTimestamp = 0
   let rafId: null | number = null
 
@@ -60,7 +63,7 @@ export function useRafFn(fn: (args: UseRafFnCallbackArguments) => void, options:
 
     const delta = timestamp - previousFrameTimestamp
 
-    if (intervalLimit && delta < intervalLimit) {
+    if (intervalLimit.value && delta < intervalLimit.value) {
       rafId = window.requestAnimationFrame(loop)
       return
     }

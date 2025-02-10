@@ -1,29 +1,29 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
-import { noop, toValue, tryOnMounted, useDebounceFn, useThrottleFn } from '@vueuse/shared'
-import { computed, reactive, ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { noop, tryOnMounted, useDebounceFn, useThrottleFn } from '@vueuse/shared'
+import { computed, reactive, ref, toValue } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useEventListener } from '../useEventListener'
 
 export interface UseScrollOptions extends ConfigurableWindow {
   /**
-   * 滚动事件的节流时间，默认情况下禁用。
+   * Throttle time for scroll event, it’s disabled by default.
    *
    * @default 0
    */
   throttle?: number
 
   /**
-   * 滚动结束时的检查时间。
-   * 当配置了 `throttle` 时，该配置将设置为 (throttle + idle)。
+   * The check time when scrolling ends.
+   * This configuration will be setting to (throttle + idle) when the `throttle` is configured.
    *
    * @default 200
    */
   idle?: number
 
   /**
-   * 以 x 像素偏移到达状态
+   * Offset arrived states by x pixels
    *
    */
   offset?: {
@@ -34,54 +34,55 @@ export interface UseScrollOptions extends ConfigurableWindow {
   }
 
   /**
-   * 滚动时触发。
+   * Trigger it when scrolling.
    *
    */
   onScroll?: (e: Event) => void
 
   /**
-   * 滚动结束时触发。
+   * Trigger it when scrolling ends.
    *
    */
   onStop?: (e: Event) => void
 
   /**
-   * 滚动事件的监听器选项。
+   * Listener options for scroll event.
    *
    * @default {capture: false, passive: true}
    */
   eventListenerOptions?: boolean | AddEventListenerOptions
 
   /**
-   * 可选地指定滚动行为为 `auto`（默认，非平滑滚动）或 `smooth`（用于平滑滚动），在更改 `x` 或 `y` 引用时生效。
+   * Optionally specify a scroll behavior of `auto` (default, not smooth scrolling) or
+   * `smooth` (for smooth scrolling) which takes effect when changing the `x` or `y` refs.
    *
    * @default 'auto'
    */
   behavior?: MaybeRefOrGetter<ScrollBehavior>
 
   /**
-   * 错误回调
+   * On error callback
    *
-   * 默认将错误记录到 `console.error`
+   * Default log error to `console.error`
    */
   onError?: (error: unknown) => void
 }
 
 /**
- * 我们必须检查滚动量是否足够接近某个阈值，以便更准确地计算到达状态。
- * 这是因为 scrollTop/scrollLeft 是非四舍五入的数字，而 scrollHeight/scrollWidth 和 clientHeight/clientWidth 是四舍五入的。
+ * We have to check if the scroll amount is close enough to some threshold in order to
+ * more accurately calculate arrivedState. This is because scrollTop/scrollLeft are non-rounded
+ * numbers, while scrollHeight/scrollWidth and clientHeight/clientWidth are rounded.
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#determine_if_an_element_has_been_totally_scrolled
  */
 const ARRIVED_STATE_THRESHOLD_PIXELS = 1
 
 /**
- * 响应式滚动。
+ * Reactive scroll.
  *
  * @see https://vueuse.org/useScroll
  * @param element
  * @param options
  */
-
 export function useScroll(
   element: MaybeRefOrGetter<HTMLElement | SVGElement | Window | Document | null | undefined>,
   options: UseScrollOptions = {},
@@ -190,14 +191,15 @@ export function useScroll(
       || unrefElement(target as HTMLElement | SVGElement)
     ) as Element
 
-    const { display, flexDirection } = getComputedStyle(el)
+    const { display, flexDirection, direction } = getComputedStyle(el)
+    const directionMultipler = direction === 'rtl' ? -1 : 1
 
     const scrollLeft = el.scrollLeft
     directions.left = scrollLeft < internalX.value
     directions.right = scrollLeft > internalX.value
 
-    const left = Math.abs(scrollLeft) <= (offset.left || 0)
-    const right = Math.abs(scrollLeft)
+    const left = (scrollLeft * directionMultipler) <= (offset.left || 0)
+    const right = (scrollLeft * directionMultipler)
       + el.clientWidth >= el.scrollWidth
       - (offset.right || 0)
       - ARRIVED_STATE_THRESHOLD_PIXELS
@@ -221,8 +223,8 @@ export function useScroll(
 
     directions.top = scrollTop < internalY.value
     directions.bottom = scrollTop > internalY.value
-    const top = Math.abs(scrollTop) <= (offset.top || 0)
-    const bottom = Math.abs(scrollTop)
+    const top = scrollTop <= (offset.top || 0)
+    const bottom = scrollTop
       + el.clientHeight >= el.scrollHeight
       - (offset.bottom || 0)
       - ARRIVED_STATE_THRESHOLD_PIXELS

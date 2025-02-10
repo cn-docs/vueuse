@@ -4,11 +4,9 @@ category: Reactivity
 
 # reactiveComputed
 
-响应式计算对象。与 `computed` 返回 ref 不同，`reactiveComputed` 返回一个响应式对象。
+Computed reactive object. Instead of returning a ref that `computed` does, `reactiveComputed` returns a reactive object.
 
-<RequiresProxy />
-
-## 用法
+## Usage
 
 ```ts
 import { reactiveComputed } from '@vueuse/core'

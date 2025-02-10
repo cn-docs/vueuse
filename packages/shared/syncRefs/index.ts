@@ -1,16 +1,16 @@
 import type { Ref, WatchSource } from 'vue'
 import { watch } from 'vue'
-import type { ConfigurableFlushSync } from '../utils'
+import { type ConfigurableFlushSync, toArray } from '../utils'
 
 export interface SyncRefsOptions extends ConfigurableFlushSync {
   /**
-   * 深度监视
+   * Watch deeply
    *
    * @default false
    */
   deep?: boolean
   /**
-   * 立即同步值
+   * Sync values immediately
    *
    * @default true
    */
@@ -18,10 +18,10 @@ export interface SyncRefsOptions extends ConfigurableFlushSync {
 }
 
 /**
- * 将目标 ref 与源 ref 保持同步
+ * Keep target ref(s) in sync with the source ref
  *
- * @param source 源 ref
- * @param targets 目标值
+ * @param source source ref
+ * @param targets
  */
 export function syncRefs<T>(
   source: WatchSource<T>,
@@ -33,8 +33,7 @@ export function syncRefs<T>(
     deep = false,
     immediate = true,
   } = options
-  if (!Array.isArray(targets))
-    targets = [targets]
+  targets = toArray(targets)
 
   return watch(
     source,

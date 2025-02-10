@@ -1,11 +1,11 @@
 import type { Ref } from 'vue'
-import { ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
 /**
- * 响应式首选语言
+ * Reactive Navigator Languages.
  *
  * @see https://vueuse.org/usePreferredLanguages
  * @param options
@@ -20,7 +20,7 @@ export function usePreferredLanguages(options: ConfigurableWindow = {}): Ref<rea
 
   useEventListener(window, 'languagechange', () => {
     value.value = navigator.languages
-  })
+  }, { passive: true })
 
   return value
 }

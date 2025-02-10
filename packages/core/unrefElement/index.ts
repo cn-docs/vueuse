@@ -1,6 +1,6 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComponentPublicInstance } from 'vue'
-import { toValue } from '@vueuse/shared'
+import { toValue } from 'vue'
 
 export type VueInstance = ComponentPublicInstance
 export type MaybeElementRef<T extends MaybeElement = MaybeElement> = MaybeRef<T>
@@ -10,7 +10,7 @@ export type MaybeElement = HTMLElement | SVGElement | VueInstance | undefined | 
 export type UnRefElementReturn<T extends MaybeElement = MaybeElement> = T extends VueInstance ? Exclude<MaybeElement, VueInstance> : T | undefined
 
 /**
- * 从 ref 或 Vue 组件实例中检索基础 DOM 元素。
+ * Get the dom element of a ref of element or Vue component instance
  *
  * @param elRef
  */

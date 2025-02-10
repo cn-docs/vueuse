@@ -1,8 +1,8 @@
-import { tryOnMounted } from '@vueuse/shared'
-import { computed, ref } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
 import type { MaybeElement } from '../unrefElement'
 
+import { tryOnMounted } from '@vueuse/shared'
+import { computed, ref } from 'vue'
 import { defaultDocument } from '../_configurable'
 import { useMutationObserver } from '../useMutationObserver'
 
@@ -10,19 +10,19 @@ export type UseTextDirectionValue = 'ltr' | 'rtl' | 'auto'
 
 export interface UseTextDirectionOptions extends ConfigurableDocument {
   /**
-   * 适用于的目标元素的 CSS 选择器
+   * CSS Selector for the target element applying to
    *
    * @default 'html'
    */
   selector?: string
   /**
-   * 使用 MutationObserver 观察 `document.querySelector(selector)` 的变化
+   * Observe `document.querySelector(selector)` changes using MutationObserve
    *
    * @default false
    */
   observe?: boolean
   /**
-   * 初始值
+   * Initial value
    *
    * @default 'ltr'
    */
@@ -30,7 +30,7 @@ export interface UseTextDirectionOptions extends ConfigurableDocument {
 }
 
 /**
- * 元素文本的响应式方向。
+ * Reactive dir of the element's text.
  *
  * @see https://vueuse.org/useTextDirection
  */

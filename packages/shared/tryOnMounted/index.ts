@@ -1,14 +1,13 @@
+import type { Fn } from '../utils'
 // eslint-disable-next-line no-restricted-imports
 import { nextTick, onMounted } from 'vue'
-import type { Fn } from '../utils'
-
 import { getLifeCycleTarget } from '../utils'
 
 /**
- * 如果在组件生命周期内，调用 onMounted()，如果不是，直接调用函数
+ * Call onMounted() if it's inside a component lifecycle, if not, just call the function
  *
  * @param fn
- * @param sync 如果设置为 false，则会在 Vue 的下一个 tick 中运行
+ * @param sync if set to false, it will run in the nextTick() of Vue
  * @param target
  */
 export function tryOnMounted(fn: Fn, sync = true, target?: any) {

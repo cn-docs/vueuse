@@ -3,57 +3,57 @@ import { shallowReactive } from 'vue'
 type CacheKey = any
 
 /**
- * 自定义记忆缓存处理器
+ * Custom memoize cache handler
  */
 export interface UseMemoizeCache<Key, Value> {
   /**
-   * 获取键对应的值
+   * Get value for key
    */
   get: (key: Key) => Value | undefined
   /**
-   * 设置键值对
+   * Set value for key
    */
   set: (key: Key, value: Value) => void
   /**
-   * 返回键是否存在的标志
+   * Return flag if key exists
    */
   has: (key: Key) => boolean
   /**
-   * 删除键对应的值
+   * Delete value for key
    */
   delete: (key: Key) => void
   /**
-   * 清除缓存
+   * Clear cache
    */
   clear: () => void
 }
 
 /**
- * 记忆化函数
+ * Memoized function
  */
 export interface UseMemoizeReturn<Result, Args extends unknown[]> {
   /**
-   * 从缓存获取结果或调用记忆化函数
+   * Get result from cache or call memoized function
    */
   (...args: Args): Result
   /**
-   * 调用记忆化函数并更新缓存
+   * Call memoized function and update cache
    */
   load: (...args: Args) => Result
   /**
-   * 删除给定参数的缓存
+   * Delete cache of given arguments
    */
   delete: (...args: Args) => void
   /**
-   * 清除缓存
+   * Clear cache
    */
   clear: () => void
   /**
-   * 为给定参数生成缓存键
+   * Generate cache key for given arguments
    */
   generateKey: (...args: Args) => CacheKey
   /**
-   * 缓存容器
+   * Cache container
    */
   cache: UseMemoizeCache<CacheKey, Result>
 }
@@ -64,7 +64,7 @@ export interface UseMemoizeOptions<Result, Args extends unknown[]> {
 }
 
 /**
- * 基于参数的响应式函数结果缓存
+ * Reactive function result cache based on arguments
  */
 export function useMemoize<Result, Args extends unknown[]>(
   resolver: (...args: Args) => Result,
@@ -78,15 +78,15 @@ export function useMemoize<Result, Args extends unknown[]>(
   const cache = initCache()
 
   /**
-   * 从参数生成键
+   * Generate key from args
    */
   const generateKey = (...args: Args) => options?.getKey
     ? options.getKey(...args)
-    // 默认键：序列化参数
+    // Default key: Serialize args
     : JSON.stringify(args)
 
   /**
-   * 加载数据并保存到缓存中
+   * Load data and save in cache
    */
   const _loadData = (key: string | number, ...args: Args): Result => {
     cache.set(key, resolver(...args))
@@ -95,14 +95,14 @@ export function useMemoize<Result, Args extends unknown[]>(
   const loadData = (...args: Args): Result => _loadData(generateKey(...args), ...args)
 
   /**
-   * 从缓存中删除键
+   * Delete key from cache
    */
   const deleteData = (...args: Args): void => {
     cache.delete(generateKey(...args))
   }
 
   /**
-   * 清除缓存数据
+   * Clear cached data
    */
   const clearData = () => {
     cache.clear()

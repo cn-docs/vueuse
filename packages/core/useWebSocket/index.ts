@@ -1,10 +1,11 @@
 import type { Fn, MaybeRefOrGetter } from '@vueuse/shared'
 import type { Ref } from 'vue'
 import { isClient, isWorker, toRef, tryOnScopeDispose, useIntervalFn } from '@vueuse/shared'
-import { ref, watch } from 'vue'
+import { ref, toValue, watch } from 'vue'
 import { useEventListener } from '../useEventListener'
 
 export type WebSocketStatus = 'OPEN' | 'CONNECTING' | 'CLOSED'
+export type WebSocketHeartbeatMessage = string | ArrayBuffer | Blob
 
 const DEFAULT_PING_MESSAGE = 'ping'
 
@@ -15,32 +16,32 @@ export interface UseWebSocketOptions {
   onMessage?: (ws: WebSocket, event: MessageEvent) => void
 
   /**
-   * 每过 x 毫秒发送一次心跳。
+   * Send heartbeat for every x milliseconds passed
    *
    * @default false
    */
   heartbeat?: boolean | {
     /**
-     * 心跳消息
+     * Message for the heartbeat
      *
      * @default 'ping'
      */
-    message?: string | ArrayBuffer | Blob
+    message?: MaybeRefOrGetter<WebSocketHeartbeatMessage>
 
     /**
      * Response message for the heartbeat, if undefined the message will be used
      */
-    responseMessage?: string | ArrayBuffer | Blob
+    responseMessage?: MaybeRefOrGetter<WebSocketHeartbeatMessage>
 
     /**
-     * 间隔时间，毫秒为单位
+     * Interval, in milliseconds
      *
      * @default 1000
      */
     interval?: number
 
     /**
-     * 心跳响应超时时间，毫秒为单位
+     * Heartbeat response timeout, in milliseconds
      *
      * @default 1000
      */
@@ -48,49 +49,56 @@ export interface UseWebSocketOptions {
   }
 
   /**
-   * 启用自动重新连接
+   * Enabled auto reconnect
    *
    * @default false
    */
   autoReconnect?: boolean | {
     /**
-     * 最大重试次数。
+     * Maximum retry times.
      *
-     * 或者您可以传递一个谓词函数（如果要重试，则返回 true）。
+     * Or you can pass a predicate function (which returns true if you want to retry).
      *
      * @default -1
      */
     retries?: number | (() => boolean)
 
     /**
-     * 重新连接延迟，毫秒为单位
+     * Delay for reconnect, in milliseconds
      *
      * @default 1000
      */
     delay?: number
 
     /**
-     * 当达到最大重试次数时。
+     * On maximum retry times reached.
      */
     onFailed?: Fn
   }
 
   /**
-   * 自动打开连接
+   * Immediately open the connection when calling this composable
    *
    * @default true
    */
   immediate?: boolean
 
   /**
-   * 自动关闭连接
+   * Automatically connect to the websocket when URL changes
+   *
+   * @default true
+   */
+  autoConnect?: boolean
+
+  /**
+   * Automatically close a connection
    *
    * @default true
    */
   autoClose?: boolean
 
   /**
-   * 一个或多个子协议字符串的列表
+   * List of one or more sub-protocol strings
    *
    * @default []
    */
@@ -99,37 +107,38 @@ export interface UseWebSocketOptions {
 
 export interface UseWebSocketReturn<T> {
   /**
-   * WebSocket 最新接收到的数据的 ref，可以监听以响应传入的消息
+   * Reference to the latest data received via the websocket,
+   * can be watched to respond to incoming messages
    */
   data: Ref<T | null>
 
   /**
-   * 当前 WebSocket 的状态，只能是以下之一：
-   * 'OPEN'，'CONNECTING'，'CLOSED'
+   * The current websocket status, can be only one of:
+   * 'OPEN', 'CONNECTING', 'CLOSED'
    */
   status: Ref<WebSocketStatus>
 
   /**
-   * 优雅地关闭 WebSocket 连接。
+   * Closes the websocket connection gracefully.
    */
   close: WebSocket['close']
 
   /**
-   * 重新打开 WebSocket 连接。
-   * 如果当前连接处于活动状态，将在打开新连接之前关闭它。
+   * Reopen the websocket connection.
+   * If there the current one is active, will close it before opening a new one.
    */
   open: Fn
 
   /**
-   * 通过 WebSocket 连接发送数据。
+   * Sends data through the websocket connection.
    *
    * @param data
-   * @param useBuffer 当套接字尚未打开时，将数据存储到缓冲区并在连接时发送。默认为 true。
+   * @param useBuffer when the socket is not yet open, store the data into the buffer and sent them one connected. Default to true.
    */
   send: (data: string | ArrayBuffer | Blob, useBuffer?: boolean) => boolean
 
   /**
-   * WebSocket 实例的 ref。
+   * Reference to the WebSocket instance.
    */
   ws: Ref<WebSocket | undefined>
 }
@@ -141,7 +150,7 @@ function resolveNestedOptions<T>(options: T | true): T {
 }
 
 /**
- * 响应式 WebSocket 客户端。
+ * Reactive WebSocket client.
  *
  * @see https://vueuse.org/useWebSocket
  * @param url
@@ -156,6 +165,7 @@ export function useWebSocket<Data = any>(
     onError,
     onMessage,
     immediate = true,
+    autoConnect = true,
     autoClose = true,
     protocols = [],
   } = options
@@ -173,6 +183,7 @@ export function useWebSocket<Data = any>(
 
   let bufferedData: (string | ArrayBuffer | Blob)[] = []
 
+  let retryTimeout: ReturnType<typeof setTimeout> | undefined
   let pongTimeoutWait: ReturnType<typeof setTimeout> | undefined
 
   const _sendBuffer = () => {
@@ -183,6 +194,13 @@ export function useWebSocket<Data = any>(
     }
   }
 
+  const resetRetry = () => {
+    if (retryTimeout != null) {
+      clearTimeout(retryTimeout)
+      retryTimeout = undefined
+    }
+  }
+
   const resetHeartbeat = () => {
     clearTimeout(pongTimeoutWait)
     pongTimeoutWait = undefined
@@ -190,7 +208,8 @@ export function useWebSocket<Data = any>(
 
   // Status code 1000 -> Normal Closure https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/code
   const close: WebSocket['close'] = (code = 1000, reason) => {
-    if (!isClient || !wsRef.value)
+    resetRetry()
+    if ((!isClient && !isWorker) || !wsRef.value)
       return
     explicitlyClosed = true
     resetHeartbeat()
@@ -239,10 +258,10 @@ export function useWebSocket<Data = any>(
 
         if (typeof retries === 'number' && (retries < 0 || retried < retries)) {
           retried += 1
-          setTimeout(_init, delay)
+          retryTimeout = setTimeout(_init, delay)
         }
         else if (typeof retries === 'function' && retries()) {
-          setTimeout(_init, delay)
+          retryTimeout = setTimeout(_init, delay)
         }
         else {
           onFailed?.()
@@ -261,7 +280,7 @@ export function useWebSocket<Data = any>(
           message = DEFAULT_PING_MESSAGE,
           responseMessage = message,
         } = resolveNestedOptions(options.heartbeat)
-        if (e.data === responseMessage)
+        if (e.data === toValue(responseMessage))
           return
       }
 
@@ -279,7 +298,7 @@ export function useWebSocket<Data = any>(
 
     const { pause, resume } = useIntervalFn(
       () => {
-        send(message, false)
+        send(toValue(message), false)
         if (pongTimeoutWait != null)
           return
         pongTimeoutWait = setTimeout(() => {
@@ -298,13 +317,14 @@ export function useWebSocket<Data = any>(
 
   if (autoClose) {
     if (isClient)
-      useEventListener('beforeunload', () => close())
+      useEventListener('beforeunload', () => close(), { passive: true })
     tryOnScopeDispose(close)
   }
 
   const open = () => {
     if (!isClient && !isWorker)
       return
+
     close()
     explicitlyClosed = false
     retried = 0
@@ -314,7 +334,8 @@ export function useWebSocket<Data = any>(
   if (immediate)
     open()
 
-  watch(urlRef, open)
+  if (autoConnect)
+    watch(urlRef, open)
 
   return {
     data,

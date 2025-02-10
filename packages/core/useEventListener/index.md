@@ -20,8 +20,9 @@ useEventListener(document, 'visibilitychange', (evt) => {
 
 ```ts
 import { useEventListener } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 
-const element = ref<HTMLDivElement>()
+const element = useTemplateRef<HTMLDivElement>('element')
 useEventListener(element, 'keydown', (e) => {
   console.log(e.key)
 })

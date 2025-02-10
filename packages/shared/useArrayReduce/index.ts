@@ -1,18 +1,17 @@
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { computed, toValue } from 'vue'
 
 export type UseArrayReducer<PV, CV, R> = (previousValue: PV, currentValue: CV, currentIndex: number) => R
 
 /**
- * 响应式 `Array.reduce`
+ * Reactive `Array.reduce`
  *
  * @see https://vueuse.org/useArrayReduce
- * @param list - 被调用的数组。
- * @param reducer - 一个“reducer”函数。
+ * @param list - the array was called upon.
+ * @param reducer - a "reducer" function.
  *
- * @returns 在整个数组上运行“reducer”回调函数完成后的值。
+ * @returns the value that results from running the "reducer" callback function to completion over the entire array.
  */
 export function useArrayReduce<T>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,
@@ -20,14 +19,14 @@ export function useArrayReduce<T>(
 ): ComputedRef<T>
 
 /**
- * 响应式 `Array.reduce`
+ * Reactive `Array.reduce`
  *
  * @see https://vueuse.org/useArrayReduce
- * @param list - 被调用的数组。
- * @param reducer - 一个“reducer”函数。
- * @param initialValue - 在第一次调用回调函数时初始化的值。
+ * @param list - the array was called upon.
+ * @param reducer - a "reducer" function.
+ * @param initialValue - a value to be initialized the first time when the callback is called.
  *
- * @returns 在整个数组上运行“reducer”回调函数完成后的值。
+ * @returns the value that results from running the "reducer" callback function to completion over the entire array.
  */
 export function useArrayReduce<T, U>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,
@@ -36,14 +35,14 @@ export function useArrayReduce<T, U>(
 ): ComputedRef<U>
 
 /**
- * 响应式 `Array.reduce`
+ * Reactive `Array.reduce`
  *
  * @see https://vueuse.org/useArrayReduce
- * @param list - 被调用的数组。
- * @param reducer - 一个“reducer”函数。
+ * @param list - the array was called upon.
+ * @param reducer - a "reducer" function.
  * @param args
  *
- * @returns 在整个数组上运行“reducer”回调函数完成后的值。
+ * @returns the value that results from running the "reducer" callback function to completion over the entire array.
  */
 export function useArrayReduce<T>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,

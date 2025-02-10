@@ -1,10 +1,10 @@
-import { ref } from 'vue'
 import type { ConfigurableWindow } from '../_configurable'
+import { ref } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
 /**
- * 响应式状态，用于显示鼠标是否离开页面。
+ * Reactive state to show whether mouse leaves the page.
  *
  * @see https://vueuse.org/usePageLeave
  * @param options
@@ -24,9 +24,10 @@ export function usePageLeave(options: ConfigurableWindow = {}) {
   }
 
   if (window) {
-    useEventListener(window, 'mouseout', handler, { passive: true })
-    useEventListener(window.document, 'mouseleave', handler, { passive: true })
-    useEventListener(window.document, 'mouseenter', handler, { passive: true })
+    const listenerOptions = { passive: true }
+    useEventListener(window, 'mouseout', handler, listenerOptions)
+    useEventListener(window.document, 'mouseleave', handler, listenerOptions)
+    useEventListener(window.document, 'mouseenter', handler, listenerOptions)
   }
 
   return isLeft

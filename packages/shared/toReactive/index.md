@@ -4,11 +4,9 @@ category: Reactivity
 
 # toReactive
 
-将 ref 转换为响应式对象。还可以创建一个“可交换”的响应式对象。
+Converts ref to reactive. Also made possible to create a "swapable" reactive object.
 
-<RequiresProxy />
-
-## 用法
+## Usage
 
 ```ts
 import { toReactive } from '@vueuse/core'

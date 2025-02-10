@@ -1,9 +1,9 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
 import type { Rules, ValidateError, ValidateOption } from 'async-validator'
 import type { Ref } from 'vue'
-import { toRef, toValue, until } from '@vueuse/shared'
+import { toRef, until } from '@vueuse/shared'
 import Schema from 'async-validator'
-import { computed, ref, shallowRef, watch } from 'vue'
+import { computed, ref, shallowRef, toValue, watch } from 'vue'
 
 // @ts-expect-error Schema.default is exist in ssr mode
 const AsyncValidatorSchema = Schema.default || Schema
@@ -35,20 +35,20 @@ export interface UseAsyncValidatorOptions {
    */
   validateOption?: ValidateOption
   /**
-   * 第一次将会立即触发验证。
-   * 当 `manual` 设置为 true 时才有效。
+   * The validation will be triggered right away for the first time.
+   * Only works when `manual` is not set to true.
    *
    * @default true
    */
   immediate?: boolean
   /**
-   * 如果设置为 true，验证将不会自动触发。
+   * If set to true, the validation will not be triggered automatically.
    */
   manual?: boolean
 }
 
 /**
- * async-validator 的包装器。
+ * Wrapper for async-validator.
  *
  * @see https://vueuse.org/useAsyncValidator
  * @see https://github.com/yiminghe/async-validator

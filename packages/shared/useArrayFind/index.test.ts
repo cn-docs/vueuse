@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { reactive, ref } from 'vue'
-import { useSetup } from '../../.test'
 import { useArrayFind } from '.'
+import { useSetup } from '../../.test'
 
 describe('useArrayFind', () => {
   it('should be defined', () => {

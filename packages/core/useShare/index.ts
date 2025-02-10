@@ -1,6 +1,6 @@
 import type { MaybeRefOrGetter } from '@vueuse/shared'
-import { toValue } from '@vueuse/shared'
 import type { ConfigurableNavigator } from '../_configurable'
+import { toValue } from 'vue'
 import { defaultNavigator } from '../_configurable'
 import { useSupported } from '../useSupported'
 
@@ -17,8 +17,7 @@ interface NavigatorWithShare {
 }
 
 /**
- * 响应式 Web Share API.
- * 浏览器提供了可以分享文本或文件内容的功能。
+ * Reactive Web Share API.
  *
  * @see https://vueuse.org/useShare
  * @param shareOptions

@@ -1,16 +1,15 @@
 import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
 import type { MaybeRefOrGetter } from '../utils'
-import { toValue } from '../toValue'
+import { computed, toValue } from 'vue'
 
 /**
- * 响应式 `Array.map`
+ * Reactive `Array.map`
  *
  * @see https://vueuse.org/useArrayMap
- * @param list - 被调用的数组。
- * @param fn - 对给定 `list` 的每个元素调用的函数。每次 `fn` 执行时，返回的值都会添加到新数组中。
+ * @param list - the array was called upon.
+ * @param fn - a function that is called for every element of the given `list`. Each time `fn` executes, the returned value is added to the new array.
  *
- * @returns 一个新数组，其中每个元素都是回调函数的结果。
+ * @returns a new array with each element being the result of the callback function.
  */
 export function useArrayMap<T, U = T>(
   list: MaybeRefOrGetter<MaybeRefOrGetter<T>[]>,

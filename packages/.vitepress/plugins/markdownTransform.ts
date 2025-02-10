@@ -1,6 +1,6 @@
-import { join, resolve } from 'node:path'
 import type { Plugin } from 'vite'
-import fs from 'fs-extra'
+import { existsSync } from 'node:fs'
+import { join, resolve } from 'node:path'
 import { format } from 'prettier'
 import ts from 'typescript'
 import { packages } from '../../../meta/packages'
@@ -9,7 +9,7 @@ import { getTypeDefinition, replacer } from '../../../scripts/utils'
 
 export function MarkdownTransform(): Plugin {
   const DIR_TYPES = resolve(__dirname, '../../../types/packages')
-  const hasTypes = fs.existsSync(DIR_TYPES)
+  const hasTypes = existsSync(DIR_TYPES)
 
   if (!hasTypes)
     console.warn('No types dist found, run `npm run build:types` first.')
@@ -97,7 +97,7 @@ export async function getFunctionMarkdown(pkg: string, name: string) {
   const URL = `${GITHUB_BLOB_URL}/${pkg}/${name}`
 
   const dirname = join(DIR_SRC, pkg, name)
-  const demoPath = ['demo.vue', 'demo.client.vue'].find(i => fs.existsSync(join(dirname, i)))
+  const demoPath = ['demo.vue', 'demo.client.vue'].find(i => existsSync(join(dirname, i)))
   const types = await getTypeDefinition(pkg, name)
 
   if (!types)
@@ -109,16 +109,16 @@ export async function getFunctionMarkdown(pkg: string, name: string) {
     const code = `\`\`\`typescript\n${types.trim()}\n\`\`\``
     typingSection = types.length > 1000
       ? `
-## 类型声明
+## Type Declarations
 
 <details>
-<summary op50 italic cursor-pointer select-none>显示类型声明</summary>
+<summary op50 italic cursor-pointer select-none>Show Type Declarations</summary>
 
 ${code}
 
 </details>
 `
-      : `\n## 类型声明\n\n${code}`
+      : `\n## Type Declarations\n\n${code}`
   }
 
   const links = ([
@@ -132,12 +132,12 @@ ${code}
 
   const sourceSection = `## Source\n\n${links}\n`
   const ContributorsSection = `
-## 贡献者
+## Contributors
 
 <Contributors fn="${name}" />
   `
   const changelogSection = `
-## 变更日志
+## Changelog
 
 <Changelog fn="${name}" />
 `

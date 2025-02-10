@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { computed, ref, watch } from 'vue'
-import { nextTwoTick } from '../../.test'
 import { computedEager } from '.'
+import { nextTwoTick } from '../../.test'
 
 describe('computedEager', () => {
   it('should be defined', () => {

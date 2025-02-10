@@ -1,25 +1,25 @@
-import { customRef } from 'vue'
 import type { Fn } from '../utils'
+import { customRef } from 'vue'
 import { extendRef } from '../extendRef'
 
 export interface ControlledRefOptions<T> {
   /**
-   * Ref 变化前的回调函数。
+   * Callback function before the ref changing.
    *
-   * 返回 `false` 可以取消变化。
+   * Returning `false` to dismiss the change.
    */
   onBeforeChange?: (value: T, oldValue: T) => void | boolean
 
   /**
-   * Ref 变化后的回调函数
+   * Callback function after the ref changed
    *
-   * 这个回调是同步发生的，与 `watch` 相比具有较少的开销
+   * This happens synchronously, with less overhead compare to `watch`
    */
   onChanged?: (value: T, oldValue: T) => void
 }
 
 /**
- * 对 ref 及其响应性进行细粒度控制。
+ * Fine-grained controls over ref and its reactivity.
  */
 export function refWithControl<T>(
   initial: T,

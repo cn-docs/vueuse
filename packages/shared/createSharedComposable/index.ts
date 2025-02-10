@@ -1,10 +1,10 @@
 import type { EffectScope } from 'vue'
-import { effectScope } from 'vue'
 import type { AnyFn } from '../utils'
+import { effectScope } from 'vue'
 import { tryOnScopeDispose } from '../tryOnScopeDispose'
 
 /**
- * 使可组合函数可用于多个 Vue 实例。
+ * Make a composable function usable with multiple Vue instances.
  *
  * @see https://vueuse.org/createSharedComposable
  */

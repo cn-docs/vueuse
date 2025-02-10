@@ -1,6 +1,5 @@
-import { isRef, readonly, ref } from 'vue'
-import { toValue } from '../toValue'
 import type { AnyFn, ArgumentsType, Awaited, MaybeRefOrGetter, Pausable, Promisify } from './types'
+import { isRef, readonly, ref, toValue } from 'vue'
 import { noop } from './is'
 
 export type FunctionArgs<Args extends any[] = any[], Return = void> = (...args: Args) => Return
@@ -74,6 +73,8 @@ export function debounceFilter(ms: MaybeRefOrGetter<number>, options: DebounceFi
     lastRejector = noop
   }
 
+  let lastInvoker: () => void
+
   const filter: EventFilter = (invoke) => {
     const duration = toValue(ms)
     const maxDuration = toValue(options.maxWait)
@@ -91,13 +92,14 @@ export function debounceFilter(ms: MaybeRefOrGetter<number>, options: DebounceFi
 
     return new Promise((resolve, reject) => {
       lastRejector = options.rejectOnCancel ? reject : resolve
+      lastInvoker = invoke
       // Create the maxTimer. Clears the regular timer on invoke
       if (maxDuration && !maxTimer) {
         maxTimer = setTimeout(() => {
           if (timer)
             _clearTimeout(timer)
           maxTimer = null
-          resolve(invoke())
+          resolve(lastInvoker())
         }, maxDuration)
       }
 

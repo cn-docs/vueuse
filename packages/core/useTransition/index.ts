@@ -1,57 +1,57 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComputedRef, Ref } from 'vue'
-import { identity as linear, promiseTimeout, toValue, tryOnScopeDispose } from '@vueuse/shared'
-import { computed, ref, watch } from 'vue'
+import { identity as linear, promiseTimeout, tryOnScopeDispose } from '@vueuse/shared'
+import { computed, ref, toValue, watch } from 'vue'
 
 /**
- * 贝塞尔曲线点
+ * Cubic bezier points
  */
 export type CubicBezierPoints = [number, number, number, number]
 
 /**
- * 缓动函数
+ * Easing function
  */
 export type EasingFunction = (n: number) => number
 
 /**
- * 过渡选项
+ * Transition options
  */
 export interface TransitionOptions {
 
   /**
-   * 手动中止过渡
+   * Manually abort a transition
    */
   abort?: () => any
 
   /**
-   * 过渡持续时间（毫秒）
+   * Transition duration in milliseconds
    */
   duration?: MaybeRef<number>
 
   /**
-   * 缓动函数或用于计算过渡值的贝塞尔曲线点
+   * Easing function or cubic bezier points for calculating transition values
    */
   transition?: MaybeRef<EasingFunction | CubicBezierPoints>
 }
 
 export interface UseTransitionOptions extends TransitionOptions {
   /**
-   * 开始过渡前等待的毫秒数
+   * Milliseconds to wait before starting transition
    */
   delay?: MaybeRef<number>
 
   /**
-   * 禁用过渡
+   * Disables the transition
    */
   disabled?: MaybeRef<boolean>
 
   /**
-   * 过渡结束后执行的回调函数
+   * Callback to execute after transition finishes
    */
   onFinished?: () => void
 
   /**
-   * 过渡开始后执行的回调函数
+   * Callback to execute after transition starts
    */
   onStarted?: () => void
 }
@@ -128,7 +128,7 @@ function toVec(t: number | number[] | undefined) {
 }
 
 /**
- * 从一个值过渡到另一个值。
+ * Transition from one value to another.
  *
  * @param source
  * @param from

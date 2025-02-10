@@ -1,24 +1,25 @@
 import type { Fn, MaybeRefOrGetter } from '@vueuse/shared'
 import type { ComponentPublicInstance, VNode } from 'vue'
-import { isIOS, noop, toValue } from '@vueuse/shared'
 import type { ConfigurableWindow } from '../_configurable'
 import type { MaybeElementRef } from '../unrefElement'
+import { isIOS, noop } from '@vueuse/shared'
+import { toValue } from 'vue'
 import { defaultWindow } from '../_configurable'
 import { unrefElement } from '../unrefElement'
 import { useEventListener } from '../useEventListener'
 
 export interface OnClickOutsideOptions extends ConfigurableWindow {
   /**
-   * 不应触发事件的元素列表。
+   * List of elements that should not trigger the event.
    */
   ignore?: MaybeRefOrGetter<(MaybeElementRef | string)[]>
   /**
-   * 对内部事件侦听器使用捕获阶段。
+   * Use capturing phase for internal event listener.
    * @default true
    */
   capture?: boolean
   /**
-   * 如果焦点移动到iframe，运行处理函数。
+   * Run handler function if focus moves to an iframe.
    * @default false
    */
   detectIframe?: boolean
@@ -29,12 +30,12 @@ export type OnClickOutsideHandler<T extends { detectIframe: OnClickOutsideOption
 let _iOSWorkaround = false
 
 /**
- * 监听元素外部的点击事件。
+ * Listen for clicks outside of an element.
  *
  * @see https://vueuse.org/onClickOutside
- * @param target 目标元素
- * @param handler 事件处理器
- * @param options 配置选项
+ * @param target
+ * @param handler
+ * @param options
  */
 export function onClickOutside<T extends OnClickOutsideOptions>(
   target: MaybeElementRef,
@@ -50,9 +51,10 @@ export function onClickOutside<T extends OnClickOutsideOptions>(
   // How it works: https://stackoverflow.com/a/39712411
   if (isIOS && !_iOSWorkaround) {
     _iOSWorkaround = true
+    const listenerOptions = { passive: true }
     Array.from(window.document.body.children)
-      .forEach(el => el.addEventListener('click', noop))
-    window.document.documentElement.addEventListener('click', noop)
+      .forEach(el => useEventListener(el, 'click', noop, listenerOptions))
+    useEventListener(window.document.documentElement, 'click', noop, listenerOptions)
   }
 
   let shouldListen = true
@@ -139,7 +141,7 @@ export function onClickOutside<T extends OnClickOutsideOptions>(
           handler(event as any)
         }
       }, 0)
-    }),
+    }, { passive: true }),
   ].filter(Boolean) as Fn[]
 
   const stop = () => cleanup.forEach(fn => fn())

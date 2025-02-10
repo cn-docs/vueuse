@@ -1,7 +1,7 @@
 import type { Ref } from 'vue'
-import { ref } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
 import type { WindowEventName } from '../useEventListener'
+import { ref } from 'vue'
 import { defaultDocument } from '../_configurable'
 import { useEventListener } from '../useEventListener'
 
@@ -11,14 +11,14 @@ const defaultEvents: WindowEventName[] = ['mousedown', 'mouseup', 'keydown', 'ke
 
 export interface UseModifierOptions<Initial> extends ConfigurableDocument {
   /**
-   * 触发修改器状态更新的事件名称
+   * Event names that will prompt update to modifier states
    *
    * @default ['mousedown', 'mouseup', 'keydown', 'keyup']
    */
   events?: WindowEventName[]
 
   /**
-   * 返回的 ref 的初始值
+   * Initial value of the returned ref
    *
    * @default null
    */
@@ -41,7 +41,7 @@ export function useKeyModifier<Initial extends boolean | null>(modifier: KeyModi
       useEventListener(document, listenerEvent, (evt: KeyboardEvent | MouseEvent) => {
         if (typeof evt.getModifierState === 'function')
           state.value = evt.getModifierState(modifier)
-      })
+      }, { passive: true })
     })
   }
 

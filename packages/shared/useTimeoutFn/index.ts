@@ -1,12 +1,11 @@
-import { readonly, ref } from 'vue'
 import type { AnyFn, MaybeRefOrGetter, Stoppable } from '../utils'
-import { toValue } from '../toValue'
+import { readonly, ref, toValue } from 'vue'
 import { tryOnScopeDispose } from '../tryOnScopeDispose'
 import { isClient } from '../utils'
 
 export interface UseTimeoutFnOptions {
   /**
-   * 在调用此函数后立即启动计时器
+   * Start the timer immediate after calling this function
    *
    * @default true
    */
@@ -14,11 +13,11 @@ export interface UseTimeoutFnOptions {
 }
 
 /**
- * 带有控制选项的 setTimeout 函数的封装
+ * Wrapper for `setTimeout` with controls.
  *
- * @param cb 回调函数
- * @param interval 延迟的时间（毫秒）
- * @param options 可选参数
+ * @param cb
+ * @param interval
+ * @param options
  */
 export function useTimeoutFn<CallbackFn extends AnyFn>(
   cb: CallbackFn,

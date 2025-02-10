@@ -1,8 +1,8 @@
-import { getCurrentInstance, inject } from 'vue'
+import { getCurrentInstance, hasInjectionContext, inject } from 'vue'
 import { localProvidedStateMap } from '../provideLocal/map'
 
 /**
- * 在 `inject` 的基础上，允许直接调用 `inject` 来获取在同一组件中调用 provide 后的值。
+ * On the basis of `inject`, it is allowed to directly call inject to obtain the value after call provide in the same component.
  *
  * @example
  * ```ts
@@ -14,10 +14,10 @@ import { localProvidedStateMap } from '../provideLocal/map'
 export const injectLocal: typeof inject = (...args) => {
   const key = args[0] as string | symbol
   const instance = getCurrentInstance()?.proxy
-  if (instance == null)
+  if (instance == null && !hasInjectionContext())
     throw new Error('injectLocal must be called in setup')
 
-  if (localProvidedStateMap.has(instance) && key in localProvidedStateMap.get(instance)!)
+  if (instance && localProvidedStateMap.has(instance) && key in localProvidedStateMap.get(instance)!)
     return localProvidedStateMap.get(instance)![key]
 
   // @ts-expect-error overloads are not compatible
