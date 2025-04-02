@@ -10,8 +10,8 @@ category: Sensors
 
 ```vue
 <script>
-import { ref, watch } from 'vue'
 import { useFocusWithin } from '@vueuse/core'
+import { ref, watch } from 'vue'
 
 const target = ref()
 const { focused } = useFocusWithin(target)
