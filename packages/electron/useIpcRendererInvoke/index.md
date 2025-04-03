@@ -10,6 +10,7 @@ category: '@Electron'
 
 ```ts
 import { useIpcRendererInvoke } from '@vueuse/electron'
+import { computed } from 'vue'
 
 // 如果没有明确提供 ipcRenderer，则需要启用 nodeIntegration
 // @see: https://www.electronjs.org/docs/api/webview-tag#nodeintegration

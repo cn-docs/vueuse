@@ -12,7 +12,7 @@ category: Component
 
 ```ts
 import type { InjectionKey, Ref } from 'vue'
-import { provide, ref } from 'vue'
+import { provide } from 'vue'
 
 interface Item {
   key: number

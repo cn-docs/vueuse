@@ -11,9 +11,9 @@ alias: asyncComputed
 
 ```js
 import { computedAsync } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const name = ref('jack')
+const name = shallowRef('jack')
 
 const userInfo = computedAsync(
   async () => {
@@ -29,9 +29,9 @@ const userInfo = computedAsync(
 
 ```js
 import { computedAsync } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const evaluating = ref(false)
+const evaluating = shallowRef(false)
 
 const userInfo = computedAsync(
   async () => { /* 你的逻辑 */ },
@@ -45,7 +45,7 @@ const userInfo = computedAsync(
 当计算源在前一个异步函数解决之前发生变化时，您可能希望取消前一个函数。以下是如何与 fetch API 结合使用的示例。
 
 ```js
-const packageName = ref('@vueuse/core')
+const packageName = shallowRef('@vueuse/core')
 
 const downloads = computedAsync(async (onCancel) => {
   const abortController = new AbortController()
@@ -67,9 +67,9 @@ const downloads = computedAsync(async (onCancel) => {
 
 ```js
 import { computedAsync } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const evaluating = ref(false)
+const evaluating = shallowRef(false)
 
 const userInfo = computedAsync(
   async () => { /* 你的逻辑 */ },

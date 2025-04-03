@@ -16,10 +16,10 @@ related: reactify
 
 ```ts
 import { createUnrefFn } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const url = ref('https://httpbin.org/post')
-const data = ref({ foo: 'bar' })
+const url = shallowRef('https://httpbin.org/post')
+const data = shallowRef({ foo: 'bar' })
 
 function post(url, data) {
   return fetch(url, { data })

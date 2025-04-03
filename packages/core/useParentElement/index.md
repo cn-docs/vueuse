@@ -24,9 +24,10 @@ onMounted(() => {
 
 ```ts
 import { useParentElement } from '@vueuse/core'
+import { shallowRef } from 'vue'
 
 // 别忘了将 ref 绑定到元素上
-const tooltip = ref<HTMLElement | undefined>()
+const tooltip = shallowRef<HTMLElement | undefined>()
 
 const tooltipWrapper = useParentElement(tooltip)
 

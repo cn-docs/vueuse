@@ -30,9 +30,10 @@ const level = useZoomLevel(2)
 传递一个 `ref`，当源 `ref` 更改时，级别将更新
 
 ```js
+import { shallowRef } from 'vue'
 import { useZoomLevel } from '@vueuse/electron'
 
-const level = ref(1)
+const level = shallowRef(1)
 
 useZoomLevel(level) // 级别将与 ref 匹配
 

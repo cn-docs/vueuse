@@ -13,9 +13,9 @@ alias: ignorableWatch
 
 ```ts
 import { watchIgnorable } from '@vueuse/core'
-import { nextTick, ref } from 'vue'
+import { nextTick, shallowRef } from 'vue'
 
-const source = ref('foo')
+const source = shallowRef('foo')
 
 const { stop, ignoreUpdates } = watchIgnorable(
   source,
@@ -52,9 +52,9 @@ await nextTick() // 输出: Changed to logged!
 
 ```ts
 import { watchIgnorable } from '@vueuse/core'
-import { nextTick, ref } from 'vue'
+import { nextTick, shallowRef } from 'vue'
 
-const source = ref('foo')
+const source = shallowRef('foo')
 
 const { ignorePrevAsyncUpdates } = watchIgnorable(
   source,

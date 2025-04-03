@@ -10,8 +10,9 @@ category: Utilities
 
 ```ts
 import { useToString } from '@vueuse/core'
+import { shallowRef } from 'vue'
 
-const number = ref(3.14)
+const number = shallowRef(3.14)
 const str = useToString(number)
 
 str.value // '3.14'

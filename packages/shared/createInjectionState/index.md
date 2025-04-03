@@ -11,11 +11,11 @@ category: State
 ```ts
 import { createInjectionState } from '@vueuse/core'
 // useCounterStore.ts
-import { computed, ref } from 'vue'
+import { computed, shallowRef } from 'vue'
 
 const [useProvideCounterStore, useCounterStore] = createInjectionState((initialValue: number) => {
-  // 状态
-  const count = ref(initialValue)
+  // state
+  const count = shallowRef(initialValue)
 
   // 计算属性
   const double = computed(() => count.value * 2)
@@ -34,8 +34,8 @@ export { useCounterStore }
 
 export function useCounterStoreWithDefaultValue() {
   return useCounterStore() ?? {
-    count: ref(0),
-    double: ref(0),
+    count: shallowRef(0),
+    double: shallowRef(0),
     increment: () => {},
   }
 }
@@ -111,14 +111,14 @@ const { increment } = useCounterStore()!
 ```ts
 import { createInjectionState } from '@vueuse/core'
 // useCounterStore.ts
-import { computed, ref } from 'vue'
+import { computed, shallowRef } from 'vue'
 
 // 自定义 injectionKey
 const CounterStoreKey = 'counter-store'
 
 const [useProvideCounterStore, useCounterStore] = createInjectionState((initialValue: number) => {
-  // 状态
-  const count = ref(initialValue)
+  // state
+  const count = shallowRef(initialValue)
 
   // 计算属性
   const double = computed(() => count.value * 2)
@@ -137,11 +137,11 @@ const [useProvideCounterStore, useCounterStore] = createInjectionState((initialV
 ```ts
 import { createInjectionState } from '@vueuse/core'
 // useCounterStore.ts
-import { computed, ref } from 'vue'
+import { computed, shallowRef } from 'vue'
 
 const [useProvideCounterStore, useCounterStore] = createInjectionState((initialValue: number) => {
   // state
-  const count = ref(initialValue)
+  const count = shallowRef(initialValue)
 
   // getters
   const double = computed(() => count.value * 2)

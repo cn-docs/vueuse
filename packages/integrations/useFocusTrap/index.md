@@ -19,11 +19,11 @@ npm i focus-trap@^7
 **基本用法**
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 
-const target = ref()
+const target = useTemplateRef<HTMLDivElement>('target')
 const { hasFocus, activate, deactivate } = useFocusTrap(target)
 </script>
 
@@ -46,12 +46,12 @@ const { hasFocus, activate, deactivate } = useFocusTrap(target)
 **多个 Ref 引用**
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 
-const targetOne = ref()
-const targetTwo = ref()
+const targetOne = useTemplateRef<HTMLDivElement>('targetOne')
+const targetTwo = useTemplateRef<HTMLDivElement>('targetTwo')
 const { hasFocus, activate, deactivate } = useFocusTrap([targetOne, targetTwo])
 </script>
 
@@ -79,11 +79,11 @@ const { hasFocus, activate, deactivate } = useFocusTrap([targetOne, targetTwo])
 **自动聚焦**
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 
-const target = ref()
+const target = useTemplateRef<HTMLDivElement>('target')
 const { hasFocus, activate, deactivate } = useFocusTrap(target, { immediate: true })
 </script>
 
@@ -101,10 +101,10 @@ const { hasFocus, activate, deactivate } = useFocusTrap(target, { immediate: tru
 这个函数不能正确激活具有使用 `v-if` 进行条件渲染的元素上的焦点。这是因为它们在焦点激活时尚不存在于 DOM 中。要解决这个问题，您需要在下一个刻度上激活。
 
 ```vue
-<script setup>
-import { nextTick, ref } from 'vue'
+<script setup lang="ts">
+import { nextTick, useTemplateRef } from 'vue'
 
-const target = ref()
+const target = useTemplateRef<HTMLDivElement>('target')
 const { activate, deactivate } = useFocusTrap(target, { immediate: true })
 
 const show = ref(false)
@@ -135,11 +135,11 @@ async function reveal() {
 通过 `UseFocusTrap` 组件，在挂载此组件时，焦点陷阱将自动激活，并在卸载时停用。
 
 ```vue
-<script setup>
+<script setup lang="ts">
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const show = ref(false)
+const show = shallowRef(false)
 </script>
 
 <template>

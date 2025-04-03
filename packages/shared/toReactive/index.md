@@ -10,6 +10,7 @@ category: Reactivity
 
 ```ts
 import { toReactive } from '@vueuse/core'
+import { ref } from 'vue'
 
 const refState = ref({ foo: 'bar' })
 

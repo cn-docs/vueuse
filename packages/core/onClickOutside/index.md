@@ -11,9 +11,9 @@ category: Sensors
 ```vue
 <script setup>
 import { onClickOutside } from '@vueuse/core'
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 
-const target = ref(null)
+const target = useTemplateRef<HTMLElement>('target')
 
 onClickOutside(target, event => console.log(event))
 </script>
@@ -24,6 +24,24 @@ onClickOutside(target, event => console.log(event))
   </div>
   <div>外部元素</div>
 </template>
+```
+
+如果你需要更多控制，你可以使用 `controls` 选项。
+
+```ts
+const { cancel, trigger } = onClickOutside(
+  modalRef,
+  (event) => {
+    modal.value = false
+  },
+  { controls: true },
+)
+
+useEventListener('pointermove', (e) => {
+  cancel()
+  // or
+  trigger(e)
+})
 ```
 
 ## 组件用法
@@ -43,9 +61,9 @@ onClickOutside(target, event => console.log(event))
 ```vue
 <script setup lang="ts">
 import { vOnClickOutside } from '@vueuse/components'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const modal = ref(false)
+const modal = shallowRef(false)
 function closeModal() {
   modal.value = false
 }
@@ -66,11 +84,11 @@ function closeModal() {
 ```vue
 <script setup>
 import { vOnClickOutside } from '@vueuse/components'
-import { ref } from 'vue'
+import { shallowRef, useTemplateRef } from 'vue'
 
-const modal = ref(false)
+const modal = shallowRef(false)
 
-const ignoreElRef = ref()
+const ignoreElRef = useTemplateRef<HTMLElement>('ignoreEl')
 
 const onClickOutsideHandler = [
   (ev) => {

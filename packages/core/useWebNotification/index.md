@@ -10,10 +10,15 @@ Web Notification 接口用于配置和显示桌面通知给用户。
 
 ## 用法
 
+::: tip
+Before an app can send a notification, the user must grant the application the right to do so. The user's OS settings may also prevent expected notification behaviour.
+:::
+
 ```ts
 const {
   isSupported,
   notification,
+  permissionGranted,
   show,
   close,
   onClick,
@@ -28,7 +33,7 @@ const {
   tag: 'test',
 })
 
-if (isSupported.value)
+if (isSupported.value && permissionGranted.value)
   show()
 ```
 

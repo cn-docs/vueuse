@@ -12,9 +12,9 @@ category: Animation
 
 ```js
 import { TransitionPresets, useTransition } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const source = ref(0)
+const source = shallowRef(0)
 
 const output = useTransition(source, {
   duration: 1000,
@@ -25,7 +25,7 @@ const output = useTransition(source, {
 为了同步过渡，可以使用数字数组。以下是一个在颜色之间过渡的示例。
 
 ```js
-const source = ref([0, 0, 0])
+const source = shallowRef([0, 0, 0])
 
 const output = useTransition(source)
 

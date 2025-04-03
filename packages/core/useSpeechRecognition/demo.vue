@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useSpeechRecognition } from '@vueuse/core'
-import { ref, watch } from 'vue'
+import { shallowRef, watch } from 'vue'
 
-const lang = ref('zh-CN')
+const lang = shallowRef('zh-CN')
 
 // 随机从数组中选取指定数量的元素
 function sample<T>(arr: T[], size: number) {
@@ -31,7 +31,7 @@ const speech = useSpeechRecognition({
   continuous: true,
 })
 
-const color = ref('transparent')
+const color = shallowRef('transparent')
 
 if (speech.isSupported.value) {
   // @ts-expect-error 缺少类型
@@ -52,7 +52,7 @@ if (speech.isSupported.value) {
 }
 
 // 随机选取的颜色数组
-const sampled = ref<string[]>([])
+const sampled = shallowRef<string[]>([])
 
 // 开始语音识别
 function start() {
@@ -64,7 +64,7 @@ function start() {
 
 const { isListening, isSupported, stop, result } = speech
 
-const selectedLanguage = ref(lang.value)
+const selectedLanguage = shallowRef(lang.value)
 watch(lang, lang => isListening.value ? null : selectedLanguage.value = lang)
 watch(isListening, isListening => isListening ? null : selectedLanguage.value = lang.value)
 </script>

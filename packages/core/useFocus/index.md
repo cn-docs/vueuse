@@ -11,7 +11,7 @@ category: Sensors
 ```ts
 import { useFocus } from '@vueuse/core'
 
-const target = ref()
+const target = shallowRef()
 const { focused } = useFocus(target)
 
 watch(focused, (focused) => {
@@ -28,7 +28,7 @@ watch(focused, (focused) => {
 ```ts
 import { useFocus } from '@vueuse/core'
 
-const target = ref()
+const target = shallowRef()
 const { focused } = useFocus(target, { initialValue: true })
 ```
 
@@ -39,11 +39,11 @@ const { focused } = useFocus(target, { initialValue: true })
 ```vue
 <script>
 import { useFocus } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 export default {
   setup() {
-    const input = ref()
+    const input = shallowRef()
     const { focused } = useFocus(input)
 
     return {

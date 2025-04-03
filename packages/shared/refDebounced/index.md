@@ -9,10 +9,11 @@ alias: useDebounce, debouncedRef
 
 ## 用法
 
-```js {4}
+```js {5}
 import { refDebounced } from '@vueuse/core'
+import { shallowRef } from 'vue'
 
-const input = ref('foo')
+const input = shallowRef('foo')
 const debounced = refDebounced(input, 1000)
 
 input.value = 'bar'

@@ -12,7 +12,7 @@ category: '@Firebase'
 import { useFirestore } from '@vueuse/firebase/useFirestore'
 import { initializeApp } from 'firebase/app'
 import { collection, doc, getFirestore, limit, orderBy, query } from 'firebase/firestore'
-import { computed, ref } from 'vue'
+import { computed, shallowRef } from 'vue'
 
 const app = initializeApp({ projectId: 'MY PROJECT ID' })
 const db = getFirestore(app)
@@ -23,13 +23,13 @@ const todos = useFirestore(collection(db, 'todos'))
 const user = useFirestore(doc(db, 'users', 'my-user-id'))
 
 // 您还可以使用 ref 值来创建响应式查询
-const postsLimit = ref(10)
+const postsLimit = shallowRef(10)
 const postsQuery = computed(() => query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit(postsLimit.value)))
 const posts = useFirestore(postsQuery)
 
 // 您可以使用布尔值告诉查询何时准备好运行
 // 当它获取到假值时，返回初始值
-const userId = ref('')
+const userId = shallowRef('')
 const userQuery = computed(() => userId.value && doc(db, 'users', userId.value))
 const userData = useFirestore(userQuery, null)
 ```

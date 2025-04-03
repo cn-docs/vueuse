@@ -16,7 +16,7 @@ BroadcastChannel 接口表示一个命名的频道，同一来源的任何浏览
 
 ```js
 import { useBroadcastChannel } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 const {
   isSupported,
@@ -27,7 +27,7 @@ const {
   isClosed,
 } = useBroadcastChannel({ name: 'vueuse-demo-channel' })
 
-const message = ref('')
+const message = shallowRef('')
 
 message.value = 'Hello, VueUse World!'
 

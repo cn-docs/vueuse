@@ -12,9 +12,9 @@ category: Reactivity
 
 ```ts
 import { extendRef } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const myRef = ref('content')
+const myRef = shallowRef('content')
 
 const extended = extendRef(myRef, { foo: 'extra data' })
 
@@ -25,8 +25,8 @@ extended.foo === 'extra data'
 Refs 将被解包并保持响应式
 
 ```ts
-const myRef = ref('content')
-const extraRef = ref('extra')
+const myRef = shallowRef('content')
+const extraRef = shallowRef('extra')
 
 const extended = extendRef(myRef, { extra: extraRef })
 

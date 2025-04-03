@@ -14,12 +14,12 @@ category: '@RxJS'
 
 ```ts
 import { watchExtractedObservable } from '@vueuse/rxjs'
-import { computed, ref } from 'vue'
+import { computed, reactive, shallowRef } from 'vue'
 import { AudioPlayer } from '../my/libs/AudioPlayer'
 
 // setup()
 
-const audio = ref<HTMLAudioElement>()
+const audio = shallowRef<HTMLAudioElement>()
 const player = computed(() => (audio.value ? new AudioPlayer(audio) : null))
 const state = reactive({
   progress: 0,
@@ -36,12 +36,12 @@ watchExtractedObservable(player, p => p.progress$, (percentage) => {
 
 ```ts
 import { watchExtractedObservable } from '@vueuse/rxjs'
-import { computed, ref } from 'vue'
+import { computed, reactive, shallowRef } from 'vue'
 import { AudioPlayer } from '../my/libs/AudioPlayer'
 
 // setup()
 
-const audio = ref<HTMLAudioElement>()
+const audio = shallowRef<HTMLAudioElement>()
 const player = computed(() => (audio.value ? new AudioPlayer(audio) : null))
 const state = reactive({
   progress: 0,
@@ -63,12 +63,12 @@ watchExtractedObservable(player, p => p.progress$, (percentage) => {
 
 ```ts
 import { watchExtractedObservable } from '@vueuse/rxjs'
-import { computed, ref } from 'vue'
+import { computed, reactive, shallowRef } from 'vue'
 import { AudioPlayer } from '../my/libs/AudioPlayer'
 
 // setup()
 
-const audio = ref<HTMLAudioElement>()
+const audio = shallowRef<HTMLAudioElement>()
 const player = computed(() => (audio.value ? new AudioPlayer(audio) : null))
 const state = reactive({
   progress: 0,

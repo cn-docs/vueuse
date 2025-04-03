@@ -33,7 +33,7 @@ useFavicon(favicon)
 当传递了一个源 ref 时，返回的 ref 将与源 ref 相同
 
 ```ts
-const source = ref('icon.png')
+const source = shallowRef('icon.png')
 const icon = useFavicon(source)
 
 console.log(icon === source) // true

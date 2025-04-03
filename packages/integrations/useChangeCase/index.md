@@ -46,13 +46,13 @@ changeCase.value // vueUse
 
 ```ts
 import { useChangeCase } from '@vueuse/integrations/useChangeCase'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const input = ref('helloWorld')
+const input = shallowRef('helloWorld')
 const changeCase = useChangeCase(input, 'camelCase', {
   delimiter: '-',
 })
 changeCase.value // hello-World
-ref.value = 'vue use'
+input.value = 'vue use'
 changeCase.value // vue-Use
 ```

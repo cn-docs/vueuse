@@ -19,3 +19,7 @@ function setMessage() {
   message.value = '消息已设置'
 }
 ```
+
+::: info
+You can use `triggerRef` to trigger effects after making deep mutations to the inner value of a refAutoReset.
+:::

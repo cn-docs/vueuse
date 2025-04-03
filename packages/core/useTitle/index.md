@@ -29,9 +29,10 @@ const title = useTitle('新标题')
 传递一个 `ref`，当源 ref 更改时标题将更新：
 
 ```js
+import { shallowRef } from 'vue'
 import { useTitle } from '@vueuse/core'
 
-const messages = ref(0)
+const messages = shallowRef(0)
 
 const title = computed(() => {
   return !messages.value ? '没有消息' : `${messages.value} 条新消息`

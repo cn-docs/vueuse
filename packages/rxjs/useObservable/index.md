@@ -12,7 +12,6 @@ category: '@RxJS'
 import { useObservable } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { mapTo, scan, startWith } from 'rxjs/operators'
-import { ref } from 'vue'
 
 // setup()
 const count = useObservable(
@@ -30,7 +29,6 @@ const count = useObservable(
 import { useObservable } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { map } from 'rxjs/operators'
-import { ref } from 'vue'
 
 // setup()
 const count = useObservable(

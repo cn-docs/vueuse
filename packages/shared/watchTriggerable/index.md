@@ -12,9 +12,9 @@ category: Watch
 
 ```typescript
 import { watchTriggerable } from '@vueuse/core'
-import { nextTick, ref } from 'vue'
+import { nextTick, shallowRef } from 'vue'
 
-const source = ref(0)
+const source = shallowRef(0)
 
 const { trigger, ignoreUpdates } = watchTriggerable(
   source,
@@ -36,9 +36,9 @@ trigger() // logs: Changed to bar!
 
 ```typescript
 import { watchTriggerable } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const source = ref(0)
+const source = shallowRef(0)
 
 const { trigger } = watchTriggerable(
   source,

@@ -29,10 +29,10 @@ const lastMessage = useExtractedObservable(user, u => ObservableSocket.create(ma
 import { useExtractedObservable } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { mapTo, scan, startWith, tap } from 'rxjs/operators'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 // setup()
-const start = ref(0)
+const start = shallowRef(0)
 
 const count = useExtractedObservable(
   start,
@@ -61,10 +61,10 @@ const count = useExtractedObservable(
 import { useExtractedObservable } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { mapTo, scan, startWith, takeWhile } from 'rxjs/operators'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 // setup()
-const start = ref(0)
+const start = shallowRef(0)
 
 const count = useExtractedObservable(
   start,
@@ -90,10 +90,10 @@ const count = useExtractedObservable(
 import { useExtractedObservable } from '@vueuse/rxjs'
 import { interval } from 'rxjs'
 import { mapTo, scan, startWith, takeWhile } from 'rxjs/operators'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 // setup()
-const start = ref<number>()
+const start = shallowRef<number>()
 
 const count = useExtractedObservable(
   start,

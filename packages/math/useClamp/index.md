@@ -11,8 +11,8 @@ category: '@Math'
 ```ts
 import { useClamp } from '@vueuse/math'
 
-const min = ref(0)
-const max = ref(10)
+const min = shallowRef(0)
+const max = shallowRef(10)
 const value = useClamp(0, min, max)
 ```
 
@@ -21,6 +21,6 @@ const value = useClamp(0, min, max)
 ```ts
 import { useClamp } from '@vueuse/math'
 
-const number = ref(0)
+const number = shallowRef(0)
 const clamped = useClamp(number, 0, 10)
 ```

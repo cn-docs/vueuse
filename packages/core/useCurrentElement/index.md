@@ -17,11 +17,11 @@ const el = useCurrentElement() // ComputedRef<Element>
 或者传递一个特定的 Vue 组件
 
 ```vue
-<script setup>
-import { useCurrentElement } from '@vueuse/core'
-import { ref } from 'vue'
+<script setup lang="ts">
+import { useCurrentElement, VueInstance } from '@vueuse/core'
+import { shallowRef } from 'vue'
 
-const componentRef = ref()
+const componentRef = shallowRef<VueInstance>(null as unknown as VueInstance)
 
 const el = useCurrentElement(componentRef) // ComputedRef<Element>
 </script>

@@ -13,9 +13,9 @@ related: useManualRefHistory
 
 ```ts {5}
 import { useRefHistory } from '@vueuse/core'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
-const counter = ref(0)
+const counter = shallowRef(0)
 const { history, undo, redo } = useRefHistory(counter)
 ```
 
@@ -134,7 +134,7 @@ const refHistory = useRefHistory(target, {
 默认值是 `'pre'`，以使此组合与 Vue 观察器的默认值保持一致。这也有助于避免常见问题，比如在同一“时刻”内作为 ref 值多步更新的一部分生成了几个历史记录点，这可能会破坏应用程序状态的不变性。如果需要在同一“时刻”内创建多个历史记录点，则可以使用 `commit()`。
 
 ```ts
-const r = ref(0)
+const r = shallowRef(0)
 const { history, commit } = useRefHistory(r)
 
 r.value = 1

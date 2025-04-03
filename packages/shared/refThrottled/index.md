@@ -11,8 +11,9 @@ alias: useThrottle, throttledRef
 
 ```js
 import { refThrottled } from '@vueuse/core'
+import { shallowRef } from 'vue'
 
-const input = ref('')
+const input = shallowRef('')
 const throttled = refThrottled(input, 1000)
 ```
 
@@ -22,8 +23,9 @@ const throttled = refThrottled(input, 1000)
 
 ```js
 import { refThrottled } from '@vueuse/core'
+import { shallowRef } from 'vue'
 
-const input = ref('')
+const input = shallowRef('')
 const throttled = refThrottled(input, 1000, false)
 ```
 
@@ -33,8 +35,9 @@ const throttled = refThrottled(input, 1000, false)
 
 ```js
 import { refThrottled } from '@vueuse/core'
+import { shallowRef } from 'vue'
 
-const input = ref('')
+const input = shallowRef('')
 const throttled = refThrottled(input, 1000, undefined, false)
 ```
 

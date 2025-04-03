@@ -14,11 +14,11 @@ related: createSharedComposable
 ```js
 import { createGlobalState } from '@vueuse/core'
 // store.js
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 export const useGlobalState = createGlobalState(
   () => {
-    const count = ref(0)
+    const count = shallowRef(0)
     return { count }
   }
 )
@@ -29,12 +29,12 @@ export const useGlobalState = createGlobalState(
 ```js
 import { createGlobalState } from '@vueuse/core'
 // store.js
-import { computed, ref } from 'vue'
+import { computed, shallowRef } from 'vue'
 
 export const useGlobalState = createGlobalState(
   () => {
-    // 状态
-    const count = ref(0)
+    // state
+    const count = shallowRef(0)
 
     // 计算属性
     const doubleCount = computed(() => count.value * 2)

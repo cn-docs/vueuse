@@ -11,10 +11,10 @@ category: Component
 ```vue
 <script setup>
 import { unrefElement } from '@vueuse/core'
-import { onMounted, ref } from 'vue'
+import { onMounted, useTemplateRef } from 'vue'
 
-const div = ref() // 将绑定到 <div> 元素
-const hello = ref() // 将绑定到 HelloWorld 组件
+const div = useTemplateRef<HTMLElement>('div') // will be bound to the <div> element
+const hello = useTemplateRef<Component>('hello') // will be bound to the HelloWorld Component
 
 onMounted(() => {
   console.log(unrefElement(div)) // <div> 元素

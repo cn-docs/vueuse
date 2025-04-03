@@ -30,9 +30,10 @@ const factor = useZoomFactor(2)
 传递一个 `ref`，当源 `ref` 更改时，缩放因子将更新
 
 ```js
+import { shallowRef } from 'vue'
 import { useZoomFactor } from '@vueuse/electron'
 
-const factor = ref(1)
+const factor = shallowRef(1)
 
 useZoomFactor(factor) // 缩放因子将与 ref 匹配
 

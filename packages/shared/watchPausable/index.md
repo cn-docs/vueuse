@@ -13,9 +13,9 @@ alias: pausableWatch
 
 ```typescript
 import { watchPausable } from '@vueuse/core'
-import { nextTick, ref } from 'vue'
+import { nextTick, shallowRef } from 'vue'
 
-const source = ref('foo')
+const source = shallowRef('foo')
 
 const { stop, pause, resume } = watchPausable(
   source,

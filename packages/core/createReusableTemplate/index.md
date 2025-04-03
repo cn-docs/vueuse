@@ -279,4 +279,4 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 替代方案：
 
 - [Vue Macros - `namedTemplate`](https://vue-macros.sxzz.moe/features/named-template.html)
-- [`unplugin-@vueuse/core`](https://github.com/liulinboyi/unplugin-@vueuse/core)
+- [`unplugin-vue-reuse-template`](https://github.com/liulinboyi/unplugin-vue-reuse-template)
