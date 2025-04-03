@@ -1,9 +1,9 @@
+import type { HeadConfig, TransformContext } from 'vitepress'
+import type { VueUseFunction } from '../metadata/types'
 import fs from 'node:fs/promises'
 import { basename, dirname } from 'node:path'
-import type { HeadConfig, TransformContext } from 'vitepress'
 import removeMD from 'remove-markdown'
 import sharp from 'sharp'
-import type { VueUseFunction } from '../metadata/types'
 import { functions } from '../metadata/metadata'
 
 const ogSVGPromise = fs.readFile('./scripts/og-template.svg', 'utf-8')

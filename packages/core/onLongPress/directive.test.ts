@@ -1,11 +1,11 @@
 import type { VueWrapper } from '@vue/test-utils'
+import type { OnLongPressOptions } from '.'
 import { mount } from '@vue/test-utils'
 import { promiseTimeout } from '@vueuse/shared'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { defineComponent } from 'vue'
 import { VOnLongPress, vOnLongPress } from './directive'
-import type { OnLongPressOptions } from '.'
 
 const App = defineComponent({
   props: {
