@@ -4,15 +4,15 @@ category: Array
 
 # useArrayDifference
 
-Reactive get array difference of two arrays.
+响应式获取两个数组的差集。
 
-By default, it returns the difference of the first array from the second array, so call `A \ B`, [Relative Complement](<https://en.wikipedia.org/wiki/Complement_(set_theory)>) of B in A.
+默认情况下，它返回第一个数组相对于第二个数组的差集，即 `A \ B`，[相对补集](<https://en.wikipedia.org/wiki/Complement_(set_theory)>)。
 
-You can pass the `symmetric` option to get the [Symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) of two arrays `A △ B`.
+你可以通过传递 `symmetric` 选项来获取两个数组的[对称差集](https://en.wikipedia.org/wiki/Symmetric_difference) `A △ B`。
 
-## Usage
+## 用法
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayDifference } from '@vueuse/core'
@@ -25,7 +25,7 @@ list2.value = [0, 1, 2]
 // result.value: [3, 4, 5]
 ```
 
-### Use with reactive array and use function comparison
+### 与响应式数组一起使用并使用函数比较
 
 ```js
 import { useArrayDifference } from '@vueuse/core'
@@ -37,9 +37,9 @@ const result = useArrayDifference(list1, list2, (value, othVal) => value.id === 
 // result.value: [{ id: 1 }, { id: 2 }, { id: 3 }]
 ```
 
-### Symmetric Difference
+### 对称差集
 
-This composable also supports [Symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) by passing the `symmetric` option.
+这个组合式函数也支持通过传递 `symmetric` 选项来获取[对称差集](https://en.wikipedia.org/wiki/Symmetric_difference)。
 
 ```js
 import { useArrayDifference } from '@vueuse/core'

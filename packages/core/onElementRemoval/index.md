@@ -4,9 +4,9 @@ category: Sensors
 
 # onElementRemoval
 
-Fires when the element or any element containing it is removed.
+当元素或其包含元素被移除时触发。
 
-## Usage
+## 用法
 
 ```vue {13}
 <script setup lang="ts">
@@ -29,15 +29,15 @@ onElementRemoval(btnRef, () => ++removedCount.value)
     v-if="btnState"
     @click="btnOnClick"
   >
-    recreate me
+    重新创建我
   </button>
   <button
     v-else
     ref="btnRef"
     @click="btnOnClick"
   >
-    remove me
+    移除我
   </button>
-  <b>removed times: {{ removedCount }}</b>
+  <b>移除次数: {{ removedCount }}</b>
 </template>
 ```

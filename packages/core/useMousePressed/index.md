@@ -4,9 +4,9 @@ category: Sensors
 
 # useMousePressed
 
-Reactive mouse pressing state. Triggered by `mousedown` `touchstart` on target element and released by `mouseup` `mouseleave` `touchend` `touchcancel` on window.
+响应式的鼠标按下状态。在目标元素上通过 `mousedown` `touchstart` 触发，在窗口上通过 `mouseup` `mouseleave` `touchend` `touchcancel` 释放。
 
-## Basic Usage
+## 基本用法
 
 ```js
 import { useMousePressed } from '@vueuse/core'
@@ -14,13 +14,13 @@ import { useMousePressed } from '@vueuse/core'
 const { pressed } = useMousePressed()
 ```
 
-Touching is enabled by default. To make it only detects mouse changes, set `touch` to `false`
+默认启用触摸。要使其仅检测鼠标变化，将 `touch` 设置为 `false`：
 
 ```js
 const { pressed } = useMousePressed({ touch: false })
 ```
 
-To only capture `mousedown` and `touchstart` on specific element, you can specify `target` by passing a ref of the element.
+要仅在特定元素上捕获 `mousedown` 和 `touchstart`，你可以通过传递元素的 ref 来指定 `target`。
 
 ```vue
 <script setup>
@@ -33,17 +33,17 @@ const { pressed } = useMousePressed({ target: el })
 
 <template>
   <div ref="el">
-    Only clicking on this element will trigger the update.
+    只有点击此元素才会触发更新。
   </div>
 </template>
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <UseMousePressed v-slot="{ pressed }">
-    Is Pressed: {{ pressed }}
+    是否按下: {{ pressed }}
   </UseMousePressed>
 </template>
 ```

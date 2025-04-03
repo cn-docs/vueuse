@@ -6,13 +6,13 @@ related:
 
 # useClipboardItems
 
-Reactive [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API). Provides the ability to respond to clipboard commands (cut, copy, and paste) as well as to asynchronously read from and write to the system clipboard. Access to the contents of the clipboard is gated behind the [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API). Without user permission, reading or altering the clipboard contents is not permitted.
+响应式的 [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)。提供响应剪贴板命令（剪切、复制和粘贴）的能力，以及异步读取和写入系统剪贴板的能力。对剪贴板内容的访问受 [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API) 的限制。没有用户权限，不允许读取或更改剪贴板内容。
 
-## Difference from `useClipboard`
+## 与 `useClipboard` 的区别
 
-`useClipboard` is a "text-only" function, while `useClipboardItems` is a [ClipboardItem](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem) based function. You can use `useClipboardItems` to copy any content supported by [ClipboardItem](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem).
+`useClipboard` 是一个"仅文本"的函数，而 `useClipboardItems` 是一个基于 [ClipboardItem](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem) 的函数。你可以使用 `useClipboardItems` 来复制 [ClipboardItem](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem) 支持的任何内容。
 
-## Usage
+## 用法
 
 ```js
 import { useClipboardItems } from '@vueuse/core'
@@ -31,16 +31,16 @@ const { content, copy, copied, isSupported } = useClipboardItems({ source })
 <template>
   <div v-if="isSupported">
     <button @click="copy(source)">
-      <!-- by default, `copied` will be reset in 1.5s -->
-      <span v-if="!copied">Copy</span>
-      <span v-else>Copied!</span>
+      <!-- 默认情况下，`copied` 将在 1.5 秒后重置 -->
+      <span v-if="!copied">复制</span>
+      <span v-else>已复制!</span>
     </button>
     <p>
-      Current copied: <code>{{ content || 'none' }}</code>
+      当前复制的内容: <code>{{ content || '无' }}</code>
     </p>
   </div>
   <p v-else>
-    Your browser does not support Clipboard API
+    你的浏览器不支持 Clipboard API
   </p>
 </template>
 ```

@@ -4,11 +4,11 @@ category: Array
 
 # useArrayFilter
 
-Reactive `Array.filter`
+响应式的 `Array.filter`
 
-## Usage
+## 用法
 
-### Use with array of multiple refs
+### 与多个 ref 的数组一起使用
 
 ```js
 import { useArrayFilter } from '@vueuse/core'
@@ -25,7 +25,7 @@ item2.value = 1
 // result.value: [0, 4, 6, 8]
 ```
 
-### Use with reactive array
+### 与响应式数组一起使用
 
 ```js
 import { useArrayFilter } from '@vueuse/core'

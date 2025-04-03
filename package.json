@@ -84,7 +84,6 @@
     "node-fetch-native": "catalog:",
     "ofetch": "catalog:",
     "playwright": "catalog:",
-    "pnpm": "catalog:",
     "postcss": "catalog:",
     "postcss-nested": "catalog:",
     "prettier": "catalog:",

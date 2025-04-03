@@ -4,9 +4,9 @@ category: '@RxJS'
 
 # toObserver
 
-Sugar function to convert a `ref` into an RxJS [Observer](https://rxjs.dev/guide/observer).
+将 `ref` 转换为 RxJS [Observer](https://rxjs.dev/guide/observer) 的语法糖函数。
 
-## Usage
+## 用法
 
 ```ts
 import { from, fromEvent, toObserver, useSubscription } from '@vueuse/rxjs'
@@ -25,6 +25,6 @@ useSubscription(
       withLatestFrom(from(count).pipe(startWith(0))),
       map(([curr, total]) => curr + total),
     )
-    .subscribe(toObserver(count)), // same as ).subscribe(val => (count.value = val))
+    .subscribe(toObserver(count)), // 等同于 ).subscribe(val => (count.value = val))
 )
 ```

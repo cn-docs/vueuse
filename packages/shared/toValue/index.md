@@ -7,15 +7,15 @@ deprecated: true
 
 # toValue
 
-Get the value of value/ref/getter.
+获取值/ref/getter 的值。
 
 :::warning
 
-Deprecated, use `import { toValue } from 'vue'` instead.
+已弃用，请使用 `import { toValue } from 'vue'` 代替。
 
 :::
 
-## Usage
+## 用法
 
 ```ts
 import { toValue } from '@vueuse/core'

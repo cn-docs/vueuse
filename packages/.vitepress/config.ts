@@ -8,12 +8,12 @@ import { transformHead } from './transformHead'
 import viteConfig from './vite.config'
 
 const Guide = [
-  { text: 'Get Started', link: '/guide/' },
-  { text: 'Best Practice', link: '/guide/best-practice' },
-  { text: 'Configurations', link: '/guide/config' },
-  { text: 'Components', link: '/guide/components' },
-  { text: 'Contributing', link: '/contributing' },
-  { text: 'Guidelines', link: '/guidelines' },
+  { text: '开始使用', link: '/guide/' },
+  { text: '最佳实践', link: '/guide/best-practice' },
+  { text: '配置', link: '/guide/config' },
+  { text: '组件', link: '/guide/components' },
+  { text: '贡献指南', link: '/contributing' },
+  { text: '规范', link: '/guidelines' },
 ]
 
 const CoreCategories = coreCategoryNames.map(c => ({
@@ -32,29 +32,29 @@ const AddonCategories = [
 ]
 
 const Links = [
-  { text: 'Add-ons', link: '/add-ons' },
-  { text: 'Ecosystem', link: '/ecosystem' },
-  { text: 'Export Size', link: '/export-size' },
-  { text: 'Recent Updated', link: '/functions.html#sort=updated' },
-  { text: 'Why no translations?', link: '/why-no-translations' },
+  { text: '插件', link: '/add-ons' },
+  { text: '生态系统', link: '/ecosystem' },
+  { text: '导出大小', link: '/export-size' },
+  { text: '最近更新', link: '/functions.html#sort=updated' },
+  { text: '为什么没有翻译？', link: '/why-no-translations' },
 ]
 
 const Learn = [
-  { text: 'Premium Video Course', link: 'https://vueschool.io/courses/vueuse-for-everyone?friend=vueuse' },
-  { text: 'Official Vue Certification', link: 'https://certification.vuejs.org/?utm_source=vueuse&utm_medium=website&utm_campaign=affiliate&utm_content=guide&banner_type=text&friend=VUEUSE' },
+  { text: '付费视频课程', link: 'https://vueschool.io/courses/vueuse-for-everyone?friend=vueuse' },
+  { text: '官方 Vue 认证', link: 'https://certification.vuejs.org/?utm_source=vueuse&utm_medium=website&utm_campaign=affiliate&utm_content=guide&banner_type=text&friend=VUEUSE' },
 ]
 
 const Resources = [
-  { text: 'Team & Contributors', link: '/team' },
-  { text: 'Learn', items: Learn },
+  { text: '团队和贡献者', link: '/team' },
+  { text: '学习', items: Learn },
 ]
 
 const DefaultSideBar = [
-  { text: 'Guide', items: Guide },
-  { text: 'Core Functions', items: CoreCategories },
-  { text: 'Add-ons', items: AddonCategories },
-  { text: 'Learn', items: Learn },
-  { text: 'Links', items: Links },
+  { text: '指南', items: Guide },
+  { text: '核心函数', items: CoreCategories },
+  { text: '插件', items: AddonCategories },
+  { text: '学习', items: Learn },
+  { text: '链接', items: Links },
 ]
 
 const FunctionsSideBar = getFunctionsSideBar()
@@ -101,32 +101,32 @@ export default withPwa(defineConfig({
 
     nav: [
       {
-        text: 'Guide',
+        text: '指南',
         items: [
-          { text: 'Guide', items: Guide },
-          { text: 'Links', items: Links },
+          { text: '指南', items: Guide },
+          { text: '链接', items: Links },
         ],
       },
       {
-        text: 'Functions',
+        text: '函数',
         items: [
           {
             text: '',
             items: [
-              { text: 'All Functions', link: '/functions#' },
-              { text: 'Recent Updated', link: '/functions#sort=updated' },
+              { text: '所有函数', link: '/functions#' },
+              { text: '最近更新', link: '/functions#sort=updated' },
             ],
           },
-          { text: 'Core', items: CoreCategories },
-          { text: 'Add-ons', items: AddonCategories },
+          { text: '核心', items: CoreCategories },
+          { text: '插件', items: AddonCategories },
         ],
       },
       {
-        text: 'Resources',
+        text: '资源',
         items: Resources,
       },
       {
-        text: 'Playground',
+        text: '在线演示',
         link: 'https://play.vueuse.org',
       },
       {
@@ -134,11 +134,11 @@ export default withPwa(defineConfig({
         items: [
           {
             items: [
-              { text: 'Release Notes', link: 'https://github.com/vueuse/vueuse/releases' },
+              { text: '发布说明', link: 'https://github.com/vueuse/vueuse/releases' },
             ],
           },
           {
-            text: 'Versions',
+            text: '版本',
             items: versions.map(i => i.version === currentVersion
               ? {
                   text: `${i.version} (Current)`,
@@ -151,7 +151,6 @@ export default withPwa(defineConfig({
                 }),
           },
         ],
-
       },
     ],
     sidebar: {

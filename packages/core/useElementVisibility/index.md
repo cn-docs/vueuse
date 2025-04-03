@@ -4,9 +4,9 @@ category: Elements
 
 # useElementVisibility
 
-Tracks the visibility of an element within the viewport.
+跟踪元素在视口中的可见性。
 
-## Usage
+## 用法
 
 ```vue
 <script setup>
@@ -26,8 +26,7 @@ const targetIsVisible = useElementVisibility(target)
 
 ### rootMargin
 
-If you wish to trigger your callback sooner before the element is fully visible, you can use
-the `rootMargin` option (See [MDN IntersectionObserver/rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)).
+如果你希望在元素完全可见之前更早地触发回调，你可以使用 `rootMargin` 选项（参见 [MDN IntersectionObserver/rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)）。
 
 ```ts
 const targetIsVisible = useElementVisibility(target, {
@@ -35,17 +34,17 @@ const targetIsVisible = useElementVisibility(target, {
 })
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <UseElementVisibility v-slot="{ isVisible }">
-    Is Visible: {{ isVisible }}
+    是否可见: {{ isVisible }}
   </UseElementVisibility>
 </template>
 ```
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup>
@@ -62,13 +61,13 @@ function onElementVisibility(state) {
 
 <template>
   <div v-element-visibility="onElementVisibility">
-    {{ isVisible ? 'inside' : 'outside' }}
+    {{ isVisible ? '在视口内' : '在视口外' }}
   </div>
 
-  <!-- with options -->
+  <!-- 带选项 -->
   <div ref="target">
     <div v-element-visibility="[onElementVisibility, { scrollTarget: target }]">
-      {{ isVisible ? 'inside' : 'outside' }}
+      {{ isVisible ? '在视口内' : '在视口外' }}
     </div>
   </div>
 </template>

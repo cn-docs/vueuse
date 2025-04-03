@@ -4,9 +4,9 @@ category: Sensors
 
 # useInfiniteScroll
 
-Infinite scrolling of the element.
+元素的无限滚动。
 
-## Usage
+## 用法
 
 ```vue
 <script setup lang="ts">
@@ -19,15 +19,15 @@ const data = ref([1, 2, 3, 4, 5, 6])
 const { reset } = useInfiniteScroll(
   el,
   () => {
-    // load more
+    // 加载更多
     data.value.push(...moreData)
   },
   {
     distance: 10,
     canLoadMore: () => {
-      // inidicate when there is no more content to load so onLoadMore stops triggering
+      // 指示何时没有更多内容可加载，以便 onLoadMore 停止触发
       // if (noMoreContent) return false
-      return true // for demo purposes
+      return true // 用于演示目的
     },
   }
 )
@@ -45,16 +45,16 @@ function resetList() {
     </div>
   </div>
   <button @click="resetList()">
-    Reset
+    重置
   </button>
 </template>
 ```
 
 ::: warning
-Make sure to indicate when there is no more content to load with `canLoadMore`, otherwise `onLoadMore` will trigger as long as there is space for more content.
+确保使用 `canLoadMore` 指示何时没有更多内容可加载，否则只要有空间加载更多内容，`onLoadMore` 就会触发。
 :::
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup lang="ts">
@@ -68,9 +68,9 @@ function onLoadMore() {
   data.value.push(...Array.from({ length: 5 }, (_, i) => length + i))
 }
 function canLoadMore() {
-  // inidicate when there is no more content to load so onLoadMore stops triggering
+  // 指示何时没有更多内容可加载，以便 onLoadMore 停止触发
   // if (noMoreContent) return false
-  return true // for demo purposes
+  return true // 用于演示目的
 }
 </script>
 
@@ -81,7 +81,7 @@ function canLoadMore() {
     </div>
   </div>
 
-  <!-- with options -->
+  <!-- 带选项 -->
   <div v-infinite-scroll="[onLoadMore, { distance: 10, canLoadMore }]">
     <div v-for="item in data" :key="item">
       {{ item }}

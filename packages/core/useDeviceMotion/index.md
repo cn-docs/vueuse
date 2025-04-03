@@ -4,9 +4,9 @@ category: Sensors
 
 # useDeviceMotion
 
-Reactive [DeviceMotionEvent](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent). Provide web developers with information about the speed of changes for the device's position and orientation.
+响应式的 [DeviceMotionEvent](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent)。为开发者提供设备位置和方向变化速度的信息。
 
-## Usage
+## 用法
 
 ```js
 import { useDeviceMotion } from '@vueuse/core'
@@ -19,27 +19,27 @@ const {
 } = useDeviceMotion()
 ```
 
-> Note: For iOS, you need to use `trigger` and bind it with user interaction.
-> After permission granted, the API will run automatically
+> 注意：对于 iOS 设备，你需要使用 `trigger` 并将其与用户交互绑定。
+> 在获得权限后，API 将自动运行
 
-| State                        | Type            | Description                                                                                                          |
-| ---------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------- |
-| acceleration                 | `object`        | An object giving the acceleration of the device on the three axis X, Y and Z.                                        |
-| accelerationIncludingGravity | `object`        | An object giving the acceleration of the device on the three axis X, Y and Z with the effect of gravity.             |
-| rotationRate                 | `object`        | An object giving the rate of change of the device's orientation on the three orientation axis alpha, beta and gamma. |
-| interval                     | `Number`        | A number representing the interval of time, in milliseconds, at which data is obtained from the device..             |
-| ensurePermissions            | `boolean`       | Indicates whether the platform requires permission to use the API                                                    |
-| permissionGranted            | `boolean`       | Indicates whether the user has granted permission. The default is always false                                       |
-| trigger                      | `Promise<void>` | An async function to request user permission. The API runs automatically once permission is granted                  |
+| 状态                         | 类型            | 描述                                                                 |
+| ---------------------------- | --------------- | -------------------------------------------------------------------- |
+| acceleration                 | `object`        | 一个对象，给出设备在 X、Y 和 Z 三个轴上的加速度。                    |
+| accelerationIncludingGravity | `object`        | 一个对象，给出设备在 X、Y 和 Z 三个轴上的加速度，包括重力影响。      |
+| rotationRate                 | `object`        | 一个对象，给出设备在 alpha、beta 和 gamma 三个方向轴上的方向变化率。 |
+| interval                     | `Number`        | 一个数字，表示从设备获取数据的间隔时间，以毫秒为单位。               |
+| ensurePermissions            | `boolean`       | 指示平台是否需要权限才能使用该 API                                   |
+| permissionGranted            | `boolean`       | 指示用户是否已授予权限。默认为 false                                 |
+| trigger                      | `Promise<void>` | 一个异步函数，用于请求用户权限。一旦获得权限，API 将自动运行         |
 
-You can find [more information about the state on the MDN](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent#Properties).
+你可以在 [MDN 上找到更多关于状态的信息](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent#Properties)。
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <UseDeviceMotion v-slot="{ acceleration }">
-    Acceleration: {{ acceleration }}
+    加速度: {{ acceleration }}
   </UseDeviceMotion>
 </template>
 ```

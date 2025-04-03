@@ -4,9 +4,9 @@ category: Time
 
 # useCountdown
 
-Wrapper for `useIntervalFn` that provides a countdown timer.
+`useIntervalFn` 的包装器，提供倒计时功能。
 
-## Usage
+## 用法
 
 ```js
 import { useCountdown } from '@vueuse/core'
@@ -22,8 +22,8 @@ const { remaining, start, stop, pause, resume } = useCountdown(countdownSeconds,
 })
 ```
 
-You can use a `ref` to change the initial countdown.
-`start()` and `resume()` also accept a new countdown value for the next countdown.
+你可以使用 `ref` 来更改初始倒计时。
+`start()` 和 `resume()` 也接受一个新的倒计时值用于下一次倒计时。
 
 ```js
 import { ref } from 'vue'
@@ -33,15 +33,15 @@ const countdown = ref(5)
 const { start, reset } = useCountdown(countdown, {
 })
 
-// change the countdown value
+// 更改倒计时值
 countdown.value = 10
 
-// start a new countdown with 2 seconds
+// 开始一个新的 2 秒倒计时
 start(2)
 
-// reset the countdown to 4, but do not start it
+// 重置倒计时为 4，但不开始
 reset(4)
 
-// start the countdown with the current value of `countdown`
+// 使用 `countdown` 的当前值开始倒计时
 start()
 ```

@@ -4,11 +4,11 @@ category: Reactivity
 
 # extendRef
 
-Add extra attributes to Ref.
+向 Ref 添加额外的属性。
 
-## Usage
+## 用法
 
-> Please note the extra attribute will not be accessible in Vue's template.
+> 请注意，额外的属性在 Vue 的模板中不可访问。
 
 ```ts
 import { extendRef } from '@vueuse/core'
@@ -22,7 +22,7 @@ extended.value === 'content'
 extended.foo === 'extra data'
 ```
 
-Refs will be unwrapped and be reactive
+Refs 将被解包并保持响应式
 
 ```ts
 const myRef = ref('content')
@@ -33,6 +33,6 @@ const extended = extendRef(myRef, { extra: extraRef })
 extended.value === 'content'
 extended.extra === 'extra'
 
-extended.extra = 'new data' // will trigger update
+extended.extra = 'new data' // 将触发更新
 extraRef.value === 'new data'
 ```

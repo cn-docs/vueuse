@@ -4,9 +4,9 @@ category: Sensors
 
 # onClickOutside
 
-Listen for clicks outside of an element. Useful for modal or dropdown.
+监听元素外部的点击。适用于模态框或下拉菜单。
 
-## Usage
+## 用法
 
 ```vue
 <script setup>
@@ -22,23 +22,23 @@ onClickOutside(target, event => console.log(event))
   <div ref="target">
     Hello world
   </div>
-  <div>Outside element</div>
+  <div>外部元素</div>
 </template>
 ```
 
-## Component Usage
+## 组件用法
 
 ```vue
 <template>
   <OnClickOutside :options="{ ignore: [/* ... */] }" @trigger="count++">
     <div>
-      Click Outside of Me
+      点击我外部
     </div>
   </OnClickOutside>
 </template>
 ```
 
-## Directive Usage
+## 指令用法
 
 ```vue
 <script setup lang="ts">
@@ -53,7 +53,7 @@ function closeModal() {
 
 <template>
   <button @click="modal = true">
-    Open Modal
+    打开模态框
   </button>
   <div v-if="modal" v-on-click-outside="closeModal">
     Hello World
@@ -61,7 +61,7 @@ function closeModal() {
 </template>
 ```
 
-You can also set the handler as an array to set the configuration items of the instruction.
+你也可以将处理程序设置为数组来设置指令的配置项。
 
 ```vue
 <script setup>
@@ -83,11 +83,11 @@ const onClickOutsideHandler = [
 
 <template>
   <button @click="modal = true">
-    Open Modal
+    打开模态框
   </button>
 
   <div ref="ignoreElRef">
-    click outside ignore element
+    点击外部忽略元素
   </div>
 
   <div v-if="modal" v-on-click-outside="onClickOutsideHandler">

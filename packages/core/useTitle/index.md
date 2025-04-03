@@ -4,29 +4,29 @@ category: Browser
 
 # useTitle
 
-Reactive document title.
+响应式的文档标题。
 
 ::: warning
-This composable isn't compatible with SSR.
+此组合式函数与 SSR 不兼容。
 :::
 
-## Usage
+## 用法
 
 ```js
 import { useTitle } from '@vueuse/core'
 
 const title = useTitle()
-console.log(title.value) // print current title
-title.value = 'Hello' // change current title
+console.log(title.value) // 打印当前标题
+title.value = 'Hello' // 更改当前标题
 ```
 
-Set initial title immediately:
+立即设置初始标题：
 
 ```js
-const title = useTitle('New Title')
+const title = useTitle('新标题')
 ```
 
-Pass a `ref` and the title will be updated when the source ref changes:
+传递一个 `ref`，当源 ref 更改时标题将更新：
 
 ```js
 import { useTitle } from '@vueuse/core'
@@ -34,18 +34,18 @@ import { useTitle } from '@vueuse/core'
 const messages = ref(0)
 
 const title = computed(() => {
-  return !messages.value ? 'No message' : `${messages.value} new messages`
+  return !messages.value ? '没有消息' : `${messages.value} 条新消息`
 })
 
-useTitle(title) // document title will match with the ref "title"
+useTitle(title) // 文档标题将与 ref "title" 匹配
 ```
 
-Pass an optional template tag [Vue Meta Title Template](https://vue-meta.nuxtjs.org/guide/metainfo.html) to update the title to be injected into this template:
+传递一个可选的模板标签 [Vue Meta Title Template](https://vue-meta.nuxtjs.org/guide/metainfo.html) 以更新要注入到此模板中的标题：
 
 ```js
-const title = useTitle('New Title', { titleTemplate: '%s | My Awesome Website' })
+const title = useTitle('新标题', { titleTemplate: '%s | 我的精彩网站' })
 ```
 
 ::: warning
-`observe` is incompatible with `titleTemplate`.
+`observe` 与 `titleTemplate` 不兼容。
 :::
