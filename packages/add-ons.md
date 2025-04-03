@@ -90,7 +90,7 @@ Integration wrappers for utility libraries
 Enables RxJS reactive functions in Vue
 
 - [`from`](https://vueuse.org/rxjs/from/) — rxJS 的 [`from()`](https://rxjs.dev/api/index/function/from) 和 [`fromEvent()`](https://rxjs.dev/api/index/function/fromEvent) 的包装器，使它们能够接受 `ref`。
-- [`toObserver`](https://vueuse.org/rxjs/toObserver/) — sugar function to convert a `ref` into an RxJS [Observer](https://rxjs.dev/guide/observer)
+- [`toObserver`](https://vueuse.org/rxjs/toObserver/) — 将 `ref` 转换为 RxJS [Observer](https://rxjs.dev/guide/observer) 的语法糖函数。
 - [`useExtractedObservable`](https://vueuse.org/rxjs/useExtractedObservable/) — 从一个或多个组合式中提取并使用 RxJS [`Observable`](https://rxjs.dev/guide/observable)，返回一个 `ref`，并在组件卸载时自动取消订阅。
 - [`useObservable`](https://vueuse.org/rxjs/useObservable/) — 使用 RxJS [`Observable`](https://rxjs.dev/guide/observable)，返回一个 `ref`，并在组件卸载时自动取消订阅。
 - [`useSubject`](https://vueuse.org/rxjs/useSubject/) — 将 RxJS [`Subject`](https://rxjs.dev/guide/subject) 绑定到一个 `ref` 上，并在两者之间传播值变化。

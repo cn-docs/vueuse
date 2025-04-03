@@ -1,125 +1,125 @@
-# Contributing
+# 贡献指南
 
-Thanks for being interested in contributing to this project!
+感谢您对本项目感兴趣！
 
-> **Warning**: **⚠️ Slowing down new functions**
+> **警告**: **⚠️ 新功能开发放缓**
 >
-> As the VueUse audience continues to grow, we have been inundated with an overwhelming number of feature requests and pull requests. As a result, maintaining the project has become increasingly challenging and has stretched our capacity to its limits. As such, in the near future, we may need to slow down our acceptance of new features and prioritize the stability and quality of existing functions. **Please note that new features for VueUse may not be accepted at this time.** If you have any new ideas, we suggest that you first incorporate them into your own codebase, iterate on them to suit your needs, and assess their generalizability. If you strongly believe that your ideas are beneficial to the community, you may submit a pull request along with your use cases, and we would be happy to review and discuss them. Thank you for your understanding.
+> 随着 VueUse 的用户群体不断增长，我们收到了大量的功能请求和 Pull Request。因此，维护项目变得越来越具有挑战性，已经达到了我们的能力极限。因此，在不久的将来，我们可能需要放缓新功能的接受速度，优先考虑现有功能的稳定性和质量。**请注意，目前可能不会接受 VueUse 的新功能。**如果您有任何新想法，我们建议您首先将其整合到自己的代码库中，根据您的需求进行迭代，并评估其通用性。如果您坚信您的想法对社区有益，您可以提交 Pull Request 并附上您的用例，我们很乐意审查和讨论它们。感谢您的理解。
 
-## Development
+## 开发
 
-### Setup
+### 环境搭建
 
-Clone this repo to your local machine and install the dependencies.
+克隆此仓库到您的本地机器并安装依赖。
 
 ```bash
 pnpm install
 ```
 
-We use VitePress for rapid development and documenting. You can start it locally by
+我们使用 VitePress 进行快速开发和文档编写。您可以通过以下命令在本地启动：
 
 ```bash
 pnpm dev
 ```
 
-### Testing
+### 测试
 
 ```bash
-pnpm test:unit # to run unit tests
+pnpm test:unit # 运行单元测试
 ```
 
-If you want to use experimental browser tests, you need to install playwright dependencies first.
+如果您想使用实验性的浏览器测试，需要先安装 playwright 依赖。
 
 ```bash
 nlx playwright install --with-deps
 ```
 
-and then run
+然后运行
 
 ```bash
 pnpm test:browser
 ```
 
-## Contributing
+## 贡献方式
 
-### Existing functions
+### 现有功能
 
-Feel free to enhance the existing functions. Please try not to introduce breaking changes.
+欢迎增强现有功能。请尽量不要引入破坏性更改。
 
-### New functions
+### 新功能
 
-There are some notes for adding new functions
+添加新功能时需要注意以下几点：
 
-- Before you start working, it's better to open an issue to discuss first.
-- The implementation should be placed under `packages/core` as a folder and exposing in `index.ts`
-- In the `core` package, try not to introduce 3rd-party dependencies as this package is aimed to be as lightweight as possible.
-- If you'd like to introduce 3rd-party dependencies, please contribute to [@vueuse/integrations](https://github.com/vueuse/vueuse/tree/main/packages/integrations) or create a new add-on.
-- You can find the function template under `packages/core/_template/`, details explained in the [Function Folder](#function-folder) section.
-- When writing documentation for your function, the `<!--FOOTER_STARTS-->` and `<!--FOOTER_ENDS-->` will be automatically updated at build time, so don't feel the need to update them.
+- 在开始工作之前，最好先开一个 issue 进行讨论。
+- 实现应该放在 `packages/core` 目录下作为一个文件夹，并在 `index.ts` 中导出。
+- 在 `core` 包中，尽量不要引入第三方依赖，因为这个包的目标是尽可能轻量。
+- 如果您想引入第三方依赖，请贡献到 [@vueuse/integrations](https://github.com/vueuse/vueuse/tree/main/packages/integrations) 或创建一个新的插件。
+- 您可以在 `packages/core/_template/` 下找到函数模板，详细信息在 [函数文件夹](#function-folder) 部分中说明。
+- 在编写函数文档时，`<!--FOOTER_STARTS-->` 和 `<!--FOOTER_ENDS-->` 会在构建时自动更新，所以不需要手动更新它们。
 
-> Please note you don't need to update packages' `index.ts`. They are auto-generated.
+> 请注意，您不需要更新包的 `index.ts`。它们是自动生成的。
 
-### New add-ons
+### 新插件
 
-New add-ons are greatly welcome!
+新插件非常受欢迎！
 
-- Create a new folder under `packages/`, name it as your add-on name.
-- Add add-on details in `scripts/packages.ts`
-- Create `README.md` under that folder.
-- Add functions as you would do to the core package.
-- Commit and submit as a PR.
+- 在 `packages/` 下创建一个新文件夹，以您的插件名称命名。
+- 在 `scripts/packages.ts` 中添加插件详情。
+- 在该文件夹下创建 `README.md`。
+- 像在核心包中一样添加函数。
+- 提交并提交 PR。
 
-## Project Structure
+## 项目结构
 
-### Monorepo
+### 单仓库
 
-We use monorepo for multiple packages
+我们使用单仓库来管理多个包
 
 ```
 packages
-  shared/         - shared utils across packages
-  core/           - the core package
-  firebase/       - the Firebase add-on
-  [...addons]/    - add-ons named
+  shared/         - 跨包共享的工具
+  core/           - 核心包
+  firebase/       - Firebase 插件
+  [...addons]/    - 命名的插件
 ```
 
-### Function Folder
+### 函数文件夹
 
-A function folder typically contains these 4 files:
+函数文件夹通常包含这 4 个文件：
 
-> You can find the template under `packages/core/_template/`
+> 您可以在 `packages/core/_template/` 下找到模板
 
 ```bash
-index.ts            # function source code itself
-demo.vue            # documentation demo
-index.test.ts       # vitest unit testing
-index.md            # documentation
+index.ts            # 函数源代码本身
+demo.vue            # 文档演示
+index.test.ts       # vitest 单元测试
+index.md            # 文档
 ```
 
-for `index.ts` you should export the function with names.
+对于 `index.ts`，您应该使用命名导出函数。
 
 ```ts
-// DO
+// 正确做法
 export { useMyFunction }
 
-// DON'T
+// 错误做法
 export default useMyFunction
 ```
 
-for `index.md` the first sentence will be displayed as the short intro in the function list, so try to keep it brief and clear.
+对于 `index.md`，第一句话将作为函数列表中的简短介绍显示，所以请尽量简洁明了。
 
 ```markdown
 # useMyFunction
 
-This will be the intro. The detail descriptions...
+这将是介绍。详细描述...
 ```
 
-Read more about the [guidelines](https://vueuse.org/guidelines).
+阅读更多关于[指南](https://vueuse.org/guidelines)的内容。
 
-## Code Style
+## 代码风格
 
-Don't worry about the code style as long as you install the dev dependencies. Git hooks will format and fix them for you on committing.
+只要您安装了开发依赖，就不必担心代码风格。Git hooks 会在提交时自动格式化和修复它们。
 
-## Thanks
+## 感谢
 
-Thank you again for being interested in this project! You are awesome!
+再次感谢您对本项目感兴趣！您太棒了！

@@ -1,20 +1,20 @@
-# Get Started
+# 开始使用
 
-<CourseLink href="https://vueschool.io/courses/vueuse-for-everyone?friend=vueuse">Learn VueUse with video</CourseLink>
+<CourseLink href="https://vueschool.io/courses/vueuse-for-everyone?friend=vueuse">通过视频学习 VueUse</CourseLink>
 
-VueUse is a collection of utility functions based on [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html). We assume you are already familiar with the basic ideas of [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) before you continue.
+VueUse 是一个基于 [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) 的工具函数集合。在继续之前，我们假设您已经熟悉 [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) 的基本概念。
 
-## Installation
+## 安装
 
-> From v12.0, VueUse no longer supports Vue 2. Please use v11.x for Vue 2 support.
+> 从 v12.0 开始，VueUse 不再支持 Vue 2。请使用 v11.x 版本以支持 Vue 2。
 
 ```bash
 npm i @vueuse/core
 ```
 
-[Add ons](/add-ons.html) | [Nuxt Module](/guide/index.html#nuxt)
+[插件](/add-ons.html) | [Nuxt 模块](/guide/index.html#nuxt)
 
-###### Demos
+###### 示例项目
 
 - [Vite + Vue 3](https://github.com/vueuse/vueuse-vite-starter)
 - [Nuxt 3 + Vue 3](https://github.com/antfu/vitesse-nuxt3)
@@ -28,19 +28,19 @@ npm i @vueuse/core
 <script src="https://unpkg.com/@vueuse/core"></script>
 ```
 
-It will be exposed to global as `window.VueUse`
+它将在全局暴露为 `window.VueUse`
 
 ### Nuxt
 
-From v7.2.0, we shipped a Nuxt module to enable auto importing for Nuxt 3 and Nuxt Bridge.
+从 v7.2.0 开始，我们推出了一个 Nuxt 模块，用于在 Nuxt 3 和 Nuxt Bridge 中启用自动导入。
 
-Install the vueuse module into your application using [nuxi](https://nuxt.com/docs/api/commands/module):
+使用 [nuxi](https://nuxt.com/docs/api/commands/module) 将 vueuse 模块安装到您的应用中：
 
 ```bash
 npx nuxi@latest module add vueuse
 ```
 
-Or use npm:
+或使用 npm：
 
 ```bash
 npm i -D @vueuse/nuxt @vueuse/core
@@ -68,37 +68,37 @@ export default {
 }
 ```
 
-And then use VueUse function anywhere in your Nuxt app. For example:
+然后您可以在 Nuxt 应用的任何地方使用 VueUse 函数。例如：
 
 ```vue twoslash
 <script setup lang="ts">
 // ---cut-start---
-// Actually auto-imported, but here we need to tell TwoSlash about it
+// 实际上是自动导入的，但这里我们需要告诉 TwoSlash
 import { useMouse } from '@vueuse/core'
 // ---cut-end---
 const { x, y } = useMouse()
 </script>
 
 <template>
-  <div>pos: {{ x }}, {{ y }}</div>
+  <div>位置: {{ x }}, {{ y }}</div>
 </template>
 ```
 
-## Usage Example
+## 使用示例
 
-Simply importing the functions you need from `@vueuse/core`
+只需从 `@vueuse/core` 导入您需要的函数：
 
 ```vue twoslash
 <script setup>
 import { useLocalStorage, useMouse, usePreferredDark } from '@vueuse/core'
 
-// tracks mouse position
+// 追踪鼠标位置
 const { x, y } = useMouse()
 
-// is user prefers dark theme
+// 用户是否偏好深色主题
 const isDark = usePreferredDark()
 
-// persist state in localStorage
+// 在 localStorage 中持久化状态
 const store = useLocalStorage(
   'my-storage',
   {
@@ -109,4 +109,4 @@ const store = useLocalStorage(
 </script>
 ```
 
-Refer to [functions list](/functions) for more details.
+查看[函数列表](/functions)获取更多详情。

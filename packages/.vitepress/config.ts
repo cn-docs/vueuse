@@ -101,6 +101,10 @@ export default withPwa(defineConfig({
 
     nav: [
       {
+        text: '关于本站',
+        link: '/guide/about',
+      },
+      {
         text: '指南',
         items: [
           { text: '指南', items: Guide },

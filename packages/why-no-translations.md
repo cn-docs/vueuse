@@ -1,25 +1,25 @@
-# Why Doesn't VueUse Have Translations?
+# 为什么 VueUse 没有翻译？
 
-VueUse's documentation doesn't have translations, and **we don't plan to officially maintain any translations in the near future**.
+VueUse 的文档没有翻译，并且**我们在不久的将来不计划正式维护任何翻译**。
 
-Here are a few considerations why we made this decision:
+以下是我们做出这个决定的几个考虑因素：
 
-## Duplication and Divergence
+## 重复和分歧
 
-One of the well-known problems of doing documentation translations is it's hard to keep them up to date. Doing a new translation means we are duplicating the existing documentation, and it requires a lot of effort to sync the changes.
+文档翻译的一个众所周知的问题是很难保持更新。进行新的翻译意味着我们要复制现有的文档，这需要大量的努力来同步更改。
 
-In VueUse we group the code, documentation, demo, and tests inside the same folder for each function (group-by-function over group-by-type). This makes the context of each function closer and easier to read. However, this also means if we want to have translations directly in the same repository, the maintenance cost will grow exponentially.
+在 VueUse 中，我们将每个函数的代码、文档、演示和测试都放在同一个文件夹中（按函数分组而不是按类型分组）。这使得每个函数的上下文更接近且更容易阅读。然而，这也意味着如果我们想在同一个仓库中直接包含翻译，维护成本将呈指数级增长。
 
-## Maintenance Responsibility
+## 维护责任
 
-There are a lot of functions in VueUse. Maintaining the code and reviewing PRs are already a lot of work we barely have enough effort to do. It might seem easy for contributors to send PRs to add translations at the beginning. But it's quite common for contributors to do one-time contributions only (that's totally fine in open source!). The original translator might not always be around when the English documentation gets updated, and then the responsibility of keeping the translations synchronized often falls on the maintainers' shoulders. While we have a great team and community who speaks different languages, it doesn't mean maintaining others' translations is effortless.
+VueUse 有很多函数。维护代码和审查 PR 已经是我们几乎无法完成的大量工作。对于贡献者来说，一开始发送 PR 添加翻译可能看起来很容易。但贡献者通常只做一次性贡献（这在开源中完全没问题！）。当英文文档更新时，原始翻译者可能并不总是在身边，保持翻译同步的责任往往落在维护者的肩上。虽然我们有一个会说不同语言的优秀团队和社区，但这并不意味着维护他人的翻译是毫不费力的。
 
-## Maintenance Focus
+## 维护重点
 
-VueUse is a non-profit open-source project. With limited resources, we want to focus more on the logic and code of VueUse. We are trying our best to make the functions as intuitive and self-explainable as possible. We also want to focus more on improving the existing English documentation and demo.
+VueUse 是一个非营利性的开源项目。资源有限，我们希望更多地关注 VueUse 的逻辑和代码。我们正在尽最大努力使函数尽可能直观和自我解释。我们也希望更多地关注改进现有的英文文档和演示。
 
-We are counting on improved machine translation as time passes, where users can use the translation tools to read the documentation in their language easily if needed.
+我们寄希望于随着时间推移改进的机器翻译，用户可以在需要时使用翻译工具轻松地用他们的语言阅读文档。
 
-## Community Translations
+## 社区翻译
 
-That said, we are still open to community translations. We are happy to link to the community translations if they are well-maintained and up-to-date. If you are maintaining a translation, you can open a discussion to let us know. Thank you!
+尽管如此，我们仍然对社区翻译持开放态度。如果社区翻译维护良好且保持最新，我们很乐意链接到它们。如果您正在维护翻译，可以开启一个讨论让我们知道。谢谢！
