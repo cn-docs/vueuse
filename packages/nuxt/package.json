@@ -45,14 +45,14 @@
     "vue": "^3.5.0"
   },
   "dependencies": {
-    "@nuxt/kit": "catalog:",
+    "@nuxt/kit": "^3.17.2",
     "@vueuse/core": "workspace:*",
     "@vueuse/metadata": "workspace:*",
-    "local-pkg": "catalog:"
+    "local-pkg": "^0.4.3"
   },
   "devDependencies": {
-    "@nuxt/schema": "catalog:",
-    "nuxt": "catalog:",
-    "unimport": "catalog:"
+    "@nuxt/schema": "^3.17.2",
+    "nuxt": "^3.17.2",
+    "unimport": "^5.0.1"
   }
 }

@@ -105,6 +105,10 @@ export default withPwa(defineConfig({
         link: '/guide/about',
       },
       {
+        text: 'vue源码学习',
+        link: '/vueer',
+      },
+      {
         text: '指南',
         items: [
           { text: '指南', items: Guide },
