@@ -6,7 +6,7 @@ category: Network
 
 响应式 [Fetch API](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API) 提供了中止请求、在请求发送前拦截请求、URL 变化时自动重新获取请求以及使用预定义选项创建你自己的 `useFetch` 的能力。
 
-<CourseLink href="https://vueschool.io/lessons/vueuse-utilities-usefetch-and-reactify?friend=vueuse">通过 Vue School 的这个免费视频课程学习 useFetch！</CourseLink>
+<CourseLink href="https://vueschool.io/lessons/vueuse-utilities-usefetch-and-reactify?friend=vueuse">通过 Vue School 的免费视频课程学习 useFetch！</CourseLink>
 
 ::: tip
 与 Nuxt 3 一起使用时，此函数将**不会**被自动导入，以支持 Nuxt 内置的 [`useFetch()`](https://v3.nuxtjs.org/api/composables/use-fetch)。如果你想使用 VueUse 中的函数，请显式导入。
